@@ -308,6 +308,8 @@ app.controller('analyticsController', function($scope,$http) {
 	            [1000, '#CCC'],
 	            [2000, '#000']
 	        ],
+	        minColor: '#FFFFFF',
+            maxColor: '#000000'
 	        min: 0
         	/*
             min: 0,
