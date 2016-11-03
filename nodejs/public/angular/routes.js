@@ -203,6 +203,7 @@ app.controller('analyticsController', function($scope,$http) {
 						console.log("*** 3 ***");
 						zipObj[obj.zipcode][obj.Permit_Type] = []; 
 						zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+						console.log("here: "+zipObj[obj.zipcode][obj.Permit_Type]["count"]);
 					}
 					else{
 						console.log("*** 2 ***");
