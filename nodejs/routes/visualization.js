@@ -33,7 +33,7 @@ exports.expirartionAnalysis = function(req, res){
         condition = req.query;
     };
 
-    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`FILING DATE`) As Quarter,`PERMIT TYPE`,COUNT(*) As Count FROM `permit_history` WHERE Year(`FILING DATE`)>=2012 GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`PERMIT TYPE`";
+    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE`,COUNT(*) As Count FROM `permit_history` WHERE Year(`EXPIRATION DATE`)>=2012 GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
 
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
