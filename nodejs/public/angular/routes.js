@@ -81,6 +81,7 @@ app.controller('analyticsController', function($scope,$http) {
 		var permitTypeCountArray = [];
 		var permitTypes = [];
 		var seosonalTrendObj = {};
+		var counts = [];
 		$(response).each(function(idx,obj){
 			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
 				permitTypeCountArray[obj.Permit_Type] = {};
@@ -91,10 +92,12 @@ app.controller('analyticsController', function($scope,$http) {
 		console.log(permitTypeCountArray);
 
 		$(permitTypes).each(function(idx,permit_type){
-			//console.log(permit_type);
-			seosonalTrendArray.push({name: permit_type, data: permitTypeCountArray[permit_type]})
-			//console.log(permitTypeCountArray[permit_type]);
-			//console.log(obj);
+			counts = [];
+			$(permitTypeCountArray[permit_type]).each(function(key,count){
+				counts.push(count);
+			});
+			console.log(counts);
+			seosonalTrendArray.push({name: permit_type, data: counts})
 		});
 		var series = [{
 		            name: 'PM',
