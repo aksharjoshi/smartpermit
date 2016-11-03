@@ -207,7 +207,7 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 		console.log(zipObj);
 		
-		var data2 = JSON.stringify(zipObj);
+		var data2 = zipObj;
 		var data = {
             'South-East Asia': {
                 'Sri Lanka': {
