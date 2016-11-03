@@ -136,14 +136,12 @@ app.controller('analyticsController', function($scope,$http) {
 		var permitTypes = [];
 		var counts = [];
 		$(response).each(function(idx,obj){
-			//console.log();
 			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
 				permitTypeCountArray[obj.Permit_Type] = {};
 				permitTypes.push(obj.Permit_Type);
 			}
 			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
 		});
-		console.log(permitTypeCountArray);
 
 		$(permitTypes).each(function(idx,permit_type){
 			counts = [];
@@ -205,7 +203,7 @@ app.controller('analyticsController', function($scope,$http) {
 				}
 			}
 		});
-		
+		console.log(zipObj);
 		
 		var points = [],
         regionP,
