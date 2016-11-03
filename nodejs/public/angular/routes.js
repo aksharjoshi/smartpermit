@@ -72,3 +72,13 @@ app.controller('homeController', function($scope,$http) {
 	
 	
 });
+app.controller('analyticsController', function($scope,$http) {
+	
+	//$scope.CommunityListObj = {};
+	
+	$http.get("/seasonalAnalysis").success(function(response){
+		console.log(response);
+	});
+	
+	
+});
