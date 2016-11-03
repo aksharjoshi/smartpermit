@@ -91,8 +91,8 @@ app.controller('analyticsController', function($scope,$http) {
 		console.log(permitTypeCountArray);
 
 		$(permitTypes).each(function(permit_type){
-
-			console.log(permitTypeCountArray[permit_type]);
+			console.log(permit_type);
+			console.log(permitTypeCountArray[eval(permit_type)]);
 			//console.log(obj);
 		});
 		var series = [{
