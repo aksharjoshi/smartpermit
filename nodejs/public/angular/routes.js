@@ -72,8 +72,11 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["AL"] = "Alteration";
 	permit_desc["EQ"] = "Construction Equipment";
 	permit_desc["FO"] = "Foundation Work";
-	permit_desc["NB"] = "Alteration";
+	permit_desc["NB"] = "New Building";
 	permit_desc["PL"] = "Plumbing";
+	permit_desc["DM"] = "Demolition";
+	permit_desc["SG"] = "Sign";
+
 	
 	console.log(permit_desc);
 	
@@ -95,7 +98,7 @@ app.controller('analyticsController', function($scope,$http) {
 			for(var i=0; i<4; i++){
 				counts.push(permitTypeCountArray[permit_type][i]);
 			}
-			seosonalTrendArray.push({name: permit_type, data: counts})
+			seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 		});
 		
 		$(function () {
