@@ -262,7 +262,7 @@ app.controller('analyticsController', function($scope,$http) {
             };
             countryI = 0;
             console.log(data2[zipcode]);
-            for (country in data[zipcode]) {
+            for (country in data2[zipcode]) {
             	console.log(country);
                 if (data2[zipcode].hasOwnProperty(country)) {
                     countryP = {
