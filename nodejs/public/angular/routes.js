@@ -187,6 +187,7 @@ app.controller('analyticsController', function($scope,$http) {
 		var zipObj = {};
 		var zipArray = [];
 		$(response).each(function(index,obj){
+			console.log(obj.zipcode);
 			if(typeof zipObj[obj.zipcode] == "undefined" || typeof zipObj[obj.zipcode] == null){
 				zipObj[obj.zipcode] = {};
 				zipArray.push(obj.zipcode);
