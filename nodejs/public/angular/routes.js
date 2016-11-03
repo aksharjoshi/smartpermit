@@ -78,7 +78,7 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$http.get("/seasonalAnalysis?year=2012").success(function(response){
 		var seosonalTrendArray = [];
-		var permitTypeCountArray = [];
+		var permitTypeCountArray = [][];
 		var seosonalTrendObj = {};
 		$(response).each(function(idx,obj){
 			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null)
