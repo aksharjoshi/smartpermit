@@ -402,7 +402,7 @@ app.controller('analyticsController', function($scope,$http) {
             'Noncommunicable diseases': 'Non-communicable diseases',
             'Injuries': 'Injuries'
         };
-
+console.log(data);
     for (region in data) {
     	console.log(region);
         
