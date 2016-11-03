@@ -94,12 +94,8 @@ app.controller('analyticsController', function($scope,$http) {
 		$(permitTypes).each(function(idx,permit_type){
 			counts = [];
 			console.log(permitTypeCountArray[permit_type]);
-			$(permitTypeCountArray[permit_type]).each(function(key,count){
-				console.log("key: "+key);
-				console.log(count[0]);
-				console.log(count[1]);
-				counts.push(count[key]);
-			});
+			for(var i=0; i<4; i++)
+				counts.push(count[i]);
 			console.log(counts);
 			seosonalTrendArray.push({name: permit_type, data: counts})
 		});
