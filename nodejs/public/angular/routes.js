@@ -7,6 +7,11 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 			templateUrl : "html/home.html"
 
 		}).
+		when('/analytics', {
+			controller: 'analyticsController',
+			templateUrl : "html/analytics.html"
+
+		}).
 		when('/logout', {
 			controller: 'logoutController',
 			templateUrl : "html/home.html"
