@@ -131,7 +131,7 @@ app.controller('analyticsController', function($scope,$http) {
 				permitsArray[obj.Permit_Type] = {};
 				permitTypes.push(obj.Permit_Type);
 			}
-			permitsArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
+			permitsArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.permit_count;
 		});
 		console.log(permitsArray);
 	});
