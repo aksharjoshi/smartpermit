@@ -95,6 +95,7 @@ app.controller('analyticsController', function($scope,$http) {
 			counts = [];
 			console.log(permitTypeCountArray[permit_type]);
 			$(permitTypeCountArray[permit_type]).each(function(key,count){
+				console.log("key: "+count[key]);
 				console.log(count[key]);
 				counts.push(count[key]);
 			});
