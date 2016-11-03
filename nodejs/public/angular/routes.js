@@ -305,7 +305,7 @@ app.controller('analyticsController', function($scope,$http) {
             text: 'Click points to drill down. Source: New York Open Data.'
         },
         title: {
-            text: 'Area wise permits 2012-2016'
+            text: 'Area wise permits'
         }
     });
 	});
