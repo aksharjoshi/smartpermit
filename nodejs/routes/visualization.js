@@ -16,7 +16,7 @@ exports.seasonalAnalysis = function(req, res){
 
     var inputYear = req.query.year;
 
-    var qs = "SELECT Year(`FILING DATE`) AS Year, QUARTER(`FILING DATE`) As Quarter,`PERMIT TYPE` As Permit_Type,COUNT(*) As Count FROM `permit_history` WHERE Year(`FILING DATE`)>=" + inputYear +" GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`PERMIT TYPE`";
+    var qs = "SELECT Year(`FILING DATE`) AS Year, QUARTER(`FILING DATE`) As Quarter,`PERMIT TYPE` As Permit_Type,COUNT(*) As Count FROM `permit_history` WHERE Year(`FILING DATE`)=" + inputYear +" GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`PERMIT TYPE`";
 
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
 		if (err) {
@@ -37,7 +37,7 @@ exports.expirartionAnalysis = function(req, res){
 
     var inputYear = req.query.year;
 
-    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE` As Permit_Type,COUNT(*) As Count FROM `permit_history` WHERE Year(`EXPIRATION DATE`)>=" + inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
+    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE` As Permit_Type,COUNT(*) As Count FROM `permit_history` WHERE Year(`EXPIRATION DATE`)=" + inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
 
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
