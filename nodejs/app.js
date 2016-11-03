@@ -40,6 +40,7 @@ app.get('/home', home.load);
 app.get('/dashboard', home.dashboard);
 
 app.get('/seasonalAnalysis', visualization.seasonalAnalysis);
+app.get('/expirartionAnalysis', visualization.expirartionAnalysis);
 
 
 app.del('/api/session',function(req,res){
