@@ -134,5 +134,13 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 	});
 	
+	$http.get("/expirartionAnalysis?year=2012").success(function(response){
+		console.log(response)
+	});
+	$http.get("/heatMap?year=2012").success(function(response){
+		console.log(response)
+	});
+	
+	
 	
 });
