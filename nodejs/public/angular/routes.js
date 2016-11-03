@@ -81,6 +81,9 @@ app.controller('analyticsController', function($scope,$http) {
 		var permitTypeCountArray = [];
 		var seosonalTrendObj = {};
 		$(response).each(function(idx,obj){
+			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null)
+				permitTypeCountArray[obj.Permit_Type] = [];
+			
 			permitTypeCountArray[obj.Permit_Type][obj.Quarter] = obj.Count;
 		});
 		console.log(permitTypeCountArray);
