@@ -95,7 +95,7 @@ app.controller('analyticsController', function($scope,$http) {
 			counts = [];
 			console.log(permitTypeCountArray[permit_type]);
 			for(var i=0; i<4; i++)
-				counts.push(count[i]);
+				counts.push(permitTypeCountArray[permit_type][i]);
 			console.log(counts);
 			seosonalTrendArray.push({name: permit_type, data: counts})
 		});
