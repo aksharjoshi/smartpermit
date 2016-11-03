@@ -262,13 +262,13 @@ app.controller('analyticsController', function($scope,$http) {
                     points.push(countryP);
                     causeI = 0;
                     for (permit in data2[BOROUGH][zipcode]) {
-                    	console.log(data2[BOROUGH][zipcode][permit]);
+                    	console.log(data2[BOROUGH][zipcode][permit]["count"]);
                         if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
                                 name: data2[BOROUGH][zipcode][permit],
                                 parent: countryP.id,
-                                //value: Math.round(+data2[BOROUGH][zipcode][permit][count])
+                                value: Math.round(+data2[BOROUGH][zipcode][permit]["count"])
                             };
                             regionVal += causeP.value;
                             points.push(causeP);
