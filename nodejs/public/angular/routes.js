@@ -196,6 +196,7 @@ app.controller('analyticsController', function($scope,$http) {
 				zipObj[obj.zipcode] = [];
 				zipObj[obj.zipcode][obj.Permit_Type] = []; 
 				zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+				console.log("here: "+zipObj[obj.zipcode][obj.Permit_Type]["count"]);
 			}
 			else{
 				if(obj.zipcode != "undefined" && obj.zipcode != null && obj.zipcode != ""){
