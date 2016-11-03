@@ -67,6 +67,15 @@ app.controller('permitsController', function($scope,$http) {
 });
 
 app.controller('analyticsController', function($scope,$http) {
+
+	var permit_desc = [];
+	permit_desc["AL"] = "Alteration";
+	permit_desc["EQ"] = "Construction Equipment";
+	permit_desc["FO"] = "Foundation Work";
+	permit_desc["NB"] = "Alteration";
+	permit_desc["PL"] = "Plumbing";
+	
+	console.log(permit_desc);
 	
 	$http.get("/seasonalAnalysis?year=2012").success(function(response){
 		var seosonalTrendArray = [];
