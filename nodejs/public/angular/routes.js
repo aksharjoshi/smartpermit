@@ -196,20 +196,14 @@ app.controller('analyticsController', function($scope,$http) {
 				zipObj[obj.zipcode] = [];
 				zipObj[obj.zipcode][obj.Permit_Type] = []; 
 				zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
-				console.log("here: "+zipObj[obj.zipcode][obj.Permit_Type]["count"]);
 			}
 			else{
 				if(obj.zipcode != "undefined" && obj.zipcode != null && obj.zipcode != ""){
-					console.log("*** 4 ***");
 					if(typeof zipObj[obj.zipcode][obj.Permit_Type] == "undefined" || typeof zipObj[obj.Permit_Type][obj.Permit_Type] == null){
-						console.log("*** 3 ***");
 						zipObj[obj.zipcode][obj.Permit_Type] = []; 
 						zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
-						console.log("here: "+zipObj[obj.zipcode][obj.Permit_Type]["count"]);
 					}
 					else{
-						console.log("*** 2 ***");
-						console.log(zipObj[obj.zipcode][obj.Permit_Type]);
 						zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 					}	
 				}
