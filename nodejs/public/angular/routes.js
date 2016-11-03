@@ -266,7 +266,7 @@ app.controller('analyticsController', function($scope,$http) {
                         if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
-                                name: data2[BOROUGH][zipcode][permit],
+                                name: permit,
                                 parent: countryP.id,
                                 value: Math.round(+data2[BOROUGH][zipcode][permit]["count"])
                             };
