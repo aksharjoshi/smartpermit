@@ -232,7 +232,6 @@ app.controller('analyticsController', function($scope,$http) {
 			}
 		});
 		console.log(zipObj);
-		return false;
 		
 		var points = [],
         regionP,
@@ -244,31 +243,31 @@ app.controller('analyticsController', function($scope,$http) {
         causeI
         var data2 = zipObj;
    
-    for (zipcode in data2) {
-        if (data2.hasOwnProperty(zipcode)) {
+    for (BOROUGH in data2) {
+        if (data2.hasOwnProperty(BOROUGH)) {
             regionVal = 0;
             regionP = {
                 id: 'id_' + regionI,
-                name: zipcode,
+                name: BOROUGH,
                 color: Highcharts.getOptions().colors[regionI]
             };
             countryI = 0;
-            for (permit in data2[zipcode]) {
-                if (data2[zipcode].hasOwnProperty(permit)) {
+            for (zipcode in data2[BOROUGH]) {
+                if (data2[BOROUGH].hasOwnProperty(zipcode)) {
                     countryP = {
                         id: regionP.id + '_' + countryI,
-                        name: permit,
+                        name: zipcode,
                         parent: regionP.id
                     };
                     points.push(countryP);
                     causeI = 0;
-                    for (count in data2[zipcode][permit]) {
-                        if (data2[zipcode][permit].hasOwnProperty(count)) {
+                    for (permit in data2[BOROUGH][zipcode]) {
+                        if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
-                                name: data2[zipcode][permit][count],
+                                name: data2[BOROUGH][zipcode][permit],
                                 parent: countryP.id,
-                                value: Math.round(+data2[zipcode][permit][count])
+                                value: Math.round(+data2[BOROUGH][zipcode][permit][count])
                             };
                             regionVal += causeP.value;
                             points.push(causeP);
