@@ -252,22 +252,19 @@ app.controller('analyticsController', function($scope,$http) {
         };
         var data2 = zipObj;
    console.log(data2);
-    for (region in data2) {
-    	console.log(region);
-    	 console.log(data2[region]);
-        if (data2.hasOwnProperty(region)) {
-        	console.log(">>>>>>>>");
+    for (zipcode in data2) {
+        if (data2.hasOwnProperty(zipcode)) {
             regionVal = 0;
             regionP = {
                 id: 'id_' + regionI,
-                name: region,
+                name: zipcode,
                 color: Highcharts.getOptions().colors[regionI]
             };
             countryI = 0;
-            console.log(data2[region]);
-            for (country in data[region]) {
+            console.log(data2[zipcode]);
+            for (country in data[zipcode]) {
             	console.log(country);
-                if (data[region].hasOwnProperty(country)) {
+                if (data2[zipcode].hasOwnProperty(country)) {
                     countryP = {
                         id: regionP.id + '_' + countryI,
                         name: country,
