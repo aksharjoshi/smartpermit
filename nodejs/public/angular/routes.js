@@ -194,7 +194,7 @@ app.controller('analyticsController', function($scope,$http) {
 		$(response).each(function(index,obj){
 			zipObj[obj.Zipcode] = {};
 		});
-		cosnole.log(zipObj);
+		console.log(zipObj);
 		var data = {
             'South-East Asia': {
                 'Sri Lanka': {
