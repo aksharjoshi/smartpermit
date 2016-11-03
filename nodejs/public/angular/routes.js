@@ -78,7 +78,6 @@ app.controller('analyticsController', function($scope,$http) {
 			}
 			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
 		});
-		console.log(permitTypeCountArray);
 
 		$(permitTypes).each(function(idx,permit_type){
 			counts = [];
@@ -122,6 +121,21 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 	});
 	
+	$http.get("/popularPermit").success(function(response){
+		var permitsArray = [];
+		var permitTypeCountArray = [];
+		var permitTypes = [];
+		var counts = [];
+		$(response).each(function(idx,obj){
+			if(typeof permitsArray[obj.Permit_Type] == "undefined" || typeof permitsArray[obj.Permit_Type] == null){
+				permitsArray[obj.Permit_Type] = {};
+				permitTypes.push(obj.Permit_Type);
+			}
+			permitsArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
+		});
+		console.log(permitsArray);
+	});
+
 	$http.get("/expirartionAnalysis?year=2012").success(function(response){
 		var expirationTrendArray = [];
 		var permitTypeCountArray = [];
