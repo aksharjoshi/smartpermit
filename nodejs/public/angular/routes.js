@@ -263,6 +263,7 @@ app.controller('analyticsController', function($scope,$http) {
             };
             countryI = 0;
             for (country in data[region]) {
+            	console.log(country);
                 if (data[region].hasOwnProperty(country)) {
                     countryP = {
                         id: regionP.id + '_' + countryI,
