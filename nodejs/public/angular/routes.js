@@ -195,10 +195,14 @@ app.controller('analyticsController', function($scope,$http) {
 			if(typeof zipObj[obj.zipcode] == "undefined" || typeof zipObj[obj.zipcode] == null){
 				zipObj[obj.zipcode] = [];
 			}
-			if(typeof zipObj[obj.zipcode][obj.Permit_Type] == "undefined" || typeof zipObj[obj.Permit_Type][obj.Permit_Type] == null){
-				zipObj[obj.zipcode][obj.Permit_Type] = []; 
+			else{
+				if(typeof zipObj[obj.zipcode][obj.Permit_Type] == "undefined" || typeof zipObj[obj.Permit_Type][obj.Permit_Type] == null){
+					zipObj[obj.zipcode][obj.Permit_Type] = []; 
+				}
+				else{
+					zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+				}	
 			}
-			zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 		});
 		console.log(zipObj);
 		var data = {
