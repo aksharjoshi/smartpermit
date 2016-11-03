@@ -262,7 +262,7 @@ app.controller('analyticsController', function($scope,$http) {
                     points.push(countryP);
                     causeI = 0;
                     for (permit in data2[BOROUGH][zipcode]) {
-                    	console.log(data2[BOROUGH][zipcode][permit]["count"]);
+                    	//console.log(data2[BOROUGH][zipcode][permit]["count"]);
                         if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
@@ -283,6 +283,7 @@ app.controller('analyticsController', function($scope,$http) {
             regionI = regionI + 1;
         }
     }
+    console.log(points);
     
     Highcharts.chart('containerlocationWiseAnalytics', {
         series: [{
