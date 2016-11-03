@@ -262,6 +262,7 @@ app.controller('analyticsController', function($scope,$http) {
                 color: Highcharts.getOptions().colors[regionI]
             };
             countryI = 0;
+            console.log(data[region]);
             for (country in data[region]) {
             	console.log(country);
                 if (data[region].hasOwnProperty(country)) {
