@@ -212,7 +212,7 @@ app.controller('analyticsController', function($scope,$http) {
 			}
 		});
 		console.log(zipObj);
-		console.log(JSON.stringify(zipObj));
+		
 		var data2 = JSON.stringify(zipObj);
 		var data = {
             'South-East Asia': {
@@ -256,9 +256,7 @@ app.controller('analyticsController', function($scope,$http) {
             'Noncommunicable diseases': 'Non-communicable diseases',
             'Injuries': 'Injuries'
         };
-    $(zipArray).each(function(key, ob){
-    	//console.log(ob);
-    });
+   console.log(data2);
     for (region in data2) {
     	console.log(region);
         if (data.hasOwnProperty(region)) {
