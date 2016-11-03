@@ -255,6 +255,7 @@ app.controller('analyticsController', function($scope,$http) {
     for (region in data2) {
     	console.log(region);
         if (data.hasOwnProperty(region)) {
+        	console.log(">>>>>>>>");
             regionVal = 0;
             regionP = {
                 id: 'id_' + regionI,
