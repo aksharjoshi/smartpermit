@@ -76,7 +76,7 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	//$scope.CommunityListObj = {};
 	
-	$http.get("/seasonalAnalysis").success(function(response){
+	$http.get("/seasonalAnalysis?year=2012").success(function(response){
 		console.log(response);
 	});
 	
