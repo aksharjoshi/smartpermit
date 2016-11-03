@@ -103,7 +103,7 @@ app.controller('analyticsController', function($scope,$http) {
 		            x: -20 //center
 		        },
 		        subtitle: {
-		            text: 'Source: NYU OPen Data',
+		            text: 'Source: New York Open Data',
 		            x: -20
 		        },
 		        xAxis: {
@@ -159,7 +159,7 @@ app.controller('analyticsController', function($scope,$http) {
 		            x: -20 //center
 		        },
 		        subtitle: {
-		            text: 'Source: NYU OPen Data',
+		            text: 'Source: New York Open Data',
 		            x: -20
 		        },
 		        xAxis: {
@@ -235,7 +235,6 @@ app.controller('analyticsController', function($scope,$http) {
                     points.push(countryP);
                     causeI = 0;
                     for (count in data2[zipcode][permit]) {
-                    	console.log(data2[zipcode][permit][count]);
                         if (data2[zipcode][permit].hasOwnProperty(count)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
@@ -277,7 +276,7 @@ app.controller('analyticsController', function($scope,$http) {
             data: points
         }],
         subtitle: {
-            text: 'Click points to drill down. Source: NY Open Data.'
+            text: 'Click points to drill down. Source: New York Open Data.'
         },
         title: {
             text: 'Area wise permits 2012-2016'
