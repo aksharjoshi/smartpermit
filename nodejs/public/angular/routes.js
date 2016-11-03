@@ -93,6 +93,7 @@ app.controller('analyticsController', function($scope,$http) {
 
 		$(permitTypes).each(function(idx,permit_type){
 			counts = [];
+			console.log(permitTypeCountArray[permit_type]);
 			$(permitTypeCountArray[permit_type]).each(function(key,count){
 				counts.push(count);
 			});
