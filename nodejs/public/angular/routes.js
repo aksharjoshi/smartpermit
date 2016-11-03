@@ -273,7 +273,8 @@ app.controller('analyticsController', function($scope,$http) {
                     points.push(countryP);
                     causeI = 0;
                     for (cause in data2[zipcode][permit]) {
-                        if (data[region][country].hasOwnProperty(cause)) {
+                    	console.log(cause);
+                        if (data2[zipcode][permit].hasOwnProperty(cause)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
                                 name: causeName[cause],
