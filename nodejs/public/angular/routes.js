@@ -153,7 +153,7 @@ app.controller('analyticsController', function($scope,$http) {
 			for(var i=0; i<4; i++){
 				counts.push(permitsArray[permit_type][i]);
 			}
-			mostPopularPermitsArray.push({name: permit_type, data: counts})
+			mostPopularPermitsArray.push({name: permit_desc[permit_type], data: counts})
 		});
 		console.log(mostPopularPermitsArray);
 		Highcharts.chart('containerMostPopularPermitsAnalytics', {
@@ -209,7 +209,7 @@ app.controller('analyticsController', function($scope,$http) {
 			for(var i=0; i<4; i++){
 				counts.push(permitTypeCountArray[permit_type][i]);
 			}
-			expirationTrendArray.push({name: permit_type, data: counts})
+			expirationTrendArray.push({name: permit_desc[permit_type], data: counts})
 		});
 		
 		$(function () {
@@ -325,7 +325,7 @@ app.controller('analyticsController', function($scope,$http) {
                         if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
-                                name: permit,
+                                name: permit_desc[permit],
                                 parent: countryP.id,
                                 value: Math.round(+data2[BOROUGH][zipcode][permit]["count"])
                             };
