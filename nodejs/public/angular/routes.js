@@ -190,10 +190,15 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$http.get("/heatMap?year=2012").success(function(response){
 		console.log(response);
-		var zipObj = {};
+		var zipObj = [];
 		$(response).each(function(index,obj){
-			console
-			zipObj[obj.Zipcode] = obj.Zipcode;
+			if(typeof zipObj[obj.zipcode] == "undefined" || typeof zipObj[obj.zipcode] == null){
+				zipObj[obj.zipcode] = [];
+			}
+			if(typeof zipObj[obj.zipcode][obj.Permit_Type] == "undefined" || typeof zipObj[obj.Permit_Type][obj.Permit_Type] == null){
+				zipObj[obj.zipcode][obj.Permit_Type] = []; 
+			}
+			zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 		});
 		console.log(zipObj);
 		var data = {
