@@ -41,6 +41,7 @@ app.get('/dashboard', home.dashboard);
 
 app.get('/seasonalAnalysis', visualization.seasonalAnalysis);
 app.get('/expirartionAnalysis', visualization.expirartionAnalysis);
+app.get('/heatMap', visualization.heatMap);
 
 
 app.del('/api/session',function(req,res){
