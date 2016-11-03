@@ -86,7 +86,7 @@ app.controller('analyticsController', function($scope,$http) {
 
 			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
 		});
-		console.log(JSON.stringify(permitTypeCountArray[0]));
+		console.log(permitTypeCountArray);
 		$(function () {
 		    Highcharts.chart('containerSeasonalAnalytics', {
 		        title: {
