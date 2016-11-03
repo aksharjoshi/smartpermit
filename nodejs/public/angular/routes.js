@@ -301,11 +301,11 @@ app.controller('analyticsController', function($scope,$http) {
             }],
             data: points
         }],
-        colorAxis: {
+        /*colorAxis: {
             min: 0,
             minColor: '#FFFFFF',
             maxColor: Highcharts.getOptions().colors[0]
-        },
+        },*/
         subtitle: {
             text: 'Click points to drill down. Source: New York Open Data.'
         },
