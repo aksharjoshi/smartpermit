@@ -36,7 +36,7 @@ exports.expirartionAnalysis = function(req, res){
 
     var inputYear = req.query.year;
 
-    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE` As Permit_Type,COUNT(*) As Count FROM `permit_history` WHERE Year(`EXPIRATION DATE`)=" + inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
+    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE` As Permit_Type, P.FULLFORM As Permit_Desc, COUNT(*) As Count FROM `permit_history`,`permit_accronym` As P WHERE Year(`EXPIRATION DATE`)=" + inputYear + " AND `RESIDETIAL` = 'YES' AND `PERMIT TYPE` = P.ACCRONYM GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
 
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
@@ -59,8 +59,8 @@ exports.heatMap = function(req, res){
     var inputYear = req.query.year;
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
-    var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode,`PERMIT TYPE` As Permit_Type,COUNT(*) as permit_count FROM `permit_history` WHERE `RESIDETIAL` = 'YES' "
-    +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 GROUP BY `BOROUGH`,`ZIP CODE`,`PERMIT TYPE` LIMIT 400";
+    var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode,`PERMIT TYPE` As Permit_Type,P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `permit_history`, `permit_accronym` As P  WHERE `RESIDETIAL` = 'YES' "
+    +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 AND `PERMIT TYPE` = P.ACCRONYM GROUP BY `BOROUGH`,`ZIP CODE`,`PERMIT TYPE` LIMIT 400";
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
             //console.log("err", err);
@@ -81,8 +81,8 @@ exports.popularPermit = function(req, res){
     var inputYear = req.query.year;
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
-    var qs = "SELECT `PERMIT TYPE` As Permit_Type, QUARTER(`EXPIRATION DATE`) As Quarter, COUNT(*) as permit_count FROM `permit_history` WHERE `RESIDETIAL` = 'YES' "
-    +"  GROUP BY `PERMIT TYPE`, QUARTER(`EXPIRATION DATE`) ";
+    var qs = "SELECT `PERMIT TYPE` As Permit_Type, QUARTER(`EXPIRATION DATE`) As Quarter, P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `permit_history`, `permit_accronym` As P WHERE `RESIDETIAL` = 'YES' "
+    +"  AND `PERMIT TYPE` = P.ACCRONYM GROUP BY `PERMIT TYPE`, QUARTER(`EXPIRATION DATE`) ";
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
             //console.log("err", err);
