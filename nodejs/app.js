@@ -9,7 +9,8 @@ var express = require('express')
   , register = require('./routes/register')
   , mongodb = require('mongodb')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , visualization = require('./routes/visualization');
 
 var app = express();
 
@@ -37,6 +38,8 @@ app.get('/register', register.load);
 app.post('/register', register.register);
 app.get('/home', home.load);
 app.get('/dashboard', home.dashboard);
+
+app.get('/seasonalAnalysis', visualization.seasonalAnalysis);
 
 
 app.del('/api/session',function(req,res){
