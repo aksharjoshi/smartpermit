@@ -53,7 +53,7 @@ module.exports = function(collection, dbName){
 
 		console.log("qs ", qs);
 
-		this.connection.query(qs, data, function (err, rows, fields) {
+		this.connection.query(qs, function (err, rows, fields) {
 			callBack(err, rows, fields);
 		})
 	}
