@@ -185,7 +185,7 @@ app.controller('analyticsController', function($scope,$http) {
 		console.log(response);
 		var zipObj = {};
 		var zipArray = [];
-		$(response).each(function(index,obj){
+		/*$(response).each(function(index,obj){
 			if(typeof zipObj[obj.zipcode] == "undefined" || typeof zipObj[obj.zipcode] == null){
 				zipObj[obj.zipcode] = {};
 				zipObj[obj.zipcode][obj.Permit_Type] = {}; 
@@ -202,8 +202,37 @@ app.controller('analyticsController', function($scope,$http) {
 					}	
 				}
 			}
+		});*/
+		$(response).each(function(index,obj){
+			if(typeof zipObj[obj.BOROUGH] == "undefined" || typeof zipObj[obj.BOROUGH] == null){
+				zipObj[obj.BOROUGH] = {};
+				zipObj[obj.BOROUGH][obj.zipcode] = {};
+				zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type] = {}; 
+				zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+			}
+			else{
+				if(obj.BOROUGH != "undefined" && obj.BOROUGH != null && obj.BOROUGH != ""){
+					if(typeof zipObj[obj.BOROUGH][obj.zipcode] == "undefined" || typeof zipObj[obj.BOROUGH][obj.zipcode] == null){
+						zipObj[obj.BOROUGH][obj.zipcode] = {};
+						zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type] = {}; 
+						zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+					}
+					else{
+						if(obj.zipcode != "undefined" && obj.zipcode != null && obj.zipcode != ""){
+							if(typeof zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type] == "undefined" || typeof zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type] == null){
+								zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type] = {}; 
+								zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+							}
+							else{
+								zipObj[obj.BOROUGH][obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
+							}	
+						}
+					}
+				}
+			}
 		});
 		console.log(zipObj);
+		return false;
 		
 		var points = [],
         regionP,
