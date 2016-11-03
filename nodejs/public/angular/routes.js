@@ -276,6 +276,7 @@ app.controller('analyticsController', function($scope,$http) {
             data: points
         }],
         colorAxis: {
+        	min: 0,
             minColor: '#ccc',
             maxColor: '#000'
         },
