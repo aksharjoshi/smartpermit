@@ -211,7 +211,8 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 		console.log(zipObj);
 		console.log(JSON.stringify(zipObj));
-		var data = {
+		var data = JSON.stringify(zipObj);
+		var data2 = {
             'South-East Asia': {
                 'Sri Lanka': {
                     'Communicable & other Group I': '75.5',
@@ -403,44 +404,12 @@ app.controller('analyticsController', function($scope,$http) {
         };
 
     for (region in data) {
-        if (data.hasOwnProperty(region)) {
-            regionVal = 0;
-            regionP = {
-                id: 'id_' + regionI,
-                name: region,
-                color: Highcharts.getOptions().colors[regionI]
-            };
-            countryI = 0;
-            for (country in data[region]) {
-                if (data[region].hasOwnProperty(country)) {
-                    countryP = {
-                        id: regionP.id + '_' + countryI,
-                        name: country,
-                        parent: regionP.id
-                    };
-                    points.push(countryP);
-                    causeI = 0;
-                    for (cause in data[region][country]) {
-                        if (data[region][country].hasOwnProperty(cause)) {
-                            causeP = {
-                                id: countryP.id + '_' + causeI,
-                                name: causeName[cause],
-                                parent: countryP.id,
-                                value: Math.round(+data[region][country][cause])
-                            };
-                            regionVal += causeP.value;
-                            points.push(causeP);
-                            causeI = causeI + 1;
-                        }
-                    }
-                    countryI = countryI + 1;
-                }
-            }
-            regionP.value = Math.round(regionVal / countryI);
-            points.push(regionP);
-            regionI = regionI + 1;
+    	console.log(region);
+        
+            
         }
     }
+    return false;
     
     Highcharts.chart('containerlocationWiseAnalytics', {
         series: [{
