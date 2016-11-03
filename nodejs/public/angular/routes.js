@@ -192,7 +192,7 @@ app.controller('analyticsController', function($scope,$http) {
 		console.log(response);
 		var zipObj = {};
 		$(response).each(function(index,obj){
-			zipObj[obj.Zipcode] = {};
+			zipObj[obj.Zipcode] = obj.Zipcode;
 		});
 		console.log(zipObj);
 		var data = {
