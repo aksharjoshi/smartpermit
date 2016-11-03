@@ -7,6 +7,11 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 			templateUrl : "html/home.html"
 
 		}).
+		when('/permits', {
+			controller: 'permitsController',
+			templateUrl : "html/permits.html"
+
+		}).
 		when('/analytics', {
 			controller: 'analyticsController',
 			templateUrl : "html/analytics.html"
@@ -36,23 +41,6 @@ var current_community;
 var current_user;
 app.controller('homeController', function($scope,$http) {
 	
-	$scope.CommunityListObj = {};
-	
-	/*$http.get("/user").success(function(response){
-		if(response.msg == "Fail"){
-			alert("Session Expired. Please Login to continue.");
-			window.location.href = "/";
-			return false;
-		}else{
-			response.data[0].logindatetime = new Date(Date.parse(response.data[0].logindatetime));
-			console.log(response.data[0]);
-			$scope.user = response.data[0];
-			console.log($scope.user.logindatetime);
-			current_user=$scope.user.userunkid;
-		}
-		
-	});*/
-	
 	$scope.logout = function() {
 		$http({
 	        method: 'DELETE',
@@ -72,6 +60,10 @@ app.controller('homeController', function($scope,$http) {
 	
 	
 });
+app.controller('permitsController', function($scope,$http) {
+	
+});
+
 app.controller('analyticsController', function($scope,$http) {
 	
 	$http.get("/seasonalAnalysis?year=2012").success(function(response){
