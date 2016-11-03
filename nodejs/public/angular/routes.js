@@ -190,7 +190,6 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$http.get("/heatMap?year=2012").success(function(response){
 		console.log(response);
-		var 
 		var zipObj = {};
 		$(response).each(function(index,obj){
 			zipObj[obj.Zipcode] = {};
