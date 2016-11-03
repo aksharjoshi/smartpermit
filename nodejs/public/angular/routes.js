@@ -142,6 +142,44 @@ app.controller('analyticsController', function($scope,$http) {
 			mostPopularPermitsArray.push({name: permit_type, data: counts})
 		});
 		console.log(mostPopularPermitsArray);
+		Highcharts.chart('container', {
+
+	        chart: {
+	            type: 'column'
+	        },
+
+	        title: {
+	            text: 'Quaterly Most Popular Permits'
+	        },
+
+	        xAxis: {
+	            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+	        },
+
+	        yAxis: {
+	            allowDecimals: false,
+	            min: 0,
+	            title: {
+	                text: 'Number of Permits'
+	            }
+	        },
+
+	        tooltip: {
+	            formatter: function () {
+	                return '<b>' + this.x + '</b><br/>' +
+	                    this.series.name + ': ' + this.y + '<br/>' +
+	                    'Total: ' + this.point.stackTotal;
+	            }
+	        },
+
+	        plotOptions: {
+	            column: {
+	                stacking: 'normal'
+	            }
+	        },
+
+	        series: mostPopularPermitsArray
+	    });
 	});
 
 	$http.get("/expirartionAnalysis?year=2012").success(function(response){
