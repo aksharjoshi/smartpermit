@@ -207,7 +207,7 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 		console.log(zipObj);
 		
-		var data2 = zipObj;
+		
 		var data = {
             'South-East Asia': {
                 'Sri Lanka': {
@@ -250,6 +250,7 @@ app.controller('analyticsController', function($scope,$http) {
             'Noncommunicable diseases': 'Non-communicable diseases',
             'Injuries': 'Injuries'
         };
+        var data2 = zipObj;
    console.log(data2);
     for (region in data2) {
     	console.log(region);
