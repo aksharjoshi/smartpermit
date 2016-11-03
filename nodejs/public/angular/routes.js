@@ -402,7 +402,10 @@ app.controller('analyticsController', function($scope,$http) {
             'Noncommunicable diseases': 'Non-communicable diseases',
             'Injuries': 'Injuries'
         };
-
+    $(data2).each(function(key, ob){
+    	console.log("key: "+key);
+    	console.log(ob);
+    });
     for (region in data) {
     	console.log(region);
         if (data.hasOwnProperty(region)) {
