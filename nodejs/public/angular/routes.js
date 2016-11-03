@@ -119,9 +119,6 @@ app.controller('analyticsController', function($scope,$http) {
 		                color: '#808080'
 		            }]
 		        },
-		        tooltip: {
-		            valueSuffix: '°C'
-		        },
 		        legend: {
 		            layout: 'vertical',
 		            align: 'right',
@@ -172,9 +169,6 @@ app.controller('analyticsController', function($scope,$http) {
 		            title: {
 		                text: 'Total Number of Permits'
 		            },
-		        },
-		        tooltip: {
-		            valueSuffix: '°C'
 		        },
 		        legend: {
 		            layout: 'vertical',
