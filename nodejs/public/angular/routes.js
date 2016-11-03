@@ -406,11 +406,8 @@ app.controller('analyticsController', function($scope,$http) {
     for (region in data) {
     	console.log(region);
         
-            
-        }
     }
     return false;
-    
     Highcharts.chart('containerlocationWiseAnalytics', {
         series: [{
             type: 'treemap',
