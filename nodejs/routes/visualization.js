@@ -3,9 +3,9 @@
 /**
  * DAL dependencies.
  */
-var dal = require('../dbUtility/dalMySql.js');
+var dal = require('./dbUtility/dalMySql.js');
 
-var dbObject = new dal('permit_history', 'GEM_PRECARE_SYS_DS');
+var dbObject = new dal('permit_history', 'smart_permit');
 
 exports.seasonalAnalysis = function(req, res){
 	var condition = {};
