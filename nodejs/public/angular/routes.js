@@ -262,17 +262,17 @@ app.controller('analyticsController', function($scope,$http) {
             };
             countryI = 0;
             console.log(data2[zipcode]);
-            for (country in data2[zipcode]) {
-            	console.log(country);
-                if (data2[zipcode].hasOwnProperty(country)) {
+            for (permit in data2[zipcode]) {
+            	console.log(permit);
+                if (data2[zipcode].hasOwnProperty(permit)) {
                     countryP = {
                         id: regionP.id + '_' + countryI,
-                        name: country,
+                        name: permit,
                         parent: regionP.id
                     };
                     points.push(countryP);
                     causeI = 0;
-                    for (cause in data[region][country]) {
+                    for (cause in data2[zipcode][permit]) {
                         if (data[region][country].hasOwnProperty(cause)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
