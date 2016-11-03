@@ -426,7 +426,7 @@ app.controller('analyticsController', function($scope,$http) {
             regionI = regionI + 1;
         }
     }
-    console.log(points);
+    console.log(JSON.stringify(points));
     Highcharts.chart('containerlocationWiseAnalytics', {
         series: [{
             type: 'treemap',
