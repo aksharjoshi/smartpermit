@@ -272,12 +272,12 @@ app.controller('analyticsController', function($scope,$http) {
                     };
                     points.push(countryP);
                     causeI = 0;
-                    for (cause in data2[zipcode][permit]) {
-                    	console.log(cause);
-                        if (data2[zipcode][permit].hasOwnProperty(cause)) {
+                    for (count in data2[zipcode][permit]) {
+                    	console.log(data2[zipcode][permit][count]);
+                        if (data2[zipcode][permit].hasOwnProperty(count)) {
                             causeP = {
                                 id: countryP.id + '_' + causeI,
-                                name: causeName[cause],
+                                name: data2[zipcode][permit][count],
                                 parent: countryP.id,
                                 value: Math.round(+data[region][country][cause])
                             };
