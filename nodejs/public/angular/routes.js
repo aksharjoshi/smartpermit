@@ -78,7 +78,6 @@ app.controller('analyticsController', function($scope,$http) {
 		var seosonalTrendArray = [];
 		var permitTypeCountArray = [];
 		var permitTypes = [];
-		var seosonalTrendObj = {};
 		var counts = [];
 		$(response).each(function(idx,obj){
 			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
@@ -135,8 +134,65 @@ app.controller('analyticsController', function($scope,$http) {
 	});
 	
 	$http.get("/expirartionAnalysis?year=2012").success(function(response){
-		console.log(response)
+		var expirationTrendArray = [];
+		var permitTypeCountArray = [];
+		var permitTypes = [];
+		var counts = [];
+		$(response).each(function(idx,obj){
+			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
+				permitTypeCountArray[obj.Permit_Type] = {};
+				permitTypes.push(obj.Permit_Type);
+			}
+			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
+		});
+		console.log(permitTypeCountArray);
+
+		$(permitTypes).each(function(idx,permit_type){
+			counts = [];
+			for(var i=0; i<4; i++){
+				counts.push(permitTypeCountArray[permit_type][i]);
+			}
+			expirationTrendArray.push({name: permit_type, data: counts})
+		});
+		
+		$(function () {
+		    Highcharts.chart('containerSeasonalAnalytics', {
+		        title: {
+		            text: 'Permit Expiration Analysis',
+		            x: -20 //center
+		        },
+		        subtitle: {
+		            text: 'Source: NYU OPen Data',
+		            x: -20
+		        },
+		        xAxis: {
+		            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Total Number of Permits'
+		            },
+		            plotLines: [{
+		                value: 0,
+		                width: 1,
+		                color: '#808080'
+		            }]
+		        },
+		        tooltip: {
+		            valueSuffix: '°C'
+		        },
+		        legend: {
+		            layout: 'vertical',
+		            align: 'right',
+		            verticalAlign: 'middle',
+		            borderWidth: 0
+		        },
+		        series: expirationTrendArray
+		    });
+		});
 	});
+	
+
 	$http.get("/heatMap?year=2012").success(function(response){
 		console.log(response)
 	});
