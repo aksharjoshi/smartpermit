@@ -187,77 +187,35 @@ app.controller('analyticsController', function($scope,$http) {
 		var zipObj = {};
 		var zipArray = [];
 		$(response).each(function(index,obj){
-			console.log(obj.zipcode);
 			if(typeof zipObj[obj.zipcode] == "undefined" || typeof zipObj[obj.zipcode] == null){
-				console.log(">>>>>>>>>>>> undefined <<<<<<<<<<<<");
 				zipObj[obj.zipcode] = {};
-				zipArray.push(obj.zipcode);
 				zipObj[obj.zipcode][obj.Permit_Type] = {}; 
 				zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 			}
 			else{
 				if(obj.zipcode != "undefined" && obj.zipcode != null && obj.zipcode != ""){
-					console.log(">>>>>>>>>>>> 1 <<<<<<<<<<<<");
-					//console.log(zipObj[obj.zipcode][obj.Permit_Type]);
 					if(typeof zipObj[obj.zipcode][obj.Permit_Type] == "undefined" || typeof zipObj[obj.Permit_Type][obj.Permit_Type] == null){
-						console.log(">>>>>>>>>>>> 2 <<<<<<<<<<<<");
 						zipObj[obj.zipcode][obj.Permit_Type] = {}; 
 						zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 					}
 					else{
-						console.log(">>>>>>>>>>>> 3 <<<<<<<<<<<<");
 						zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 					}	
 				}
 			}
 		});
-		console.log(zipObj);
 		
 		
-		var data = {
-            'South-East Asia': {
-                'Sri Lanka': {
-                    'Communicable & other Group I': '75.5',
-                    'Injuries': '89.0',
-                    'Noncommunicable diseases': '501.2'
-                },
-                'Bangladesh': {
-                    'Noncommunicable diseases': '548.9',
-                    'Injuries': '64.0',
-                    'Communicable & other Group I': '234.6'
-                }
-            },
-            'Europe': {
-                'Hungary': {
-                    'Communicable & other Group I': '16.8',
-                    'Noncommunicable diseases': '602.8',
-                    'Injuries': '44.3'
-                },
-                'Poland': {
-                    'Communicable & other Group I': '22.6',
-                    'Noncommunicable diseases': '494.5',
-                    'Injuries': '48.9'
-                }
-            },
-        },
-        points = [],
+		var points = [],
         regionP,
         regionVal,
         regionI = 0,
         countryP,
         countryI,
         causeP,
-        causeI,
-        region,
-        country,
-        cause,
-        causeName = {
-            'Communicable & other Group I': 'Communicable diseases',
-            'Noncommunicable diseases': 'Non-communicable diseases',
-            'Injuries': 'Injuries'
-        };
+        causeI
         var data2 = zipObj;
-   console.log(data2);
+   
     for (zipcode in data2) {
         if (data2.hasOwnProperty(zipcode)) {
             regionVal = 0;
