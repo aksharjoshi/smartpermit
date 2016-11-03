@@ -337,7 +337,7 @@ app.controller('analyticsController', function($scope,$http) {
                     countryI = countryI + 1;
                 }
             }
-            regionP.value = Math.round(regionVal / countryI);
+            regionP.value = Math.round(regionVal);
             points.push(regionP);
             regionI = regionI + 1;
         }
