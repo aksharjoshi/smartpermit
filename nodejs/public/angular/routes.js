@@ -225,21 +225,6 @@ app.controller('analyticsController', function($scope,$http) {
                     'Noncommunicable diseases': '548.9',
                     'Injuries': '64.0',
                     'Communicable & other Group I': '234.6'
-                },
-                'Myanmar': {
-                    'Communicable & other Group I': '316.4',
-                    'Injuries': '102.0',
-                    'Noncommunicable diseases': '708.7'
-                },
-                'Maldives': {
-                    'Injuries': '35.0',
-                    'Noncommunicable diseases': '487.2',
-                    'Communicable & other Group I': '59.2'
-                },
-                'India': {
-                    'Communicable & other Group I': '253.0',
-                    'Injuries': '115.9',
-                    'Noncommunicable diseases': '682.3'
                 }
             },
             'Europe': {
@@ -252,141 +237,8 @@ app.controller('analyticsController', function($scope,$http) {
                     'Communicable & other Group I': '22.6',
                     'Noncommunicable diseases': '494.5',
                     'Injuries': '48.9'
-                },
-                'Israel': {
-                    'Communicable & other Group I': '31.2',
-                    'Noncommunicable diseases': '311.2',
-                    'Injuries': '20.8'
-                },
-                'France': {
-                    'Communicable & other Group I': '21.4',
-                    'Noncommunicable diseases': '313.2',
-                    'Injuries': '34.6'
-                },
-                'Finland': {
-                    'Noncommunicable diseases': '366.6',
-                    'Injuries': '38.7',
-                    'Communicable & other Group I': '9.0'
-                },
-                'United Kingdom of Great Britain and Northern Ireland': {
-                    'Communicable & other Group I': '28.5',
-                    'Injuries': '21.5',
-                    'Noncommunicable diseases': '358.8'
-                },
-                'Czech Republic': {
-                    'Injuries': '39.1',
-                    'Noncommunicable diseases': '460.7',
-                    'Communicable & other Group I': '27.0'
                 }
             },
-            'Africa': {
-                'Equatorial Guinea': {
-                    'Communicable & other Group I': '756.8',
-                    'Injuries': '133.6',
-                    'Noncommunicable diseases': '729.0'
-                },
-                'Madagascar': {
-                    'Noncommunicable diseases': '648.6',
-                    'Communicable & other Group I': '429.9',
-                    'Injuries': '89.0'
-                },
-                'Swaziland': {
-                    'Communicable & other Group I': '884.3',
-                    'Injuries': '119.5',
-                    'Noncommunicable diseases': '702.4'
-                },
-                'Congo': {
-                    'Noncommunicable diseases': '632.3',
-                    'Communicable & other Group I': '666.9',
-                    'Injuries': '89.0'
-                },
-                'Zimbabwe': {
-                    'Communicable & other Group I': '711.3',
-                    'Injuries': '82.5',
-                    'Noncommunicable diseases': '598.9'
-                },
-                'Rwanda': {
-                    'Noncommunicable diseases': '585.3',
-                    'Injuries': '106.3',
-                    'Communicable & other Group I': '401.7'
-                },
-                'Zambia': {
-                    'Noncommunicable diseases': '587.4',
-                    'Injuries': '156.4',
-                    'Communicable & other Group I': '764.3'
-                },
-                'Algeria': {
-                    'Noncommunicable diseases': '710.4',
-                    'Injuries': '53.8',
-                    'Communicable & other Group I': '97.8'
-                }
-            },
-            'Americas': {
-                'Canada': {
-                    'Noncommunicable diseases': '318.0',
-                    'Injuries': '31.3',
-                    'Communicable & other Group I': '22.6'
-                },
-                'Bahamas': {
-                    'Noncommunicable diseases': '465.2',
-                    'Injuries': '45.7',
-                    'Communicable & other Group I': '122.0'
-                },
-                'Guyana': {
-                    'Communicable & other Group I': '177.2',
-                    'Noncommunicable diseases': '1024.2',
-                    'Injuries': '150.0'
-                },
-                'United States of America': {
-                    'Noncommunicable diseases': '412.8',
-                    'Injuries': '44.2',
-                    'Communicable & other Group I': '31.3'
-                },
-                'Guatemala': {
-                    'Communicable & other Group I': '212.7',
-                    'Noncommunicable diseases': '409.4',
-                    'Injuries': '111.0'
-                }
-            },
-            'Eastern Mediterranean': {
-                'Egypt': {
-                    'Communicable & other Group I': '74.3',
-                    'Noncommunicable diseases': '781.7',
-                    'Injuries': '33.5'
-                },
-                'Oman': {
-                    'Injuries': '52.8',
-                    'Noncommunicable diseases': '478.2',
-                    'Communicable & other Group I': '84.2'
-                },
-                'Tunisia': {
-                    'Noncommunicable diseases': '509.3',
-                    'Communicable & other Group I': '65.0',
-                    'Injuries': '39.1'
-                }
-            },
-            'Western Pacific': {
-                'Mongolia': {
-                    'Injuries': '69.4',
-                    'Noncommunicable diseases': '966.5',
-                    'Communicable & other Group I': '82.8'
-                },
-                'Cambodia': {
-                    'Injuries': '62.2',
-                    'Communicable & other Group I': '227.5',
-                    'Noncommunicable diseases': '394.0'
-                },
-                'Singapore': {
-                    'Communicable & other Group I': '66.2',
-                    'Noncommunicable diseases': '264.8',
-                    'Injuries': '17.5'
-                },
-                'Republic of Korea': {
-                    'Injuries': '53.1',
-                    'Communicable & other Group I': '33.8',
-                    'Noncommunicable diseases': '302.1'
-                }
-            }
         },
         points = [],
         regionP,
@@ -405,10 +257,9 @@ app.controller('analyticsController', function($scope,$http) {
             'Injuries': 'Injuries'
         };
     $(zipArray).each(function(key, ob){
-    	console.log("key: "+key);
-    	console.log(ob);
+    	//console.log(ob);
     });
-    for (region in data) {
+    for (region in data2) {
     	console.log(region);
         if (data.hasOwnProperty(region)) {
             regionVal = 0;
