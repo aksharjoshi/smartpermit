@@ -301,21 +301,6 @@ app.controller('analyticsController', function($scope,$http) {
             }],
             data: points
         }],
-
-        colorAxis: {
-        	stops: [
-	            [0, '#FFF'],
-	            [1000, '#CCC'],
-	            [2000, '#000']
-	        ],
-	        minColor: '#FFFFFF',
-            maxColor: '#000000',
-	        min: 0
-        	/*
-            min: 0,
-            minColor: '#FFFFFF',
-            maxColor: Highcharts.getOptions().colors[0]*/
-        },
         subtitle: {
             text: 'Click points to drill down. Source: New York Open Data.'
         },
