@@ -73,25 +73,20 @@ app.controller('analyticsController', function($scope,$http) {
 		var permitTypeCountArray = [];
 		var permitTypes = [];
 		var counts = [];
-		var names = [];
 		$(response).each(function(idx,obj){
 			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
 				permitTypeCountArray[obj.Permit_Type] = {};
 				permitTypes.push(obj.Permit_Type);
 			}
-			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = [];
-			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1]["count"] = obj.Count;
-			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1]["name"] = obj.Permit_Desc;
+			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
 		});
-console.log(permitTypeCountArray);
+
 		$(permitTypes).each(function(idx,permit_type){
 			counts = [];
-			names = [];
 			for(var i=0; i<4; i++){
-				counts.push(permitTypeCountArray[permit_type][i]["counts"]);
-				names.push(permitTypeCountArray[permit_type][i]["name"]);
+				counts.push(permitTypeCountArray[permit_type][i]);
 			}
-			seosonalTrendArray.push({name: names[0], data: counts})
+			seosonalTrendArray.push({name: permit_type, data: counts})
 		});
 		
 		$(function () {
