@@ -80,7 +80,7 @@ app.controller('analyticsController', function($scope,$http) {
 		var seosonalTrendArray = [];
 		var seosonalTrendObj = {};
 		$(response).each(function(idx,obj){
-			console.log(obj);
+			console.log(obj.Permit_Type);
 		});
 		$(function () {
 		    Highcharts.chart('containerSeasonalAnalytics', {
