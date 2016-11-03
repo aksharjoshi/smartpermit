@@ -123,9 +123,9 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$http.get("/popularPermit").success(function(response){
 		var permitsArray = [];
-		var permitTypeCountArray = [];
 		var permitTypes = [];
 		var counts = [];
+		var mostPopularPermitsArray = [];
 		$(response).each(function(idx,obj){
 			if(typeof permitsArray[obj.Permit_Type] == "undefined" || typeof permitsArray[obj.Permit_Type] == null){
 				permitsArray[obj.Permit_Type] = {};
@@ -134,6 +134,14 @@ app.controller('analyticsController', function($scope,$http) {
 			permitsArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.permit_count;
 		});
 		console.log(permitsArray);
+		$(permitTypes).each(function(idx,permit_type){
+			counts = [];
+			for(var i=0; i<4; i++){
+				counts.push(permitsArray[permit_type][i]);
+			}
+			mostPopularPermitsArray.push({name: permit_type, data: counts})
+		});
+		console.log(mostPopularPermitsArray);
 	});
 
 	$http.get("/expirartionAnalysis?year=2012").success(function(response){
