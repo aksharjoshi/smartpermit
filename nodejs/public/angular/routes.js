@@ -191,9 +191,11 @@ app.controller('analyticsController', function($scope,$http) {
 	$http.get("/heatMap?year=2012").success(function(response){
 		console.log(response);
 		var zipObj = {};
+		var zipArray = [];
 		$(response).each(function(index,obj){
 			if(typeof zipObj[obj.zipcode] == "undefined" || typeof zipObj[obj.zipcode] == null){
 				zipObj[obj.zipcode] = {};
+				zipArray.push(obj.zipcode);
 				zipObj[obj.zipcode][obj.Permit_Type] = {}; 
 				zipObj[obj.zipcode][obj.Permit_Type]["count"] = obj.permit_count;
 			}
@@ -402,7 +404,7 @@ app.controller('analyticsController', function($scope,$http) {
             'Noncommunicable diseases': 'Non-communicable diseases',
             'Injuries': 'Injuries'
         };
-    $(zipObj[0]).each(function(key, ob){
+    $(zipArray).each(function(key, ob){
     	console.log("key: "+key);
     	console.log(ob);
     });
