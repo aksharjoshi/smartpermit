@@ -275,11 +275,6 @@ app.controller('analyticsController', function($scope,$http) {
             }],
             data: points
         }],
-        colorAxis: {
-        	min: 0,
-            minColor: '#ccc',
-            maxColor: '#000'
-        },
         subtitle: {
             text: 'Click points to drill down. Source: New York Open Data.'
         },
