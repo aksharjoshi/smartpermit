@@ -42,7 +42,7 @@ app.get('/dashboard', home.dashboard);
 app.get('/seasonalAnalysis', visualization.seasonalAnalysis);
 app.get('/expirartionAnalysis', visualization.expirartionAnalysis);
 app.get('/heatMap', visualization.heatMap);
-app.get('/popularPermit', visualization.heatMap);
+app.get('/popularPermit', visualization.popularPermit);
 
 
 app.del('/api/session',function(req,res){
