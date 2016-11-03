@@ -225,9 +225,7 @@ app.controller('analyticsController', function($scope,$http) {
                 color: Highcharts.getOptions().colors[regionI]
             };
             countryI = 0;
-            console.log(data2[zipcode]);
             for (permit in data2[zipcode]) {
-            	console.log(permit);
                 if (data2[zipcode].hasOwnProperty(permit)) {
                     countryP = {
                         id: regionP.id + '_' + countryI,
@@ -279,10 +277,10 @@ app.controller('analyticsController', function($scope,$http) {
             data: points
         }],
         subtitle: {
-            text: 'Click points to drill down. Source: <a href="http://apps.who.int/gho/data/node.main.12?lang=en">WHO</a>.'
+            text: 'Click points to drill down. Source: NY Open Data.'
         },
         title: {
-            text: 'Global Mortality Rate 2012, per 100 000 population'
+            text: 'Area wise permits 2012-2016'
         }
     });
 	});
