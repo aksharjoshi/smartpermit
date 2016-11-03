@@ -79,7 +79,7 @@ app.controller('analyticsController', function($scope,$http) {
 	$http.get("/seasonalAnalysis?year=2012").success(function(response){
 		var seosonalTrendArray = [];
 		var seosonalTrendObj = {};
-		$(response).each(function(obj){
+		$(response).each(function(idx,obj){
 			console.log(obj);
 		});
 		$(function () {
