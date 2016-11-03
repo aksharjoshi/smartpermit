@@ -279,7 +279,7 @@ app.controller('analyticsController', function($scope,$http) {
                                 id: countryP.id + '_' + causeI,
                                 name: data2[zipcode][permit][count],
                                 parent: countryP.id,
-                                value: Math.round(+data[region][country][cause])
+                                value: Math.round(+data2[zipcode][permit][count])
                             };
                             regionVal += causeP.value;
                             points.push(causeP);
