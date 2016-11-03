@@ -28,6 +28,8 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
     }
 ]);
 
+
+
 app.controller('logoutController',function($scope,$http){
 	if (confirm("Are you sure you want to logout?")== true) {
 	     window.location = '/';
@@ -76,9 +78,11 @@ app.controller('analyticsController', function($scope,$http) {
 				permitTypeCountArray[obj.Permit_Type] = {};
 				permitTypes.push(obj.Permit_Type);
 			}
-			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
+			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = [];
+			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1]["count"] = obj.Count;
+			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1]["name"] = obj.Permit_Desc;
 		});
-
+console.log(permitTypeCountArray);
 		$(permitTypes).each(function(idx,permit_type){
 			counts = [];
 			for(var i=0; i<4; i++){
