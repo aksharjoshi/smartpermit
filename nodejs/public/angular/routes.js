@@ -142,7 +142,7 @@ app.controller('analyticsController', function($scope,$http) {
 			mostPopularPermitsArray.push({name: permit_type, data: counts})
 		});
 		console.log(mostPopularPermitsArray);
-		Highcharts.chart('container', {
+		Highcharts.chart('containerMostPopularPermitsAnalytics', {
 
 	        chart: {
 	            type: 'column'
