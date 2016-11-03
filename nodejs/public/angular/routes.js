@@ -304,9 +304,9 @@ app.controller('analyticsController', function($scope,$http) {
 
         colorAxis: {
         	stops: [
-	            [0, '#3060cf'],
-	            [0.5, '#fffbbc'],
-	            [0.9, '#c4463a']
+	            [0, '#FFF'],
+	            [1000, '#CCC'],
+	            [2000, '#000']
 	        ],
 	        min: 0
         	/*
