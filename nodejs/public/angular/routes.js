@@ -172,11 +172,6 @@ app.controller('analyticsController', function($scope,$http) {
 		            title: {
 		                text: 'Total Number of Permits'
 		            },
-		            plotLines: [{
-		                value: 0,
-		                width: 1,
-		                color: '#808080'
-		            }]
 		        },
 		        tooltip: {
 		            valueSuffix: '°C'
