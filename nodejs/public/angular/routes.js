@@ -77,20 +77,23 @@ app.controller('analyticsController', function($scope,$http) {
 	//$scope.CommunityListObj = {};
 	
 	$http.get("/seasonalAnalysis?year=2012").success(function(response){
-		console.log(response);
+		var seosonalTrendArray = [];
+		var seosonalTrendObj = {};
+		$(response).each(function(obj){
+			console.log(obj);
+		});
 		$(function () {
 		    Highcharts.chart('containerSeasonalAnalytics', {
 		        title: {
-		            text: 'Monthly Average Temperature',
+		            text: 'Seasonal Permit Trend',
 		            x: -20 //center
 		        },
 		        subtitle: {
-		            text: 'Source: WorldClimate.com',
+		            text: 'Source: NYU OPen Data',
 		            x: -20
 		        },
 		        xAxis: {
-		            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-		                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
 		        },
 		        yAxis: {
 		            title: {
