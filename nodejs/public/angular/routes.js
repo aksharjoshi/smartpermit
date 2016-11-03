@@ -210,6 +210,7 @@ app.controller('analyticsController', function($scope,$http) {
 			}
 		});
 		console.log(zipObj);
+		console.log(JSON.stringify(zipObj));
 		var data = {
             'South-East Asia': {
                 'Sri Lanka': {
@@ -440,7 +441,7 @@ app.controller('analyticsController', function($scope,$http) {
             regionI = regionI + 1;
         }
     }
-    console.log(JSON.stringify(points));
+    
     Highcharts.chart('containerlocationWiseAnalytics', {
         series: [{
             type: 'treemap',
