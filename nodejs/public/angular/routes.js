@@ -172,11 +172,7 @@ app.controller('analyticsController', function($scope,$http) {
 	            }
 	        },
 
-	        plotOptions: {
-	            column: {
-	                stacking: 'normal'
-	            }
-	        },
+	        
 
 	        series: mostPopularPermitsArray
 	    });
