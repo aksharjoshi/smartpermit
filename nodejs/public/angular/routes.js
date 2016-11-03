@@ -78,7 +78,7 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$http.get("/seasonalAnalysis?year=2012").success(function(response){
 		var seosonalTrendArray = [];
-		var permitTypeCountArray = [][];
+		var permitTypeCountArray = [];
 		var seosonalTrendObj = {};
 		$(response).each(function(idx,obj){
 			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null)
@@ -87,12 +87,13 @@ app.controller('analyticsController', function($scope,$http) {
 			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
 		});
 		console.log(permitTypeCountArray);
-		console.log(permitTypeCountArray.length);
-		$(permitTypeCountArray).each(function(permit_type,obj){
-
+		console.log(Object.keys(permitTypeCountArray).length;);
+		
+		permitTypeCountArray.forEach( function (permit_type,obj){
 			console.log(permit_type);
 			console.log(obj);
 		});
+
 		var series = [{
 		            name: 'PM',
 		            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
