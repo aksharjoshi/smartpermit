@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+.tab1 {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    line-height: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
