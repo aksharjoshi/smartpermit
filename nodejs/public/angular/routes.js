@@ -85,7 +85,7 @@ app.controller('analyticsController', function($scope,$http) {
 		var permitTypeCountArray = [];
 		var permitTypes = [];
 		var counts = [];
-		$scope.years = [];
+		$scope.years = [2010, 2011, 2012];
 		$(response).each(function(idx,obj){
 			if($.inArray(obj.Year, $scope.years) == -1)
 				$scope.years.push(obj.Year);
@@ -103,7 +103,7 @@ app.controller('analyticsController', function($scope,$http) {
 			}
 			seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 		});
-		console.log($scope.years);
+		
 		$(function () {
 		    Highcharts.chart('containerSeasonalAnalytics', {
 		        title: {
