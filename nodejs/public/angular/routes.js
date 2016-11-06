@@ -80,7 +80,7 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	console.log(permit_desc);
 	
-	$http.get("/seasonalAnalysis").success(function(response){
+	$http.get("/seasonalAnalysis?year=2012").success(function(response){
 		var seosonalTrendArray = [];
 		var permitTypeCountArray = [];
 		var permitTypes = [];
