@@ -13,6 +13,10 @@ a {
     line-height: 20px;
     cursor: pointer;
     padding: 5px;
+    margin-right: 10px;
+}
+.tab1 active{
+    background-color: #999;
 }
 .radio_label{
     visibility: hidden;
