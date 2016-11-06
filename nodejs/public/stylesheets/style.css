@@ -14,3 +14,7 @@ a {
     cursor: pointer;
     padding: 5px;
 }
+.radio_label{
+    visibility: hidden;
+    margin-left: -20px;
+}
