@@ -60,7 +60,7 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["SG"] = "Sign";
 	
 	$scope.getSeasonalData = function(year) {
-		$("#divSeasonalContent.tab1").removeClass("active");
+		$("#divSeasonalContent").find(".tab1").removeClass("active");
 		$("#seasonal_"+year).parent("label").addClass("active");
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
