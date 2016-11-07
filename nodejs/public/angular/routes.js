@@ -62,6 +62,7 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
 		$("#seasonal_"+year).parent("label").addClass("active");
+		console.log($("#seasonal_"+year).parent("label"));
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
