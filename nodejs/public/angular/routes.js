@@ -59,8 +59,6 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
 
-	getSeasonalData(2010);
-
 	$scope.getSeasonalData = function(year) {
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
@@ -120,7 +118,7 @@ app.controller('analyticsController', function($scope,$http) {
 			});
 		});
     };
-	
+	$scope.getSeasonalData(2010);
 	
 	
 	$http.get("/popularPermit").success(function(response){
