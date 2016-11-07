@@ -363,7 +363,11 @@ app.controller('analyticsController', function($scope,$http) {
 	};
 	
 	$scope.getSeasonalData($scope.years[0]);
+	$("#divSeasonalContent").find(".tab1").addClass("active");
 	$scope.getExpirartionAnalysisData($scope.years[0]);
+	$("#divExpiryContent").find(".tab1").addClass("active");
 	$scope.getPopularPermitsData($scope.years[0]);
+	$("#divPopularContent").find(".tab1").addClass("active");
 	$scope.getHeatMapData($scope.years[0]);
+	$("#divLocationContent").find(".tab1").addClass("active");
 });
