@@ -67,7 +67,9 @@ app.controller('permitsController', function($scope,$http) {
 });
 
 app.controller('analyticsController', function($scope,$http) {
-	alert("analyticsController");
+
+	$scope.years = [2010, 2011, 2012];
+	$(".tab1:first").trigger("click");
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";
@@ -77,12 +79,6 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["PL"] = "Plumbing";
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
-
-	$scope.years = [2010, 2011, 2012];
-
-	angular.element(document).ready(function () {
-		$(".tab1:first").trigger("click");
-	});
 
 	$scope.getSeasonalData = function(year) {
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
