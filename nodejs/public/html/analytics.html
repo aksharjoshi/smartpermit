@@ -2,7 +2,7 @@
 <div style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc">
 	 <form class="controls">
 		<label class="tab1" for="rdstack" ng-repeat="(keu, year) in years" ng-click="getSeasonalData(year)">
-			<input id="rdstack" type="radio" class="radio_label" name="mode" value="{{year}}" checked>{{year}}
+			<input id="rdstack" type="radio" class="radio_label" name="mode" value="{{year}}">{{year}}
 		</label>
 	 </form>
 	 <div id="containerSeasonalAnalytics" ></div>
