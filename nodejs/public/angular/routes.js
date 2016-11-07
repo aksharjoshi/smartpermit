@@ -79,7 +79,10 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$scope.years = [2010, 2011, 2012];
 
-	$(".tab1:first").trigger("click");
+	angular.element(document).ready(function () {
+		$(".tab1:first").trigger("click");
+
+	});
 
 	$scope.getSeasonalData = function(year) {
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
