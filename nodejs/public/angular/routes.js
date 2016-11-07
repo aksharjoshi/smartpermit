@@ -69,7 +69,6 @@ app.controller('permitsController', function($scope,$http) {
 app.controller('analyticsController', function($scope,$http) {
 
 	$scope.years = [2010, 2011, 2012];
-	$(".tab1:first").trigger("click");
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";
