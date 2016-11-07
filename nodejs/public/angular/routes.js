@@ -67,6 +67,7 @@ app.controller('permitsController', function($scope,$http) {
 });
 
 app.controller('analyticsController', function($scope,$http) {
+	alert("analyticsController");
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";
@@ -81,7 +82,6 @@ app.controller('analyticsController', function($scope,$http) {
 
 	angular.element(document).ready(function () {
 		$(".tab1:first").trigger("click");
-
 	});
 
 	$scope.getSeasonalData = function(year) {
