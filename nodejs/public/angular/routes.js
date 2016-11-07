@@ -58,7 +58,10 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["PL"] = "Plumbing";
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
-	$(".tab1:first").trigger("click");
+	angular.element(document).ready(function () {
+		$(".tab1:first").trigger("click");
+	});
+	
 	$scope.getSeasonalData = function(year) {
 
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
