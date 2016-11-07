@@ -7,7 +7,14 @@
 	 </form>
 	 <div id="containerSeasonalAnalytics" ></div>
 </div>
-<div id="containerMostPopularPermitsAnalytics" style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc"></div>
+<div style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc">
+	<form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
+			<input id="popular_{{key}}" type="radio" class="radio_label" name="popular_year" value="{{year}}">{{year}}
+		</label>
+	 </form>
+	 <div id="containerMostPopularPermitsAnalytics" ></div>
+</div>
 <div style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">

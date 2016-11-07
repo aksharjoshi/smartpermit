@@ -119,61 +119,63 @@ app.controller('analyticsController', function($scope,$http) {
 			});
 		});		
     };
-	
-	$http.get("/popularPermit").success(function(response){
-		var permitsArray = [];
-		var permitTypes = [];
-		var counts = [];
-		var mostPopularPermitsArray = [];
-		$(response).each(function(idx,obj){
-			if(typeof permitsArray[obj.Permit_Type] == "undefined" || typeof permitsArray[obj.Permit_Type] == null){
-				permitsArray[obj.Permit_Type] = {};
-				permitTypes.push(obj.Permit_Type);
-			}
-			permitsArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.permit_count;
+
+	$scope.getPopularPermitsData = function(year) {
+		$http.get("/popularPermit?year="+year).success(function(response){
+			var permitsArray = [];
+			var permitTypes = [];
+			var counts = [];
+			var mostPopularPermitsArray = [];
+			$(response).each(function(idx,obj){
+				if(typeof permitsArray[obj.Permit_Type] == "undefined" || typeof permitsArray[obj.Permit_Type] == null){
+					permitsArray[obj.Permit_Type] = {};
+					permitTypes.push(obj.Permit_Type);
+				}
+				permitsArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.permit_count;
+			});
+		
+			$(permitTypes).each(function(idx,permit_type){
+				counts = [];
+				for(var i=0; i<4; i++){
+					counts.push(permitsArray[permit_type][i]);
+				}
+				mostPopularPermitsArray.push({name: permit_desc[permit_type], data: counts})
+			});
+			Highcharts.chart('containerMostPopularPermitsAnalytics', {
+
+		        chart: {
+		            type: 'column'
+		        },
+
+		        title: {
+		            text: 'Quaterly Most Popular Permits'
+		        },
+
+		        xAxis: {
+		            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+		        },
+
+		        yAxis: {
+		            allowDecimals: false,
+		            min: 0,
+		            title: {
+		                text: 'Number of Permits'
+		            }
+		        },
+
+		        tooltip: {
+		            formatter: function () {
+		                return '<b>' + this.x + '</b><br/>' +
+		                    this.series.name + ': ' + this.y + '<br/>';
+		            }
+		        },
+
+		        
+
+		        series: mostPopularPermitsArray
+		    });
 		});
-	
-		$(permitTypes).each(function(idx,permit_type){
-			counts = [];
-			for(var i=0; i<4; i++){
-				counts.push(permitsArray[permit_type][i]);
-			}
-			mostPopularPermitsArray.push({name: permit_desc[permit_type], data: counts})
-		});
-		Highcharts.chart('containerMostPopularPermitsAnalytics', {
-
-	        chart: {
-	            type: 'column'
-	        },
-
-	        title: {
-	            text: 'Quaterly Most Popular Permits'
-	        },
-
-	        xAxis: {
-	            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
-	        },
-
-	        yAxis: {
-	            allowDecimals: false,
-	            min: 0,
-	            title: {
-	                text: 'Number of Permits'
-	            }
-	        },
-
-	        tooltip: {
-	            formatter: function () {
-	                return '<b>' + this.x + '</b><br/>' +
-	                    this.series.name + ': ' + this.y + '<br/>';
-	            }
-	        },
-
-	        
-
-	        series: mostPopularPermitsArray
-	    });
-	});
+	};
 
 	
 	$scope.getExpirartionAnalysisData = function(year) {
@@ -361,5 +363,6 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$scope.getSeasonalData($scope.years[0]);
 	$scope.getExpirartionAnalysisData($scope.years[0]);
+	$scope.getPopularPermitsData($scope.years[0]);
 	$scope.getHeatMapData($scope.years[0]);
 });
