@@ -48,7 +48,7 @@ app.controller('permitsController', function($scope,$http) {
 
 app.controller('analyticsController', function($scope,$http) {
 
-	$scope.years = ["2010", "2011", "2012"];
+	$scope.years = [2010, 2011, 2012];
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";
@@ -61,9 +61,7 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
-		//$("#seasonal_"+year).parent(".tab1").addClass("active");
-		//console.log($("#seasonal_"+year).parent(".tab1"));
-
+		$("#seasonal_"+year).parent(".tab1").addClass("active");
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
