@@ -59,9 +59,9 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
 	
-	$scope.getSeasonalData = function(year) {
+	$scope.getSeasonalData = function(key,year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
-		$("#seasonal_"+year).parent(".tab1").addClass("active");
+		$("#seasonal_"+key).parent(".tab1").addClass("active");
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];

@@ -1,7 +1,7 @@
 
 <div id="divSeasonalContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	 <form class="controls label-container">
-		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(key,year)">
 			<input id="seasonal_{{key}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
 	 </form>
