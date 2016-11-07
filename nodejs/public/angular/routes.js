@@ -80,6 +80,7 @@ app.controller('analyticsController', function($scope,$http) {
 	$(".tab1:first").trigger("click");
 	$scope.years = [2010, 2011, 2012];
 	$scope.getSeasonalData = function(year) {
+		console.log(year);
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
