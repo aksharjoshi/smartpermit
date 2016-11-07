@@ -61,7 +61,12 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
-		$("#seasonal_"+year).parent(".tab1").addClass("active");
+		
+		if($("#divSeasonalContent").find(".tab1").hasClass("active"))
+			$("#seasonal_"+year).parent(".tab1").addClass("active");
+		else
+			$("#divSeasonalContent").find(".tab1:first").addClass("active");
+
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
@@ -363,7 +368,7 @@ app.controller('analyticsController', function($scope,$http) {
 	};
 	
 	$scope.getSeasonalData($scope.years[0]);
-	$("#divSeasonalContent").find(".tab1:first").addClass("active");
+	
 	$scope.getExpirartionAnalysisData($scope.years[0]);
 	$("#divExpiryContent").find(".tab1:first").addClass("active");
 	$scope.getPopularPermitsData($scope.years[0]);
