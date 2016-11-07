@@ -1,12 +1,26 @@
 
 <div style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc">
-	 <form class="controls">
-		<label class="tab1" for="rdstack" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
+	 <form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
 			<input id="seasonal_{{key}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
 	 </form>
 	 <div id="containerSeasonalAnalytics" ></div>
 </div>
 <div id="containerMostPopularPermitsAnalytics" style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc"></div>
-<div id="containerExpirationAnalytics" style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc"></div>
-<div id="containerlocationWiseAnalytics" style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc"></div>
+<div style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc">
+	<form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">
+			<input id="expiration_{{key}}" type="radio" class="radio_label" name="expiration_year" value="{{year}}">{{year}}
+		</label>
+	 </form>
+	 <div id="containerMostPopularPermitsAnalytics" ></div>
+</div>
+<div style="min-width: 310px; height: 400px; margin-top: 50px; border: 1px solid #ccc">
+	<form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year)">
+			<input id="heatmap_{{key}}" type="radio" class="radio_label" name="heatmap_year" value="{{year}}">{{year}}
+		</label>
+	 </form>
+	 <div id="containerlocationWiseAnalytics" ></div>
+</div>

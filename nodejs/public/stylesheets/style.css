@@ -22,3 +22,8 @@ a {
     visibility: hidden;
     margin-left: -20px;
 }
+.label-container{
+	margin-bottom: 20px;
+	margin-top: 10px;
+	text-align: center;
+}
