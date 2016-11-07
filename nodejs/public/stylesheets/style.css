@@ -18,7 +18,7 @@ a {
 .active{
     background-color: #999;
 }
-.label-container input[type="radio"]:checked + label {
+input[type="radio"]:checked + label {
     background-color:#999;
 }
 .radio_label{
