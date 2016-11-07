@@ -123,6 +123,8 @@ app.controller('analyticsController', function($scope,$http) {
     };
 
 	$scope.getPopularPermitsData = function(year) {
+		$("#divPopularContent").find(".tab1").removeClass("active");
+		$("#popular_"+year).parent(".tab1").addClass("active");
 		$http.get("/popularPermit?year="+year).success(function(response){
 			var permitsArray = [];
 			var permitTypes = [];
@@ -181,6 +183,8 @@ app.controller('analyticsController', function($scope,$http) {
 
 	
 	$scope.getExpirartionAnalysisData = function(year) {
+		$("#divExpiryContent").find(".tab1").removeClass("active");
+		$("#expiration_"+year).parent(".tab1").addClass("active");
 		$http.get("/expirartionAnalysis?year="+year).success(function(response){
 			var expirationTrendArray = [];
 			var permitTypeCountArray = [];
@@ -233,6 +237,8 @@ app.controller('analyticsController', function($scope,$http) {
 	};
 
 	$scope.getHeatMapData = function(year) {
+		$("#divLocationContent").find(".tab1").removeClass("active");
+		$("#heatmap_"+year).parent(".tab1").addClass("active");
 		$http.get("/heatMap?year="+year).success(function(response){
 		
 			var zipObj = {};
