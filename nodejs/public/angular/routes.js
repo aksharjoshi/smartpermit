@@ -39,8 +39,6 @@ app.controller('logoutController',function($scope,$http){
 	
 });
 
-var current_community;
-var current_user;
 app.controller('homeController', function($scope,$http) {
 	
 	$scope.logout = function() {
@@ -311,74 +309,71 @@ app.controller('analyticsController', function($scope,$http) {
         causeI
         var data2 = zipObj;
    
-    for (BOROUGH in data2) {
-        if (data2.hasOwnProperty(BOROUGH)) {
-            regionVal = 0;
-            regionP = {
-                id: 'id_' + regionI,
-                name: BOROUGH,
-                color: Highcharts.getOptions().colors[regionI]
-            };
-            countryI = 0;
-            for (zipcode in data2[BOROUGH]) {
-                if (data2[BOROUGH].hasOwnProperty(zipcode)) {
-                    countryP = {
-                        id: regionP.id + '_' + countryI,
-                        name: zipcode,
-                        parent: regionP.id
-                    };
-                    points.push(countryP);
-                    causeI = 0;
-                    for (permit in data2[BOROUGH][zipcode]) {
-                        if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
-                            causeP = {
-                                id: countryP.id + '_' + causeI,
-                                name: permit_desc[permit],
-                                parent: countryP.id,
-                                value: Math.round(+data2[BOROUGH][zipcode][permit]["count"])
-                            };
-                            regionVal += causeP.value;
-                            points.push(causeP);
-                            causeI = causeI + 1;
-                        }
-                    }
-                    countryI = countryI + 1;
-                }
-            }
-            regionP.value = Math.round(regionVal);
-            points.push(regionP);
-            regionI = regionI + 1;
-        }
-    }
+    	for(BOROUGH in data2) {
+	        if (data2.hasOwnProperty(BOROUGH)) {
+	            regionVal = 0;
+	            regionP = {
+	                id: 'id_' + regionI,
+	                name: BOROUGH,
+	                color: Highcharts.getOptions().colors[regionI]
+	            };
+	            countryI = 0;
+	            for (zipcode in data2[BOROUGH]) {
+	                if (data2[BOROUGH].hasOwnProperty(zipcode)) {
+	                    countryP = {
+	                        id: regionP.id + '_' + countryI,
+	                        name: zipcode,
+	                        parent: regionP.id
+	                    };
+	                    points.push(countryP);
+	                    causeI = 0;
+	                    for (permit in data2[BOROUGH][zipcode]) {
+	                        if (data2[BOROUGH][zipcode].hasOwnProperty(permit)) {
+	                            causeP = {
+	                                id: countryP.id + '_' + causeI,
+	                                name: permit_desc[permit],
+	                                parent: countryP.id,
+	                                value: Math.round(+data2[BOROUGH][zipcode][permit]["count"])
+	                            };
+	                            regionVal += causeP.value;
+	                            points.push(causeP);
+	                            causeI = causeI + 1;
+	                        }
+	                    }
+	                    countryI = countryI + 1;
+	                }
+	            }
+	            regionP.value = Math.round(regionVal);
+	            points.push(regionP);
+	            regionI = regionI + 1;
+	        }
+    	}
     
-    Highcharts.chart('containerlocationWiseAnalytics', {
-        series: [{
-            type: 'treemap',
-            layoutAlgorithm: 'squarified',
-            allowDrillToNode: true,
-            animationLimit: 1000,
-            dataLabels: {
-                enabled: false
-            },
-            levelIsConstant: false,
-            levels: [{
-                level: 1,
-                dataLabels: {
-                    enabled: true
-                },
-                borderWidth: 3
-            }],
-            data: points
-        }],
-        subtitle: {
-            text: 'Click points to drill down. Source: New York Open Data.'
-        },
-        title: {
-            text: 'Area wise permits'
-        }
-    });
+	    Highcharts.chart('containerlocationWiseAnalytics', {
+	        series: [{
+	            type: 'treemap',
+	            layoutAlgorithm: 'squarified',
+	            allowDrillToNode: true,
+	            animationLimit: 1000,
+	            dataLabels: {
+	                enabled: false
+	            },
+	            levelIsConstant: false,
+	            levels: [{
+	                level: 1,
+	                dataLabels: {
+	                    enabled: true
+	                },
+	                borderWidth: 3
+	            }],
+	            data: points
+	        }],
+	        subtitle: {
+	            text: 'Click points to drill down. Source: New York Open Data.'
+	        },
+	        title: {
+	            text: 'Area wise permits'
+	        }
+	    });
 	});
-	
-	
-	
-});
+}
