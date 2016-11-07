@@ -41,24 +41,6 @@ app.controller('logoutController',function($scope,$http){
 
 app.controller('homeController', function($scope,$http) {
 	
-	$scope.logout = function() {
-		$http({
-	        method: 'DELETE',
-	        url: '/api/session',
-	        
-	     }).success(function(response){
-	       
-	        console.log(response);
-	        window.location = '/';
-	    }).error(function(error){
-	        alert("error");
-	    });
-	};
-	
-	$scope.saveCommunity = function() {	
-	};
-	
-	
 });
 app.controller('permitsController', function($scope,$http) {
 	
@@ -77,7 +59,7 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
 
-	{$scope.getSeasonalData(2010);
+	$scope.getSeasonalData(2010);
 
 	$scope.getSeasonalData = function(year) {
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
@@ -309,7 +291,7 @@ app.controller('analyticsController', function($scope,$http) {
         causeI
         var data2 = zipObj;
    
-    	for(BOROUGH in data2) {
+	    for (BOROUGH in data2) {
 	        if (data2.hasOwnProperty(BOROUGH)) {
 	            regionVal = 0;
 	            regionP = {
@@ -347,7 +329,7 @@ app.controller('analyticsController', function($scope,$http) {
 	            points.push(regionP);
 	            regionI = regionI + 1;
 	        }
-    	}
+	    }
     
 	    Highcharts.chart('containerlocationWiseAnalytics', {
 	        series: [{
@@ -376,4 +358,5 @@ app.controller('analyticsController', function($scope,$http) {
 	        }
 	    });
 	});
-}
+	
+});
