@@ -117,11 +117,9 @@ app.controller('analyticsController', function($scope,$http) {
 			        series: seosonalTrendArray
 			    });
 			});
-		});
-
-		$scope.getSeasonalData($scope.years[0]);
+		});		
     };
-	
+	$scope.getSeasonalData($scope.years[0]);
 	
 	$http.get("/popularPermit").success(function(response){
 		var permitsArray = [];
