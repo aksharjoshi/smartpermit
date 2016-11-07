@@ -93,8 +93,8 @@ exports.popularPermit = function(req, res){
     var inputYear = req.query.year;
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
-    var qs = "SELECT `PERMIT TYPE` As Permit_Type, QUARTER(`FILING DATE`) As Quarter, P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `permit_history`, `permit_accronym` As P WHERE `RESIDETIAL` = 'YES' "
-    +"  AND `PERMIT TYPE` = P.ACCRONYM GROUP BY `PERMIT TYPE`, QUARTER(`FILING DATE`) ";
+    var qs = "SELECT Year(`FILING DATE`) AS Year, `PERMIT TYPE` As Permit_Type, QUARTER(`FILING DATE`) As Quarter, P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `permit_history`, `permit_accronym` As P WHERE `RESIDETIAL` = 'YES' "
+    +"  AND `PERMIT TYPE` = P.ACCRONYM AND Year(`FILING DATE`)=" + inputYear +"GROUP BY `PERMIT TYPE`, QUARTER(`FILING DATE`) ";
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
             //console.log("err", err);
