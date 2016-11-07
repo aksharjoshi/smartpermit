@@ -62,7 +62,7 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
 		//$("#seasonal_"+year).parent(".tab1").addClass("active");
-		console.log($("#seasonal_"+year).parent(".tab1"));
+		//console.log($("#seasonal_"+year).parent(".tab1"));
 
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
