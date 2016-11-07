@@ -78,13 +78,14 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["SG"] = "Sign";
 
 	$(".tab1:first").trigger("click");
+	$scope.years = [2010, 2011, 2012];
 	$scope.getSeasonalData = function(year) {
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
 			var permitTypes = [];
 			var counts = [];
-			$scope.years = [2010, 2011, 2012];
+			
 			$(response).each(function(idx,obj){
 				if($.inArray(obj.Year, $scope.years) == -1)
 					$scope.years.push(obj.Year);
