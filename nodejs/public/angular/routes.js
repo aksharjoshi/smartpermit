@@ -77,66 +77,68 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
 
-	
-	console.log(permit_desc);
-	
-	$http.get("/seasonalAnalysis?year=2012").success(function(response){
-		var seosonalTrendArray = [];
-		var permitTypeCountArray = [];
-		var permitTypes = [];
-		var counts = [];
-		$scope.years = [2010, 2011, 2012];
-		$(response).each(function(idx,obj){
-			if($.inArray(obj.Year, $scope.years) == -1)
-				$scope.years.push(obj.Year);
-			if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
-				permitTypeCountArray[obj.Permit_Type] = {};
-				permitTypes.push(obj.Permit_Type);
-			}
-			permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
-		});
+	$(".tab1:first").trigger("click");
+	$scope.getSeasonalData = function(year) {
+        $http.get("/seasonalAnalysis?year="+year).success(function(response){
+			var seosonalTrendArray = [];
+			var permitTypeCountArray = [];
+			var permitTypes = [];
+			var counts = [];
+			$scope.years = [2010, 2011, 2012];
+			$(response).each(function(idx,obj){
+				if($.inArray(obj.Year, $scope.years) == -1)
+					$scope.years.push(obj.Year);
+				if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
+					permitTypeCountArray[obj.Permit_Type] = {};
+					permitTypes.push(obj.Permit_Type);
+				}
+				permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
+			});
 
-		$(permitTypes).each(function(idx,permit_type){
-			counts = [];
-			for(var i=0; i<4; i++){
-				counts.push(permitTypeCountArray[permit_type][i]);
-			}
-			seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
-		});
+			$(permitTypes).each(function(idx,permit_type){
+				counts = [];
+				for(var i=0; i<4; i++){
+					counts.push(permitTypeCountArray[permit_type][i]);
+				}
+				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
+			});
 		
-		$(function () {
-		    Highcharts.chart('containerSeasonalAnalytics', {
-		        title: {
-		            text: 'Seasonal Permit Trend',
-		            x: -20 //center
-		        },
-		        subtitle: {
-		            text: 'Source: New York Open Data',
-		            x: -20
-		        },
-		        xAxis: {
-		            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
-		        },
-		        yAxis: {
-		            title: {
-		                text: 'Total Number of Permits'
-		            },
-		            plotLines: [{
-		                value: 0,
-		                width: 1,
-		                color: '#808080'
-		            }]
-		        },
-		        legend: {
-		            layout: 'vertical',
-		            align: 'right',
-		            verticalAlign: 'middle',
-		            borderWidth: 0
-		        },
-		        series: seosonalTrendArray
-		    });
+			$(function () {
+			    Highcharts.chart('containerSeasonalAnalytics', {
+			        title: {
+			            text: 'Seasonal Permit Trend',
+			            x: -20 //center
+			        },
+			        subtitle: {
+			            text: 'Source: New York Open Data',
+			            x: -20
+			        },
+			        xAxis: {
+			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+			        },
+			        yAxis: {
+			            title: {
+			                text: 'Total Number of Permits'
+			            },
+			            plotLines: [{
+			                value: 0,
+			                width: 1,
+			                color: '#808080'
+			            }]
+			        },
+			        legend: {
+			            layout: 'vertical',
+			            align: 'right',
+			            verticalAlign: 'middle',
+			            borderWidth: 0
+			        },
+			        series: seosonalTrendArray
+			    });
+			});
 		});
-	});
+    };
+	
+	
 	
 	$http.get("/popularPermit").success(function(response){
 		var permitsArray = [];
