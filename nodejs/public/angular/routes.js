@@ -79,6 +79,8 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
 
+	{$scope.getSeasonalData(2010)
+
 	$scope.getSeasonalData = function(year) {
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seosonalTrendArray = [];
