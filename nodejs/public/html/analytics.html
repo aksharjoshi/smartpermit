@@ -1,7 +1,7 @@
 
 <div style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	 <form class="controls label-container">
-		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year,this)">
 			<input id="seasonal_{{key}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
 	 </form>
@@ -9,7 +9,7 @@
 </div>
 <div style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
-		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year,this)">
 			<input id="popular_{{key}}" type="radio" class="radio_label" name="popular_year" value="{{year}}">{{year}}
 		</label>
 	 </form>
@@ -17,7 +17,7 @@
 </div>
 <div style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
-		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year,this)">
 			<input id="expiration_{{key}}" type="radio" class="radio_label" name="expiration_year" value="{{year}}">{{year}}
 		</label>
 	 </form>
@@ -25,7 +25,7 @@
 </div>
 <div style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
-		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year)">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year,this)">
 			<input id="heatmap_{{key}}" type="radio" class="radio_label" name="heatmap_year" value="{{year}}">{{year}}
 		</label>
 	 </form>

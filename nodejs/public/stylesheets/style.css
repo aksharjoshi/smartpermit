@@ -15,7 +15,7 @@ a {
     padding: 5px;
     margin-right: 10px;
 }
-.tab1 active{
+.active{
     background-color: #999;
 }
 .radio_label{
