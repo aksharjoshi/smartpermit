@@ -10,7 +10,7 @@ exports.index = function(req, res){
 exports.login = function(req, res){
 	try {
 		var param = req.body;
-		console.log(req);
+		console.log(param);
 		console.log("test");
 		var errMsg = '';
 		if(param.email == "" || param.email == "undefined"){
