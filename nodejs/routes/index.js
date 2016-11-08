@@ -12,17 +12,20 @@ exports.login = function(req, res){
 		var param = req.body;
 		console.log(param);
 		var errMsg = '';
-		if(param.inputEmail == "" || param.inputEmail == "undefined"){
+		if(param.email == "" || param.email == "undefined"){
 			errMsg += 'Email is required.';
-			res.render('index', { title: 'Mobile Sensor Cloud',errMsg: errMsg });
+			res.render('index', { title: 'Smart Permit System',errMsg: errMsg });
 		}
-		else if(param.inputPassword == "" || param.inputPassword == "undefined"){
+		else if(param.password == "" || param.password == "undefined"){
 			errMsg += 'Password is required.';
-			res.render('index', { title: 'Mobile Sensor Cloud',errMsg: errMsg });
+			res.render('index', { title: 'Smart Permit System',errMsg: errMsg });
 		}
 		else{
 			//Database Connection - validate customer login credentials and redirect to home page
-			 res.redirect('/home');
+			if(param.email == "admin@sps.com" && param.password == "admin")
+			 	res.redirect('/home');
+			else
+				res.render('index', { title: 'Smart Permit System',errMsg: "Invalid Username or Password" });
 		}
 	}
 	catch(err) {
