@@ -11,6 +11,7 @@ exports.login = function(req, res){
 	try {
 		var param = req.body;
 		console.log(param);
+		console.log("test");
 		var errMsg = '';
 		if(param.inputEmail == "" || param.inputEmail == "undefined"){
 			errMsg += 'Email is required.';
