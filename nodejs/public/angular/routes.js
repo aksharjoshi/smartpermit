@@ -1,4 +1,5 @@
 var app = angular.module('myapp', ['ngRoute']);
+var map;
 
 app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.
