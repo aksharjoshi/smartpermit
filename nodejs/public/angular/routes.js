@@ -377,7 +377,7 @@ app.controller('analyticsController', function($scope,$http) {
           mapTypeId: 'terrain'
         });
         $http.get("/mapsData").success(function(response){
-			$(response).each(functin(key,location){
+			$(response).each(function(key,location){
 				console.log(location.latitude+" : "+location.longitude);
 			});
 			
