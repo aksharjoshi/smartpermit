@@ -379,20 +379,14 @@ app.controller('analyticsController', function($scope,$http) {
         $http.get("/mapsData").success(function(response){
 			$(response).each(function(key,location){
 				console.log(location.latitude+" : "+location.longitude);
+				var marker = new google.maps.Marker({
+		          position: {lat: location.latitude, lng: location.longitude},
+		          map: map
+		        });
 			});
 			
 			
 		});
-        for(var i=0; i<5; i++){
-        	var lats = Math.floor(Math.random() * 40.71406) + 40.71409;
-        	var longs = Math.floor(Math.random() * -74.005) - 74.006;
-        	console.log(lats);
-        	console.log(longs);
-	        var marker = new google.maps.Marker({
-	          position: {lat: lats, lng: longs},
-	          map: map
-	        });
-		}
 	};
 
 	
