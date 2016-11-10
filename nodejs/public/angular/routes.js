@@ -416,10 +416,10 @@ app.controller('analyticsController', function($scope,$http) {
 		var points = [];
 		$http.get("/mapsData").success(function(response){
 			$(response).each(function(key,location){
-				console.log(parseFloat(location.latitude)+" : "+parseFloat(location.longitude));
 				points.push(new google.maps.LatLng(location.latitude, location.longitude))
 			});
 		});
+		console.log(points);
 		return points;
 		/*
         return [
