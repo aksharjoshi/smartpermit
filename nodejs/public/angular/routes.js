@@ -381,7 +381,7 @@ app.controller('analyticsController', function($scope,$http) {
 				console.log(parseFloat(location.latitude)+" : "+parseFloat(location.longitude));
 
 				var infowindow = new google.maps.InfoWindow({
-		          content: "<p>"+location.permit_count+"</p><p>"+location.BOROUGH+"</p><p>"+location.zipcode+"</p>"
+		          content: "<p>Permit Counts: "+location.permit_count+"</p><p>Borough: "+location.BOROUGH+"</p><p> Zipcode: "+location.zipcode+"</p>"
 		        });
 
 				var marker = new google.maps.Marker({
