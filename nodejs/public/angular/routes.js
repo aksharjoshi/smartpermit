@@ -409,14 +409,6 @@ app.controller('analyticsController', function($scope,$http) {
           mapTypeId: 'terrain'
         });
 
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
-
         map.data.setStyle(function(feature) {
           var magnitude = feature.getProperty('mag');
           return {
@@ -434,10 +426,6 @@ app.controller('analyticsController', function($scope,$http) {
           strokeWeight: .5
         };
 	};
-
-	$scope.eqfeed_callback = function(results){
-	}
-
 	
 	
 	$scope.getSeasonalData($scope.years[0]);
