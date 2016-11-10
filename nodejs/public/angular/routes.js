@@ -421,7 +421,9 @@ app.controller('analyticsController', function($scope,$http) {
           		//fillOpacity: .2,
 			});
 
-			var rate = 0.8321428571428572;
+			 var MIN_NO_PERMIT = 100;
+			 var MAX_NO_PERMIT = 11000;
+			 var rate = (10119-MIN_NO_PERMIT)/(MAX_NO_PERMIT-MIN_NO_PERMIT+1);
 			 var gradient = [
 	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 0)',
 	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 1)'];
