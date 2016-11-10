@@ -378,7 +378,7 @@ app.controller('analyticsController', function($scope,$http) {
         });
         $http.get("/mapsData").success(function(response){
 			$(response).each(function(key,location){
-				console.log(location.latitude+" : "+location.longitude);
+				console.log(typeof location.latitude);
 				var marker = new google.maps.Marker({
 		          position: {lat: location.latitude, lng: location.longitude},
 		          map: map
