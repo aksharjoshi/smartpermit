@@ -418,7 +418,7 @@ app.controller('analyticsController', function($scope,$http) {
 			//heatmap.setOptions({radius: heatmap.get('20')});
 			heatmap.setMap(map2);
 
-			heatmap.data.setStyle(function(feature) {
+			map2.data.setStyle(function(feature) {
 	          var magnitude = feature.getProperty('mag');
 	          console.log(magnitude);
 	          return {
