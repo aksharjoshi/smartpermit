@@ -383,6 +383,12 @@ app.controller('analyticsController', function($scope,$http) {
 		          position: {lat: parseFloat(location.latitude), lng: parseFloat(location.longitude)},
 		          map: map
 		        });
+		        var infowindow = new google.maps.InfoWindow({
+		          content: location.permit_count;
+		        });
+		        marker.addListener('click', function() {
+		          infowindow.open(map, marker);
+		        });
 			});
 			
 			
