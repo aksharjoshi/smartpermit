@@ -399,4 +399,5 @@ app.controller('analyticsController', function($scope,$http) {
 	$("#divPopularContent").find(".tab1:first").addClass("active");
 	$scope.getHeatMapData($scope.years[0]);
 	$("#divLocationContent").find(".tab1:first").addClass("active");
+	$scope.initMap();
 });
