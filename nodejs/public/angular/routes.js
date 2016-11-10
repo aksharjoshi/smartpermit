@@ -421,7 +421,7 @@ app.controller('analyticsController', function($scope,$http) {
           		//fillOpacity: .2,
 			});
 
-			var rate = 100;
+			var rate = 0.8321428571428572;
 			 var gradient = [
 	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 0)',
 	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 1)'];
