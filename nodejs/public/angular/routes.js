@@ -405,13 +405,13 @@ app.controller('analyticsController', function($scope,$http) {
           center: {lat: 40.714080, lng: -74.006113},
           mapTypeId: 'terrain'
         });
-
+		console.log($scope.getPoints());
         heatmap = new google.maps.visualization.HeatmapLayer({
           data: $scope.getPoints(),
           map: map2
         });
 	};
-console.log($scope.getPoints());
+
 	$scope.getPoints = function(){
 		var points = [];
 		$http.get("/mapsData").success(function(response){
