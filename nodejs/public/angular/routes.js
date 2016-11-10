@@ -407,7 +407,7 @@ app.controller('analyticsController', function($scope,$http) {
           mapTypeId: 'terrain'
         });
 
-		/*$http.get("/mapsData").success(function(response){
+		$http.get("/mapsData").success(function(response){
 			var heatMapData = [];
 			$(response).each(function(key,location){
 				heatMapData.push(new google.maps.LatLng(location.latitude, location.longitude))
@@ -417,11 +417,27 @@ app.controller('analyticsController', function($scope,$http) {
 			});
 			//heatmap.setOptions({radius: heatmap.get('20')});
 			heatmap.setMap(map2);
-		});*/
-        heatmap = new google.maps.visualization.HeatmapLayer({
+		});
+        /*heatmap = new google.maps.visualization.HeatmapLayer({
           data: $scope.getPoints(),
+          map: map2
         });
-        heatmap.setMap(map2);
+
+        var heatMapData = [
+		    new google.maps.LatLng(8.8678, 76.5623),
+		    new google.maps.LatLng(9.5674, 77.5623),
+		    new google.maps.LatLng(10.7821, 78.447),
+		    new google.maps.LatLng(12.4523, 79.443),
+		    new google.maps.LatLng(37.782, -122.441),
+		    new google.maps.LatLng(37.782, -122.439),
+		    new google.maps.LatLng(37.782, -122.435),
+		    new google.maps.LatLng(37.785, -122.447),
+		    new google.maps.LatLng(37.785, -122.445),
+		    new google.maps.LatLng(37.785, -122.441),
+		    new google.maps.LatLng(37.785, -122.437),
+		    new google.maps.LatLng(37.785, -122.435)
+		];*/
+
 		
 	};
 
@@ -434,6 +450,24 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 		
 		return points;
+		/*
+        return [
+          new google.maps.LatLng(37.782551, -122.445368),R
+          new google.maps.LatLng(37.764962, -122.432298),
+          new google.maps.LatLng(37.761344, -122.406215),
+          new google.maps.LatLng(37.760556, -122.406495),
+          new google.maps.LatLng(37.759732, -122.406484),
+          new google.maps.LatLng(37.758910, -122.406228),
+          new google.maps.LatLng(37.758182, -122.405695),
+          new google.maps.LatLng(37.757676, -122.405118),
+          new google.maps.LatLng(37.757039, -122.404346),
+          new google.maps.LatLng(37.756335, -122.403719),
+          new google.maps.LatLng(37.755503, -122.403406),
+          new google.maps.LatLng(37.754665, -122.403242),
+          new google.maps.LatLng(37.753837, -122.403172),
+          new google.maps.LatLng(37.752986, -122.403112),
+          new google.maps.LatLng(37.751266, -122.403355)
+        ];*/
       };
 	
 	$scope.getSeasonalData($scope.years[0]);
