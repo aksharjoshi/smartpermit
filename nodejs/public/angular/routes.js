@@ -411,7 +411,7 @@ app.controller('analyticsController', function($scope,$http) {
           map: map2
         });
 	};
-
+console.log($scope.getPoints());
 	$scope.getPoints = function(){
 		var points = [];
 		$http.get("/mapsData").success(function(response){
