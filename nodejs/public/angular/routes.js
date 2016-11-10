@@ -379,13 +379,16 @@ app.controller('analyticsController', function($scope,$http) {
         $http.get("/mapsData").success(function(response){
 			$(response).each(function(key,location){
 				console.log(parseFloat(location.latitude)+" : "+parseFloat(location.longitude));
+
+				var infowindow = new google.maps.InfoWindow({
+		          content: location.permit_count
+		        });
+
 				var marker = new google.maps.Marker({
 		          position: {lat: parseFloat(location.latitude), lng: parseFloat(location.longitude)},
 		          map: map
 		        });
-		        var infowindow = new google.maps.InfoWindow({
-		          content: location.permit_count;
-		        });
+
 		        marker.addListener('click', function() {
 		          infowindow.open(map, marker);
 		        });
