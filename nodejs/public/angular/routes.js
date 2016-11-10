@@ -401,7 +401,7 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.initHeatMap = function(){
 		var map;
       
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('heatmap'), {
           zoom: 2,
           //center: {lat: 40.714080, lng: -74.006113},
           center: {lat: -33.865427, lng: 151.196123},
