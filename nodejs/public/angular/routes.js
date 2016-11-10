@@ -401,17 +401,28 @@ app.controller('analyticsController', function($scope,$http) {
 	var heatmap;
 	$scope.initHeatMap = function(){
 		map2 = new google.maps.Map(document.getElementById('heatmap'), {
-          zoom: 3,
-          //center: {lat: 40.714080, lng: -74.006113},
-          center: new google.maps.LatLng(8.881928, 76.592758),
+          zoom: 10,
+          center: {lat: 40.714080, lng: -74.006113},
+          //center: new google.maps.LatLng(8.881928, 76.592758),
           mapTypeId: 'terrain'
         });
 
+		$http.get("/mapsData").success(function(response){
+			var heatMapData = [];
+			$(response).each(function(key,location){
+				heatMapData.push(new google.maps.LatLng(location.latitude, location.longitude))
+			});
+			var heatmap = new google.maps.visualization.HeatmapLayer({
+			  data: heatMapData
+			});
+			heatmap.setOptions({radius: heatmap.get('20')});
+			heatmap.setMap(map2);
+		});
         /*heatmap = new google.maps.visualization.HeatmapLayer({
           data: $scope.getPoints(),
           map: map2
         });
-*/
+
         var heatMapData = [
 		    new google.maps.LatLng(8.8678, 76.5623),
 		    new google.maps.LatLng(9.5674, 77.5623),
@@ -425,13 +436,9 @@ app.controller('analyticsController', function($scope,$http) {
 		    new google.maps.LatLng(37.785, -122.441),
 		    new google.maps.LatLng(37.785, -122.437),
 		    new google.maps.LatLng(37.785, -122.435)
-		];
+		];*/
 
-		var heatmap = new google.maps.visualization.HeatmapLayer({
-		  data: heatMapData
-		});
-		heatmap.setOptions({radius: heatmap.get('20')});
-		heatmap.setMap(map2);
+		
 	};
 
 	$scope.getPoints = function(){
