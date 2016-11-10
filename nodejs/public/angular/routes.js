@@ -450,3 +450,7 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.initMap();
 	$scope.initHeatMap();
 });
+
+function eqfeed_callback(results) {
+        map.data.addGeoJson(results);
+}
