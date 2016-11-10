@@ -370,11 +370,19 @@ app.controller('analyticsController', function($scope,$http) {
 	};
 
 	$scope.initMap = function() {
+		var map;
 		map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
           center: new google.maps.LatLng(40.714080, -74.006113),
           mapTypeId: 'terrain'
         });
+        $http.get("/mapsData").success(function(response){
+			$(response).each(functin(key,location){
+				console.log(location.latitude+" : "+location.longitude);
+			});
+			
+			
+		});
         for(var i=0; i<5; i++){
         	var lats = Math.floor(Math.random() * 40.71406) + 40.71409;
         	var longs = Math.floor(Math.random() * -74.005) - 74.006;
@@ -387,11 +395,7 @@ app.controller('analyticsController', function($scope,$http) {
 		}
 	};
 
-	$http.get("/mapsData").success(function(response){
-		console.log(response);
-		var map;
-		
-	});
+	
 	
 	$scope.getSeasonalData($scope.years[0]);
 	$("#divSeasonalContent").find(".tab1:first").addClass("active");
