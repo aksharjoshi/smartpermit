@@ -398,9 +398,9 @@ app.controller('analyticsController', function($scope,$http) {
 			
 		});
 	};
-
+	var map2, heatmap;
 	$scope.initHeatMap = function(){
-		map = new google.maps.Map(document.getElementById('heatmap'), {
+		map2 = new google.maps.Map(document.getElementById('heatmap'), {
           zoom: 13,
           center: {lat: 37.775, lng: -122.434},
           mapTypeId: 'satellite'
@@ -408,7 +408,7 @@ app.controller('analyticsController', function($scope,$http) {
 
         heatmap = new google.maps.visualization.HeatmapLayer({
           //data: getPoints(),
-          map: map
+          map: map2
         });
 	};
 
@@ -926,6 +926,6 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.getHeatMapData($scope.years[0]);
 	$("#divLocationContent").find(".tab1:first").addClass("active");
 	$scope.initMap();
-	var map, heatmap;
+	
 	$scope.initHeatMap();
 });
