@@ -399,9 +399,7 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 	};
 
-	var map, heatmap;
 	$scope.initHeatMap = function(){
-		var map, heatmap;
 		map = new google.maps.Map(document.getElementById('heatmap'), {
           zoom: 13,
           center: {lat: 37.775, lng: -122.434},
@@ -928,5 +926,6 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.getHeatMapData($scope.years[0]);
 	$("#divLocationContent").find(".tab1:first").addClass("active");
 	$scope.initMap();
+	var map, heatmap;
 	$scope.initHeatMap();
 });
