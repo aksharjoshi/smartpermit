@@ -418,6 +418,13 @@ app.controller('analyticsController', function($scope,$http) {
 			//heatmap.setOptions({radius: heatmap.get('20')});
 			heatmap.setMap(map2);
 		});
+
+		map2.data.setStyle(function(feature) {
+          var magnitude = feature.getProperty('mag');
+          return {
+            icon: $scope.getCircle(magnitude)
+          };
+        });
         /*heatmap = new google.maps.visualization.HeatmapLayer({
           data: $scope.getPoints(),
           map: map2
@@ -440,7 +447,18 @@ app.controller('analyticsController', function($scope,$http) {
 
 		
 	};
-
+	
+	$scope.getCircle = function(magnitude){
+        return {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: 'red',
+          fillOpacity: .2,
+          scale: Math.pow(2, magnitude) / 2,
+          strokeColor: 'white',
+          strokeWeight: .5
+        };
+    };
+    
 	$scope.getPoints = function(){
 		var points = [];
 		$http.get("/mapsData").success(function(response){
