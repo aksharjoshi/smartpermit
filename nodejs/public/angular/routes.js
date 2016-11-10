@@ -368,6 +368,10 @@ app.controller('analyticsController', function($scope,$http) {
 		    });
 		});
 	};
+
+	$http.get("/mapsData").success(function(response){
+		console.log(response);
+	});
 	
 	$scope.getSeasonalData($scope.years[0]);
 	$("#divSeasonalContent").find(".tab1:first").addClass("active");

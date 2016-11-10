@@ -43,6 +43,7 @@ app.get('/seasonalAnalysis', visualization.seasonalAnalysis);
 app.get('/expirartionAnalysis', visualization.expirartionAnalysis);
 app.get('/heatMap', visualization.heatMap);
 app.get('/popularPermit', visualization.popularPermit);
+app.get('/mapsData', visualization.mapsData);
 
 
 app.del('/api/session',function(req,res){
