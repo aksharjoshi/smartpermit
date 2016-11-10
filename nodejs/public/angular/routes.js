@@ -421,13 +421,12 @@ app.controller('analyticsController', function($scope,$http) {
           		//fillOpacity: .2,
 			});
 
-			 var MIN_NO_PERMIT = 100;
-			 var MAX_NO_PERMIT = 11000;
-			 var rate = (10119-MIN_NO_PERMIT)/(MAX_NO_PERMIT-MIN_NO_PERMIT+1);
-			 var gradient = [
-	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 0)',
-	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 1)'];
-        	heatmap.set('gradient', gradient);
+        	var gradient = [					// rgba colors for the gradient
+	'rgba(0,255,255,0)','rgba(0,255,255,1)','rgba(0,191,255,1)','rgba(0,127,255,1)',
+	'rgba(0,63,255,1)','rgba(0,0,223,1)','rgba(0,0,191,1)','rgba(0,0,159,1)',
+	'rgba(0,0,127,1)','rgba(63,0,91,1)','rgba(191,0,31,1)','rgba(255,0,0,1)',
+	]
+			heatmap.set('gradient', gradient);
 
 			heatmap.setMap(map2);
 
