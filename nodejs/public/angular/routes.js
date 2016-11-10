@@ -421,6 +421,7 @@ app.controller('analyticsController', function($scope,$http) {
 
 		map2.data.setStyle(function(feature) {
           var magnitude = feature.getProperty('mag');
+          console.log(magnitude);
           return {
             icon: $scope.getCircle(magnitude)
           };
@@ -458,7 +459,7 @@ app.controller('analyticsController', function($scope,$http) {
           strokeWeight: .5
         };
     };
-    
+
 	$scope.getPoints = function(){
 		var points = [];
 		$http.get("/mapsData").success(function(response){
