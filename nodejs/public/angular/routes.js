@@ -369,26 +369,28 @@ app.controller('analyticsController', function($scope,$http) {
 		});
 	};
 
+	$scope.initMap = function() {
+		map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: new google.maps.LatLng(40.714080, -74.006113),
+          mapTypeId: 'terrain'
+        });
+        for(var i=0; i<5; i++){
+        	var lats = Math.floor(Math.random() * 40.71406) + 40.71409;
+        	var longs = Math.floor(Math.random() * -74.005) - 74.006;
+        	console.log(lats);
+        	console.log(longs);
+	        var marker = new google.maps.Marker({
+	          position: {lat: lats, lng: longs},
+	          map: map
+	        });
+		}
+	};
+
 	$http.get("/mapsData").success(function(response){
 		console.log(response);
 		var map;
-		$scope.initMap = function() {
-			map = new google.maps.Map(document.getElementById('map'), {
-	          zoom: 10,
-	          center: new google.maps.LatLng(40.714080, -74.006113),
-	          mapTypeId: 'terrain'
-	        });
-	        for(var i=0; i<5; i++){
-	        	var lats = Math.floor(Math.random() * 40.71406) + 40.71409;
-	        	var longs = Math.floor(Math.random() * -74.005) - 74.006;
-	        	console.log(lats);
-	        	console.log(longs);
-		        var marker = new google.maps.Marker({
-		          position: {lat: lats, lng: longs},
-		          map: map
-		        });
-			}
-		};
+		
 	});
 	
 	$scope.getSeasonalData($scope.years[0]);
