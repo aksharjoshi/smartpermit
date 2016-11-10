@@ -403,7 +403,7 @@ app.controller('analyticsController', function($scope,$http) {
 		map2 = new google.maps.Map(document.getElementById('heatmap'), {
           zoom: 13,
           center: {lat: 37.775, lng: -122.434},
-          mapTypeId: 'satellite'
+          mapTypeId: 'terrain'
         });
 
         heatmap = new google.maps.visualization.HeatmapLayer({
