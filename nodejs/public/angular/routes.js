@@ -431,7 +431,7 @@ app.controller('analyticsController', function($scope,$http) {
 		  data: heatMapData
 		});
 		heatmap.setOptions({radius: heatmap.get('20')});
-		heatmap.setMap(map);
+		heatmap.setMap(map2);
 	};
 
 	$scope.getPoints = function(){
