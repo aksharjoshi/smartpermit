@@ -415,7 +415,7 @@ app.controller('analyticsController', function($scope,$http) {
 			var heatmap = new google.maps.visualization.HeatmapLayer({
 			  data: heatMapData
 			});
-			heatmap.setOptions({radius: heatmap.get('20')});
+			//heatmap.setOptions({radius: heatmap.get('20')});
 			heatmap.setMap(map2);
 		});
         /*heatmap = new google.maps.visualization.HeatmapLayer({
