@@ -408,7 +408,7 @@ app.controller('analyticsController', function($scope,$http) {
         });
 
         heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(),
+          data: $scope.getPoints(),
           map: map2
         });
 	};
