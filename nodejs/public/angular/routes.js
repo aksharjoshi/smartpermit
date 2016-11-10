@@ -419,7 +419,7 @@ app.controller('analyticsController', function($scope,$http) {
         map.data.setStyle(function(feature) {
           var magnitude = feature.getProperty('mag');
           return {
-            icon: getCircle(magnitude)
+            icon: $scope.getCircle(magnitude)
           };
         });
 	};
