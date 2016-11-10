@@ -420,6 +420,12 @@ app.controller('analyticsController', function($scope,$http) {
 				fillColor: 'red',
           		//fillOpacity: .2,
 			});
+
+			 var gradient = [
+	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 0)',
+	            'rgba('+Math.round(255*rate)+', '+Math.round(255*(1-rate))+', 0, 1)'];
+        	heatmap.set('gradient', gradient);
+
 			heatmap.setMap(map2);
 
 			map2.data.setStyle(function(feature) {
