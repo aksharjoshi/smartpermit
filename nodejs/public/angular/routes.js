@@ -379,7 +379,6 @@ app.controller('analyticsController', function($scope,$http) {
         });
         $http.get("/mapsData").success(function(response){
 			$(response).each(function(key,location){
-				console.log(parseFloat(location.latitude)+" : "+parseFloat(location.longitude));
 
 				var infowindow = new google.maps.InfoWindow({
 		          content: "<p>Permit Counts: "+location.permit_count+"</p><p>Borough: "+location.BOROUGH+"</p><p> Zipcode: "+location.zipcode+"</p>"
@@ -414,6 +413,15 @@ app.controller('analyticsController', function($scope,$http) {
 	};
 
 	$scope.getPoints = function(){
+		var points = [];
+		$http.get("/mapsData").success(function(response){
+			$(response).each(function(key,location){
+				console.log(parseFloat(location.latitude)+" : "+parseFloat(location.longitude));
+				points.push(new google.maps.LatLng(location.latitude, location.longitude))
+			});
+		});
+		return points;
+		/*
         return [
           new google.maps.LatLng(37.782551, -122.445368),
           new google.maps.LatLng(37.782745, -122.444586),
@@ -915,7 +923,7 @@ app.controller('analyticsController', function($scope,$http) {
           new google.maps.LatLng(37.753837, -122.403172),
           new google.maps.LatLng(37.752986, -122.403112),
           new google.maps.LatLng(37.751266, -122.403355)
-        ];
+        ];*/
       };
 	
 	$scope.getSeasonalData($scope.years[0]);
