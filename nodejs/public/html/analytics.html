@@ -37,7 +37,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
-          center: new google.maps.LatLng(40.7128, 74.0059),
+          center: new google.maps.LatLng(74.0059, 40.7128),
           mapTypeId: 'terrain'
         });
 
@@ -51,7 +51,16 @@
 
       // Loop through the results array and place a marker for each
       // set of coordinates.
-      
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
+      }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQwqr0C7RgyPF2EUZz0nBMk5rQBf8K16Q&callback=initMap">
     </script>
