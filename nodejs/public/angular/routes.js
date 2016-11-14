@@ -433,7 +433,7 @@ app.controller('analyticsController', function($scope,$http) {
 						'rgba(255, 0, 0, 0.8)',
 					];
 
-			heatmap.set('gradient', gradient2);
+			heatmap.set('gradient', gradient);
 
 			heatmap.setMap(map2);
 
