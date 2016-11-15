@@ -49,7 +49,10 @@ app.controller('permitsController', function($scope,$http) {
 	    bodyTag: "section",
 	    transitionEffect: "slideLeft",
 	    autoFocus: true
-	});
+	}).steps("add", {
+	    title: "HTML code2", 
+	    content: "This is a test2"
+	});  
 });
 
 app.controller('analyticsController', function($scope,$http) {
