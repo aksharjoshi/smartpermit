@@ -44,7 +44,34 @@ app.controller('homeController', function($scope,$http) {
 	
 });
 app.controller('permitsController', function($scope,$http) {
-	
+	var form = $("#example-form");
+	form.validate({
+	    errorPlacement: function errorPlacement(error, element) { element.before(error); },
+	    rules: {
+	        confirm: {
+	            equalTo: "#password"
+	        }
+	    }
+	});
+	form.children("div").steps({
+	    headerTag: "h3",
+	    bodyTag: "section",
+	    transitionEffect: "slideLeft",
+	    onStepChanging: function (event, currentIndex, newIndex)
+	    {
+	        form.validate().settings.ignore = ":disabled,:hidden";
+	        return form.valid();
+	    },
+	    onFinishing: function (event, currentIndex)
+	    {
+	        form.validate().settings.ignore = ":disabled";
+	        return form.valid();
+	    },
+	    onFinished: function (event, currentIndex)
+	    {
+	        alert("Submitted!");
+	    }
+	});	
 });
 
 app.controller('analyticsController', function($scope,$http) {
@@ -421,12 +448,19 @@ app.controller('analyticsController', function($scope,$http) {
           		//fillOpacity: .2,
 			});
 
-        /*	var gradient = [					// rgba colors for the gradient
-	'rgba(255,255,0,0)','rgba(255,0,0,1)','rgba(255,0,0,1)','rgba(255,0,0,1)',
-	'rgba(255,0,0,1)','rgba(255,0,0,1)','rgba(255,0,0,1)','rgba(255,0,0,1)',
-	'rgba(255,0,0,1)','rgba(255,0,0,1)','rgba(255,0,0,1)','rgba(255,0,0,1)',
-	];*/
-	var gradient = [
+        	var gradient = [					// rgba colors for the gradient
+	'rgba(255,255,0,0)','rgba(255,255,0,1)','rgba(255,191,255,1)','rgba(255,127,255,1)',
+	'rgba(255,63,255,1)','rgba(255,0,223,1)','rgba(255,0,191,1)','rgba(255,0,159,1)',
+	'rgba(255,0,127,1)','rgba(255,0,91,1)','rgba(255,0,31,1)','rgba(255,0,0,1)',
+	];
+
+	/*var gradient2 = [
+						'rgba(255, 0, 0, 0.2)',
+						'rgba(255, 0, 0, 0.4)',
+						'rgba(255, 0, 0, 0.6)',
+						'rgba(255, 0, 0, 0.8)',
+					];
+					var gradient = [
     'rgba(0, 255, 255, 0)',
     'rgba(0, 255, 255, 1)',
     'rgba(0, 191, 255, 1)',
@@ -441,7 +475,7 @@ app.controller('analyticsController', function($scope,$http) {
     'rgba(127, 0, 63, 1)',
     'rgba(191, 0, 31, 1)',
     'rgba(255, 0, 0, 1)'
-  ]
+  ]*/
 
 			heatmap.set('gradient', gradient);
 
