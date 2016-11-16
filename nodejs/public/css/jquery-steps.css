@@ -1197,10 +1197,6 @@
 	textarea {
 	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 	}
-	label {
-	    display: block;
-	    margin-bottom: 5px
-	}
 	select,
 	textarea,
 	input[type="text"],
