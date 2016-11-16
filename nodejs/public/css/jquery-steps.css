@@ -5864,12 +5864,6 @@
 	html {
 	    font-size: 100%
 	}
-	body {
-	    background: #eee url("images/banner.png") fixed repeat;
-	    color: #193954;
-	    font-size: .875em;
-	    line-height: 1.5em
-	}
 	a {
 	    color: #2184be
 	}
