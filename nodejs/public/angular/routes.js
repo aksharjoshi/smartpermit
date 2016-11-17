@@ -49,13 +49,11 @@ app.controller('permitsController', function($scope,$http) {
 		console.log("here");
 		console.log($("input[name='option']:checked").val());
 	};
-	$scope.question = "test";//response.Question;
-	 	$scope.options = ["test1","test2"];//response.Options;
-	return false;
-	 $http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
+	
+	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
 	 	$scope.question = response.Question;
 	 	$scope.options = response.Options;
-	 })
+	});
 
 	/*var wizard = $("#questionnaire").steps({
 	    headerTag: "h3",
