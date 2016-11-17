@@ -51,29 +51,39 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.showComponents = "no";
 
 	$scope.next = function() {
-		var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
-		var response = $("input[name='option']:checked").val();
-		$scope.responses[$scope.questionID] = response;
-		
-		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
-		 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
-		 	$scope.questionID = nextQuestionid;
-		 	$scope.question = response.Question;
-		 	$scope.selectedOption = $scope.responses[$scope.questionID];
-		 	$scope.options = $.parseJSON(response.Next_question);
-		 	console.log($scope.options);
-		 	if(typeof $scope.options.ANSWER == "string"){
-		 		var options = [];
-		 		response.Options = response.Options.split(",");
-		 		$(response.Options).each(function(index,option){
-		 			console.log("index: "+index+" | option: "+option);
-		 			//options[index] = option;
-		 		});
-		 		$scope.showComponents = "yes";
-		 		$scope.options = response.Options;
-		 		console.log($scope.options);
-		 	} 
-		});
+		if($scope.showComponents == "yes"){
+			$("#prepermit").hide();
+			$("#prepermit").html($scope.permits);
+		}
+		else{
+
+			$("#prepermit").show();
+			$("#prepermit").html("");
+			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
+			var response = $("input[name='option']:checked").val();
+			$scope.responses[$scope.questionID] = response;
+			
+			$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
+			 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
+			 	$scope.questionID = nextQuestionid;
+			 	$scope.question = response.Question;
+			 	$scope.selectedOption = $scope.responses[$scope.questionID];
+			 	$scope.options = $.parseJSON(response.Next_question);
+			 	console.log($scope.options);
+			 	if(typeof $scope.options.ANSWER == "string"){
+			 		var options = [];
+			 		response.Options = response.Options.split(",");
+			 		$(response.Options).each(function(index,option){
+			 			console.log("index: "+index+" | option: "+option);
+			 			//options[index] = option;
+			 		});
+			 		$scope.showComponents = "yes";
+			 		$scope.permits = $scope.options.ANSWER;
+			 		$scope.options = response.Options;
+			 		console.log($scope.options);
+			 	} 
+			});
+		}
 	};
 	
 	$scope.previous = function() {
