@@ -67,6 +67,7 @@ app.controller('permitsController', function($scope,$http) {
 	}); */
 	
 	$scope.next = function() {
+		console.log("here");
 		console.log($("input[name='option']:checked").val());
 	};
 });
