@@ -62,7 +62,7 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	console.log($scope.options);
 		 	if(typeof $scope.options.ANSWER == "string"){
-		 		$scope.options = $scope.options;
+		 		$scope.options = response.Options;
 		 		console.log($scope.options);
 		 	} 
 		});
