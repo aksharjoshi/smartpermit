@@ -71,24 +71,6 @@ app.controller('permitsController', function($scope,$http) {
 		 		$scope.next = "enable";
 		});
 	};
-	$scope.prev = function() {
-		var prevQuestionid = $scope.questionID;
-		if (prevQuestionid == 1) 
-			$scope.prev = "disable";
-		else
-			$scope.prev = "enable";
-
-		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
-		 	$scope.question = response.Question;
-		 	$scope.options = $.parseJSON(response.Next_question);
-		 	if(typeof $scope.options.ANSWER == "string"){
-		 		$scope.options = $scope.options;
-		 		$scope.next = "disable";
-		 	} 
-		 	else
-		 		$scope.next = "enable";
-		});
-	};
 });
 
 app.controller('analyticsController', function($scope,$http) {
