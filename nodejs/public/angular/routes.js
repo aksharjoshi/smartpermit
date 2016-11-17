@@ -63,6 +63,7 @@ app.controller('permitsController', function($scope,$http) {
 		 	console.log($scope.options);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
+		 		console.log($scope.options);
 		 	} 
 		});
 	};
