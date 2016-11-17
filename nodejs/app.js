@@ -10,7 +10,8 @@ var express = require('express')
   , mongodb = require('mongodb')
   , http = require('http')
   , path = require('path')
-  , visualization = require('./routes/visualization');
+  , visualization = require('./routes/visualization')
+  , prepermit = require('./routes/prepermit');;
 
 var app = express();
 
@@ -44,6 +45,9 @@ app.get('/expirartionAnalysis', visualization.expirartionAnalysis);
 app.get('/heatMap', visualization.heatMap);
 app.get('/popularPermit', visualization.popularPermit);
 app.get('/mapsData', visualization.mapsData);
+
+
+app.get('/getquestion',prepermit.getCurrentQuestion);
 
 
 app.del('/api/session',function(req,res){
