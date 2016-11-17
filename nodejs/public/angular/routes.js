@@ -47,18 +47,37 @@ app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 	$scope.next = function() {
 		var nextQuestionid = $("input[name='option']:checked").val();
+
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
+		 	$scope.prevQuestionID = $scope.questionID;
+		 	$scope.questionID = nextQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
-		 		
+
+		 	} 
+		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
+		});
+	};
+	
+	$scope.previous = function() {
+		var prevQuestionid = $scope.prevQuestionID;
+		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
+		 	$scope.prevQuestionID = $scope.questionID;
+		 	$scope.question = response.Question;
+		 	$scope.options = $.parseJSON(response.Next_question);
+		 	if(typeof $scope.options.ANSWER == "string"){
+		 		$scope.options = $scope.options;
+
 		 	} 
 		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 		});
 	};
 	
 	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
+	 	$scope.questionID = 1;
+	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
 	 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
