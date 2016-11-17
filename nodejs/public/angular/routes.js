@@ -1,14 +1,6 @@
 var app = angular.module('myapp', ['ngRoute']);
 var map;
 
-app.filter('spaceless',function() {
-    return function(input) {
-        if (input) {
-            return input.replace(/\s+/g, '-');    
-        }
-    }
-});
-
 app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.
 		when('/home', {
