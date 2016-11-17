@@ -13,7 +13,8 @@
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="option != 'ANSWER'">
-            <input type="radio" name="option" value="{{value}}">
+            <input type="radio" name="option" value="{{value}}" ng-if="selectedOption == value" checked> 
+            <input type="radio" name="option" value="{{value}}" ng-if="selectedOption != value"> 
             {{option}}
         </label>
       </div>
