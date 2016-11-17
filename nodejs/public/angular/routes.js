@@ -52,7 +52,10 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
+		 		$scope.finish = "enable";
 		 	} 
+		 	else
+		 		$scope.finish = "disable";
 		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 		});
 	};
