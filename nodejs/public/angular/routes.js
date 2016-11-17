@@ -50,7 +50,9 @@ app.controller('permitsController', function($scope,$http) {
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
-		 	console.log(typeof $scope.options.ANSWER);
+		 	if(typeof $scope.options.ANSWER == "string"){
+		 		$scope.options = $scope.options.ANSWER;
+		 	} 
 		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 		});
 	};
