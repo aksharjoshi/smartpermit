@@ -47,7 +47,7 @@ app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 
 	$scope.question = "test";//response.Question;
-	 	$scope.options = "test";//response.Options;
+	 	$scope.options = ["test1","test2"];//response.Options;
 	return false;
 	 $http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
 	 	$scope.question = response.Question;
