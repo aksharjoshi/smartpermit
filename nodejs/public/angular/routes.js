@@ -55,6 +55,9 @@ app.controller('permitsController', function($scope,$http) {
 			$("#prePermitContainer").hide();
 			$("#permitContainer").show();
 			$("#permits").html($scope.permits);
+			var prevQuestionID = $scope.questionID;
+			$scope.questionID = 100;
+			$scope.questionPrevArray[$scope.questionID] = prevQuestionID;
 		}
 		else{
 			$("#prePermitContainer").show();
