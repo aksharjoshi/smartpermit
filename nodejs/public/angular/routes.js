@@ -46,11 +46,9 @@ app.controller('homeController', function($scope,$http) {
 app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 	$scope.next = function() {
-		console.log("here");
-		console.log($("input[name='option']:checked").val());
 		var nextQuestionid = $("input[name='option']:checked").val();
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
-			console.log(response);
+			console.log(response.Next_question);
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		});
