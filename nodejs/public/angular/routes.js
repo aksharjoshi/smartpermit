@@ -48,6 +48,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.questionPrevArray = [];
 	$scope.responses = [];
 	$scope.selectedOption = "";
+	$scope.showComponents = "no";
 
 	$scope.next = function() {
 		var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
@@ -68,6 +69,7 @@ app.controller('permitsController', function($scope,$http) {
 		 			console.log("index: "+index+" | option: "+option);
 		 			//options[index] = option;
 		 		});
+		 		$scope.showComponents = "yes";
 		 		$scope.options = response.Options;
 		 		console.log($scope.options);
 		 	} 
