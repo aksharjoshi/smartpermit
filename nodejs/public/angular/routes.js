@@ -45,11 +45,13 @@ app.controller('homeController', function($scope,$http) {
 });
 app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
+	$scope.questionPrevArray = [];
 	$scope.next = function() {
 		var nextQuestionid = $("input[name='option']:checked").val();
 
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
 		 	$scope.prevQuestionID = $scope.questionID;
+		 	$scope.questionPrevArray[$scope.questionID] = nextQuestionid;
 		 	$scope.questionID = nextQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
@@ -64,7 +66,8 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.previous = function() {
 		console.log("here");
 		var prevQuestionid = $scope.prevQuestionID;
-		console.log("prevQuestionid: "+prevQuestionid);
+		//console.log("prevQuestionid: "+prevQuestionid);
+		console.log($scope.questionPrevArray);
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
 		 	$scope.prevQuestionID = $scope.questionID;
 		 	$scope.question = response.Question;
@@ -79,6 +82,7 @@ app.controller('permitsController', function($scope,$http) {
 	
 	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
 	 	$scope.questionID = 1;
+	 	$scope.questionPrevArray[$scope.questionID] = 0;
 	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
