@@ -52,11 +52,13 @@ app.controller('permitsController', function($scope,$http) {
 
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
-			$("#prepermit").hide();
-			$("#permit").html($scope.permits);
+			$("#prePermitContainer").hide();
+			$("#permitContainer").show();
+			$("#permits").html($scope.permits);
 		}
 		else{
-			$("#prepermit").show();
+			$("#prePermitContainer").show();
+			$("#permitContainer").hide();
 			$("#permit").html("");
 			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
 			var response = $("input[name='option']:checked").val();

@@ -3,7 +3,7 @@
   	<span class="sr-only">40% Complete (success)</span>
 	</div>
 </div> -->
-<div id="prepermit">
+<div id="prePermitContainer">
 <h3 class="page-header">{{question}}</h3>
 <div class="row placeholders" style="margin-top:100px;">
     <div class="col-md-3" style="cursor:pointer;" ng-repeat="(option, value) in options">
@@ -26,7 +26,12 @@
     <button class="pull-right btn btn-large btn-primary" style="margin-right:20px" ng-click="previous()"> << Previous</button>
 </div>
 </div>
-<div id="permit">
+<div id="permitContainer">
+<h3 class="page-header">As per your responses, you need following permits</h3>
+<div id="permits"></div>
+<div class="row">
+    <button class="pull-right btn btn-large btn-primary" style="margin-right:20px" ng-click="previous()"> << Previous</button>
+</div>
 </div>
 
 <!-- <div id="questionnaire">
