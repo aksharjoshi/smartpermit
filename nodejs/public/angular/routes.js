@@ -1,6 +1,14 @@
 var app = angular.module('myapp', ['ngRoute']);
 var map;
 
+app.filter('spaceless',function() {
+    return function(input) {
+        if (input) {
+            return input.replace(/\s+/g, '-');    
+        }
+    }
+});
+
 app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.
 		when('/home', {
@@ -58,7 +66,6 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.questionID = nextQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
-		 	console.log($scope.selectedOption);
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
