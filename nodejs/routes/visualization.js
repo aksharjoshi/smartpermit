@@ -72,7 +72,7 @@ exports.heatMap = function(req, res){
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
     var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode,`PERMIT TYPE` As Permit_Type,Year(`FILING DATE`) AS Year,P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `permit_history`, `permit_accronym` As P  WHERE `RESIDETIAL` = 'YES' "
-    +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 AND `PERMIT TYPE` = P.ACCRONYM AND Year(`FILING DATE`)="+inputYear+" GROUP BY `BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,Year(`FILING DATE`) LIMIT 400";
+    +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 AND `PERMIT TYPE` = P.ACCRONYM AND Year(`FILING DATE`)="+inputYear+" GROUP BY `BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,Year(`FILING DATE`)";
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
             //console.log("err", err);
