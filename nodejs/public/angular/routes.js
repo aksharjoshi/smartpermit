@@ -63,6 +63,7 @@ app.controller('permitsController', function($scope,$http) {
 		 	console.log($scope.options);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		var options = [];
+		 		response.Options = response.Options.split(",");
 		 		$(response.Options).each(function(index,option){
 		 			console.log("index: "+index+" | option: "+option);
 		 			//options[index] = option;
