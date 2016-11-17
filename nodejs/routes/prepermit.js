@@ -5,7 +5,7 @@ var dbObject = new dal('PRE_PERMIT', 'smart_permit');
 exports.getCurrentQuestion = function(req, res){
 	var id = req.query.id;
 
-	console.log("req is: ", JSON.stringify(req));
+	//console.log("req is: ", JSON.stringify(req));
 	
 	console.log("req query is: ", JSON.stringify(req.query));
 	
