@@ -46,39 +46,38 @@ app.controller('homeController', function($scope,$http) {
 app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 	$scope.questionPrevArray = [];
+	$scope.responses = [];
+	$scope.selectedOption = "";
+
 	$scope.next = function() {
 		var nextQuestionid = $("input[name='option']:checked").val();
-
+		$scope.responses[$scope.questionID] = [nextQuestionid];
+		console.log($scope.responses);
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
-		 	$scope.prevQuestionID = $scope.questionID;
 		 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 		 	$scope.questionID = nextQuestionid;
 		 	$scope.question = response.Question;
+		 	$scope.selectedOption = $scope.responses[$scope.questionID];
+		 	console.log($scope.selectedOption);
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
-
 		 	} 
-		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 		});
 	};
 	
 	$scope.previous = function() {
-		console.log("here");
 		var prevQuestionid = $scope.questionPrevArray[$scope.questionID];
-		console.log("Questionid: "+$scope.questionID);
-		console.log($scope.questionPrevArray);
-		console.log("prevquestion: "+$scope.questionPrevArray[$scope.questionID]);
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
-		 	$scope.prevQuestionID = $scope.questionID;
+			console.log($scope.selectedOption);
 		 	$scope.questionID = prevQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
+		 	$scope.selectedOption = $scope.responses[$scope.questionID];
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
 
 		 	} 
-		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 		});
 	};
 	
