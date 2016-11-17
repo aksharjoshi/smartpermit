@@ -44,15 +44,17 @@ app.controller('homeController', function($scope,$http) {
 	
 });
 app.controller('permitsController', function($scope,$http) {
-	/*$("#example-basic").steps({
+	$("#example-basic").steps({
 	    headerTag: "h3",
 	    bodyTag: "section",
 	    transitionEffect: "slideLeft",
 	    autoFocus: true
-	}).steps("add", {
-	    title: "HTML code2", 
-	    content: "This is a test2"
-	}); */ 
+	});
+	// Add step
+	wizard.steps("add", {
+	    title: "HTML code", 
+	    content: "<strong>HTML code</strong>"
+	}); 
 });
 
 app.controller('analyticsController', function($scope,$http) {
