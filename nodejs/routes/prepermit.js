@@ -7,8 +7,10 @@ exports.getCurrentQuestion = function(req, res){
 
 	//console.log("req is: ", JSON.stringify(req));
 	
+	//req.session.question_set=[];
+
 	console.log("req query is: ", JSON.stringify(req.query));
-	
+	//console.log("session var is ", req.session.question_set);
 
 	var qs = "Select Question, Options, Next_question from PRE_PERMIT where ID="+id;
 
@@ -18,6 +20,20 @@ exports.getCurrentQuestion = function(req, res){
             res.status(500).jsonp(err)
         }
         console.log("\n\nresponse FOR prepermit is: ", response);
+
+        //req.session.question_set.push(response[0]);
+
+        //response[0].Next_question = JSON.parse
+        console.log(response[0].Next_question);
+
+       // JSON.parse(response[0].Next_question);
+
+        console.log((response[0].Next_question));
+
         res.jsonp(response[0]);
 	});
 };
+
+exports.setAnswer = function(req, res){
+	req.session.question_set.push(req.query);
+}

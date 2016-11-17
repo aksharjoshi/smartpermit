@@ -4,6 +4,7 @@
  */
 
 exports.index = function(req, res){
+	//req.session.question_set=[];
 	res.render('index', { title: "Smart Permits",errMsg: "" });
 };
 

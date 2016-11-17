@@ -31,6 +31,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.use(express.cookieParser());
+app.use(express.session({secret: '1234567890QWERTY'}));
+
+ 
 app.get('/', routes.index);
 app.post('/', routes.login);
 app.get('/admin', routes.admin);
