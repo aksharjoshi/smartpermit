@@ -44,7 +44,7 @@ app.controller('homeController', function($scope,$http) {
 	
 });
 app.controller('permitsController', function($scope,$http) {
-	$("#example-basic").steps({
+	/*$("#example-basic").steps({
 	    headerTag: "h3",
 	    bodyTag: "section",
 	    transitionEffect: "slideLeft",
@@ -52,7 +52,7 @@ app.controller('permitsController', function($scope,$http) {
 	}).steps("add", {
 	    title: "HTML code2", 
 	    content: "This is a test2"
-	});  
+	}); */ 
 });
 
 app.controller('analyticsController', function($scope,$http) {
