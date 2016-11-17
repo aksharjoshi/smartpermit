@@ -53,12 +53,11 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
 			$("#prepermit").hide();
-			$("#prepermit").html($scope.permits);
+			$("#permit").html($scope.permits);
 		}
 		else{
-alert(1);
 			$("#prepermit").show();
-			$("#prepermit").html("");
+			$("#permit").html("");
 			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
