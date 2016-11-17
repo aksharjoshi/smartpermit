@@ -50,7 +50,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.selectedOption = "";
 
 	$scope.next = function() {
-		var nextQuestionid = $("input[name='option']:checked").val();
+		var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
 		$scope.responses[$scope.questionID] = nextQuestionid;
 		console.log($scope.responses);
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
