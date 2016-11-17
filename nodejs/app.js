@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , session = require('express-session')
   , home = require('./routes/home')
   , register = require('./routes/register')
   , mongodb = require('mongodb')
@@ -14,6 +15,7 @@ var express = require('express')
   , prepermit = require('./routes/prepermit');;
 
 var app = express();
+//var session = require('express-session');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
