@@ -53,13 +53,14 @@ app.controller('permitsController', function($scope,$http) {
 		var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
 		var response = $("input[name='option']:checked").val();
 		$scope.responses[$scope.questionID] = response;
-		console.log($scope.responses);
+		
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
 		 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 		 	$scope.questionID = nextQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
 		 	$scope.options = $.parseJSON(response.Next_question);
+		 	console.log($scope.options);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
 		 	} 
