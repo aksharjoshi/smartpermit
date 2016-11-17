@@ -56,7 +56,7 @@ app.controller('permitsController', function($scope,$http) {
 			$("#prepermit").html($scope.permits);
 		}
 		else{
-
+alert(1);
 			$("#prepermit").show();
 			$("#prepermit").html("");
 			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
