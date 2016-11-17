@@ -44,41 +44,51 @@ app.controller('homeController', function($scope,$http) {
 	
 });
 app.controller('permitsController', function($scope,$http) {
-//	var wizard = $("#questionnaire").steps();
+	$scope.questionID = 1;
+	$scope.next = "enable";
+	$scope.prev = "disable";
+	
+	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
+	 	$scope.question = response.Question;
+	 	$scope.options = $.parseJSON(response.Next_question);
+	});
 	$scope.next = function() {
 		var nextQuestionid = $("input[name='option']:checked").val();
+		if (nextQuestionid == 1) 
+			$scope.prev = "disable";
+		else
+			$scope.prev = "enable";
+
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
+		 	$scope.questionID = nextQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
-		 		$scope.finish = "enable";
+		 		$scope.next = "disable";
 		 	} 
 		 	else
-		 		$scope.finish = "disable";
-		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
+		 		$scope.next = "enable";
 		});
 	};
-	$scope.finish = "disable";
-	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
-	 	$scope.question = response.Question;
-	 	$scope.options = $.parseJSON(response.Next_question);
-	 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
-	});
+	$scope.prev = function() {
+		var prevQuestionid = $scope.questionID;
+		if (prevQuestionid == 1) 
+			$scope.prev = "disable";
+		else
+			$scope.prev = "enable";
 
-	/*var wizard = $("#questionnaire").steps({
-	    headerTag: "h3",
-	    bodyTag: "section",
-	    transitionEffect: "slideLeft",
-	    autoFocus: true
-	});*/
-	// Add step
-	/*wizard.steps("add", {
-	    title: "HTML code", 
-	    content: "<strong>HTML code</strong>"
-	}); */
-	
-	
+		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
+		 	$scope.question = response.Question;
+		 	$scope.options = $.parseJSON(response.Next_question);
+		 	if(typeof $scope.options.ANSWER == "string"){
+		 		$scope.options = $scope.options;
+		 		$scope.next = "disable";
+		 	} 
+		 	else
+		 		$scope.next = "enable";
+		});
+	};
 });
 
 app.controller('analyticsController', function($scope,$http) {
