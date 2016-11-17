@@ -65,10 +65,10 @@ app.controller('permitsController', function($scope,$http) {
 	
 	$scope.previous = function() {
 		console.log("here");
-		var prevQuestionid = $scope.prevQuestionID;
+		var prevQuestionid = $scope.questionPrevArray[$scope.questionID];
 		console.log("Questionid: "+$scope.questionID);
 		console.log($scope.questionPrevArray);
-		console.log("prevquestion: "+$scope.questionPrevArray[scope.questionID]);
+		console.log("prevquestion: "+$scope.questionPrevArray[$scope.questionID]);
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
 		 	$scope.prevQuestionID = $scope.questionID;
 		 	$scope.questionID = prevQuestionid;
