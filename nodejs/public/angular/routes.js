@@ -47,22 +47,34 @@ app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 	$scope.next = function() {
 		var nextQuestionid = $("input[name='option']:checked").val();
-		if (nextQuestionid == 1) 
-			$scope.prev = "disable";
-		else
-			$scope.prev = "enable";
-
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
-		 		$scope.next = "disable";
+		 		
 		 	} 
-		 	else
-		 		$scope.next = "enable";
+		 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 		});
 	};
+	
+	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
+	 	$scope.question = response.Question;
+	 	$scope.options = $.parseJSON(response.Next_question);
+	 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
+	});
+
+	/*var wizard = $("#questionnaire").steps({
+	    headerTag: "h3",
+	    bodyTag: "section",
+	    transitionEffect: "slideLeft",
+	    autoFocus: true
+	});*/
+	// Add step
+	/*wizard.steps("add", {
+	    title: "HTML code", 
+	    content: "<strong>HTML code</strong>"
+	}); */
 	
 	
 });
