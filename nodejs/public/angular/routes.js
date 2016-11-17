@@ -69,11 +69,13 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.previous = function() {
 		var prevQuestionid = $scope.questionPrevArray[$scope.questionID];
 		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
-			console.log($scope.selectedOption);
+			
 		 	$scope.questionID = prevQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
+		 	console.log("queston: "+$scope.questionID);
+		 	console.log($scope.selectedOption);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
 
