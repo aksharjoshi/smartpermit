@@ -64,9 +64,10 @@ app.controller('permitsController', function($scope,$http) {
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		var options = [];
 		 		$(response.Options).each(function(index,option){
-		 			options[index] = option;
+		 			console.log("index: "+index+" | option: "+option);
+		 			//options[index] = option;
 		 		});
-		 		$scope.options = options;
+		 		//$scope.options = options;
 		 		console.log($scope.options);
 		 	} 
 		});
