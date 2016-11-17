@@ -68,7 +68,7 @@ app.controller('permitsController', function($scope,$http) {
 		 			console.log("index: "+index+" | option: "+option);
 		 			//options[index] = option;
 		 		});
-		 		//$scope.options = options;
+		 		$scope.options = options;
 		 		console.log($scope.options);
 		 	} 
 		});
