@@ -57,8 +57,21 @@ module.exports = function(collection, dbName){
 			callBack(err, rows, fields);
 		})
 	}
-
 }
+
+this.create = function (data, callBack) {
+		var qs = "INSERT INTO "+ this.collection + " SET ?";
+		console.log("qs in create is: ", qs);
+
+		this.connection.query(qs, data, function (err, result) {
+
+		    console.log("error", err);
+					// console.log("New user", data);
+
+			callBack(err, result);
+		})
+}
+
 /*
 var Utils = {
 	getConditionsString: function (conditions) {
