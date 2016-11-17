@@ -65,6 +65,10 @@ app.controller('permitsController', function($scope,$http) {
 	    title: "HTML code", 
 	    content: "<strong>HTML code</strong>"
 	}); */
+	
+	$scope.next = function() {
+		console.log($("input[name='option']:checked").val());
+	};
 });
 
 app.controller('analyticsController', function($scope,$http) {
