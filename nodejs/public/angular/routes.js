@@ -44,7 +44,7 @@ app.controller('homeController', function($scope,$http) {
 	
 });
 app.controller('permitsController', function($scope,$http) {
-	$("#example-basic").steps({
+	var wizard = $("#example-basic").steps({
 	    headerTag: "h3",
 	    bodyTag: "section",
 	    transitionEffect: "slideLeft",
