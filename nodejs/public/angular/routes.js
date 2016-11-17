@@ -45,7 +45,10 @@ app.controller('homeController', function($scope,$http) {
 });
 app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
-
+	$scope.next = function() {
+		console.log("here");
+		console.log($("input[name='option']:checked").val());
+	};
 	$scope.question = "test";//response.Question;
 	 	$scope.options = ["test1","test2"];//response.Options;
 	return false;
@@ -66,10 +69,7 @@ app.controller('permitsController', function($scope,$http) {
 	    content: "<strong>HTML code</strong>"
 	}); */
 	
-	$scope.next = function() {
-		console.log("here");
-		console.log($("input[name='option']:checked").val());
-	};
+	
 });
 
 app.controller('analyticsController', function($scope,$http) {
