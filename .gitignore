@@ -27,6 +27,7 @@ TEST-*.xml
 .cache
 RUNNING_PID
 maven-eclipse.xml
+.application.properties
 
 ## directories
 
