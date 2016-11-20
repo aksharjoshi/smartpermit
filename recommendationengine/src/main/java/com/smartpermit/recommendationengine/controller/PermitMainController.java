@@ -2,10 +2,7 @@ package com.smartpermit.recommendationengine.controller;
 
 import com.smartpermit.recommendationengine.model.*;
 import com.smartpermit.recommendationengine.recommender.Recommender;
-import com.smartpermit.recommendationengine.repositories.OwnerRepository;
-import com.smartpermit.recommendationengine.repositories.PermitDetailsRepository;
-import com.smartpermit.recommendationengine.repositories.PermitRepository;
-import com.smartpermit.recommendationengine.repositories.PermiteeRepository;
+import com.smartpermit.recommendationengine.repositories.*;
 import com.smartpermit.recommendationengine.utils.DateFormatter;
 import com.socrata.api.Soda2Consumer;
 import com.socrata.builders.SoqlQueryBuilder;
@@ -20,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 import java.util.*;
 
@@ -37,18 +33,15 @@ public class PermitMainController {
     PermiteeRepository permiteeRepository;
     @Autowired
     PermitRepository permitRepository;
-
     @Autowired
-    Recommender recommender;
+    OwnerPreferencesRepository ownerPreferencesRepository;
+    @Autowired
+    Recommender recommenderImpl;
 
     @RequestMapping(value = "/recommend", method = RequestMethod.GET)
-    public ResponseEntity recommendData(@RequestParam("permitId") String permitId,@RequestParam("ownerId") String ownerId){
-        recommender.KNNBasedRecommendations(permitId,ownerId);
-        return new ResponseEntity("Done", HttpStatus.OK);
-
+    public ResponseEntity recommendData(@RequestParam("permitId") String permitId, @RequestParam("count") int count) {
+        return new ResponseEntity(recommenderImpl.getRecommendations(permitId, count), HttpStatus.OK);
     }
-
-
 
     @RequestMapping(value = "/data", method = RequestMethod.GET)
     public ResponseEntity restData(@RequestParam("offset") int offset, @RequestParam("limit") int limit, @RequestParam("size") int size){
@@ -61,6 +54,24 @@ public class PermitMainController {
 
     }
 
+    @RequestMapping(value = "/build", method = RequestMethod.GET)
+    public ResponseEntity buildDataModel() {
+        HashMap<String, List<String>> ownerPermitMap = permitDetailsRepository.findAllOwnersAndPermits();
+        for (String ownerId : ownerPermitMap.keySet()) {
+            List<String> permitIdsList = ownerPermitMap.get(ownerId);
+            for (String permitId : permitIdsList) {
+                long longOwner = Long.valueOf(ownerId);
+                long longPermit = Long.valueOf(permitId);
+                if (ownerPreferencesRepository.findOwnerPreferenceById(longOwner, longPermit) == null) {
+                    ownerPreferencesRepository.create(new OwnerPreferences(longOwner, longPermit, 1));
+                } else {
+                    ownerPreferencesRepository.incrementPreferencecount(longOwner, longPermit);
+                }
+            }
+        }
+
+        return new ResponseEntity("Data Model Populated", HttpStatus.OK);
+    }
     public void populateData(int offset, int limit,int iterationCount){
         /*
         *

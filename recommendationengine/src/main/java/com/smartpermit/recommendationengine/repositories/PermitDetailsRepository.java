@@ -65,38 +65,35 @@ public class PermitDetailsRepository {
         return permitDetails;
     }
 
-    public HashMap<String,List<String>> findSimilarOwnersByPermitId(String permitId,String ownerId) {
+    public HashMap<String, List<String>> findAllOwnersAndPermits() {
+        List<String> ownerList = findAllOwners();
+        HashMap<String, List<String>> ownerPermitMap = new HashMap<>();
+        for (String owner : ownerList) {
+            List<String> permitList = findPermitsForOwner(owner);
+            if (permitList != null) {
+                ownerPermitMap.put(owner, permitList);
+            }
+        }
+        return ownerPermitMap;
+    }
+
+    public List<String> findAllOwners() {
         String selectByPermitId = "SELECT DISTINCT OWNER_ID " +
                 " FROM PERMIT_DETAILS " +
-                /*" WHERE PERMIT_ID =" +permitId+*/
-                " WHERE OWNER_ID NOT IN ("+ownerId+") " +
                 " ORDER BY OWNER_ID";
 
         List<String> ownerList = jdbcTemplate.queryForList(selectByPermitId,String.class);
 
-        HashMap<String,List<String>> ownerPermitMap = new HashMap<>();
+        return ownerList;
+    }
 
+    public List<String> findPermitsForOwner(String owner) {
         String selectPermitIdList = "SELECT PERMIT_ID " +
                 "FROM PERMIT_DETAILS " +
                 "WHERE OWNER_ID = ? " +
-              /*  "AND PERMIT_ID NOT IN (?) " +*/
                 "ORDER BY PERMIT_ID";
-
-        for(String owner : ownerList){
-            List<String> permitList = jdbcTemplate.queryForList(selectPermitIdList,new Object[]{owner/*,permitId*/},String.class);
-            if(permitList != null){
-                if(ownerPermitMap.containsKey(owner)){
-                  List<String> currentPermits = ownerPermitMap.get(owner);
-                  for(String permit : permitList){
-                      currentPermits.add(permit);
-                  }
-                    permitList = currentPermits;
-                }
-                ownerPermitMap.put(owner,permitList);
-            }
-        }
-
-        return ownerPermitMap;
+        List<String> permitList = jdbcTemplate.queryForList(selectPermitIdList, new Object[]{owner}, String.class);
+        return permitList;
     }
 
 

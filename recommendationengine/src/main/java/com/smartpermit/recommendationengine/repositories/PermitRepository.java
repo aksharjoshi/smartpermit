@@ -51,6 +51,13 @@ public class PermitRepository {
 
     }
 
+    public Permit findPermitbyId(long itemID) {
+        final String selectPermitByIdSql = "SELECT ID,JOB_TYPE,PERMIT_TYPE,PERMIT_SUBTYPE" +
+                " FROM PERMIT_MASTER" +
+                " WHERE ID = ?";
+        return jdbcTemplate.queryForObject(selectPermitByIdSql, new Object[]{itemID}, new PermitRowMapper());
+    }
+
     public class PermitRowMapper implements RowMapper<Permit> {
         @Override
         public Permit mapRow(ResultSet resultSet, int i) throws SQLException {
