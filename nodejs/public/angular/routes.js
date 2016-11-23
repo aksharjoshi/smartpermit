@@ -186,6 +186,16 @@ app.controller('analyticsController', function($scope,$http) {
 			        },
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+			            labels: {
+			                events: {
+			                    dblclick: function () {
+			                        alert('dbclick on xAxis label');
+			                    },
+			                    click: function () {
+			                        alert('click on xAxis label');
+			                    },
+			                }
+		            	}
 			        },
 			        yAxis: {
 			            title: {
