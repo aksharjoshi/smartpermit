@@ -188,8 +188,8 @@ app.controller('analyticsController', function($scope,$http) {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
 			                //useHTML: true,
-			                formatter: function() {
-			                    return '<a href="javascript:alert(123)">'+this.value +'</a>';
+			                click: function() {
+			                    alert("123");
 			                }
 			            }
 			        },
