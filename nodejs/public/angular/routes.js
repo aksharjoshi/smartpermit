@@ -185,7 +185,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            x: -20
 			        },
 			        xAxis: {
-			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
 			                events: {
 			                    dblclick: function () {
