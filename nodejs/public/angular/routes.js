@@ -189,8 +189,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            labels: {
 			                //useHTML: true,
 			                formatter: function() {
-			                    return '<a href="javascript:alert(\'hello\')">'+
-			                        this.value +'</a>';
+			                    return '<a href="javascript:alert(123)">'+this.value +'</a>';
 			                }
 			            }
 			        },
