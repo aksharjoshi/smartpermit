@@ -188,11 +188,8 @@ app.controller('analyticsController', function($scope,$http) {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
 			                events: {
-			                    dblclick: function (e) {
-			                        console.log(e);
-			                    },
 			                    click: function (e) {
-			                        console.log($(e.target).text());
+			                        alert($(e.target).text());
 			                    }
 			                }
 			            }
