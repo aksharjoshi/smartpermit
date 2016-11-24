@@ -192,7 +192,7 @@ app.controller('analyticsController', function($scope,$http) {
 			                        console.log(e);
 			                    },
 			                    click: function (e) {
-			                        console.log($(e.target)).text();
+			                        console.log($(e.target).text());
 			                    }
 			                }
 			            }
