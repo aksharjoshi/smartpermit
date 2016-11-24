@@ -310,7 +310,7 @@ app.controller('analyticsController', function($scope,$http) {
 		        },
 
 		        title: {
-		            text: 'Quaterly Most Popular Permits'
+		            text: ''
 		        },
 
 		        xAxis: {

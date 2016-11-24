@@ -14,14 +14,28 @@
   </div>
 </div>
 
-<div id="divPopularContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
+<div class="panel panel-default" style="margin-top: 50px;">
+  <div class="panel-heading">
+    <h3 class="panel-title">Most Popular Permits</h3>
+  </div>
+  <div class="panel-body">
+  	<form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
+			<input id="popular_{{year}}" type="radio" class="radio_label" name="popular_year" value="{{year}}">{{year}}
+		</label>
+	</form>
+    <div id="containerMostPopularPermitsAnalytics" ></div>
+  </div>
+</div>
+
+<!-- <div id="divPopularContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
 			<input id="popular_{{year}}" type="radio" class="radio_label" name="popular_year" value="{{year}}">{{year}}
 		</label>
 	 </form>
 	 <div id="containerMostPopularPermitsAnalytics" ></div>
-</div>
+</div> -->
 <div id="divExpiryContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">
