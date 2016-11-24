@@ -28,6 +28,20 @@
   </div>
 </div>
 
+<div class="panel panel-default" style="margin-top: 50px;">
+  <div class="panel-heading">
+    <h3 class="panel-title">Permit Expiration Analysis</h3>
+  </div>
+  <div class="panel-body">
+  	<form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">
+			<input id="expiration_{{year}}" type="radio" class="radio_label" name="expiration_year" value="{{year}}">{{year}}
+		</label>
+	 </form>
+    <div id="containerExpirationAnalytics"></div>
+  </div>
+</div>
+
 <!-- <div id="divPopularContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
@@ -36,6 +50,9 @@
 	 </form>
 	 <div id="containerMostPopularPermitsAnalytics" ></div>
 </div> -->
+
+
+<!-- 
 <div id="divExpiryContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">
@@ -43,7 +60,7 @@
 		</label>
 	 </form>
 	 <div id="containerExpirationAnalytics" ></div>
-</div>
+</div> -->
 <div id="divLocationContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year)">

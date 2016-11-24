@@ -367,7 +367,7 @@ app.controller('analyticsController', function($scope,$http) {
 			$(function () {
 			    Highcharts.chart('containerExpirationAnalytics', {
 			        title: {
-			            text: 'Permit Expiration Analysis',
+			            text: '',
 			            x: -20 //center
 			        },
 			        subtitle: {
