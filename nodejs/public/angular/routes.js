@@ -234,7 +234,7 @@ app.controller('analyticsController', function($scope,$http) {
 			});
 		
 			$(function () {
-			    Highcharts.chart('containerDrillDownSeasonalAnalytics', {
+			    Highcharts.chart('containerSeasonalAnalytics', {
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
