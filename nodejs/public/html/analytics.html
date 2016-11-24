@@ -7,6 +7,14 @@
 	 </form>
 	 <div id="containerSeasonalAnalytics" ></div>
 </div>
+<div id="divDrillDownSeasonalContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc; display:none;">
+	 <form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
+			<input id="seasonal_{{year}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
+		</label>
+	 </form>
+	 <div id="containerSeasonalAnalytics" ></div>
+</div>
 <div id="divPopularContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">

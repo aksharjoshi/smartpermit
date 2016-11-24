@@ -189,7 +189,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            labels: {
 			                events: {
 			                    click: function (e) {
-			                        alert($(e.target).text());
+			                        getDrillDownSeasonalPermits($(e.target).text());
 			                    }
 			                }
 			            }
@@ -214,6 +214,9 @@ app.controller('analyticsController', function($scope,$http) {
 			    });
 			});
 		});		
+    };
+    $scope.getDrillDownSeasonalPermits = function(quarter){
+    	alert(quarter);
     };
 
 	$scope.getPopularPermitsData = function(year) {
