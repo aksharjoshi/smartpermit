@@ -189,7 +189,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            labels: {
 			                events: {
 			                    click: function (e) {
-			                        getDrillDownSeasonalPermits($(e.target).text());
+			                        $scope.getDrillDownSeasonalPermits($(e.target).text());
 			                    }
 			                }
 			            }
