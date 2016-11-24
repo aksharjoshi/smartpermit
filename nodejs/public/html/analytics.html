@@ -42,6 +42,20 @@
   </div>
 </div>
 
+<div class="panel panel-default" style="margin-top: 50px;">
+  <div class="panel-heading">
+    <h3 class="panel-title">Area wise permits</h3>
+  </div>
+  <div class="panel-body">
+    <form class="controls label-container">
+		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year)">
+			<input id="heatmap_{{year}}" type="radio" class="radio_label" name="heatmap_year" value="{{year}}">{{year}}
+		</label>
+	</form>
+	<div id="containerlocationWiseAnalytics" ></div>
+  </div>
+</div>
+
 <!-- <div id="divPopularContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
@@ -61,6 +75,7 @@
 	 </form>
 	 <div id="containerExpirationAnalytics" ></div>
 </div> -->
+<!--
 <div id="divLocationContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year)">
@@ -68,7 +83,7 @@
 		</label>
 	 </form>
 	 <div id="containerlocationWiseAnalytics" ></div>
-</div>
+</div> -->
 <div class="panel panel-default" style="margin-top: 50px;">
   <div class="panel-heading">
     <h3 class="panel-title">Permpit Map</h3>
