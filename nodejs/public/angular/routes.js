@@ -187,9 +187,14 @@ app.controller('analyticsController', function($scope,$http) {
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
-			                //useHTML: true,
-			                click: function() {
-			                    alert("123");
+			                rotation: -45,
+			                events: {
+			                    dblclick: function () {
+			                        alert('dbclick on xAxis label');
+			                    },
+			                    click: function () {
+			                        alert('click on xAxis label');
+			                    }
 			                }
 			            }
 			        },
