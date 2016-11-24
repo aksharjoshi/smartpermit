@@ -176,14 +176,6 @@ app.controller('analyticsController', function($scope,$http) {
 		
 			$(function () {
 			    Highcharts.chart('containerSeasonalAnalytics', {
-			        title: {
-			            text: 'Seasonal Permit Trend',
-			            x: -20 //center
-			        },
-			        subtitle: {
-			            text: 'Source: New York Open Data',
-			            x: -20
-			        },
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
@@ -243,14 +235,6 @@ app.controller('analyticsController', function($scope,$http) {
 		
 			$(function () {
 			    Highcharts.chart('containerDrillDownSeasonalAnalytics', {
-			        title: {
-			            text: 'Seasonal Permit Trend',
-			            x: -20 //center
-			        },
-			        subtitle: {
-			            text: 'Source: New York Open Data',
-			            x: -20
-			        },
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
