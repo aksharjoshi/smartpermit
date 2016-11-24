@@ -176,6 +176,12 @@ app.controller('analyticsController', function($scope,$http) {
 		
 			$(function () {
 			    Highcharts.chart('containerSeasonalAnalytics', {
+			         title: {
+			            text: '',
+			        },
+			        subtitle: {
+			            text: '',
+			        },
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
@@ -234,7 +240,13 @@ app.controller('analyticsController', function($scope,$http) {
 			});
 		
 			$(function () {
-			    Highcharts.chart('containerSeasonalAnalytics', {
+			    Highcharts.chart('containerDrillDownSeasonalAnalytics', {
+			        title: {
+			            text: '',
+			        },
+			        subtitle: {
+			            text: '',
+			        },
 			        xAxis: {
 			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
