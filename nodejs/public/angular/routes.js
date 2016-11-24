@@ -191,8 +191,8 @@ app.controller('analyticsController', function($scope,$http) {
 			                    dblclick: function (e) {
 			                        console.log(e);
 			                    },
-			                    click: function () {
-			                        alert('click on xAxis label');
+			                    click: function (e) {
+			                        console.log(e);
 			                    }
 			                }
 			            }
