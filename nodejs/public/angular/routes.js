@@ -215,6 +215,7 @@ app.controller('analyticsController', function($scope,$http) {
     };
     $scope.getDrillDownSeasonalPermits = function(quarter){
     	alert(quarter);
+    	$("#seasonalBack").show();
     	$http.get("/seasonalAnalysis?year="+2012).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
@@ -240,7 +241,7 @@ app.controller('analyticsController', function($scope,$http) {
 			});
 		
 			$(function () {
-			    Highcharts.chart('containerDrillDownSeasonalAnalytics', {
+			    Highcharts.chart('containerSeasonalAnalytics', {
 			        title: {
 			            text: '',
 			        },
