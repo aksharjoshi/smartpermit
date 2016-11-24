@@ -1,22 +1,18 @@
 <div class="panel panel-default" style="margin-top: 50px;">
   <div class="panel-heading">
     <h3 class="panel-title">Seasonal Permit Trend</h3>
-  </div>
-  <div class="panel-body">
-    <div id="12" style="height:500px;"></div>
-  </div>
-</div>
-
-
-<div id="divSeasonalContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
-	 <form class="controls label-container">
+    <form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
 			<input id="seasonal_{{year}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
-	 </form>
-	 <div id="containerSeasonalAnalytics" ></div>
-	 <div id="containerDrillDownSeasonalAnalytics" ></div>
+	</form>
+  </div>
+  <div class="panel-body">
+    <div id="containerSeasonalAnalytics" ></div>
+     <div id="containerDrillDownSeasonalAnalytics" ></div>
+  </div>
 </div>
+
 <div id="divPopularContent" style="min-width: 310px; margin-top: 50px; border: 1px solid #ccc">
 	<form class="controls label-container">
 		<label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
