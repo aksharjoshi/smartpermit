@@ -48,7 +48,7 @@ exports.login = function(req, res){
 			else
 				res.render('index', { title: 'Smart Permits',errMsg: "Invalid username or password!" });
 			*/
-			req.session.id = 1212;
+			//req.session.id = 1212;
 		}
 	}
 	catch(err) {
