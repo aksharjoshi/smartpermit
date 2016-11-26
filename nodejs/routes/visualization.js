@@ -24,11 +24,11 @@ exports.seasonalAnalysis = function(req, res){
                     " Year(`FILING_DATE`) AS Year,"+
                     " QUARTER(`FILING_DATE`) As Quarter,"+
                     " `PERMIT_TYPE` As PERMIT_TYPE,"+
-                    " P.FULLFORM As PERMIT DESCRIPTION,"+
+                    " P.FULLFORM As PERMIT_DESCRIPTION,"+
                     " COUNT(*) As Count "+
                 " FROM `PERMIT_DETAILS`,`permit_accronym` As P "+
                 " WHERE `PERMIT_TYPE` = P.ACCRONYM "+inputYearStr+
-                " GROUP BY Year(`FILING_DATE`),QUARTER(`FILING_DATE`),`PERMIT TYPE`";
+                " GROUP BY Year(`FILING_DATE`),QUARTER(`FILING_DATE`),`PERMIT_TYPE`";
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
 		if (err) {
         	//console.log("err", err);
