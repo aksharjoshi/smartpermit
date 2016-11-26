@@ -5,7 +5,7 @@
  */
 var dal = require('./dbUtility/dalMySql.js');
 
-var dbObject = new dal('permit_history', 'smart_permit');
+var dbObject = new dal('PERMIT_DETAILS', 'smart_permit');
 
 exports.seasonalAnalysis = function(req, res){
 	var condition = {};
@@ -26,7 +26,7 @@ exports.seasonalAnalysis = function(req, res){
                     " `PERMIT TYPE` As Permit_Type,"+
                     " P.FULLFORM As Permit_Desc,"+
                     " COUNT(*) As Count "+
-                " FROM `permit_history`,`permit_accronym` As P "+
+                " FROM ` PERMIT_DETAILS`,`permit_accronym` As P "+
                 " WHERE `PERMIT TYPE` = P.ACCRONYM "+inputYearStr+
                 " GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`PERMIT TYPE`";
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
@@ -48,7 +48,7 @@ exports.expirartionAnalysis = function(req, res){
 
     var inputYear = req.query.year;
 
-    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE` As Permit_Type, P.FULLFORM As Permit_Desc, COUNT(*) As Count FROM `permit_history`,`permit_accronym` As P WHERE Year(`EXPIRATION DATE`)=" + inputYear + " AND `RESIDETIAL` = 'YES' AND `PERMIT TYPE` = P.ACCRONYM GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
+    var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter,`PERMIT TYPE` As Permit_Type, P.FULLFORM As Permit_Desc, COUNT(*) As Count FROM `PERMIT_DETAILS`,`permit_accronym` As P WHERE Year(`EXPIRATION DATE`)=" + inputYear + " AND `RESIDETIAL` = 'YES' AND `PERMIT TYPE` = P.ACCRONYM GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`";
 
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
@@ -71,7 +71,7 @@ exports.heatMap = function(req, res){
     var inputYear = req.query.year;
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
-    var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode,`PERMIT TYPE` As Permit_Type,Year(`FILING DATE`) AS Year,P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `permit_history`, `permit_accronym` As P  WHERE `RESIDETIAL` = 'YES' "
+    var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode,`PERMIT TYPE` As Permit_Type,Year(`FILING DATE`) AS Year,P.FULLFORM As Permit_Desc, COUNT(*) as permit_count FROM `PERMIT_DETAILS`, `permit_accronym` As P  WHERE `RESIDETIAL` = 'YES' "
     +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 AND `PERMIT TYPE` = P.ACCRONYM AND Year(`FILING DATE`)="+inputYear+" GROUP BY `BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,Year(`FILING DATE`)";
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
@@ -98,7 +98,7 @@ exports.popularPermit = function(req, res){
                 " QUARTER(`FILING DATE`) As Quarter,"+
                 " P.FULLFORM As Permit_Desc,"+
                 " COUNT(*) as permit_count "+
-                " FROM `permit_history`, `permit_accronym` As P"+
+                " FROM `PERMIT_DETAILS`, `permit_accronym` As P"+
                 " WHERE `RESIDETIAL` = 'YES' "+
                 " AND Year(`FILING DATE`)="+inputYear+
                 " AND `PERMIT TYPE` = P.ACCRONYM"+
@@ -123,7 +123,7 @@ exports.mapsData = function(req, res){
     var inputYear = req.query.year;
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
-    var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode, COUNT(*) as permit_count, zip_codes_states.latitude, zip_codes_states.longitude FROM `permit_history` "
+    var qs = "SELECT `BOROUGH`,`ZIP CODE` As zipcode, COUNT(*) as permit_count, zip_codes_states.latitude, zip_codes_states.longitude FROM `PERMIT_DETAILS` "
     +" LEFT JOIN zip_codes_states ON zip_codes_states.zip_code = `permit_history`.`ZIP CODE`"
     +" WHERE `RESIDETIAL` = 'YES' "
     +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 GROUP BY `BOROUGH`,`ZIP CODE`";
