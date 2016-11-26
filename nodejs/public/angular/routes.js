@@ -135,7 +135,7 @@ app.controller('permitsController', function($scope,$http) {
 
 app.controller('analyticsController', function($scope,$http) {
 
-	$scope.years = [2010, 2011, 2012];
+	$scope.years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";
@@ -214,6 +214,7 @@ app.controller('analyticsController', function($scope,$http) {
 		});		
     };
     $scope.getDrillDownSeasonalPermits = function(quarter){
+    	alert(quarter);
     	$scope.quarter = quarter;
     	//$("#seasonalBack").show();
     	$('#modalDrillDownSeasonalAnalytics').modal();
