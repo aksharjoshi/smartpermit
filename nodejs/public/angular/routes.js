@@ -214,8 +214,10 @@ app.controller('analyticsController', function($scope,$http) {
 		});		
     };
     $scope.getDrillDownSeasonalPermits = function(quarter){
-    	alert(quarter);
-    	$("#seasonalBack").show();
+    	$scope.quarter = quarter;
+    	//$("#seasonalBack").show();
+    	$('#modalDrillDownSeasonalAnalytics').modal();
+    	/*
     	$http.get("/seasonalAnalysis?year="+2012).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
@@ -277,7 +279,7 @@ app.controller('analyticsController', function($scope,$http) {
 			        series: seosonalTrendArray
 			    });
 			});
-		});	
+		});	*/
     };
 
 	$scope.getPopularPermitsData = function(year) {
