@@ -1,6 +1,11 @@
 /*
  * GET home page.
 */
+var dal = require('./dbUtility/dalMySql.js');
+
+var dbObject = new dal('USER', 'smart_permit');
+
+
 exports.load = function(req, res){	
 	res.render('register', { title: 'Smart Permits - Register'});	
 };
@@ -20,7 +25,16 @@ exports.register = function(req, res){
 		}
 		else{
 			//Database Connection - validate customer login credentials and redirect to home page
-			 res.redirect('/home');
+			dbObject.create(param, function(err, response){
+				if(err){
+					res.send({"errMsg":err});
+				}
+				else{
+					console.log("response from sign up is: ", JSON.stringify(response));
+					res.redirect('/home');
+				}
+			});
+//			res.redirect('/home');
 		}
 	}
 	catch(err) {
