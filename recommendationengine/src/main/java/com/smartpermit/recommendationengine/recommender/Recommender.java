@@ -10,4 +10,6 @@ import java.util.List;
 public interface Recommender {
 
     public List<Permit> getRecommendations(String permitId, int numberOfRecommendations);
+
+    public void evaluate();
 }

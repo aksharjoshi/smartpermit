@@ -4,9 +4,16 @@ import com.smartpermit.recommendationengine.model.Permit;
 import com.smartpermit.recommendationengine.repositories.PermitDetailsRepository;
 import com.smartpermit.recommendationengine.repositories.PermitRepository;
 import org.apache.mahout.cf.taste.common.TasteException;
+import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
+import org.apache.mahout.cf.taste.eval.RecommenderEvaluator;
+import org.apache.mahout.cf.taste.impl.eval.RMSRecommenderEvaluator;
 import org.apache.mahout.cf.taste.impl.model.jdbc.MySQLJDBCDataModel;
 import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
+import org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity;
 import org.apache.mahout.cf.taste.impl.similarity.LogLikelihoodSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
+import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +43,8 @@ public class RecommenderImpl implements Recommender {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+
     /*
 
     public List<Permit> KNNBasedRecommendations(String permitId,String ownerId) {
@@ -163,6 +172,43 @@ public class RecommenderImpl implements Recommender {
         }
 
         return new ArrayList<>();
+    }
+
+
+    private void RMSRecommendationEvaluation(final DataModel dataModel, final ItemSimilarity itemSimilarity) {
+        final RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
+            @Override
+            public org.apache.mahout.cf.taste.recommender.Recommender buildRecommender(DataModel dataModel) throws TasteException {
+                ItemSimilarity similarity = itemSimilarity;
+                return new GenericItemBasedRecommender(dataModel, similarity);
+            }
+        };
+
+        RecommenderEvaluator recommenderEvaluator = new RMSRecommenderEvaluator();
+        try {
+            System.out.println(recommenderEvaluator.evaluate(recommenderBuilder, null, dataModel, 0.7, 1));
+        } catch (TasteException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void evaluate() {
+        MySQLJDBCDataModel dataModel = new MySQLJDBCDataModel(jdbcTemplate.getDataSource(), "OWNER_PREFERENCES", "OWNER_ID", "PERMIT_ID", "PREFERENCE", null);
+        List<ItemSimilarity> similarityList = new ArrayList<>();
+        try {
+            similarityList.add(new PearsonCorrelationSimilarity(dataModel));
+            similarityList.add(new LogLikelihoodSimilarity(dataModel));
+            similarityList.add(new TanimotoCoefficientSimilarity(dataModel));
+            similarityList.add(new EuclideanDistanceSimilarity(dataModel));
+        } catch (TasteException e) {
+            e.printStackTrace();
+        }
+        for (ItemSimilarity itemSimilarity : similarityList) {
+            RMSRecommendationEvaluation(dataModel, itemSimilarity);
+        }
+
+
     }
 
 }

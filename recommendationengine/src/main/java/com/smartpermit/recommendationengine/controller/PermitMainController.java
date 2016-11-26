@@ -46,11 +46,15 @@ public class PermitMainController {
     @RequestMapping(value = "/data", method = RequestMethod.GET)
     public ResponseEntity restData(@RequestParam("offset") int offset, @RequestParam("limit") int limit, @RequestParam("size") int size){
         populateData(offset,limit,size);
-
         HashMap<String,String> hashMap = new HashMap<>();
         hashMap.put("limit",limit+" records inserted successfully ");
-
         return new ResponseEntity(hashMap, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/evaluate", method = RequestMethod.GET)
+    public ResponseEntity evaluatePermitRecommneder() {
+        recommenderImpl.evaluate();
+        return new ResponseEntity("Evaluation Done", HttpStatus.OK);
 
     }
 
