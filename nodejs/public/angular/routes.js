@@ -148,6 +148,9 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["SG"] = "Sign";
 	
 	$scope.getSeasonalData = function(year) {
+		$scope.quarter = "Q2"
+		$scope.getDrillDownSeasonalPermits($scope.quarter);
+		return false;
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
 		$("#seasonal_"+year).parent(".tab1").addClass("active");
 
@@ -689,7 +692,7 @@ app.controller('analyticsController', function($scope,$http) {
         ];*/
       };
 	
-	$scope.getSeasonalData($scope.years[0]);
+	/*$scope.getSeasonalData($scope.years[0]);
 	$("#divSeasonalContent").find(".tab1:first").addClass("active");
 	$scope.getExpirartionAnalysisData($scope.years[0]);
 	$("#divExpiryContent").find(".tab1:first").addClass("active");
@@ -698,5 +701,5 @@ app.controller('analyticsController', function($scope,$http) {
 	$scope.getHeatMapData($scope.years[0]);
 	$("#divLocationContent").find(".tab1:first").addClass("active");
 	$scope.initMap();
-	$scope.initHeatMap();
+	$scope.initHeatMap();*/
 });
