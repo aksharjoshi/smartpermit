@@ -167,7 +167,6 @@ app.controller('analyticsController', function($scope,$http) {
 				permitTypeCountArray[obj.Permit_Type][parseInt(obj.Quarter)-1] = obj.Count;
 			});
 
-			console.log(permitTypeCountArray);
 
 			$(permitTypes).each(function(idx,permit_type){
 				counts = [];
