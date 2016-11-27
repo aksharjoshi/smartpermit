@@ -12,9 +12,8 @@ module.exports = function(collection, dbName){
 			callBack(err, rows, fields);
 		});
 	}
-}
 
-this.create = function (data, callBack) {
+	this.create = function (data, callBack) {
 		var qs = "INSERT INTO "+ this.collection + " SET ?";
 		console.log("qs in create is: ", qs);
 
@@ -28,6 +27,8 @@ this.create = function (data, callBack) {
 				callBack(err, result);
 			}
 		})
+	}
+
 }
 
 /*

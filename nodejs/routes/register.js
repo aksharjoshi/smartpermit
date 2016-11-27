@@ -26,10 +26,12 @@ exports.register = function(req, res){
 			STATE: req.body.txtState,
 			ZIPCODE: req.body.txtZipcode,
 			LASTLOGIN: new Date(),
-			LAST_SESSION_ID: null,
+			LAST_SESSION_ID: 123,
 		}
 
 		console.log("new user data: ", userdata);
+
+		//console.log("db object: ", (dbObject2));
 
 		dbObject.create(userdata, function(err, response){
 			if(err){
