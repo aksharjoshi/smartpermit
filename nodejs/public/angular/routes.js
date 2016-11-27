@@ -241,7 +241,7 @@ app.controller('analyticsController', function($scope,$http) {
 console.log(permitTypeCountArray);
 			$(permitTypes).each(function(idx,permit_type){
 				counts = [];
-				for(var i=1; i<4; i++){
+				for(var i=1; i<=12; i++){
 					if(typeof permitTypeCountArray[permit_type][i] == "undefined")
 						counts.push(0);
 					else
