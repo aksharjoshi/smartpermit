@@ -184,7 +184,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            text: '',
 			        },
 			        xAxis: {
-			            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
 			            labels: {
 			                events: {
 			                    click: function (e) {
@@ -257,7 +257,7 @@ console.log(permitTypeCountArray);
 			            text: '',
 			        },
 			        xAxis: {
-			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
+			            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			            labels: {
 			                events: {
 			                    click: function (e) {
