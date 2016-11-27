@@ -8,9 +8,10 @@
 			<input id="seasonal_{{year}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
 	</form>
-  ttt
-  <select ng-model="selectedYear" ng-options="year for year in years">
-</select>
+  {{years}}
+ <select>
+  <option ng-repeat="year in years">{{year}}</option>
+  </select>
 	<button id="seasonalBack" style="display:none" class="btn pull-right">Back</button>
     <div id="containerSeasonalAnalytics" ></div>
     <!-- Modal -->
