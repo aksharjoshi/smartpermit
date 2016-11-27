@@ -152,7 +152,7 @@ app.controller('analyticsController', function($scope,$http) {
 		$("#seasonal_"+year).parent(".tab1").addClass("active");
 
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
-			var seosonalTrendArray = [];
+			var seasonalTrendArray = [];
 			var permitTypeCountArray = [];
 			var permitTypes = [];
 			var counts = [];
@@ -172,9 +172,9 @@ app.controller('analyticsController', function($scope,$http) {
 				for(var i=0; i<4; i++){
 					counts.push(permitTypeCountArray[permit_type][i]);
 				}
-				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
+				seasonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
-		console.log(1);
+		console.log(seasonalTrendArray);
 			
 			    Highcharts.chart('containerSeasonalAnalytics', {
 			         title: {
@@ -210,7 +210,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            verticalAlign: 'middle',
 			            borderWidth: 0
 			        },
-			        series: seosonalTrendArray
+			        series: seasonalTrendArray
 			    });
 			    console.log(2);
 			
