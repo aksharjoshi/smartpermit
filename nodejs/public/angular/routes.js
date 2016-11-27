@@ -216,8 +216,10 @@ app.controller('analyticsController', function($scope,$http) {
 			
 		});		
     };
-    $scope.getDrillDownSeasonalPermits = function(quarter){
-    	alert(quarter);
+    $scope.getDrillDownSeasonalPermits = function(quarter){    	
+    	$scope.quarter = quarter;
+    	console.log($scope.quarter);
+    	alert($scope.quarter);
     	//$("#seasonalBack").show();
     	$('#modalDrillDownSeasonalAnalytics').modal();
     	/*
