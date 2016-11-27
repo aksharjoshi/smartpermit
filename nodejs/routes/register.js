@@ -25,8 +25,8 @@ exports.register = function(req, res){
 			ADDRESS2: req.body.txtAddress2,
 			STATE: req.body.txtState,
 			ZIPCODE: req.body.txtZipcode,
-			LASTLOGIN: new Date(),
-			LAST_SESSION_ID: 123,
+			LASTLOGIN: (new Date()).toString(),
+			LAST_SESSION_ID: (123).toString(),
 		}
 
 		console.log("new user data: ", userdata);
