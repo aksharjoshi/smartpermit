@@ -30,8 +30,7 @@ exports.register = function(req, res){
 		}
 
 		console.log("new user data: ", userdata);
-		
-		dbObject.create(userdata, function(err, response){
+		dbObject.create(param, function(err, response){
 			if(err){
 				res.send({"errMsg":err});
 			}
