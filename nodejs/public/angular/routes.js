@@ -691,12 +691,12 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$scope.getSeasonalData($scope.years[0]);
 	$("#divSeasonalContent").find(".tab1:first").addClass("active");
-	$scope.getExpirartionAnalysisData($scope.years[0]);
+	/*$scope.getExpirartionAnalysisData($scope.years[0]);
 	$("#divExpiryContent").find(".tab1:first").addClass("active");
 	$scope.getPopularPermitsData($scope.years[0]);
 	$("#divPopularContent").find(".tab1:first").addClass("active");
 	$scope.getHeatMapData($scope.years[0]);
 	$("#divLocationContent").find(".tab1:first").addClass("active");
 	$scope.initMap();
-	$scope.initHeatMap();
+	$scope.initHeatMap();*/
 });
