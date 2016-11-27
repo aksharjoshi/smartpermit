@@ -134,6 +134,7 @@ app.controller('permitsController', function($scope,$http) {
 });
 
 app.controller('analyticsController', function($scope,$http) {
+	$scope.quarter = "";
 
 	$scope.years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018];
 
