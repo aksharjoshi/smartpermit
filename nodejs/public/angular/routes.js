@@ -188,7 +188,7 @@ app.controller('analyticsController', function($scope,$http) {
 			            labels: {
 			                events: {
 			                    click: function (e) {
-			                    	e,preventDefault();
+			                    	e.stopPropagation();
 			                        $scope.quarter = $(e.target).text();
 			                        $scope.getDrillDownSeasonalPermits($scope.quarter);
 			                    }
