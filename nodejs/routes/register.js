@@ -15,27 +15,32 @@ exports.register = function(req, res){
 		var param = req.body;
 		console.log(param);
 		var errMsg = '';
-		if(param.inputEmail == "" || param.inputEmail == "undefined"){
-			errMsg += 'Email is required.';
-			res.render('index', { title: 'Mobile Sensor Cloud',errMsg: errMsg });
+		
+		var userdata = {
+			FIRST_NAME: req.body.txtFirstName,
+			LAST_NAME: req.body.txtLasttName,
+			EMAIL: req.body.txtEmail,
+			PASSWORD: req.body.txtPassword,
+			ADDRESS1: req.body.txtAddress1,
+			ADDRESS2: req.body.txtAddress2,
+			STATE: req.body.txtState,
+			ZIPCODE: req.body.txtZipcode,
+			LASTLOGIN: new Date(),
+			LAST_SESSION_ID: null,
 		}
-		else if(param.inputPassword == "" || param.inputPassword == "undefined"){
-			errMsg += 'Password is required.';
-			res.render('index', { title: 'Mobile Sensor Cloud',errMsg: errMsg });
-		}
-		else{
-			//Database Connection - validate customer login credentials and redirect to home page
-			dbObject.create(param, function(err, response){
-				if(err){
-					res.send({"errMsg":err});
-				}
-				else{
-					console.log("response from sign up is: ", JSON.stringify(response));
-					res.redirect('/home');
-				}
-			});
+
+		console.log("new user data: ", userdata);
+		
+		dbObject.create(userdata, function(err, response){
+			if(err){
+				res.send({"errMsg":err});
+			}
+			else{
+				console.log("response from sign up is: ", JSON.stringify(response));
+				res.redirect('/home');
+			}
+		});
 //			res.redirect('/home');
-		}
 	}
 	catch(err) {
 		console.log(err);
