@@ -221,6 +221,7 @@ app.controller('analyticsController', function($scope,$http) {
     	//$("#seasonalBack").show();
     	$('#modalDrillDownSeasonalAnalytics').modal();
     	$("#quarter").html($scope.quarter);
+    	console.log($scope.quarter.slice(-1););
     	/*
     	$http.get("/seasonalAnalysis?year="+2012).success(function(response){
 			var seosonalTrendArray = [];
