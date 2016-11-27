@@ -222,8 +222,8 @@ app.controller('analyticsController', function($scope,$http) {
     	$('#modalDrillDownSeasonalAnalytics').modal();
     	$("#quarter").html($scope.quarter);
     	console.log($scope.quarter.slice(-1));
-    	/*
-    	$http.get("/seasonalAnalysis?year="+2012).success(function(response){
+    	
+    	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
 			var permitTypes = [];
@@ -246,7 +246,8 @@ app.controller('analyticsController', function($scope,$http) {
 				}
 				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
-		
+			console.log(seosonalTrendArray);
+		return false;
 			$(function () {
 			    Highcharts.chart('containerSeasonalAnalytics', {
 			        title: {
@@ -284,7 +285,7 @@ app.controller('analyticsController', function($scope,$http) {
 			        series: seosonalTrendArray
 			    });
 			});
-		});	*/
+		});	
     };
 
 	$scope.getPopularPermitsData = function(year) {
