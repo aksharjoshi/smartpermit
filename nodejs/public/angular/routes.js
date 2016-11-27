@@ -242,6 +242,7 @@ console.log(permitTypeCountArray);
 			$(permitTypes).each(function(idx,permit_type){
 				counts = [];
 				for(var i=1; i<4; i++){
+					console.log("typeof: "+typeof permitTypeCountArray[permit_type][i]);
 					counts.push(permitTypeCountArray[permit_type][i]);
 				}
 				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
