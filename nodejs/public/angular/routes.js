@@ -218,12 +218,9 @@ app.controller('analyticsController', function($scope,$http) {
     };
     $scope.getDrillDownSeasonalPermits = function(quarter){    	
     	
-    	//$("#seasonalBack").show();
-    	$('#modalDrillDownSeasonalAnalytics').modal();
-    	$("#quarter").html($scope.quarter);
-    	console.log($scope.quarter.slice(-1));
-    	
     	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
+    		$('#modalDrillDownSeasonalAnalytics').modal();
+    		$("#quarter").html($scope.quarter);
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
 			var permitTypes = [];
