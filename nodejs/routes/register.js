@@ -18,7 +18,7 @@ exports.register = function(req, res){
 		
 		var userdata = {
 			FIRST_NAME: req.body.txtFirstName,
-			LAST_NAME: req.body.txtLasttName,
+			LAST_NAME: req.body.txtLastName,
 			EMAIL: req.body.txtEmail,
 			PASSWORD: req.body.txtPassword,
 			ADDRESS1: req.body.txtAddress1,
