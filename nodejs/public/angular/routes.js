@@ -217,9 +217,10 @@ app.controller('analyticsController', function($scope,$http) {
 		});		
     };
     $scope.getDrillDownSeasonalPermits = function(quarter){    	
-    	$("#quarter").text($scope.quarter);
+    	
     	//$("#seasonalBack").show();
     	$('#modalDrillDownSeasonalAnalytics').modal();
+    	$("#quarter").html($scope.quarter);
     	/*
     	$http.get("/seasonalAnalysis?year="+2012).success(function(response){
 			var seosonalTrendArray = [];
