@@ -188,7 +188,8 @@ app.controller('analyticsController', function($scope,$http) {
 			            labels: {
 			                events: {
 			                    click: function (e) {
-			                        $scope.getDrillDownSeasonalPermits($(e.target).text());
+			                        $scope.quarter = $(e.target).text();
+			                        $scope.getDrillDownSeasonalPermits($scope.quarter);
 			                    }
 			                }
 			            }
@@ -218,7 +219,6 @@ app.controller('analyticsController', function($scope,$http) {
     	alert(quarter);
     	//$("#seasonalBack").show();
     	$('#modalDrillDownSeasonalAnalytics').modal();
-    	$scope.quarter = quarter;
     	/*
     	$http.get("/seasonalAnalysis?year="+2012).success(function(response){
 			var seosonalTrendArray = [];
