@@ -216,6 +216,9 @@ app.controller('analyticsController', function($scope,$http) {
 			
 		});		
     };
+    $scope.getSeasonalData2 = function(test){   
+    	console.log(test);
+    };
     $scope.getDrillDownSeasonalPermits = function(quarter){    	
     	
     	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
