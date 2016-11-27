@@ -175,7 +175,7 @@ app.controller('analyticsController', function($scope,$http) {
 				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
 		
-			$(function () {
+			
 			    Highcharts.chart('containerSeasonalAnalytics', {
 			         title: {
 			            text: '',
@@ -213,7 +213,7 @@ app.controller('analyticsController', function($scope,$http) {
 			        },
 			        series: seosonalTrendArray
 			    });
-			});
+			
 		});		
     };
     $scope.getDrillDownSeasonalPermits = function(quarter){
