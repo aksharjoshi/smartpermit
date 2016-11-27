@@ -247,9 +247,9 @@ console.log(permitTypeCountArray);
 				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
 			console.log(seosonalTrendArray);
-		return false;
+		
 			$(function () {
-			    Highcharts.chart('containerSeasonalAnalytics', {
+			    Highcharts.chart('containerDrillDownSeasonalAnalytics', {
 			        title: {
 			            text: '',
 			        },
