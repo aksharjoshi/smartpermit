@@ -175,7 +175,7 @@ app.controller('analyticsController', function($scope,$http) {
 				seasonalTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
 		
-			
+			console.log(seasonalTrendArray);
 			    Highcharts.chart('containerSeasonalAnalytics', {
 			         title: {
 			            text: '',
