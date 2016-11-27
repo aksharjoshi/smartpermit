@@ -189,7 +189,7 @@ app.controller('analyticsController', function($scope,$http) {
 			                events: {
 			                    click: function (e) {
 			                        $scope.quarter = $(e.target).text();
-			                        //$scope.getDrillDownSeasonalPermits($scope.quarter);
+			                        $scope.getDrillDownSeasonalPermits($scope.quarter);
 			                    }
 			                }
 			            }
