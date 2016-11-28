@@ -83,10 +83,15 @@ app.controller('recommendationController', function($scope,$http) {
 		var permitType = $("#select_permit_type").val();
 		var permitSubtype = $("#select_permit_subtype").val();
 
-		var getRecommendatinURL = "http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getRecommendation?job_type="+jobType+"&permit_type="+permitType;
+		var getRecommendatinURL = "/getRecommendation?job_type="+jobType+"&permit_type="+permitType;
 		if(permitSubtype != "" && permitSubtype != "undefined" && permitSubtype != null)
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
-		};	
+
+		$http.get("getRecommendatinURL").success(function(response){
+			
+		});
+	};
+			
 });
 
 app.controller('permitsController', function($scope,$http) {
