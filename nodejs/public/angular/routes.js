@@ -27,6 +27,10 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 			controller: 'registerController',
 			templateUrl : "html/register.html"
 		}).
+		when('/recommendation', {
+			controller: 'recommendationController',
+			templateUrl : "html/recommendation.html"
+		}).
         otherwise({
           redirectTo: '/home',
         });
@@ -48,7 +52,7 @@ app.controller('homeController', function($scope,$http) {
 	
 });
 
-app.controller('registerController', function($scope,$http) {
+app.controller('recommendationController', function($scope,$http) {
 	
 
 	
