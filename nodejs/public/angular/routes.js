@@ -94,7 +94,7 @@ app.controller('recommendationController', function($scope,$http) {
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permitSubtype;
 
 		$http.get(getRecommendatinURL).success(function(res){
-			var data = JSON.parse(res)
+			var data = $.parseJSON(res);
 			$scope.recommendations = data;
 		});
 	};
