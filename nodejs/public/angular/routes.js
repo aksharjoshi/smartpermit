@@ -327,8 +327,6 @@ console.log(permitTypeCountArray);
 		            labels: {
 			                events: {
 			                    click: function (e) {
-			                    	console.log(e);
-			                    	console.log($(e.target).text());
 			                        $scope.getDrillDownPopularPermits($(e.target).text());
 			                    }
 			                }
@@ -359,7 +357,7 @@ console.log(permitTypeCountArray);
 
 	$scope.getDrillDownPopularPermits = function(quarter){    	
     	
-    	$http.get("/popularPermit?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
+    	$http.get("/popularPermit?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownPopularPermits').modal();
     		$("#quarter").html(quarter);
     		return false;
