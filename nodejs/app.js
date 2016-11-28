@@ -54,6 +54,9 @@ app.get('/popularPermit', visualization.popularPermit);
 app.get('/mapsData', visualization.mapsData);
 
 app.get('/getRecommendation', recommendation.getRecommendation);
+app.get('/getJobType', recommendation.getJobType);
+app.get('/getPermitType', recommendation.getPermitType);
+app.get('getPermitSubType', recommendation.getPermitSubType);
 
 app.get('/getquestion',prepermit.getCurrentQuestion);
 

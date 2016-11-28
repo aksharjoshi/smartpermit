@@ -65,3 +65,47 @@ exports.getRecommendation = function(req, res){
         res.jsonp(response);
     });
 };
+
+exports.getJobType = function(req, res){
+	var qs = "SELECT DISTINCT(JOB_TYPE) FROM PERMIT_MASTER";
+
+	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+        if (err) {
+            //console.log("err", err);
+            res.status(500).jsonp(err)
+        }
+        else{
+	        res.jsonp(response);
+        }
+    });
+};
+
+
+exports.getPermitType = function(req, res){
+	var qs = "SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER";
+
+	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+        if (err) {
+            //console.log("err", err);
+            res.status(500).jsonp(err)
+        }
+        else{
+	        res.jsonp(response);
+        }
+    });
+};
+
+
+exports.getPermitSubType = function(req, res){
+	var qs = "SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER";
+
+	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+        if (err) {
+            //console.log("err", err);
+            res.status(500).jsonp(err)
+        }
+        else{
+	        res.jsonp(response);
+        }
+    });
+};
