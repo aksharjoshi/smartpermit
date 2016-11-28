@@ -1,3 +1,5 @@
+'use strict'; 
+
 var dal = require('./dbUtility/dalMySql.js');
 
 var dbObject = new dal('PERMIT_MASTER', 'smart_permit');
@@ -5,6 +7,9 @@ var dbObject = new dal('PERMIT_MASTER', 'smart_permit');
 var http = require('http');
 
 exports.getRecommendation = function(req, res){
+
+	console.log("req body is: ", JSON.stringify(req.body));
+	
 	var job_type = req.body.job_type;
 	var permit_type = req.body.permit_type;
 	var permit_subtype = req.body.permit_subtype;
