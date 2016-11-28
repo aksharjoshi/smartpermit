@@ -61,9 +61,14 @@ exports.getRecommendation = function(req, res){
 		  }*/
 		};
 
-		var newreq = http.request(options, function(res) {
+		var newreq = http.request(options, function(err, res) {
   			// response is here
-  			console.log("response from java: ", res);
+            if(err){
+                console.log("error in calling recommendation engine: ", JSON.stringify(err));
+            }
+            else{
+                console.log("response from java: ", res);
+            }
 		});
 
         console.log("newreq: ", newreq);
