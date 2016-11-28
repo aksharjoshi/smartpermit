@@ -477,7 +477,7 @@ console.log(permitTypeCountArray);
 	};
 
 	$scope.getDrillDownExpirationAnalysis = function(quarter){    	
-    	$('#modalDrillDownPopularPermits').modal();
+    	$('#modalDrillDownExpiration').modal();
 		$http.get("/expirartionAnalysis?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
     		
     		$("#popular_quarter").html(quarter);
