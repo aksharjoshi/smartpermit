@@ -149,7 +149,7 @@ public class RecommenderImpl implements Recommender {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        ItemSimilarity itemSimilarity = new LogLikelihoodSimilarity(dataModel);
+        ItemSimilarity itemSimilarity = new TanimotoCoefficientSimilarity(dataModel);
         GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dataModel, itemSimilarity);
         try {
                 /*LongPrimitiveIterator iterator = dataModel.getItemIDs();
