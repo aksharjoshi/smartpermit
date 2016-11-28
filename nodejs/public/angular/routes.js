@@ -64,10 +64,7 @@ app.controller('registerController', function($scope,$http) {
 	var getRecommendatinURL = "http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getRecommendation?job_type="+job_type+"&permit_type="+permit_type;
 	if(permit_subtype != "" && permit_subtype != "undefined" && permit_subtypes != null)
 		getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
-	$http.get(http://52.53.148.138:8181/recommend?permitId=2&count=2).success(function(response){
-		$http.get(getRecommendatinURL).success(function(response){
-		});
-	});
+	
 
 	
 });
