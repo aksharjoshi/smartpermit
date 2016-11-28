@@ -53,6 +53,10 @@ app.controller('homeController', function($scope,$http) {
 });
 
 app.controller('recommendationController', function($scope,$http) {
+
+	$("#select_job_type").val($("#select_job_type option:first").val());
+	$("#select_permit_type").val($("#select_permit_type option:first").val());
+	$("#select_permit_subtype").val($("#select_permit_subtype option:first").val());
 	
 	$scope.job_types = [];
 	$scope.permit_types = [];
