@@ -19,7 +19,7 @@ exports.getRecommendation = function(req, res){
 	var inputpermit_subtypeStr = "";
 
 	if(job_type != "undefined" && job_type != null && job_type != "")
-        inputjob_typeStr = " JOB_TYPE = " + job_type + ", ";
+        inputjob_typeStr = " JOB_TYPE = " + job_type + " AND";
 
 	if(permit_type != "undefined" && permit_type != null && permit_type != "")
         inputpermit_typeStr = " PERMIT_TYPE = " + permit_type;
@@ -35,7 +35,7 @@ exports.getRecommendation = function(req, res){
 	var qs = "SELECT ID from PERMIT_MASTER where " + inputjob_typeStr + inputpermit_typeStr;
 
 	if(inputpermit_subtypeStr != "")
-		qs += ", " + inputjob_typeStr;
+		qs += " AND " + inputjob_typeStr;
 
 	console.log("query in recommendation.js is: ", qs);
 
