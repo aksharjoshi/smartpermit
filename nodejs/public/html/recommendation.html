@@ -1,0 +1,25 @@
+<h3>Recommendations</h3>
+
+ <div class="row" style="margin-top:50px;">
+ 	<div class="col-md-4">
+ 		  <label>Job Type</label>
+ 		  <select ng-model="job_type" id="select_job_type" ng-init="job_type = job_types[1]" class="form-control">
+		  <option ng-repeat="job_type in job_types">{{job_type}}</option>
+		 </select>
+ 	</div>
+ 	<div class="col-md-4">
+ 		<label>Permit Type</label>
+ 		<select ng-model="permit_type" id="select_permit_type" class="form-control">
+		  <option ng-repeat="permit_type in permit_types">{{permit_type}}</option>
+		</select>
+ 	</div>
+ 	<div class="col-md-4">
+ 		<label>Permit Sub-type</label>
+ 		<select ng-model="permit_subtype" id="select_permit_subtype" class="form-control">
+  			<option ng-repeat="permit_subtype in permit_subtypes">{{permit_subtype}}</option>
+ 		</select>
+ 	</div>
+ </div>
+ <div class="row" style="margin-top:50px;text-align:center;">
+ 	<button class="btn btn-large btn-primary" ng-click="getRecommendations()">Get Recommendations</button>
+ </div>

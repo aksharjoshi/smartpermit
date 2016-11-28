@@ -15,7 +15,7 @@ module.exports = function(collection, dbName){
 
 	this.create = function (data, callBack) {
 		var qs = "INSERT INTO "+ this.collection + " SET ?";
-		console.log("qs in create is: ", qs);
+		console.log("qs in create is: ", qs, data);
 
 		this.connection.query(qs, data, function (err, result) {
 

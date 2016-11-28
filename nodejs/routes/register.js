@@ -17,16 +17,16 @@ exports.register = function(req, res){
 		var errMsg = '';
 		
 		var userdata = {
-			FIRST_NAME: req.body.txtFirstName,
-			LAST_NAME: req.body.txtLastName,
-			EMAIL: req.body.txtEmail,
-			PASSWORD: req.body.txtPassword,
-			ADDRESS1: req.body.txtAddress1,
-			ADDRESS2: req.body.txtAddress2,
-			STATE: req.body.txtState,
-			ZIPCODE: req.body.txtZipcode,
-			LASTLOGIN: (new Date()).toString(),
-			LAST_SESSION_ID: (123).toString(),
+			"FIRST_NAME": req.body.txtFirstName,
+			"LAST_NAME": req.body.txtLastName,
+			"EMAIL": req.body.txtEmail,
+			"PASSWORD": req.body.txtPassword,
+			"ADDRESS1": req.body.txtAddress1,
+			"ADDRESS2": req.body.txtAddress2,
+			"STATE": req.body.txtState,
+			"ZIPCODE": req.body.txtZipcode,
+			"LAST_LOGIN": (new Date()).toString(),
+			"LAST_SESSION_ID": (123).toString(),
 		}
 
 		console.log("new user data: ", userdata);
@@ -39,7 +39,7 @@ exports.register = function(req, res){
 			}
 			else{
 				console.log("response from sign up is: ", JSON.stringify(response));
-				res.redirect('/home');
+				res.render('index', { title: "Smart Permits",errMsg: "" });
 			}
 		});
 //			res.redirect('/home');

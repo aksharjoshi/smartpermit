@@ -23,6 +23,14 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 			templateUrl : "html/home.html"
 
 		}).
+		when('/register', {
+			controller: 'registerController',
+			templateUrl : "html/register.html"
+		}).
+		when('/recommendation', {
+			controller: 'recommendationController',
+			templateUrl : "html/recommendation.html"
+		}).
         otherwise({
           redirectTo: '/home',
         });
@@ -43,6 +51,56 @@ app.controller('logoutController',function($scope,$http){
 app.controller('homeController', function($scope,$http) {
 	
 });
+
+app.controller('recommendationController', function($scope,$http) {
+
+	$scope.job_types = [];
+	$scope.permit_types = [];
+	$scope.permit_subtypes = [];
+	
+	$http.get("/getJobType").success(function(response){
+		$(response).each(function(key,obj){
+			console.log(obj);
+			$scope.job_types.push(obj.JOB_TYPE);
+		});
+		console.log($scope.job_types);
+	});
+	$http.get("/getPermitType").success(function(response){
+		$(response).each(function(key,obj){
+			$scope.permit_types.push(obj.PERMIT_TYPE);
+		});
+		console.log($scope.permit_types);
+	});
+	$http.get("/getPermitSubType").success(function(response){
+		$(response).each(function(key,obj){
+			$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+		});
+		console.log($scope.permit_subtypes);
+		$("#select_job_type option:first").remove();
+		$("#select_permit_type option:first").remove();
+		$("#select_permit_subtype option:first").remove();
+	});
+
+
+	
+	$scope.getRecommendations = function(){
+		var jobType = $("#select_job_type").val();
+		var permitType = $("#select_permit_type").val();
+		var permitSubtype = $("#select_permit_subtype").val();
+		console.log(permitSubtype);
+		
+		var getRecommendatinURL = "/getRecommendation?job_type="+jobType+"&permit_type="+permitType;
+		if(permitSubtype != "" && permitSubtype != "undefined" && permitSubtype != null)
+			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permitSubtype;
+
+		$http.get(getRecommendatinURL).success(function(res){
+			$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:8181/recommend?permitId="+res[0].ID+"&count=5").success(function(res){
+			});
+		});
+	};
+			
+});
+
 app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 	$scope.questionPrevArray = [];
@@ -67,7 +125,7 @@ app.controller('permitsController', function($scope,$http) {
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
 			
-			$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
+			$http.get("/getquestion?id="+nextQuestionid).success(function(response){
 			 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 			 	$scope.questionID = nextQuestionid;
 			 	$scope.question = response.Question;
@@ -477,8 +535,8 @@ console.log(permitTypeCountArray);
 	};
 
 	$scope.getDrillDownExpirationAnalysis = function(quarter){    	
-    	$('#modalDrillDownPopularPermits').modal();
-		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
+    	$('#modalDrillDownExpiration').modal();
+		$http.get("/expirartionAnalysis?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
     		
     		$("#popular_quarter").html(quarter);
 
@@ -505,7 +563,7 @@ console.log(permitTypeCountArray);
 				expirationTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
 			
-		    Highcharts.chart('containerExpirationAnalytics', {
+		    Highcharts.chart('containerDrillDownExpirationAnalysis', {
 		        title: {
 		            text: '',
 		            x: -20 //center
