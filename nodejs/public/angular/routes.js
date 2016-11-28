@@ -328,6 +328,7 @@ console.log(permitTypeCountArray);
 			                events: {
 			                    click: function (e) {
 			                    	console.log(e);
+			                    	console.log($(e.target).text());
 			                        $scope.getDrillDownPopularPermits($(e.target).text());
 			                    }
 			                }
