@@ -103,8 +103,7 @@ app.controller('recommendationController', function($scope,$http) {
 
 
 		$http.get(getRecommendatinURL).success(function(res){
-			var data = $.parseJSON(res);
-			console.log(data);
+			$scope.recommendations = $.parseJSON(res);
 			/*$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:8181/recommend?permitId="+res[0].ID+"&count=5").success(function(res){
 			});*/
 		});
