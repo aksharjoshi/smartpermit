@@ -12,7 +12,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , visualization = require('./routes/visualization')
-  , prepermit = require('./routes/prepermit');;
+  , recommendation = require('./routes/recommendation')
+  , prepermit = require('./routes/prepermit');
 
 var app = express();
 //var session = require('express-session');
@@ -52,6 +53,7 @@ app.get('/heatMap', visualization.heatMap);
 app.get('/popularPermit', visualization.popularPermit);
 app.get('/mapsData', visualization.mapsData);
 
+app.get('/getRecommendation', recommendation.getRecommendation);
 
 app.get('/getquestion',prepermit.getCurrentQuestion);
 
