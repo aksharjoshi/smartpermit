@@ -54,7 +54,7 @@ app.controller('homeController', function($scope,$http) {
 
 app.controller('recommendationController', function($scope,$http) {
 	
-
+	$scope.job_types = [];
 	
 	$http.get("/getJobType").success(function(response){
 		$(response).each(function(idx,job_type){
