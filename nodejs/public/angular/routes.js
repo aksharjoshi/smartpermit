@@ -88,7 +88,7 @@ app.controller('recommendationController', function($scope,$http) {
 		if(permitSubtype != "" && permitSubtype != "undefined" && permitSubtype != null)
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permitSubtype;
 
-		$http.get("getRecommendatinURL").success(function(response){
+		$http.get(getRecommendatinURL).success(function(response){
 
 		});
 	};
