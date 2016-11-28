@@ -55,16 +55,29 @@ app.controller('homeController', function($scope,$http) {
 app.controller('recommendationController', function($scope,$http) {
 	
 	$scope.job_types = [];
+	$scope.permit_types = [];
+	$scope.permit_subtypes = [];
 	
 	$http.get("/getJobType").success(function(response){
-		$(response).each(function(idx,job_type){
-			$scope.job_types.push(job_type);
+		$(response).each(function(obj){
+			$scope.job_types.push(obj.JOB_TYPE);
 		});
 		console.log($scope.job_types);
 	});
+	$http.get("/getPermitType").success(function(response){
+		$(response).each(function(obj){
+			$scope.permit_types.push(obj.PERMIT_TYPE);
+		});
+		console.log($scope.permit_types);
+	});
+	$http.get("/getPermitSubType").success(function(response){
+		$(response).each(function(obj){
+			$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+		});
+		console.log($scope.permit_subtypes);
+	});
+	
 	return false;
-	$scope.permit_types = [];
-	$scope.permit_subtypes = [];
 	var getRecommendatinURL = "http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getRecommendation?job_type="+job_type+"&permit_type="+permit_type;
 	if(permit_subtype != "" && permit_subtype != "undefined" && permit_subtypes != null)
 		getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
