@@ -1,0 +1,20 @@
+ <div class="row">
+ 	<div class="col-md-4">
+ 		 <select ng-model="job_type">
+		  <option ng-repeat="job_type in job_types">{{job_type}}</option>
+		 </select>
+ 	</div>
+ 	<div class="col-md-4">
+ 		<select ng-model="permit_type">
+		  <option ng-repeat="permit_type in permit_types">{{permit_type}}</option>
+		</select>
+ 	</div>
+ 	<div class="col-md-4">
+ 		<select ng-model="permit_subtype">
+  			<option ng-repeat="permit_subtype in permit_subtypes">{{permit_subtype}}</option>
+ 		</select>
+ 	</div>
+ </div>
+ <div class="row">
+ 	<button class="btn btn-large btn-primary" ng-click="getRecommendations()">Get Recommendations</button>
+ </div>

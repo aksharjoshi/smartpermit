@@ -23,6 +23,10 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 			templateUrl : "html/home.html"
 
 		}).
+		when('/register', {
+			controller: 'registerController',
+			templateUrl : "html/register.html"
+		}).
         otherwise({
           redirectTo: '/home',
         });
@@ -43,6 +47,31 @@ app.controller('logoutController',function($scope,$http){
 app.controller('homeController', function($scope,$http) {
 	
 });
+
+app.controller('registerController', function($scope,$http) {
+	
+
+	
+	$http.get("/getJobType").success(function(response){
+		$(response).each(function(idx,job_type){
+			$scope.job_types.push(job_type);
+		});
+		console.log($scope.job_types);
+	});
+	return false;
+	$scope.permit_types = [];
+	$scope.permit_subtypes = [];
+	var getRecommendatinURL = "http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getRecommendation?job_type="+job_type+"&permit_type="+permit_type;
+	if(permit_subtype != "" && permit_subtype != "undefined" && permit_subtypes != null)
+		getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
+	$http.get(http://52.53.148.138:8181/recommend?permitId=2&count=2).success(function(response){
+		$http.get(getRecommendatinURL).success(function(response){
+		});
+	});
+
+	
+});
+
 app.controller('permitsController', function($scope,$http) {
 //	var wizard = $("#questionnaire").steps();
 	$scope.questionPrevArray = [];
