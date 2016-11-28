@@ -216,19 +216,10 @@ app.controller('analyticsController', function($scope,$http) {
 			
 		});		
     };
-    $scope.getSeasonalData2 = function(test){   
-    	console.log(test);
-    };
+    
     $scope.getDrillDownSeasonalPermits = function(quarter){    	
-    	var months = [];
-    	months[1] = ['January', 'February', 'March'];
-    	months[2] = ['April', 'May', 'June'];
-    	months[3] = ['July', 'August','September'];
-    	months[4] = ['October', 'November', 'December'];
-
-    	var cquarter = $scope.quarter.slice(-1);
     	
-    	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+cquarter).success(function(response){
+    	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownSeasonalAnalytics').modal();
     		$("#quarter").html($scope.quarter);
 			var seosonalTrendArray = [];
@@ -267,7 +258,7 @@ console.log(permitTypeCountArray);
 			            text: '',
 			        },
 			        xAxis: {
-			            categories: months[cquarter],
+			            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			            labels: {
 			                events: {
 			                    click: function (e) {
