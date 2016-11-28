@@ -90,7 +90,7 @@ exports.getRecommendation = function(req, res){
 
         newreq.end();
 
-        newreq.on('error', funtion(e){
+        newreq.on('error', function(e){
             console.log(e);
         });
 
