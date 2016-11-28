@@ -37,8 +37,9 @@ maven-eclipse.xml
 .sass-cache/
 .externalToolBuilders/
 logs/
-target/
+recommendationengine/target/
 tmp/
+node_modules/
 
 # /bin/
 /bin/
