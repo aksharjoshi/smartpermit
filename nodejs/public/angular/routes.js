@@ -95,7 +95,7 @@ app.controller('recommendationController', function($scope,$http) {
 
 		$http.get(getRecommendatinURL).success(function(res){
 			var data = $.parseJSON(res)
-			console.log(data[0]);
+			console.log(typeof data);
 			$scope.recommendations = data;
 		});
 	};
