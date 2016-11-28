@@ -16,12 +16,14 @@ import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -175,7 +177,7 @@ public class RecommenderImpl implements Recommender {
     }
 
 
-    private void RMSRecommendationEvaluation(final DataModel dataModel, final ItemSimilarity itemSimilarity) {
+    private double RMSRecommendationEvaluation(final DataModel dataModel, final ItemSimilarity itemSimilarity) {
         final RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
             @Override
             public org.apache.mahout.cf.taste.recommender.Recommender buildRecommender(DataModel dataModel) throws TasteException {
@@ -186,29 +188,42 @@ public class RecommenderImpl implements Recommender {
 
         RecommenderEvaluator recommenderEvaluator = new RMSRecommenderEvaluator();
         try {
-            System.out.println(recommenderEvaluator.evaluate(recommenderBuilder, null, dataModel, 0.7, 1));
+            return recommenderEvaluator.evaluate(recommenderBuilder, null, dataModel, 0.7, 1);
         } catch (TasteException e) {
             e.printStackTrace();
         }
 
+        return 0.0;
     }
 
-    public void evaluate() {
+    public HashMap evaluate() {
+
         MySQLJDBCDataModel dataModel = new MySQLJDBCDataModel(jdbcTemplate.getDataSource(), "OWNER_PREFERENCES", "OWNER_ID", "PERMIT_ID", "PREFERENCE", null);
-        List<ItemSimilarity> similarityList = new ArrayList<>();
+        List<ItemSimilarity> itemSimilarityList = new ArrayList<>();
+        HashMap<Integer,String> integerStringHashMap = new HashMap<Integer,String>(){
+            {
+                put(0,"PearsonCorrelationSimilarity");
+                put(1,"LogLikelihoodSimilarity");
+                put(2,"TanimotoCoefficientSimilarity");
+                put(3,"EuclideanDistanceSimilarity");
+            }
+        };
+        HashMap<String,Double> itemSimilarityRmseHashMap = new HashMap<>();
         try {
-            similarityList.add(new PearsonCorrelationSimilarity(dataModel));
-            similarityList.add(new LogLikelihoodSimilarity(dataModel));
-            similarityList.add(new TanimotoCoefficientSimilarity(dataModel));
-            similarityList.add(new EuclideanDistanceSimilarity(dataModel));
+            itemSimilarityList.add(new PearsonCorrelationSimilarity(dataModel));
+            itemSimilarityList.add(new LogLikelihoodSimilarity(dataModel));
+            itemSimilarityList.add(new TanimotoCoefficientSimilarity(dataModel));
+            itemSimilarityList.add(new EuclideanDistanceSimilarity(dataModel));
         } catch (TasteException e) {
             e.printStackTrace();
         }
-        for (ItemSimilarity itemSimilarity : similarityList) {
-            RMSRecommendationEvaluation(dataModel, itemSimilarity);
+
+        for(int i=0;i<itemSimilarityList.size();i++){
+            double rootMeanSquareError =  RMSRecommendationEvaluation(dataModel, itemSimilarityList.get(i));
+            itemSimilarityRmseHashMap.put(integerStringHashMap.get(i),rootMeanSquareError);
+
         }
-
-
+        return itemSimilarityRmseHashMap;
     }
 
 }
