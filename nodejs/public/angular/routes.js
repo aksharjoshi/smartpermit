@@ -93,7 +93,7 @@ app.controller('recommendationController', function($scope,$http) {
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permitSubtype;
 
 		$http.get(getRecommendatinURL).success(function(id){
-			consoel.log(id);
+			console.log(id);
 		});
 	};
 			
