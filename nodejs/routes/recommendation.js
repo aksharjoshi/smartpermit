@@ -44,7 +44,24 @@ exports.getRecommendation = function(req, res){
             //console.log("err", err);
             res.status(500).jsonp(err)
         }
-        console.log("\n\nresponse FOR recommendation is: ", response);
+        console.log("\n\nresponse FOR recommendation is: ", response[0].ID);
+
+        var options = {
+  		  host: 'localhost',
+		  port: '8181',
+		  path: '/recommend?permitId=' + response[0].ID + ' count=5',
+		  method: 'GET'
+		  /*headers: {
+		    'Content-Type': 'application/x-www-form-urlencoded',
+		    'Content-Length': post_data.length
+		  }*/
+		};
+
+		var req = http.request(options, function(res) {
+  			// response is here
+  			console.log("response from java: ", res);
+		});
+
         res.jsonp(response);
     });
 };
