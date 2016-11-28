@@ -359,72 +359,59 @@ console.log(permitTypeCountArray);
     	
     	$http.get("/popularPermit?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownPopularPermits').modal();
-    		$("#quarter").html(quarter);
-    		return false;
-			var seosonalTrendArray = [];
-			var permitTypeCountArray = [];
+    		$("#popular_quarter").html(quarter);
+    		var permitsArray = [];
 			var permitTypes = [];
 			var counts = [];
-			
+			var mostPopularPermitsArray = [];
 			$(response).each(function(idx,obj){
-				if($.inArray(obj.Year, $scope.years) == -1)
-					$scope.years.push(obj.Year);
-				if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
-					permitTypeCountArray[obj.Permit_Type] = {};
+				if(typeof permitsArray[obj.Permit_Type] == "undefined" || typeof permitsArray[obj.Permit_Type] == null){
+					permitsArray[obj.Permit_Type] = {};
 					permitTypes.push(obj.Permit_Type);
 				}
-				permitTypeCountArray[obj.Permit_Type][parseInt(obj.Month)] = obj.Count;
+				permitsArray[obj.Permit_Type][parseInt(obj.Month)] = obj.permit_count;
 			});
-console.log(permitTypeCountArray);
+		
 			$(permitTypes).each(function(idx,permit_type){
 				counts = [];
 				for(var i=1; i<=12; i++){
-					if(typeof permitTypeCountArray[permit_type][i] == "undefined")
+					if(typeof permitsArray[permit_type][i] == "undefined")
 						counts.push(0);
 					else
-						counts.push(permitTypeCountArray[permit_type][i]);
+						counts.push(permitsArray[permit_type][i]);
 				}
-				seosonalTrendArray.push({name: permit_desc[permit_type], data: counts})
+				mostPopularPermitsArray.push({name: permit_desc[permit_type], data: counts})
 			});
-			console.log(seosonalTrendArray);
-		
-			$(function () {
-			    Highcharts.chart('containerDrillDownSeasonalAnalytics', {
-			        title: {
-			            text: '',
-			        },
-			        subtitle: {
-			            text: '',
-			        },
-			        xAxis: {
-			            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-			            labels: {
-			                events: {
-			                    click: function (e) {
-			                        $scope.getDrillDownSeasonalPermits($(e.target).text());
-			                    }
-			                }
-			            }
-			        },
-			        yAxis: {
-			            title: {
-			                text: 'Total Number of Permits'
-			            },
-			            plotLines: [{
-			                value: 0,
-			                width: 1,
-			                color: '#808080'
-			            }]
-			        },
-			        legend: {
-			            layout: 'vertical',
-			            align: 'right',
-			            verticalAlign: 'middle',
-			            borderWidth: 0
-			        },
-			        series: seosonalTrendArray
-			    });
-			});
+			Highcharts.chart('containerDrillDownPopularPermits', {
+
+		        chart: {
+		            type: 'column'
+		        },
+
+		        title: {
+		            text: ''
+		        },
+
+		        xAxis: {
+		            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		        },
+
+		        yAxis: {
+		            allowDecimals: false,
+		            min: 0,
+		            title: {
+		                text: 'Number of Permits'
+		            }
+		        },
+
+		        tooltip: {
+		            formatter: function () {
+		                return '<b>' + this.x + '</b><br/>' +
+		                    this.series.name + ': ' + this.y + '<br/>';
+		            }
+		        },
+		        series: mostPopularPermitsArray
+		    });
 		});	
     };
 	
@@ -463,7 +450,14 @@ console.log(permitTypeCountArray);
 			            x: -20
 			        },
 			        xAxis: {
-			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
+			            labels: {
+			                events: {
+			                    click: function (e) {
+			                        $scope.getDrillDownExpirationAnalysis($(e.target).text());
+			                    }
+			                }
+			         	}
 			        },
 			        yAxis: {
 			            title: {
@@ -481,6 +475,64 @@ console.log(permitTypeCountArray);
 			});
 		});
 	};
+
+	$scope.getDrillDownExpirationAnalysis = function(quarter){    	
+    	$('#modalDrillDownPopularPermits').modal();
+		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
+    		
+    		$("#popular_quarter").html(quarter);
+
+			var expirationTrendArray = [];
+			var permitTypeCountArray = [];
+			var permitTypes = [];
+			var counts = [];
+			$(response).each(function(idx,obj){
+				if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
+					permitTypeCountArray[obj.Permit_Type] = {};
+					permitTypes.push(obj.Permit_Type);
+				}
+				permitTypeCountArray[obj.Permit_Type][parseInt(obj.Month)] = obj.Count;
+			});
+
+			$(permitTypes).each(function(idx,permit_type){
+				counts = [];
+				for(var i=1; i<12; i++){
+					if(typeof permitTypeCountArray[permit_type][i] == "undefined")
+						counts.push(0);
+					else
+						counts.push(permitTypeCountArray[permit_type][i]);
+				}
+				expirationTrendArray.push({name: permit_desc[permit_type], data: counts})
+			});
+			
+		    Highcharts.chart('containerExpirationAnalytics', {
+		        title: {
+		            text: '',
+		            x: -20 //center
+		        },
+		        subtitle: {
+		            text: 'Source: New York Open Data',
+		            x: -20
+		        },
+		        xAxis: {
+		            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Total Number of Permits Expired'
+		            },
+		        },
+		        legend: {
+		            layout: 'vertical',
+		            align: 'right',
+		            verticalAlign: 'middle',
+		            borderWidth: 0
+		        },
+		        series: expirationTrendArray
+		    });
+			
+		});
+    };
 
 	$scope.getHeatMapData = function(year) {
 		$("#divLocationContent").find(".tab1").removeClass("active");
