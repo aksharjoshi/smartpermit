@@ -55,7 +55,7 @@ exports.getRecommendation = function(req, res){
 		  method: 'GET',
 		  headers: {
 		    'Content-Type': 'text/json',
-            'permitId': response[0],ID,
+            'permitId': response[0].ID,
             'count': 5
 		    //'Content-Length': post_data.length
 		  }
