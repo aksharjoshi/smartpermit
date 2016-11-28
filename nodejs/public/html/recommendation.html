@@ -1,6 +1,6 @@
  <div class="row">
  	<div class="col-md-4">
- 		 <select ng-model="job_type" id="select_job_type">
+ 		 <select ng-model="job_type" id="select_job_type" ng-init="job_type = job_types[0]" >
 		  <option ng-repeat="job_type in job_types">{{job_type}}</option>
 		 </select>
  	</div>
