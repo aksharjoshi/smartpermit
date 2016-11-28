@@ -1,0 +1,14 @@
+
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/home/ubuntu/smartpermit/nodejs/node_modules/mysql/lib/protocol/Protocol.js:109:13)
+    at Socket.<anonymous> (/home/ubuntu/smartpermit/nodejs/node_modules/mysql/lib/Connection.js:102:28)
+    at Socket.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)
+
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/home/ubuntu/smartpermit/nodejs/node_modules/mysql/lib/protocol/Protocol.js:109:13)
+    at Socket.<anonymous> (/home/ubuntu/smartpermit/nodejs/node_modules/mysql/lib/Connection.js:102:28)
+    at Socket.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)

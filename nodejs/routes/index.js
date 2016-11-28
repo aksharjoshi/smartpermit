@@ -2,6 +2,10 @@
 /*
  * GET home page.
  */
+ var dal = require('./dbUtility/dalMySql.js');
+
+var dbObject = new dal('USER', 'smart_permit');
+
 
 exports.index = function(req, res){
 	//req.session.question_set=[];
@@ -24,11 +28,27 @@ exports.login = function(req, res){
 		}
 		else{
 			//Database Connection - validate customer login credentials and redirect to home page
-			if(param.email == "admin@sps.com" && param.password == "admin")
+			var qs = "SELECT EMAIL, PASSWORD FROM USER WHERE EMAIL = '" + param.email + "' and PASSWORD = '" + param.password + "'";
+
+			dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+				if (err) {
+		        	//console.log("err", err);
+		            //res.status(500).jsonp(err)
+		            res.render('index', { title: 'Smart Permits',errMsg: "Invalid username or password!" });
+		        }
+		        else{
+					console.log("\n\n User info is: ", response);
+			        //res.jsonp(response);	
+			        res.redirect('/home');	        	
+		        }
+			});
+
+			/*if(param.email == "admin@sps.com" && param.password == "admin")
 				res.redirect('/home');
 			else
 				res.render('index', { title: 'Smart Permits',errMsg: "Invalid username or password!" });
-			req.session.id = 1212;
+			*/
+			//req.session.id = 1212;
 		}
 	}
 	catch(err) {

@@ -4,72 +4,31 @@ module.exports = function(collection, dbName){
 	this.collection = collection;
 	this.connection = DB(dbName);
 
-	/*this.connection.query("SET @@session.time_zone = '+00:00'", function (e, d) {
-		console.log("Set timezone to +00:00", e);
-	})
-*/
-
-	/**
-	 * Finds row by the criteria passed and the limit from the database
-	 * @param conditions {JSON obj} the condition criteria {eml:'test@gmail.com'}, support only equals
-	 * @param selectCols {String} the select parameters 'usr_id, email'
-	 * @param range {JSON obj} the time duration criteria 
-	 * @param limit {int} the limit to decide row count, default
-	 * @param offset {int} the offset to decide start row, default
-	 * @param sort {JSON obj} the sorting attributes {id: -1}
-	 * @param callBack {function} the callback function
-	 */
 	this.find = function (qs, /*conditions, selectCols, range, limit, offset, sort,*/ callBack) {
-		/*var isWhereSet = false;
-		var data = [];
-		var qs = "SELECT " + selectCols + " FROM " + this.collection;
-		if (conditions && !Utils.isEmpty(conditions)) {
-			qs += " WHERE " + Utils.getConditionsString(conditions);
-			isWhereSet = true;
-		};
-		if (range && !Utils.isEmpty(range)) {
-			qs += (isWhereSet == false)? " WHERE " : " AND ";
-			if(range.min){
-				qs += range.field + " >=  ?";
-				data.push(range.min);
-				if (range.max) {
-					qs += " AND ";
-				};
-			}
-			if (range.max) {
-				qs += range.field + " <=  ?";
-				data.push(range.max);				
-			};
-		};
-		if (sort && !Utils.isEmpty(sort)) {
-			qs += " ORDER BY " + Utils.getSortString(sort);
-		};
-		if (limit && limit > 0) {
-			qs += " LIMIT " + limit;
-		};
-		if (offset && offset > 0) {
-			qs += " OFFSET " + offset;
-		};		*/
 
 		console.log("qs ", qs);
 
 		this.connection.query(qs, function (err, rows, fields) {
 			callBack(err, rows, fields);
-		})
+		});
 	}
-}
 
-this.create = function (data, callBack) {
+	this.create = function (data, callBack) {
 		var qs = "INSERT INTO "+ this.collection + " SET ?";
 		console.log("qs in create is: ", qs);
 
 		this.connection.query(qs, data, function (err, result) {
 
-		    console.log("error", err);
+			if(err){
+			    console.log("error", JSON.stringify(err));
+			}
 					// console.log("New user", data);
-
-			callBack(err, result);
+			else{
+				callBack(err, result);
+			}
 		})
+	}
+
 }
 
 /*

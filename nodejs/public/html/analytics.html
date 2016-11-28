@@ -1,4 +1,4 @@
-<div class="panel panel-default" style="margin-top: 50px;">
+ <div class="panel panel-default" style="margin-top: 50px;">
   <div class="panel-heading">
     <h3 class="panel-title">Seasonal Permit Trend</h3>
   </div>
@@ -8,9 +8,28 @@
 			<input id="seasonal_{{year}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
 	</form>
+  <select ng-model="selectedYear" ng-change="getSeasonalData(this.selectedYear)">
+  <option ng-repeat="year in years">{{year}}</option>
+  </select>
 	<button id="seasonalBack" style="display:none" class="btn pull-right">Back</button>
     <div id="containerSeasonalAnalytics" ></div>
-    <div id="containerDrillDownSeasonalAnalytics" ></div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalDrillDownSeasonalAnalytics" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 1000px;margin-left: -35%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Seasonal Trend - <span id="quarter"></span>, Year {{year}} </h4>
+          </div>
+          <div class="modal-body">
+            <div id="containerDrillDownSeasonalAnalytics" ></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -25,6 +44,23 @@
 		</label>
 	</form>
     <div id="containerMostPopularPermitsAnalytics" ></div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalDrillDownPopularPermits" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 1000px;margin-left: -35%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Popular Permits - <span id="quarter"></span>, Year {{year}} </h4>
+          </div>
+          <div class="modal-body">
+            <div id="containerDrillDownPopularPermits" ></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
