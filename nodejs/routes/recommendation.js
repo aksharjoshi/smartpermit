@@ -61,40 +61,24 @@ exports.getRecommendation = function(req, res){
 		  }
 		};*/
 
+       
         var options = {
           host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
-          port: '8181',
-          path: '/recommend?permitId=' + response[0].ID + '&count=5',
-          //path: '/test',
-          //socketPath: 'localhost:8181',
+          port: 8181,
+          path: '/resource?id=foo&bar=baz',
           method: 'GET'
-          /*headers: {
-            'Content-Type': 'text/json',
-            'permitId': response[0].ID,
-            'count': 5
-            //'Content-Length': post_data.length
-          }*/
         };
 
-		var newreq = http.request(options, function(err, res) {
-  			// response is here
-            /*if(err){
-                console.log("error in calling recommendation engine: ", (err));
-            }
-            else{*/
-                console.log("response from java: ", res);
-            //}
-		});
+        http.request(options, function(res) {
+          console.log('STATUS: ' + res.statusCode);
+          console.log('HEADERS: ' + JSON.stringify(res.headers));
+          res.setEncoding('utf8');
+          res.on('data', function (chunk) {
+            console.log('BODY: ' + chunk);
+          });
+        }).end();
 
-        console.log("newreq: ", newreq);
-
-        newreq.end();
-
-        newreq.on('error', function(e){
-            console.log(e);
-        });
-
-        res.jsonp(response);
+      
     });
 };
 
