@@ -382,7 +382,7 @@ console.log(permitTypeCountArray);
 				}
 				mostPopularPermitsArray.push({name: permit_desc[permit_type], data: counts})
 			});
-			Highcharts.chart('containerMostPopularPermitsAnalytics', {
+			Highcharts.chart('containerDrillDownPopularPermits', {
 
 		        chart: {
 		            type: 'column'
