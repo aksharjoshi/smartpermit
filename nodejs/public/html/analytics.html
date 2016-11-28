@@ -8,7 +8,7 @@
 			<input id="seasonal_{{year}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
 		</label>
 	</form>
-  <select ng-model="selectedYear" ng-change="getSeasonalData2({{selectedYear}})">
+  <select ng-model="selectedYear" ng-change="getSeasonalData2(this)">
   <option ng-repeat="year in years">{{year}}</option>
   </select>
 	<button id="seasonalBack" style="display:none" class="btn pull-right">Back</button>
