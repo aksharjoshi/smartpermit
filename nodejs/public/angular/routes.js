@@ -505,7 +505,7 @@ console.log(permitTypeCountArray);
 				expirationTrendArray.push({name: permit_desc[permit_type], data: counts})
 			});
 			
-		    Highcharts.chart('containerExpirationAnalytics', {
+		    Highcharts.chart('containerDrillDownExpirationAnalysis', {
 		        title: {
 		            text: '',
 		            x: -20 //center
