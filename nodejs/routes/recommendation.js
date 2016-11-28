@@ -44,7 +44,7 @@ exports.getRecommendation = function(req, res){
             //console.log("err", err);
             res.status(500).jsonp(err)
         }
-        console.log("\n\nresponse FOR recommendation is: ", response[0].ID);
+        console.log("\n\nresponse FOR recommendation is: ", response);
 
         /*var options = {
   		  host: 'localhost',
