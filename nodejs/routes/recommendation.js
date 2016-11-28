@@ -46,21 +46,23 @@ exports.getRecommendation = function(req, res){
         }
         console.log("\n\nresponse FOR recommendation is: ", response);
 
-        /*var options = {
+        var options = {
   		  host: 'localhost',
 		  port: '8181',
 		  path: '/recommend?permitId=' + response[0].ID + ' count=5',
 		  method: 'GET'
-		  headers: {
+		  /*headers: {
 		    'Content-Type': 'application/x-www-form-urlencoded',
 		    'Content-Length': post_data.length
-		  }
+		  }*/
 		};
 
-		var req = http.request(options, function(res) {
+		var newreq = http.request(options, function(res) {
   			// response is here
   			console.log("response from java: ", res);
-		});*/
+		});
+
+        console.log("newreq: ", newreq);
 
         res.jsonp(response);
     });
