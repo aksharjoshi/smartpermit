@@ -84,4 +84,10 @@ public class PermitMainController {
         return new ResponseEntity(new HashMap<String,String>(){{put("Message","Data Model Generated");}}, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ResponseEntity test() {
+        System.out.println("Test URL HIT");
+        return new ResponseEntity(new HashMap<String,String>(){{put("Message","TEST URL HIT");}}, HttpStatus.OK);
+    }
+
 }
