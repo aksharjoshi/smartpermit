@@ -66,13 +66,13 @@ app.controller('recommendationController', function($scope,$http) {
 		console.log($scope.job_types);
 	});
 	$http.get("/getPermitType").success(function(response){
-		$(response).each(function(obj){
+		$(response).each(function(key,obj){
 			$scope.permit_types.push(obj.PERMIT_TYPE);
 		});
 		console.log($scope.permit_types);
 	});
 	$http.get("/getPermitSubType").success(function(response){
-		$(response).each(function(obj){
+		$(response).each(function(key,obj){
 			$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
 		});
 		console.log($scope.permit_subtypes);
