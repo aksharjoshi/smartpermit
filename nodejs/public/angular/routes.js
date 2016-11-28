@@ -92,10 +92,10 @@ app.controller('recommendationController', function($scope,$http) {
 		var getRecommendatinURL = "/getRecommendation?job_type="+jobType+"&permit_type="+permitType;
 		if(permitSubtype != "" && permitSubtype != "undefined" && permitSubtype != null)
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permitSubtype;
-		
+
 		$http.get(getRecommendatinURL).success(function(res){
-			console.log($.parseJSON(res));
-			$scope.recommendations = $.parseJSON(res);
+			console.log(res);
+			$scope.recommendations = res;
 		});
 	};
 			
