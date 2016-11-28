@@ -450,7 +450,14 @@ console.log(permitTypeCountArray);
 			            x: -20
 			        },
 			        xAxis: {
-			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']
+			            categories: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
+			            labels: {
+			                events: {
+			                    click: function (e) {
+			                        $scope.getDrillDownExpirationAnalysis($(e.target).text());
+			                    }
+			                }
+			         	}
 			        },
 			        yAxis: {
 			            title: {
@@ -468,6 +475,64 @@ console.log(permitTypeCountArray);
 			});
 		});
 	};
+
+	$scope.getDrillDownExpirationAnalysis = function(quarter){    	
+    	$('#modalDrillDownPopularPermits').modal();
+		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
+    		
+    		$("#popular_quarter").html(quarter);
+
+			var expirationTrendArray = [];
+			var permitTypeCountArray = [];
+			var permitTypes = [];
+			var counts = [];
+			$(response).each(function(idx,obj){
+				if(typeof permitTypeCountArray[obj.Permit_Type] == "undefined" || typeof permitTypeCountArray[obj.Permit_Type] == null){
+					permitTypeCountArray[obj.Permit_Type] = {};
+					permitTypes.push(obj.Permit_Type);
+				}
+				permitTypeCountArray[obj.Permit_Type][parseInt(obj.Month)] = obj.Count;
+			});
+
+			$(permitTypes).each(function(idx,permit_type){
+				counts = [];
+				for(var i=1; i<12; i++){
+					if(typeof permitTypeCountArray[permit_type][i] == "undefined")
+						counts.push(0);
+					else
+						counts.push(permitTypeCountArray[permit_type][i]);
+				}
+				expirationTrendArray.push({name: permit_desc[permit_type], data: counts})
+			});
+			
+		    Highcharts.chart('containerExpirationAnalytics', {
+		        title: {
+		            text: '',
+		            x: -20 //center
+		        },
+		        subtitle: {
+		            text: 'Source: New York Open Data',
+		            x: -20
+		        },
+		        xAxis: {
+		            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Total Number of Permits Expired'
+		            },
+		        },
+		        legend: {
+		            layout: 'vertical',
+		            align: 'right',
+		            verticalAlign: 'middle',
+		            borderWidth: 0
+		        },
+		        series: expirationTrendArray
+		    });
+			
+		});
+    };
 
 	$scope.getHeatMapData = function(year) {
 		$("#divLocationContent").find(".tab1").removeClass("active");
