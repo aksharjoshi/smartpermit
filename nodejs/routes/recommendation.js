@@ -69,15 +69,18 @@ exports.getRecommendation = function(req, res){
           method: 'GET'
         };
 
-        http.request(options, function(res) {
-          console.log('STATUS: ' + res.statusCode);
-          console.log('HEADERS: ' + JSON.stringify(res.headers));
-          res.setEncoding('utf8');
-          res.on('data', function (chunk) {
+        var responseJava = "";
+
+        http.request(options, function(response) {
+          console.log('STATUS: ' + response.statusCode);
+          console.log('HEADERS: ' + JSON.stringify(response.headers));
+          response.setEncoding('utf8');
+          response.on('data', function (chunk) {
             console.log('BODY: ' + chunk);
+            responseJava = chunk;
+            res.jsonp(responseJava);
           });
         }).end();
-
       
     });
 };
