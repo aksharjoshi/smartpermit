@@ -53,9 +53,6 @@ app.controller('homeController', function($scope,$http) {
 });
 
 app.controller('recommendationController', function($scope,$http) {
-	$("#select_job_type option:first").remove();
-	$("#select_permit_type option:first").remove();
-	$("#select_permit_subtype option:first").remove();
 
 	$scope.job_types = [];
 	$scope.permit_types = [];
@@ -80,6 +77,10 @@ app.controller('recommendationController', function($scope,$http) {
 		});
 		console.log($scope.permit_subtypes);
 	});
+
+	$("#select_job_type option:first").remove();
+	$("#select_permit_type option:first").remove();
+	$("#select_permit_subtype option:first").remove();
 	
 	$scope.getRecommendations = function(){
 		var jobType = $("#select_job_type").val();
