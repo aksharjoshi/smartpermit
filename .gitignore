@@ -39,6 +39,7 @@ maven-eclipse.xml
 logs/
 target/
 tmp/
+node_modules/
 
 # /bin/
 /bin/
