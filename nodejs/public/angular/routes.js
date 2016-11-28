@@ -478,7 +478,7 @@ console.log(permitTypeCountArray);
 
 	$scope.getDrillDownExpirationAnalysis = function(quarter){    	
     	$('#modalDrillDownPopularPermits').modal();
-		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
+		$http.get("/expirartionAnalysis?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
     		
     		$("#popular_quarter").html(quarter);
 
