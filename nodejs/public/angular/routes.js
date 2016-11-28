@@ -79,6 +79,7 @@ app.controller('recommendationController', function($scope,$http) {
 	});
 	
 	$scope.getRecommendations = function(){
+		alert(1);
 		var jobType = $("#select_job_type").val();
 		var permitType = $("#select_permit_type").val();
 		var permitSubtype = $("#select_permit_subtype").val();
@@ -88,7 +89,7 @@ app.controller('recommendationController', function($scope,$http) {
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
 
 		$http.get("getRecommendatinURL").success(function(response){
-			
+
 		});
 	};
 			
