@@ -50,6 +50,7 @@ exports.getRecommendation = function(req, res){
   		  host: 'localhost',
 		  port: '8181',
 		  path: '/recommend?permitId=' + response[0].ID + '&count=5',
+          socketPath: 'localhost:8181',
 		  method: 'GET'
 		  /*headers: {
 		    'Content-Type': 'application/x-www-form-urlencoded',
