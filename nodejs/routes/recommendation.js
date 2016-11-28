@@ -49,7 +49,7 @@ exports.getRecommendation = function(req, res){
         var options = {
   		  host: 'localhost',
 		  port: '8181',
-		  path: '/recommend?permitId=' + response[0].ID + ' count=5',
+		  path: '/recommend?permitId=' + response[0].ID + '&count=5',
 		  method: 'GET'
 		  /*headers: {
 		    'Content-Type': 'application/x-www-form-urlencoded',
