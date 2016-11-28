@@ -60,6 +60,7 @@ app.controller('recommendationController', function($scope,$http) {
 	
 	$http.get("/getJobType").success(function(response){
 		$(response).each(function(obj){
+			console.log(obj);
 			$scope.job_types.push(obj.JOB_TYPE);
 		});
 		console.log($scope.job_types);
