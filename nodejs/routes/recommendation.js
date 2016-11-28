@@ -19,13 +19,13 @@ exports.getRecommendation = function(req, res){
 	var inputpermit_subtypeStr = "";
 
 	if(job_type != "undefined" && job_type != null && job_type != "")
-        inputjob_typeStr = " JOB_TYPE = " + job_type + " AND";
+        inputjob_typeStr = " JOB_TYPE = '" + job_type + "' AND";
 
 	if(permit_type != "undefined" && permit_type != null && permit_type != "")
-        inputpermit_typeStr = " PERMIT_TYPE = " + permit_type;
+        inputpermit_typeStr = " PERMIT_TYPE = '" + permit_type + "'";
     
     if(permit_subtype != "undefined" && permit_subtype != null && permit_subtype != "")
-        inputpermit_subtypeStr = " PERMIT_SUBTYPE = " + permit_subtype;
+        inputpermit_subtypeStr = " PERMIT_SUBTYPE = '" + permit_subtype + "'";
     
     console.log("job type: ", job_type, "    " , inputjob_typeStr);
     console.log("permit type: ", permit_type, "    " , inputpermit_typeStr);
