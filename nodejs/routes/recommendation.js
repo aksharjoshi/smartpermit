@@ -67,7 +67,7 @@ exports.getRecommendation = function(req, res){
           //path: '/recommend?permitId=' + response[0].ID + '&count=5',
           path: '/test',
           //socketPath: 'localhost:8181',
-          method: 'GET',
+          method: 'GET'
           /*headers: {
             'Content-Type': 'text/json',
             'permitId': response[0].ID,
