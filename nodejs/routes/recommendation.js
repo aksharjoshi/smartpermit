@@ -50,15 +50,15 @@ exports.getRecommendation = function(req, res){
   		  host: 'localhost',
 		  port: '8181',
 		  //path: '/recommend?permitId=' + response[0].ID + '&count=5',
-          path: '/recommend',
+          path: '/recommend?permitId=1&count=5',
           //socketPath: 'localhost:8181',
 		  method: 'GET',
-		  headers: {
+		  /*headers: {
 		    'Content-Type': 'text/json',
             'permitId': response[0].ID,
             'count': 5
 		    //'Content-Length': post_data.length
-		  }
+		  }*/
 		};
 
 		var newreq = http.request(options, function(res) {
