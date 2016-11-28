@@ -124,7 +124,7 @@ app.controller('permitsController', function($scope,$http) {
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
 			
-			$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+nextQuestionid).success(function(response){
+			$http.get("/getquestion?id="+nextQuestionid).success(function(response){
 			 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 			 	$scope.questionID = nextQuestionid;
 			 	$scope.question = response.Question;
