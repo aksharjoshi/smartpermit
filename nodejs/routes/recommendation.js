@@ -35,7 +35,7 @@ exports.getRecommendation = function(req, res){
 	var qs = "SELECT ID from PERMIT_MASTER where " + inputjob_typeStr + inputpermit_typeStr;
 
 	if(inputpermit_subtypeStr != "")
-		qs += " AND " + inputjob_typeStr;
+		qs += " AND " + inputpermit_subtypeStr;
 
 	console.log("query in recommendation.js is: ", qs);
 
