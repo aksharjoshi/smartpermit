@@ -78,13 +78,15 @@ app.controller('recommendationController', function($scope,$http) {
 		console.log($scope.permit_subtypes);
 	});
 	
-	return false;
-	var getRecommendatinURL = "http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getRecommendation?job_type="+job_type+"&permit_type="+permit_type;
-	if(permit_subtype != "" && permit_subtype != "undefined" && permit_subtypes != null)
-		getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
-	
+	$scope.getRecommendations = function(){
+		var jobType = $("#select_job_type").val();
+		var permitType = $("#select_permit_type").val();
+		var permitSubtype = $("#select_permit_subtype").val();
 
-	
+		var getRecommendatinURL = "http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getRecommendation?job_type="+jobType+"&permit_type="+permitType;
+		if(permitSubtype != "" && permitSubtype != "undefined" && permitSubtype != null)
+			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permit_subtype;
+		};	
 });
 
 app.controller('permitsController', function($scope,$http) {
