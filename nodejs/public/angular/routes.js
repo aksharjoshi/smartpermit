@@ -59,7 +59,7 @@ app.controller('recommendationController', function($scope,$http) {
 	$scope.permit_subtypes = [];
 	
 	$http.get("/getJobType").success(function(response){
-		$(response).each(function(obj){
+		$(response).each(function(key,obj){
 			console.log(obj);
 			$scope.job_types.push(obj.JOB_TYPE);
 		});
