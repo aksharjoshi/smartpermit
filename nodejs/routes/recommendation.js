@@ -24,6 +24,10 @@ exports.getRecommendation = function(req, res){
     else
         var inputpermit_subtypeStr = ""; 
 
+    console.log("job type: ", job_type, "    " , inputjob_typeStr);
+    console.log("permit type: ", permit_type, "    " , inputpermit_typeStr);
+    console.log("permit sub type: ", permit_subtype, "    " , inputpermit_subtypeStr)
+
 
 	var qs = "SELECT ID from PERMIT_MASTER where " + inputjob_typeStr + inputpermit_typeStr;
 
