@@ -88,6 +88,12 @@ exports.getRecommendation = function(req, res){
 
         console.log("newreq: ", newreq);
 
+        newreq.end();
+
+        newreq.on('error', funtion(e){
+            console.log(e);
+        });
+
         res.jsonp(response);
     });
 };
