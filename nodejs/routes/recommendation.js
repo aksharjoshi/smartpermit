@@ -65,7 +65,7 @@ exports.getRecommendation = function(req, res){
         var options = {
           host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
           port: 8181,
-          path: '/resource?id=foo&bar=baz',
+          path: '/recommend?permitId=1&count=5',
           method: 'GET'
         };
 
