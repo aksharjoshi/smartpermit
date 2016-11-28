@@ -78,7 +78,7 @@ exports.getRecommendation = function(req, res){
           response.on('data', function (chunk) {
             console.log('BODY: ' + chunk);
             responseJava = chunk;
-            res.jsonp(responseJava);
+            res.send(responseJava);
           });
         }).end();
       
