@@ -194,6 +194,7 @@ app.controller('permitsController', function($scope,$http) {
 	};
 	
 	$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id=1").success(function(response){
+		console.log(response);
 	 	$scope.questionID = 1;
 	 	$scope.questionPrevArray[$scope.questionID] = 0;
 	 	$scope.prevQuestionID = 0;
