@@ -69,7 +69,7 @@ app.controller('recommendationController', function($scope,$http) {
 	});
 
 	$scope.getPermitType = function(job_type){
-		$http.get("/getPermitType?job_type="+$scope.c_job_type).success(function(response){
+		$http.get("/getPermitType?job_type="+job_type).success(function(response){
 			$(response).each(function(key,obj){
 				$scope.permit_types.push(obj.PERMIT_TYPE);
 			});
