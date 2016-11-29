@@ -134,6 +134,29 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.selectedOption = "";
 	$scope.showComponents = "no";
 
+	$scope.icons = {
+		"NEW" : "glyphicons-619-mixed-buildings",
+		"REMODELING" : "glyphicons-281-settings.png",
+		"COMMERCIAL" : "glyphicons-620-industrial-zone.png",
+		"RESIDENTIAL" : "glyphicons-21-home.png",
+		"OFFICE" : "glyphicons-90-building.png",
+		"RESIDENTIAL" : "glyphicons-21-home.png",
+		"OTHERS" : "",
+		"LIVINGROOM" : "glyphicons-87-display.png",
+		"HALL" : "glyphicons-87-display.png",
+		"BEDROOM" : "glyphicons-628-bedroom-lamp.png",
+		"KITCHEN" : "glyphicons-277-cutlery.png",
+		"BATHROOM" : "glyphicons-514-bath-bathtub.png",
+		"BASEMENT" : "glyphicons-681-door.png",
+		"STAIRS" : "glyphicons-431-construction-cone.png",
+		"BACKYARD" : "",
+		"PATIO" : "",
+		"CURB/FENCE" : "",
+		"OTHER" : "",
+		"YES" : "glyphicons-207-ok.png",
+		"NO" : "glyphicons-208-remove.png"
+	};
+
 	console.log($scope.icons);
 
 	$scope.next = function() {
@@ -922,26 +945,4 @@ console.log(permitTypeCountArray);
 	$scope.initMap();
 	$scope.initHeatMap();
 
-	$scope.icons = {
-		"NEW" : "glyphicons-619-mixed-buildings",
-		"REMODELING" : "glyphicons-281-settings.png",
-		"COMMERCIAL" : "glyphicons-620-industrial-zone.png",
-		"RESIDENTIAL" : "glyphicons-21-home.png",
-		"OFFICE" : "glyphicons-90-building.png",
-		"RESIDENTIAL" : "glyphicons-21-home.png",
-		"OTHERS" : "",
-		"LIVINGROOM" : "glyphicons-87-display.png",
-		"HALL" : "glyphicons-87-display.png",
-		"BEDROOM" : "glyphicons-628-bedroom-lamp.png",
-		"KITCHEN" : "glyphicons-277-cutlery.png",
-		"BATHROOM" : "glyphicons-514-bath-bathtub.png",
-		"BASEMENT" : "glyphicons-681-door.png",
-		"STAIRS" : "glyphicons-431-construction-cone.png",
-		"BACKYARD" : "",
-		"PATIO" : "",
-		"CURB/FENCE" : "",
-		"OTHER" : "",
-		"YES" : "glyphicons-207-ok.png",
-		"NO" : "glyphicons-208-remove.png"
-	};
 });
