@@ -65,11 +65,8 @@ app.controller('recommendationController', function($scope,$http) {
 			console.log("key: "+key);
 			$scope.job_types.push(obj.JOB_TYPE);
 			if(key == len-1){
-				angular.element(document).ready(function () {
-				    console.log("here");
-					$("#select_job_type option:first").remove();
-					$("#select_job_type").trigger("change");
-				});
+				$("#select_job_type option:first").remove();
+				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 3000);
 			}
 		});
 		
