@@ -135,7 +135,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.showComponents = "no";
 
 	$scope.icons = {
-		"NEW" : "glyphicons-619-mixed-buildings",
+		"NEW" : "glyphicons-619-mixed-buildings.png",
 		"REMODELING" : "glyphicons-281-settings.png",
 		"COMMERCIAL" : "glyphicons-620-industrial-zone.png",
 		"RESIDENTIAL" : "glyphicons-21-home.png",
