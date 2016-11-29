@@ -244,6 +244,7 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
+	 	console.log("here");
 	 	$(".imgIcon").each(function(index,imgObj){
 	 		console.log(imgObj);
 	 		var icon = $(imgObj).attr("data");
