@@ -214,6 +214,15 @@ app.controller('permitsController', function($scope,$http) {
 			 		$scope.options = response.Options;
 			 		console.log($scope.options);
 			 	} 
+			 	setTimeout(function(){ 
+			 		$(".imgIcon").each(function(index,imgObj){
+				 		var icon = $(imgObj).attr("data");
+				 		console.log(icon)
+				 		console.log($scope.icons[icon]);
+				 		if($scope.icons[icon] != "undefined")
+				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+				 	});
+			 	}, 100);
 			});
 		}
 	};
