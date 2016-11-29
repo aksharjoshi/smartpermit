@@ -221,7 +221,7 @@ app.controller('permitsController', function($scope,$http) {
 				 		var icon = $(imgObj).attr("data");
 				 		icon = icon.replace(/\s/g, '');
 				 		icon = icon.replace(/\//g,"");
-				 		console.log($scope.icons[icon]);
+				 		console.log(icon);
 				 		if($scope.icons[icon] != "undefined")
 				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
 				 	});
