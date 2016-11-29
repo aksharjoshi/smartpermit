@@ -1,7 +1,8 @@
 package com.smartpermit.recommendationengine.recommender;
 
+import com.smartpermit.recommendationengine.model.Acronym;
 import com.smartpermit.recommendationengine.model.Permit;
-import com.smartpermit.recommendationengine.repositories.PermitDetailsRepository;
+import com.smartpermit.recommendationengine.repositories.AcronymMasterRepository;
 import com.smartpermit.recommendationengine.repositories.PermitRepository;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
@@ -16,7 +17,6 @@ import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
-import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -38,7 +38,7 @@ public class RecommenderImpl implements Recommender {
     PermitRepository permitRepository;
 
     @Autowired
-    PermitDetailsRepository permitDetailsRepository;
+    AcronymMasterRepository acronymRepository;
 
     @Autowired
     ResourceLoader resource;
@@ -113,13 +113,28 @@ public class RecommenderImpl implements Recommender {
         List<RecommendedItem> recommendedPermitList = getRecommendedItemList(permitId, numberOfRecommendations);
 
         if (recommendedPermitList.size() != 0) {
+
+            HashMap<String,String> hashMap = getAcronymMap();
+
             for (RecommendedItem recommendedItem : recommendedPermitList) {
                 Permit permit = permitRepository.findPermitbyId(recommendedItem.getItemID());
+                permit.setPermitJobTypeDescription(hashMap.get(permit.getPermitJobType()));
+                permit.setPermitTypeDescription(hashMap.get(permit.getPermitType()));
+                permit.setPermitSubtypeDescription(hashMap.get(permit.getPermitSubtype()));
                 permitList.add(permit);
             }
         }
 
         return permitList;
+    }
+
+    private HashMap getAcronymMap() {
+        HashMap<String,String> hashmap = new HashMap<>();
+        List<Acronym> acronymList = acronymRepository.findAllAcronymDescriptions();
+        for(Acronym acronym : acronymList){
+            hashmap.put(acronym.getAcronym(),acronym.getDescription());
+        }
+        return hashmap;
     }
 
     private List<RecommendedItem> getRecommendedItemList(String permitId, int numberOfRecommendations) {

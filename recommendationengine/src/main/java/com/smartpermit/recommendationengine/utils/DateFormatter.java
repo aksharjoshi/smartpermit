@@ -1,7 +1,5 @@
 package com.smartpermit.recommendationengine.utils;
 
-import org.springframework.context.annotation.Bean;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

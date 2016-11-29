@@ -9,6 +9,9 @@ public class Permit {
     private String permitJobType;
     private String permitType;
     private String permitSubtype;
+    private String permitJobTypeDescription;
+    private String permitTypeDescription;
+    private String permitSubtypeDescription;
 
 
     public Permit() {
@@ -50,5 +53,29 @@ public class Permit {
 
     public void setPermitSubtype(String permitSubtype) {
         this.permitSubtype = permitSubtype;
+    }
+
+    public String getPermitJobTypeDescription() {
+        return permitJobTypeDescription;
+    }
+
+    public void setPermitJobTypeDescription(String permitJobTypeDescription) {
+        this.permitJobTypeDescription = permitJobTypeDescription;
+    }
+
+    public String getPermitTypeDescription() {
+        return permitTypeDescription;
+    }
+
+    public void setPermitTypeDescription(String permitTypeDescription) {
+        this.permitTypeDescription = permitTypeDescription;
+    }
+
+    public String getPermitSubtypeDescription() {
+        return permitSubtypeDescription;
+    }
+
+    public void setPermitSubtypeDescription(String permitSubtypeDescription) {
+        this.permitSubtypeDescription = permitSubtypeDescription;
     }
 }

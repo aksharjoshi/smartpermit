@@ -1,7 +1,10 @@
 package com.smartpermit.recommendationengine.controller;
 
 import com.smartpermit.recommendationengine.model.*;
-import com.smartpermit.recommendationengine.repositories.*;
+import com.smartpermit.recommendationengine.repositories.OwnerRepository;
+import com.smartpermit.recommendationengine.repositories.PermitDetailsRepository;
+import com.smartpermit.recommendationengine.repositories.PermitRepository;
+import com.smartpermit.recommendationengine.repositories.PermiteeRepository;
 import com.smartpermit.recommendationengine.utils.DateFormatter;
 import com.socrata.api.Soda2Consumer;
 import com.socrata.builders.SoqlQueryBuilder;
