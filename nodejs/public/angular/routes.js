@@ -208,10 +208,6 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.questionID = prevQuestionid;
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
-		 	$($scope.options).each(function(k,opt){
-		 		console.log(opt);
-		 	});
-		 	//./images/glyphicons_free/glyphicons/png/{{}}
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
 		 	console.log("queston: "+$scope.questionID);
 		 	console.log($scope.selectedOption);
@@ -229,6 +225,10 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
+	 	$($scope.options).each(function(k,opt){
+		 		console.log(opt);
+		 	});
+		 	//./images/glyphicons_free/glyphicons/png/{{}}
 	 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 	});
 
