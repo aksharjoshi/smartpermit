@@ -225,11 +225,6 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
-	 	$($scope.options).each(function(k,opt){
-		 		$(opt).each(function(i,o){
-		 			console.log(o);
-		 		});
-		 	});
 		 	//./images/glyphicons_free/glyphicons/png/{{}}
 	 	//$scope.nextQuestion = $.parseJSON(response.Next_question);
 	});
