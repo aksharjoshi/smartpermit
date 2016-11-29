@@ -53,12 +53,10 @@ app.controller('homeController', function($scope,$http) {
 });
 
 app.controller('recommendationController', function($scope,$http) {
-
-	$scope.job_types = [];
-	$scope.permit_types = [];
-	$scope.permit_subtypes = [];
+	
 	
 	$http.get("/getJobType").success(function(response){
+		$scope.job_types = [];
 		var len = response.length;
 		console.log(len);
 		$(response).each(function(key,obj){
@@ -74,6 +72,7 @@ app.controller('recommendationController', function($scope,$http) {
 	});
 	
 	$scope.getPermitType = function(job_type){
+		$scope.permit_types = [];
 		$http.get("/getPermitType?job_type="+job_type).success(function(response){
 			var len = response.length;
 			$("#containerPermitType").show();
@@ -87,6 +86,7 @@ app.controller('recommendationController', function($scope,$http) {
 		});
 	};
 	$scope.getPermitSubType = function(permit_type){
+		$scope.permit_subtypes = [];
 		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
 			$("#containerPermitSubType").show();
 			$(response).each(function(key,obj){
