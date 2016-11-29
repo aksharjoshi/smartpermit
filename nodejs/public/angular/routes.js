@@ -57,7 +57,6 @@ app.controller('recommendationController', function($scope,$http) {
 	$scope.job_types = [];
 	$scope.permit_types = [];
 	$scope.permit_subtypes = [];
-	$scope.c_job_type = "";
 	
 	$http.get("/getJobType").success(function(response){
 		$(response).each(function(key,obj){
@@ -65,11 +64,12 @@ app.controller('recommendationController', function($scope,$http) {
 		});
 		
 		$("#select_job_type option:first").remove();
-		$scope.c_job_type = $("#select_job_type option:first").val();
+		$("#select_job_type").trigger("change");//$("#select_job_type option:first").val();
 	});
 
 	$scope.getPermitType = function(job_type){
 		$http.get("/getPermitType?job_type="+job_type).success(function(response){
+			$("#containerPermitType").show();
 			$(response).each(function(key,obj){
 				$scope.permit_types.push(obj.PERMIT_TYPE);
 			});
