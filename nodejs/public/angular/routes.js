@@ -158,9 +158,10 @@ app.controller('permitsController', function($scope,$http) {
 	};
 	$scope.NEW = "glyphicons-619-mixed-buildings.png";
 	$scope.REMODELING = "glyphicons-281-settings.png";
+	$scope.EXISTING = "glyphicons-281-settings.png";
 	$scope.COMMERCIAL = "glyphicons-620-industrial-zone.png";
 	$scope.RESIDENTIAL = "glyphicons-21-home.png";
-	$scope.OTHERS = "";
+	$scope.OTHERS = "glyphicons-630-engineering-networks.png";
 	$scope.LIVINGROOM = "glyphicons-87-display.png";
 	$scope.HALL = "glyphicons-87-display.png";
 	$scope.BEDROOM = "glyphicons-628-bedroom-lamp.png";
@@ -217,7 +218,7 @@ app.controller('permitsController', function($scope,$http) {
 			 	setTimeout(function(){ 
 			 		$(".imgIcon").each(function(index,imgObj){
 				 		var icon = $(imgObj).attr("data");
-				 		console.log(icon)
+				 		icon = icon.replace(/\s/g, '');
 				 		console.log($scope.icons[icon]);
 				 		if($scope.icons[icon] != "undefined")
 				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
@@ -246,6 +247,7 @@ app.controller('permitsController', function($scope,$http) {
 		 	setTimeout(function(){ 
 		 		$(".imgIcon").each(function(index,imgObj){
 			 		var icon = $(imgObj).attr("data");
+			 		icon = icon.replace(/\s/g, '');
 			 		console.log(icon)
 			 		console.log($scope.icons[icon]);
 			 		if($scope.icons[icon] != "undefined")
@@ -265,7 +267,7 @@ app.controller('permitsController', function($scope,$http) {
 	 	setTimeout(function(){ 
 	 		$(".imgIcon").each(function(index,imgObj){
 		 		var icon = $(imgObj).attr("data");
-		 		console.log(icon)
+		 		icon = icon.replace(/\s/g, '');
 		 		console.log($scope.icons[icon]);
 		 		if($scope.icons[icon] != "undefined")
 		 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
