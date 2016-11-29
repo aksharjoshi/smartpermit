@@ -15,6 +15,7 @@
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
+         <img id="img_{{option}}" src="" />
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" checked> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option"> 
             {{option}}
