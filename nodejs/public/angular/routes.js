@@ -233,7 +233,16 @@ app.controller('permitsController', function($scope,$http) {
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
 
-		 	} 
+		 	}
+		 	setTimeout(function(){ 
+		 		$(".imgIcon").each(function(index,imgObj){
+			 		var icon = $(imgObj).attr("data");
+			 		console.log(icon)
+			 		console.log($scope.icons[icon]);
+			 		if($scope.icons[icon] != "undefined")
+			 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+			 	});
+		 	}, 100);
 		});
 	};
 	
