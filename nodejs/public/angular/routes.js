@@ -79,11 +79,11 @@ app.controller('recommendationController', function($scope,$http) {
 			$("#containerPermitType").show();
 			$(response).each(function(key,obj){
 				$scope.permit_types.push(obj.PERMIT_TYPE);
+				if(key == len-1){
+					$("#select_permit_type option:first").remove();
+					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 1000);
+				}
 			});
-			if(key == len-1){
-				$("#select_permit_type option:first").remove();
-				setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 1000);
-			}
 		});
 	};
 	$scope.getPermitSubType = function(permit_type){
