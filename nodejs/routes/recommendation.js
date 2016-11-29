@@ -46,53 +46,31 @@ exports.getRecommendation = function(req, res){
         }
         console.log("\n\nresponse FOR recommendation is: ", response);
 
-        /*var options = {
-  		  host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
-		  port: '8181',
-		  //path: '/recommend?permitId=' + response[0].ID + '&count=5',
-          path: '/recommend?permitId=1&count=5',
-          //socketPath: 'localhost:8181',
-		  method: 'GET',
-		  /*headers: {
-		    'Content-Type': 'text/json',
-            'permitId': response[0].ID,
-            'count': 5
-		    //'Content-Length': post_data.length
-		  }
-		};*/
-
         var options = {
           host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
-          port: '8181',
-          //path: '/recommend?permitId=' + response[0].ID + '&count=5',
-          path: '/test',
-          //socketPath: 'localhost:8181',
+          port: 8181,
+          path: '/recommend?permitId='+response[0].ID+'&count=5',
           method: 'GET'
-          /*headers: {
-            'Content-Type': 'text/json',
-            'permitId': response[0].ID,
-            'count': 5
-            //'Content-Length': post_data.length
-          }*/
         };
 
-		var newreq = http.request(options, function(err, res) {
-  			// response is here
-            if(err){
-                console.log("error in calling recommendation engine: ", JSON.stringify(err));
-            }
-            else{
-                console.log("response from java: ", res);
-            }
-		});
+        var responseJava = "";
 
-        console.log("newreq: ", newreq);
-
-        res.jsonp(response);
+        http.request(options, function(response) {
+          console.log('STATUS: ' + response.statusCode);
+          console.log('HEADERS: ' + JSON.stringify(response.headers));
+          response.setEncoding('utf8');
+          response.on('data', function (chunk) {
+            console.log('BODY: ' + chunk);
+            responseJava = chunk;
+            res.send(responseJava);
+          });
+        }).end();
+      
     });
 };
 
 exports.getJobType = function(req, res){
+
 	var qs = "SELECT DISTINCT(JOB_TYPE) FROM PERMIT_MASTER";
 
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
@@ -108,7 +86,10 @@ exports.getJobType = function(req, res){
 
 
 exports.getPermitType = function(req, res){
-	var qs = "SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER";
+
+  var job_type = req.query.job_type;
+
+	var qs = "SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE JOB_TYPE='"+job_type+"'";
 
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
@@ -123,7 +104,11 @@ exports.getPermitType = function(req, res){
 
 
 exports.getPermitSubType = function(req, res){
-	var qs = "SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER";
+
+  var job_type = req.query.job_type;
+  var permit_type = req.query.permit_type;
+
+	var qs = "SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER WHERE JOB_TYPE = '"+job_type+"' AND PERMIT_TYPE = '" + permit_type + "'";
 
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {

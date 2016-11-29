@@ -53,35 +53,61 @@ app.controller('homeController', function($scope,$http) {
 });
 
 app.controller('recommendationController', function($scope,$http) {
-
-	$scope.job_types = [];
-	$scope.permit_types = [];
-	$scope.permit_subtypes = [];
+	
 	
 	$http.get("/getJobType").success(function(response){
+		$scope.job_types = [];
+		var len = response.length;
+		console.log(len);
 		$(response).each(function(key,obj){
-			console.log(obj);
+			console.log("key: "+key);
 			$scope.job_types.push(obj.JOB_TYPE);
+			if(key == len-1){
+				$("#select_job_type option:first").remove();
+				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 1000);
+			}
 		});
-		console.log($scope.job_types);
+		
+		
 	});
-	$http.get("/getPermitType").success(function(response){
-		$(response).each(function(key,obj){
-			$scope.permit_types.push(obj.PERMIT_TYPE);
+	
+	$scope.getPermitType = function(job_type){
+		$scope.permit_types = [];
+		$http.get("/getPermitType?job_type="+job_type).success(function(response){
+			var len = response.length;
+			$("#containerPermitType").show();
+			$(response).each(function(key,obj){
+				$scope.permit_types.push(obj.PERMIT_TYPE);
+				if(key == len-1){
+					$("#select_permit_type option:first").remove();
+					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 1000);
+				}
+			});
 		});
-		console.log($scope.permit_types);
-	});
+	};
+	$scope.getPermitSubType = function(permit_type){
+		$scope.permit_subtypes = [];
+		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
+			$("#containerPermitSubType").show();
+			$(response).each(function(key,obj){
+				$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+			});
+			$("#select_permit_subtype option:first").remove();
+		});
+	};
+/*
+	
 	$http.get("/getPermitSubType").success(function(response){
 		$(response).each(function(key,obj){
 			$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
 		});
 		console.log($scope.permit_subtypes);
-		$("#select_job_type option:first").remove();
+		
 		$("#select_permit_type option:first").remove();
 		$("#select_permit_subtype option:first").remove();
 	});
 
-
+*/
 	
 	$scope.getRecommendations = function(){
 		var jobType = $("#select_job_type").val();
@@ -93,19 +119,10 @@ app.controller('recommendationController', function($scope,$http) {
 		if(permitSubtype != "" && permitSubtype != "undefined" && permitSubtype != null)
 			getRecommendatinURL = getRecommendatinURL+"&permit_subtype="+permitSubtype;
 
-		$.getJSON('http://52.53.148.138:8181/recommend?', {
-  			permitId: '1',
-  			count: '5'
-		}, function(data){
-     		// Handles the callback when the data returns
-     		console.log("from java: ", JSON.stringify(data));
+		$http.get(getRecommendatinURL).success(function(res){
+			var data = eval(res);
+			$scope.recommendations = data;
 		});
-
-
-		/*$http.get(getRecommendatinURL).success(function(res){
-			$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:8181/recommend?permitId="+res[0].ID+"&count=5").success(function(res){
-			});
-		});*/
 	};
 			
 });
