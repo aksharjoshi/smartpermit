@@ -155,7 +155,12 @@ app.controller('permitsController', function($scope,$http) {
 		"CURB/FENCE" : "glyphicons-27-road.png",
 		"OTHER" : "glyphicons-195-question-sign.png",
 		"YES" : "glyphicons-207-ok.png",
-		"NO" : "glyphicons-208-remove.png"
+		"NO" : "glyphicons-208-remove.png",
+		"ADDITION/INSTALLATION" : "glyphicons-433-plus.png";
+		"ALL" : "glyphicons-194-ok-sign.png",
+		"DEMOLITIONOFANYWALL" : "glyphicons-314-ax.png",
+		"RELOCATION" : "glyphicons-435-redo.png",
+		"REPAIRING/STYLINGOFFIXTURES" : "glyphicons-440-wrench.png"
 	};
 	$scope.NEW = "glyphicons-619-mixed-buildings.png";
 	$scope.REMODELING = "glyphicons-281-settings.png";
