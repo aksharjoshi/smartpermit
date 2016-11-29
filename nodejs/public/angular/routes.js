@@ -66,7 +66,7 @@ app.controller('recommendationController', function($scope,$http) {
 			$scope.job_types.push(obj.JOB_TYPE);
 			if(key == len-1){
 				$("#select_job_type option:first").remove();
-				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 3000);
+				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 1000);
 			}
 		});
 		
