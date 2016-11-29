@@ -9,7 +9,7 @@
  	</div>
  	<div class="col-md-4">
  		<label>Permit Type</label>
- 		<select ng-model="permit_type" id="select_permit_type" class="form-control">
+ 		<select ng-model="permit_type" id="select_permit_type" class="form-control" ng-change="getPermitType(this.permit_type)">
 		  <option ng-repeat="permit_type in permit_types">{{permit_type}}</option>
 		</select>
  	</div>
