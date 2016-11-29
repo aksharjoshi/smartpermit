@@ -1,16 +1,10 @@
 package com.smartpermit.recommendationengine.controller;
 
-import com.smartpermit.recommendationengine.model.*;
+import com.smartpermit.recommendationengine.model.OwnerPreferences;
+import com.smartpermit.recommendationengine.model.Permit;
 import com.smartpermit.recommendationengine.recommender.Recommender;
-import com.smartpermit.recommendationengine.repositories.*;
-import com.smartpermit.recommendationengine.utils.DateFormatter;
-import com.socrata.api.Soda2Consumer;
-import com.socrata.builders.SoqlQueryBuilder;
-import com.socrata.exceptions.SodaError;
-import com.socrata.model.soql.OrderByClause;
-import com.socrata.model.soql.SoqlQuery;
-import com.socrata.model.soql.SortOrder;
-import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import com.smartpermit.recommendationengine.repositories.OwnerPreferencesRepository;
+import com.smartpermit.recommendationengine.repositories.PermitDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by adwaitkaley on 11/10/16.
