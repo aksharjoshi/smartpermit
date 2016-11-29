@@ -83,6 +83,15 @@ app.controller('recommendationController', function($scope,$http) {
 			console.log($scope.permit_types);
 		});
 	};
+	$scope.containerPermitSubType = function(permit_type){
+		$http.get("/getPermitSubType?job_type="+$("#select_permit_type").val()+"&permit_type="+permit_type).success(function(response){
+			$("#containerPermitSubType").show();
+			$(response).each(function(key,obj){
+				$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+			});
+			$("#select_permit_subtype option:first").remove();
+		});
+	};
 /*
 	
 	$http.get("/getPermitSubType").success(function(response){
