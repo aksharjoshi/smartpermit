@@ -178,7 +178,7 @@ app.controller('permitsController', function($scope,$http) {
 		if($scope.showComponents == "yes")
 			$scope.showComponents = "no";
 		var prevQuestionid = $scope.questionPrevArray[$scope.questionID];
-		$http.get("http://ec2-52-53-148-138.us-west-1.compute.amazonaws.com:3000/getquestion?id="+prevQuestionid).success(function(response){
+		$http.get("/getquestion?id="+prevQuestionid).success(function(response){
 			
 		 	$scope.questionID = prevQuestionid;
 		 	$scope.question = response.Question;
