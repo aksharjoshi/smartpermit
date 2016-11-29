@@ -156,7 +156,7 @@ app.controller('permitsController', function($scope,$http) {
 		"OTHER" : "glyphicons-195-question-sign.png",
 		"YES" : "glyphicons-207-ok.png",
 		"NO" : "glyphicons-208-remove.png",
-		"ADDITION/INSTALLATION" : "glyphicons-433-plus.png";
+		"ADDITION/INSTALLATION" : "glyphicons-433-plus.png",
 		"ALL" : "glyphicons-194-ok-sign.png",
 		"DEMOLITIONOFANYWALL" : "glyphicons-314-ax.png",
 		"RELOCATION" : "glyphicons-435-redo.png",
