@@ -108,7 +108,7 @@ exports.getPermitSubType = function(req, res){
   var job_type = req.query.job_type;
   var permit_type = req.query.permit_type;
 
-	var qs = "SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER WHERE JOB_TYPE = '"+job_type+"' PERMIT_TYPE = '" + permit_type + "'";
+	var qs = "SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER WHERE JOB_TYPE = '"+job_type+"' AND PERMIT_TYPE = '" + permit_type + "'";
 
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
