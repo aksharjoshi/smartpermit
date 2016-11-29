@@ -246,7 +246,7 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.options = $.parseJSON(response.Next_question);
 	 	$(".imgIcon").each(function(imgObj){
 	 		console.log(imgObj);
-	 		var icon = $(imgObj).attr("data-class");
+	 		var icon = $(imgObj).attr("data");
 	 		console.log($scope.icons[icon]);
 
 	 		imgObj.src = "/images/glyphicons_free/glyphicons/png/glyphicons-619-mixed-buildings.png";
