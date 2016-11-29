@@ -15,7 +15,7 @@
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
-         <img id="img_{{option}}" src="/images/glyphicons_free/glyphicons/png/glyphicons-619-mixed-buildings.png" style="display: block;text-align: center;margin-left: 20px;height: 40px;margin-top: -10px;margin-bottom: 10px;"/>
+         <img id="img_{{option}}" src="/images/glyphicons_free/glyphicons/png/{{eval(option)}}" style="display: block;text-align: center;margin-left: 20px;height: 40px;margin-top: -10px;margin-bottom: 10px;"/>
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" checked style="visibility:visible;"> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" style="visibility:visible;"> 
             {{option}}

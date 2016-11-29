@@ -156,6 +156,25 @@ app.controller('permitsController', function($scope,$http) {
 		"YES" : "glyphicons-207-ok.png",
 		"NO" : "glyphicons-208-remove.png"
 	};
+	$scope.NEW = "glyphicons-619-mixed-buildings.png";
+	$scope.REMODELING = "glyphicons-281-settings.png";
+	$scope.COMMERCIAL = "glyphicons-620-industrial-zone.png";
+	$scope.RESIDENTIAL = "glyphicons-21-home.png";
+	$scope.OTHERS = "";
+	$scope.LIVINGROOM = "glyphicons-87-display.png";
+	$scope.HALL = "glyphicons-87-display.png";
+	$scope.BEDROOM = "glyphicons-628-bedroom-lamp.png";
+	$scope.BATHROOM = "glyphicons-514-bath-bathtub.png";
+	$scope.KITCHEN = "glyphicons-277-cutlery.png";
+	$scope.BASEMENT = "glyphicons-681-door.png";
+	$scope.STAIRS = "glyphicons-431-construction-cone.png";
+	$scope.BACKYARD = "";
+	$scope.PATIO = "";
+	$scope.CURBFENCE = "";
+	$scope.OTHER = "";
+	$scope.YES = "glyphicons-207-ok.png";
+	$scope.NO = "glyphicons-208-remove.png";
+
 
 	console.log($scope.icons);
 
