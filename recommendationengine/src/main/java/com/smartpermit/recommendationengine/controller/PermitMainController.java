@@ -37,7 +37,6 @@ public class PermitMainController {
 
     @RequestMapping(value = "/recommend", method = RequestMethod.GET)
     public ResponseEntity recommendData(@RequestParam("permitId") String permitId, @RequestParam("count") int count) {
-        System.out.println("permitId "+permitId +" count "+count);
         List<Permit> permitList = recommenderImpl.getRecommendations(permitId, count);
         if(permitList != null){
             return new ResponseEntity(permitList,HttpStatus.OK);
@@ -83,11 +82,4 @@ public class PermitMainController {
         }
         return new ResponseEntity(new HashMap<String,String>(){{put("Message","Data Model Generated");}}, HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ResponseEntity test() {
-        System.out.println("Test URL HIT");
-        return new ResponseEntity(new HashMap<String,String>(){{put("Message","TEST URL HIT");}}, HttpStatus.OK);
-    }
-
 }

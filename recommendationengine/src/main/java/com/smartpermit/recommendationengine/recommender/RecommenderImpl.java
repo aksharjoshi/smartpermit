@@ -1,6 +1,8 @@
 package com.smartpermit.recommendationengine.recommender;
 
+import com.smartpermit.recommendationengine.model.Acronym;
 import com.smartpermit.recommendationengine.model.Permit;
+import com.smartpermit.recommendationengine.repositories.AcronymMasterRepository;
 import com.smartpermit.recommendationengine.repositories.PermitDetailsRepository;
 import com.smartpermit.recommendationengine.repositories.PermitRepository;
 import org.apache.mahout.cf.taste.common.TasteException;
@@ -38,7 +40,7 @@ public class RecommenderImpl implements Recommender {
     PermitRepository permitRepository;
 
     @Autowired
-    PermitDetailsRepository permitDetailsRepository;
+    AcronymMasterRepository acronymRepository;
 
     @Autowired
     ResourceLoader resource;
@@ -113,13 +115,28 @@ public class RecommenderImpl implements Recommender {
         List<RecommendedItem> recommendedPermitList = getRecommendedItemList(permitId, numberOfRecommendations);
 
         if (recommendedPermitList.size() != 0) {
+
+            HashMap<String,String> hashMap = getAcronymMap();
+
             for (RecommendedItem recommendedItem : recommendedPermitList) {
                 Permit permit = permitRepository.findPermitbyId(recommendedItem.getItemID());
+                permit.setPermitJobTypeDescription(hashMap.get(permit.getPermitJobType()));
+                permit.setPermitTypeDescription(hashMap.get(permit.getPermitType()));
+                permit.setPermitSubtypeDescription(hashMap.get(permit.getPermitSubtype()));
                 permitList.add(permit);
             }
         }
 
         return permitList;
+    }
+
+    private HashMap getAcronymMap() {
+        HashMap<String,String> hashmap = new HashMap<>();
+        List<Acronym> acronymList = acronymRepository.findAllAcronymDescriptions();
+        for(Acronym acronym : acronymList){
+            hashmap.put(acronym.getAcronym(),acronym.getDescription());
+        }
+        return hashmap;
     }
 
     private List<RecommendedItem> getRecommendedItemList(String permitId, int numberOfRecommendations) {
