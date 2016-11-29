@@ -139,9 +139,10 @@ app.controller('permitsController', function($scope,$http) {
 		"REMODELING" : "glyphicons-281-settings.png",
 		"COMMERCIAL" : "glyphicons-620-industrial-zone.png",
 		"RESIDENTIAL" : "glyphicons-21-home.png",
+		"EXISTING" : "glyphicons-21-home.png",
 		"OFFICE" : "glyphicons-90-building.png",
 		"RESIDENTIAL" : "glyphicons-21-home.png",
-		"OTHERS" : "",
+		"OTHERS" : "glyphicons-630-engineering-networks.png",
 		"LIVINGROOM" : "glyphicons-87-display.png",
 		"HALL" : "glyphicons-87-display.png",
 		"BEDROOM" : "glyphicons-628-bedroom-lamp.png",
@@ -149,10 +150,10 @@ app.controller('permitsController', function($scope,$http) {
 		"BATHROOM" : "glyphicons-514-bath-bathtub.png",
 		"BASEMENT" : "glyphicons-681-door.png",
 		"STAIRS" : "glyphicons-431-construction-cone.png",
-		"BACKYARD" : "",
-		"PATIO" : "",
-		"CURB/FENCE" : "",
-		"OTHER" : "",
+		"BACKYARD" : "glyphicons-614-park.png",
+		"PATIO" : "glyphicons-686-sunbath.png",
+		"CURB/FENCE" : "glyphicons-27-road.png",
+		"OTHER" : "glyphicons-195-question-sign.png",
 		"YES" : "glyphicons-207-ok.png",
 		"NO" : "glyphicons-208-remove.png"
 	};
@@ -169,10 +170,10 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.KITCHEN = "glyphicons-277-cutlery.png";
 	$scope.BASEMENT = "glyphicons-681-door.png";
 	$scope.STAIRS = "glyphicons-431-construction-cone.png";
-	$scope.BACKYARD = "";
-	$scope.PATIO = "";
-	$scope.CURBFENCE = "";
-	$scope.OTHER = "";
+	$scope.BACKYARD = "glyphicons-614-park.png";
+	$scope.PATIO = "glyphicons-686-sunbath.png";
+	$scope.CURBFENCE = "glyphicons-27-road.png";
+	$scope.OTHER = "glyphicons-195-question-sign.png";
 	$scope.YES = "glyphicons-207-ok.png";
 	$scope.NO = "glyphicons-208-remove.png";
 
