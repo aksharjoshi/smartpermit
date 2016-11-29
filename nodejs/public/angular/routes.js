@@ -57,35 +57,38 @@ app.controller('recommendationController', function($scope,$http) {
 	$scope.job_types = [];
 	$scope.permit_types = [];
 	$scope.permit_subtypes = [];
+	$scope.c_job_type = "";
 	
 	$http.get("/getJobType").success(function(response){
 		$(response).each(function(key,obj){
-			console.log(obj);
 			$scope.job_types.push(obj.JOB_TYPE);
 		});
-		console.log($scope.job_types);
+		
+		$("#select_job_type option:first").remove();
+		$scope.c_job_type = $("#select_job_type option:first").val();
 	});
-	$scope.getPermitType = function(job_type){
-		console.log(job_type);
-	};
 
-	$http.get("/getPermitType").success(function(response){
-		$(response).each(function(key,obj){
-			$scope.permit_types.push(obj.PERMIT_TYPE);
+	$scope.getPermitType = function(job_type){
+		$http.get("/getPermitType?job_type="+$scope.c_job_type).success(function(response){
+			$(response).each(function(key,obj){
+				$scope.permit_types.push(obj.PERMIT_TYPE);
+			});
+			console.log($scope.permit_types);
 		});
-		console.log($scope.permit_types);
-	});
+	};
+/*
+	
 	$http.get("/getPermitSubType").success(function(response){
 		$(response).each(function(key,obj){
 			$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
 		});
 		console.log($scope.permit_subtypes);
-		$("#select_job_type option:first").remove();
+		
 		$("#select_permit_type option:first").remove();
 		$("#select_permit_subtype option:first").remove();
 	});
 
-
+*/
 	
 	$scope.getRecommendations = function(){
 		var jobType = $("#select_job_type").val();
