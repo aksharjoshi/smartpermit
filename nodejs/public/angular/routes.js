@@ -64,15 +64,16 @@ app.controller('recommendationController', function($scope,$http) {
 		});
 		
 		$("#select_job_type option:first").remove();
-		//$("#select_job_type option:first").val();
+		$("#select_job_type").trigger("change");
 	});
-	$("#select_job_type").trigger("change");
+	
 	$scope.getPermitType = function(job_type){
 		$http.get("/getPermitType?job_type="+job_type).success(function(response){
 			$("#containerPermitType").show();
 			$(response).each(function(key,obj){
 				$scope.permit_types.push(obj.PERMIT_TYPE);
 			});
+			$("#select_permit_type option:first").remove();
 			console.log($scope.permit_types);
 		});
 	};
