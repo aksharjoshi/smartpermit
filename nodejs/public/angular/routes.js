@@ -207,8 +207,7 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.questionID = nextQuestionid;
 			 	$scope.question = response.Question;
 			 	$scope.selectedOption = $scope.responses[$scope.questionID];
-			 	console.log(response);
-			 	console.log($.parseJSON(response));
+			 	console.log(response.Next_question);
 			 	$scope.options = $.parseJSON(response.Next_question);
 			 	//console.log($scope.options);
 			 	if(typeof $scope.options.ANSWER == "string"){
