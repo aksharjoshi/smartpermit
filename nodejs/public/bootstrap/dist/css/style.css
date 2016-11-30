@@ -38,3 +38,11 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.imgIcon{
+  display: block;
+  text-align: center;
+  margin-left: 20px;
+  height: 40px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
