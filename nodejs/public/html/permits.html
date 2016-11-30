@@ -32,7 +32,7 @@
     <div class="col-md-3" style="cursor:pointer;" ng-repeat="(option, value) in options">
       <div ng:class="{true:'wizard-box select', false:'wizard-box'}[selectedOption==option]">      
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
-            <img id="img_{{value}}" src="" />
+            <img id="img_{{value}}" data="{{value}}" class="imgIcon" />
             <input type="radio" name="option" value="{{value}}" style="visibility:hidden;" ng-click="selectWizard()">
             {{value}}
         </label>
