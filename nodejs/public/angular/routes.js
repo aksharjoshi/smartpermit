@@ -160,7 +160,15 @@ app.controller('permitsController', function($scope,$http) {
 		"ALL" : "glyphicons-194-ok-sign.png",
 		"DEMOLITIONOFANYWALL" : "glyphicons-314-ax.png",
 		"RELOCATION" : "glyphicons-435-redo.png",
-		"REPAIRING/STYLINGOFFIXTURES" : "glyphicons-440-wrench.png"
+		"REPAIRING/STYLINGOFFIXTURES" : "glyphicons-440-wrench.png",
+		"SHOWER" : "glyphicons-516-shower.png",
+		"BATHTUB" : "glyphicons-514-bath-bathtub.png",
+		"LIGHTING/SWITCHING" : "glyphicons-65-lightbulb.png",
+		"VENT" : "glyphicons-22-snowflake.png",
+		"WINDOW" : "glyphicons-95-vector-path-square.png",
+		"FAUCET" : "glyphicons-515-bath-shower.png",
+		"NONE" : "glyphicons-200-ban-circle.png"
+
 	};
 	$scope.NEW = "glyphicons-619-mixed-buildings.png";
 	$scope.REMODELING = "glyphicons-281-settings.png";
