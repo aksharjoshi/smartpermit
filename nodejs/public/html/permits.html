@@ -7,7 +7,7 @@
 <h3 class="page-header">{{question}}</h3>
 <div class="row placeholders" style="margin-top:100px;">
     <div class="col-md-3" style="cursor:pointer;" ng-repeat="(option, value) in options">
-      <div style="border-radius:50%;border:1px solid #ccc; height:200px; width:200px; background-color: #ddd;">
+      <div class="wizard-box">
         <!--<i class="glyphicon glyphicon-home" style="font-size:50px; margin-top: 50px; margin-bottom: 20px;"></i>-->
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{value}}" src="" />
@@ -15,7 +15,7 @@
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
-         <img id="img_{{option}}" data="{{option}}" class="imgIcon" style="display: block;text-align: center;margin-left: 20px;height: 40px;margin-top: -10px;margin-bottom: 10px;"/>
+         <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" checked style="visibility:visible;"> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" style="visibility:visible;"> 
             {{option}}
