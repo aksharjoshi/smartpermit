@@ -23,6 +23,9 @@
 .wizard-box input[type="radio"]:checked {
    background-color: yellow;
  }
+ .select{
+    background-color: #286090;
+ }
 </style>
 <div id="prePermitContainer">
 <h3 class="page-header">{{question}}</h3>
@@ -32,13 +35,13 @@
         <!--<i class="glyphicon glyphicon-home" style="font-size:50px; margin-top: 50px; margin-bottom: 20px;"></i>-->
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{value}}" src="" />
-            <input type="radio" name="option" value="{{value}}" style="visibility:visible;" ng-click="selectWizard(this)">
+            <input type="radio" name="option" value="{{value}}" style="visibility:visible;" ng-click="selectWizard()">
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
          <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" ng-click="selectWizard(this)" checked style="visibility:visible;"> 
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" ng-click="selectWizard(this)" style="visibility:visible;"> 
+            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" ng-click="selectWizard()" checked style="visibility:visible;"> 
+            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" ng-click="selectWizard()" style="visibility:visible;"> 
             {{option}}
         </label>
       </div>

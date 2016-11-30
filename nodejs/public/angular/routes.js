@@ -265,8 +265,9 @@ app.controller('permitsController', function($scope,$http) {
 		});
 	};
 	
-	$scope.selectWizard = function(e){
-		console.log(e);
+	$scope.selectWizard = function(){
+		$(".select").removeClass("select");
+		$("input[name=option]:checked").parent("label").parent(".wizard-box").addClass("select");
 	};
 
 	$http.get("/getquestion?id=1").success(function(response){
