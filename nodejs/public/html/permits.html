@@ -32,13 +32,13 @@
         <!--<i class="glyphicon glyphicon-home" style="font-size:50px; margin-top: 50px; margin-bottom: 20px;"></i>-->
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{value}}" src="" />
-            <input type="radio" name="option" value="{{value}}" style="visibility:visible;">
+            <input type="radio" name="option" value="{{value}}" style="visibility:visible;" ng-click="selectWizard(this)">
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
          <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" checked style="visibility:visible;"> 
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" style="visibility:visible;"> 
+            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" ng-click="selectWizard(this)" checked style="visibility:visible;"> 
+            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" ng-click="selectWizard(this)" style="visibility:visible;"> 
             {{option}}
         </label>
       </div>

@@ -265,6 +265,10 @@ app.controller('permitsController', function($scope,$http) {
 		});
 	};
 	
+	$scope.selectWizard = function(e){
+		console.log(e.target);
+	};
+
 	$http.get("/getquestion?id=1").success(function(response){
 		console.log(response);
 	 	$scope.questionID = 1;
