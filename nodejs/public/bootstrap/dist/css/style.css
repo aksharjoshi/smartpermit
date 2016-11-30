@@ -38,18 +38,3 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.imgIcon{
-  display: block;
-  text-align: center;
-  margin-left: 20px;
-  height: 40px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-.wizard-box{
-  border-radius:50%;
-  border:1px solid #ccc; 
-  height:200px; 
-  width:200px; 
-  background-color: #ddd;
-}
