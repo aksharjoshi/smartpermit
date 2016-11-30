@@ -64,7 +64,7 @@ app.controller('recommendationController', function($scope,$http) {
 			$scope.job_types.push(obj.JOB_TYPE);
 			if(key == len-1){
 				$("#select_job_type option:first").remove();
-				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 1000);
+				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 100);
 			}
 		});
 		
@@ -80,7 +80,7 @@ app.controller('recommendationController', function($scope,$http) {
 				$scope.permit_types.push(obj.PERMIT_TYPE);
 				if(key == len-1){
 					$("#select_permit_type option:first").remove();
-					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 1000);
+					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 100);
 				}
 			});
 		});
@@ -207,26 +207,27 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.questionID = nextQuestionid;
 			 	$scope.question = response.Question;
 			 	$scope.selectedOption = $scope.responses[$scope.questionID];
+			 	console.log(response);
 			 	$scope.options = $.parseJSON(response.Next_question);
-			 	console.log($scope.options);
+			 	//console.log($scope.options);
 			 	if(typeof $scope.options.ANSWER == "string"){
 			 		var options = [];
 			 		response.Options = response.Options.split(",");
 			 		$(response.Options).each(function(index,option){
-			 			console.log("index: "+index+" | option: "+option);
+			 			//console.log("index: "+index+" | option: "+option);
 			 			//options[index] = option;
 			 		});
 			 		$scope.showComponents = "yes";
 			 		$scope.permits = $scope.options.ANSWER;
 			 		$scope.options = response.Options;
-			 		console.log($scope.options);
+			 		//console.log($scope.options);
 			 	} 
 			 	setTimeout(function(){ 
 			 		$(".imgIcon").each(function(index,imgObj){
 				 		var icon = $(imgObj).attr("data");
 				 		icon = icon.replace(/\s/g, '');
 				 		//icon = icon.replace(/\//g,"");
-				 		console.log(icon);
+				 		//console.log(icon);
 				 		if($scope.icons[icon] != "undefined")
 				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
 				 	});
