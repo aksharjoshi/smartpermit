@@ -34,13 +34,13 @@
       <div ng:class="{true:'wizard-box select', false:'wizard-box'}[selectedOption==option]">      
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{value}}" src="" />
-            <input type="radio" name="option" value="{{value}}" style="visibility:visible;" ng-click="selectWizard()">
+            <input type="radio" name="option" value="{{value}}" style="visibility:hidden;" ng-click="selectWizard()">
             {{value}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
          <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" ng-click="selectWizard()" checked style="visibility:visible;"> 
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" ng-click="selectWizard()" style="visibility:visible;"> 
+            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option" ng-click="selectWizard()" checked style="visibility:hidden;"> 
+            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option" ng-click="selectWizard()" style="visibility:hidden;"> 
             {{option}}
         </label>
       </div>
