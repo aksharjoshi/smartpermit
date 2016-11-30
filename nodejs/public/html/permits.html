@@ -31,8 +31,8 @@
 <h3 class="page-header">{{question}}</h3>
 <div class="row placeholders" style="margin-top:100px;">
     <div class="col-md-3" style="cursor:pointer;" ng-repeat="(option, value) in options">
-      <div class="wizard-box select" ng-if="selectedOption == option">
       <div class="wizard-box">
+      <div class="wizard-box select" ng-if="selectedOption == option">      
         <!--<i class="glyphicon glyphicon-home" style="font-size:50px; margin-top: 50px; margin-bottom: 20px;"></i>-->
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{value}}" src="" />
