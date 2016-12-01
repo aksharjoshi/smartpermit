@@ -18,8 +18,8 @@ exports.login = function(req, res){
 		console.log(param);
 		console.log("test");
 		var errMsg = '';
-
-		console.log("req is : ",req);
+		console.log("-----------SESSION----------");
+		console.log(req.session);
 
 		if(param.email == "" || param.email == "undefined"){
 			errMsg += 'Email is required.';
