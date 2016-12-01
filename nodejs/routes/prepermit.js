@@ -10,7 +10,7 @@ exports.getCurrentQuestion = function(req, res){
 		console.log("req query is: ", JSON.stringify(req.query));
 	//console.log("session var is ", req.session.question_set);
 
-		var qs = "Select * from PRE_PERMIT where ID="+id;
+		var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
 
 		dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
 			if (err) {
