@@ -210,9 +210,25 @@ app.controller('permitsController', function($scope,$http) {
 			$("#prePermitContainer").show();
 			$("#permitContainer").hide();
 			$("#permit").html("");
-			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
+			
+			if($scope.answer_type == "MULTIPLE"){
+				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
+				var userAnswers = [];
+				$("input[name='option']:checked").each(function(key,obj){
+					if(key>0)
+						userAnswers.push($(obj).val());
+						
+						$http.post('/saveQuestion', {"saveQuestions": JSON.stringify(userAnswers)})
+						.success(function(data, status, headers, config) {
+							//obj.sensordetail.status=sensorstatus;
+						});
+			}
+			else
+				var nextQuestionid = $("input[name='option']:checked").attr("next-question");
+
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
+
 			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
 
 				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
@@ -220,8 +236,6 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
-				 	console.log(">>>>>>>>>>>>>>>next ques");
-				 	console.log(response.Next_question);
 				 	$scope.options = $.parseJSON(response.Next_question);
 				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
