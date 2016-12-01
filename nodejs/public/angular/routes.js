@@ -220,7 +220,7 @@ app.controller('permitsController', function($scope,$http) {
 					});
 					
 				});
-				$http.get("/getNextQuestions").success(function(response){
+				$http.get("/checkNextQuestions").success(function(response){
 					console.log(response.msg);
 					console.log(response.data);
 				});
