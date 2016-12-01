@@ -16,7 +16,7 @@ exports.seasonalAnalysis = function(req, res){
 
     var inputYear = req.query.year;
     if(inputYear != "undefined" && inputYear != null && inputYear != "")
-        var inputYearStr = " AND Year(`FILING DATE`)=" + inputYear;
+        var inputYearStr = " AND Year(`FILING_DATE`)=" + inputYear;
     else
         var inputYearStr = "";
 
@@ -104,6 +104,11 @@ exports.popularPermit = function(req, res){
     };
 
     var inputYear = req.query.year;
+
+    if(inputYear != "undefined" && inputYear != null && inputYear != "")
+        var inputYearStr = " AND Year(`FILING_DATE`)=" + inputYear;
+    else
+        var inputYearStr = "";
 
    // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
     /*var qs = "SELECT Year(`FILING DATE`) AS Year,"+
