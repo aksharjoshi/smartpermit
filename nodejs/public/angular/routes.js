@@ -268,6 +268,7 @@ app.controller('permitsController', function($scope,$http) {
 						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
+							
 							var xproducts = [];
 							var temp = [];
 							$($scope.outputPermits).each(function(i,iproduct){
@@ -276,7 +277,7 @@ app.controller('permitsController', function($scope,$http) {
 									temp.push({"product":iproduct.product,"permits":iproduct.permits});
 								}
 							});
-							console.log(temp);
+							$scope.outputPermits = temp;
 						});
 					}
 				});
