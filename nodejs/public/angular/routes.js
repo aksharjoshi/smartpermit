@@ -220,7 +220,10 @@ app.controller('permitsController', function($scope,$http) {
 					});
 					
 				});
-				console.log($scope.calculatedPermits);
+				$http.get("/getNextQuestions").success(function(response){
+					console.log(response.msg);
+					console.log(response.data);
+				});
 			}
 		}
 		else{
