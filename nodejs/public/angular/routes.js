@@ -251,6 +251,7 @@ app.controller('permitsController', function($scope,$http) {
 							 	$scope.question = response.Question;
 							 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER)[opt];
 							 	$scope.answer_type = response.Answer_type;
+							 	$scope.showComponents = "yes";
 				 			}
 				 		});
 				 		
