@@ -241,7 +241,7 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
-				 		console.log(response.Next_question.ANSWER);
+				 		console.log(response.Next_question."ANSWER");
 				 		return false;
 				 	}
 				 	else{
