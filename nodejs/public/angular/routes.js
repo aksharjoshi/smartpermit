@@ -214,6 +214,7 @@ app.controller('permitsController', function($scope,$http) {
 			if($scope.answer_type == "MULTIPLE"){
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
 				$scope.XQuestion = $("input[name='option']:checked:first").val();
+				console.log("12.XXX: "+$scope.XQuestion);
 				var saveQuestions = [];
 				var respQuestion = $.parseJSON($scope.RESPONSE.Next_question);
 				$("input[name='option']:checked").each(function(key,obj){
@@ -243,6 +244,7 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
 				 		var question = response.Question;
+				 		console.log("XXX: "+$scope.XQuestion);
 				 		console.log(response.Next_question[$scope.XQuestion]);
 				 		
 				 		return false;
