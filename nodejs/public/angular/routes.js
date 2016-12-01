@@ -305,6 +305,7 @@ app.controller('permitsController', function($scope,$http) {
 		$("input[type=radio]:checked").parent("label").parent(".wizard-box").addClass("select");
 	};
 	$scope.multiSelectelectWizard = function(){
+		console.log("multiSelectelectWizard++++++++++++++++");
 		$("input[type=checkbox]:checked").parent("label").parent(".wizard-box").addClass("select");
 	};
 
