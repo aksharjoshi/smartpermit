@@ -8,30 +8,16 @@ exports.getCurrentQuestion = function(req, res){
 
 	if(index.checkLogin(req,res)){
 		console.log("req query is: ", JSON.stringify(req.query));
-	//console.log("session var is ", req.session.question_set);
-
 		var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
-
-		dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+		dbObject.find(qs, function(err, response){
 			if (err) {
-	        	//console.log("err", err);
 	            res.status(500).jsonp(err)
 	        }
 	        console.log("\n\nresponse FOR prepermit is: ", response);
-
-	        //req.session.question_set.push(response[0]);
-
-	        //response[0].Next_question = JSON.parse
 	        console.log(response[0].Next_question);
-
-	       // JSON.parse(response[0].Next_question);
 	        res.jsonp(response[0]);
 		});
 	}
-
-	//console.log("req is: ", JSON.stringify(req));
-	
-	//req.session.question_set=[];	
 };
 
 exports.saveNextQuestion = function(req, res){
@@ -51,31 +37,24 @@ exports.saveNextQuestion = function(req, res){
 
 
 exports.checkNextQuestions = function(req, res){
-	var id ="";
+	var id ={};
 	if(index.checkLogin(req,res)){
 		if(req.session.question_set.length > 0){
 			id = req.session.question_set.pop();
 
-			var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
+			var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id.next_question_id;
 
-			dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+			dbObject.find(qs, function(err, response){
 				if (err) {
-		        	//console.log("err", err);
 		            res.status(500).jsonp(err)
 		        }
 		        console.log("\n\nresponse FOR prepermit is: ", response);
-
-		        //req.session.question_set.push(response[0]);
-
-		        //response[0].Next_question = JSON.parse
 		        console.log(response[0].Next_question);
-
-		       // JSON.parse(response[0].Next_question);
-		        res.send({"msg": "Success", "data":response[0]});
+		        res.send({"msg": "Success", "data":response[0], "previous_answer": id.answer});
 			});
 		}
 		else{
-			res.send({"msg":"Empty stack", "data": None});
+			res.send({"msg":"Empty stack", "data": "None"});
 		}
 	}
 }

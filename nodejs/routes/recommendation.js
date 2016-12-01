@@ -78,9 +78,8 @@ exports.getJobType = function(req, res){
   	var qs = "SELECT DISTINCT(JOB_TYPE) FROM PERMIT_MASTER";
 
     console.log("session is: ", req.session);
-  	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+  	dbObject.find(qs, function(err, response){
           if (err) {
-              //console.log("err", err);
               res.status(500).jsonp(err)
           }
           else{
@@ -98,9 +97,8 @@ exports.getPermitType = function(req, res){
 
   	var qs = "SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE JOB_TYPE='"+job_type+"'";
 
-  	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+  	dbObject.find(qs, function(err, response){
           if (err) {
-              //console.log("err", err);
               res.status(500).jsonp(err)
           }
           else{
@@ -119,9 +117,8 @@ exports.getPermitSubType = function(req, res){
 
   	var qs = "SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER WHERE JOB_TYPE = '"+job_type+"' AND PERMIT_TYPE = '" + permit_type + "'";
 
-  	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+  	dbObject.find(qs, function(err, response){
           if (err) {
-              //console.log("err", err);
               res.status(500).jsonp(err)
           }
           else{

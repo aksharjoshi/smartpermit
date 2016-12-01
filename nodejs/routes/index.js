@@ -32,17 +32,13 @@ exports.login = function(req, res){
 			//Database Connection - validate customer login credentials and redirect to home page
 			var qs = "SELECT EMAIL, PASSWORD, ID FROM USER WHERE EMAIL = '" + param.email + "' and PASSWORD = '" + param.password + "'";
 
-			dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+			dbObject.find(qs, function(err, response){
 				if (err) {
-		        	//console.log("err", err);
-		            //res.status(500).jsonp(err)
 		            res.render('index', { title: 'Smart Permits',errMsg: "Invalid username or password!" });
 		        }
 		        else{
 					console.log("\n\n User info is: ", response);
-			        //res.jsonp(response);	
 			        var session = req.session;
-			        //sess.id= 1233;
 			        session.userid = response[0].EMAIL; 
 			        var date = new Date();
 
@@ -59,13 +55,6 @@ exports.login = function(req, res){
 			        });	        	
 			    }
 			});
-			
-			/*if(param.email == "admin@sps.com" && param.password == "admin")
-				res.redirect('/home');
-			else
-				res.render('index', { title: 'Smart Permits',errMsg: "Invalid username or password!" });
-			*/
-			//req.session.id = 1212;
 		}
 	}
 	catch(err) {
@@ -106,13 +95,10 @@ exports.logout = function(req, res){
 		req.session.userid = "";
 		console.log("Session destroyed");
 		req.session.question_set=[];
-		//res.msg = "Success";//('/');
 		res.send({"msg": "Success"});
 	}
 	else{
-		//res.msg = "Fail";
 		res.send({"msg": "Fail"});
-		//res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
 	}
 };
 
@@ -121,8 +107,6 @@ exports.checkLogin = function(req, res){
 		return true;
 	}
 	else{
-		//res.msg = "Fail";
 		res.send({"msg": "Fail"});
-		//res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
 	}
 };
