@@ -106,10 +106,13 @@ exports.logout = function(req, res){
 		req.session.userid = "";
 		console.log("Session destroyed");
 		req.session.question_set=[];
-		res.redirect('/');
+		//res.msg = "Success";//('/');
+		res.send({"msg": "Success"});
 	}
 	else{
-		res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
+		//res.msg = "Fail";
+		res.send({"msg": "Fail"});
+		//res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
 	}
 };
 
