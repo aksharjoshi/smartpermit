@@ -69,8 +69,10 @@ exports.getDescription = function(req, res){
 
 		var accr = req.body.permits;
 		console.log("permits are : ", req.body.permits);
-		for(var i = 0; i < accr.length; i++){
-			qs += "'"+accr[i]+"'";
+		qs += "'"+accr[0]+"'";
+		
+		for(var i = 1; i < accr.length; i++){
+			qs += ", '"+accr[i]+"'";
 		}
 		qs += ")";
 		
