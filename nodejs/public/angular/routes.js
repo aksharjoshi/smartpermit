@@ -169,7 +169,7 @@ app.controller('permitsController', function($scope,$http) {
 		"FAUCET" : "glyphicons-515-bath-shower.png",
 		"NONE" : "glyphicons-200-ban-circle.png",
 		"COMPONENT" : "glyphicons-453-shop.png",
-		"SUB COMPONENT" : "glyphicons-514-bath-bathtub.png",
+		"SUBCOMPONENT" : "glyphicons-514-bath-bathtub.png",
 
 	};
 	$scope.NEW = "glyphicons-619-mixed-buildings.png";
