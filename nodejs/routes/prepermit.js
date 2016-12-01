@@ -36,9 +36,9 @@ exports.getCurrentQuestion = function(req, res){
 
 exports.saveNextQuestion = function(req, res){
 
-	var qid = req.body.saveQuesitions;
-	console.log("req in saveQuesitions is: ", req.body);
-	console.log("len is: ", req.body.saveQuesitions.length)
+	var qid = req.body.saveQuestions;saveQuestions
+	console.log("req in saveQuestions is: ", req.body);
+	console.log("len is: ", req.body.saveQuestions.length)
 	if(index.checkLogin(req,res)){
 		for(var i = 0; i < qid.length; i++){
 			req.session.question_set.push(qid[i]);
