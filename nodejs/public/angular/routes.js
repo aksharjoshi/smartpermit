@@ -213,19 +213,15 @@ app.controller('permitsController', function($scope,$http) {
 			
 			if($scope.answer_type == "MULTIPLE"){
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
-				var userAnswers = [];
+				var saveQuestions = [];
 				var respQuestion = $.parseJSON($scope.RESPONSE.Next_question);
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
-						userAnswers.push($(obj).val());
-						console.log($(obj).val());
-						console.log("Save ques: "+respQuestion[$(obj).val()]);
+						saveQuestions.push(respQuestion[$(obj).val()]);
 					}
 				});
-				var saveObj = $scope.RESPONSE;
-				saveObj.userAnswers = userAnswers;
-				console.log($.parseJSON($scope.RESPONSE.Next_question));
-				$http.post('/saveQuestion', {"saveQuestions": saveObj})
+				
+				$http.post('/saveQuestion', {"saveQuestions": saveQuestions})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
 				});
