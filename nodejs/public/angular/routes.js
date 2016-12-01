@@ -222,6 +222,7 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
 				 	//console.log(response.Next_question);
 				 	$scope.options = $.parseJSON(response.Next_question);
+				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
 					 	$("#containerComponent").show();
 					 	setTimeout(function(){ 
@@ -270,6 +271,8 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.question = response.Question;
 			 	$scope.options = $.parseJSON(response.Next_question);
 			 	$scope.selectedOption = $scope.responses[$scope.questionID];
+			 	$scope.answer_type = response.Answer_type;
+
 			 	if((response.Options).indexOf("COMPONENT") >= 0){
 				 		$("#containerComponent").show();
 				 		setTimeout(function(){ 
