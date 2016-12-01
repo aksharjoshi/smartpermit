@@ -268,12 +268,15 @@ app.controller('permitsController', function($scope,$http) {
 						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
-							/*var xproducts = [];
+							var xproducts = [];
+							var temp = [];
 							$($scope.outputPermits).each(function(i,iproduct){
 								if($.inArray( iproduct.product, xproducts ) == -1){
 									xproducts.push(iproduct.product);
+									temp.push({"product":iproduct.product,"permits":iproduct.permits});
 								}
-							});*/
+							});
+							console.log(temp);
 						});
 					}
 				});
