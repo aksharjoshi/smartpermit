@@ -17,7 +17,7 @@ exports.seasonalAnalysis = function(req, res){
         else
             var inputYearStr = "";
 
-        var inputQtr = req.body.quarter;
+        var inputQtr = req.query.quarter;
         var inputQtrStr = "";
         var inputQtrGr = "";
 
@@ -63,7 +63,7 @@ exports.expirartionAnalysis = function(req, res){
         else
             var inputYearStr = "";
 
-        var inputQtr = req.body.quarter;
+        var inputQtr = req.query.quarter;
         var inputQtrStr = "";
         var inputQtrGr = "";
 
@@ -99,7 +99,7 @@ exports.heatMap = function(req, res){
         else
             var inputYearStr = "";
 
-        var inputQtr = req.body.quarter;
+        var inputQtr = req.query.quarter;
         var inputQtrStr = "";
         var inputQtrGr = "";
 
@@ -138,7 +138,7 @@ exports.popularPermit = function(req, res){
         else
             var inputYearStr = "";
 
-        var inputQtr = req.body.quarter;
+        var inputQtr = req.query.quarter;
         var inputQtrStr = "";
         var inputQtrGr = "";
 
