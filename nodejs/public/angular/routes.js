@@ -215,6 +215,7 @@ app.controller('permitsController', function($scope,$http) {
 			if($scope.answer_type == "MULTIPLE"){
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
 				$scope.XQuestion.push($("input[name='option']:checked:first").val());
+				console.log($scope.XQuestion);
 				var saveQuestions = [];
 				var respQuestion = $.parseJSON($scope.RESPONSE.Next_question);
 				$("input[name='option']:checked").each(function(key,obj){
@@ -341,7 +342,7 @@ app.controller('permitsController', function($scope,$http) {
 		$("input[type=radio]:checked").parent("label").parent(".wizard-box").addClass("select");
 	};
 	$scope.multiSelectelectWizard = function(){
-		console.log("multiSelectelectWizard++++++++++++++++");
+		$( "input[type=checkbox]:not(:checked)").parent("label").parent(".wizard-box").removeClass("select");
 		$("input[type=checkbox]:checked").parent("label").parent(".wizard-box").addClass("select");
 	};
 
