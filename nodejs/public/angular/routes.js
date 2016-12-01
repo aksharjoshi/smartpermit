@@ -214,11 +214,12 @@ app.controller('permitsController', function($scope,$http) {
 			if($scope.answer_type == "MULTIPLE"){
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
 				var userAnswers = [];
+				var respQuestion = $scope.RESPONSE.Next_question
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
 						userAnswers.push($(obj).val());
 						console.log($(obj).val());
-						console.log("Save ques: "+$scope.RESPONSE.Next_question[$(obj).val()]);
+						console.log("Save ques: "+respQuestion[$(obj).val()]);
 					}
 				});
 				var saveObj = $scope.RESPONSE;
