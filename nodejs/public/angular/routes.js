@@ -228,6 +228,8 @@ app.controller('permitsController', function($scope,$http) {
 							$scope.calculatedPermits.push(p);
 							$scope.outputPermits.push({"product":product,"permits":p});
 					});
+					console.log("Product:"+product);
+					console.log($scope.outputPermits);
 					
 				});
 				$http.get("/checkNextQuestions").success(function(response){
