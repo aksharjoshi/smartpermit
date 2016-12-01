@@ -291,7 +291,8 @@ app.controller('permitsController', function($scope,$http) {
 				 			}
 							//var index = $scope.XQuestion.indexOf(opt);
 							//$scope.XQuestion.splice(idx, 1);
-							$scope.XQuestion.pop();
+							$scope.XQuestion[idx] = "";
+							//$scope.XQuestion.pop();
 							console.log($scope.XQuestion)
 				 		});
 				 		
