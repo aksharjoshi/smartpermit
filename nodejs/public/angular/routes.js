@@ -139,6 +139,8 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.selectedOption = "";
 	$scope.showComponents = "no";
 	$scope.XQuestion = [];
+	$scope.finalAnswer = false;
+	$scope.calculatedPermits = [];
 
 	$scope.icons = {
 		"NEW" : "glyphicons-619-mixed-buildings.png",
@@ -200,12 +202,20 @@ app.controller('permitsController', function($scope,$http) {
 
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
-			$("#prePermitContainer").hide();
-			$("#permitContainer").show();
-			$("#permits").html($scope.permits);
-			var prevQuestionID = $scope.questionID;
-			$scope.questionID = 100;
-			$scope.questionPrevArray[$scope.questionID] = prevQuestionID;
+			if(finalAnswer){
+				$("#prePermitContainer").hide();
+				$("#permitContainer").show();
+				$("#permits").html($scope.permits);
+				var prevQuestionID = $scope.questionID;
+				$scope.questionID = 100;
+				$scope.questionPrevArray[$scope.questionID] = prevQuestionID;
+			}
+			else{
+				$("input[name='option']:checked").each(function(key,obj){
+					$scope.calculatedPermits.push(respQuestion[$(obj).val()]);
+				});
+				console.log($scope.calculatedPermits);
+			}
 		}
 		else{
 			$("#prePermitContainer").show();
