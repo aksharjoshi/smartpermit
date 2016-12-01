@@ -22,6 +22,7 @@ exports.seasonalAnalysis = function(req, res){
         var inputQtrGr = "";
 
         if(inputQtr != "undefined" && inputQtr != null && inputQtr != ""){
+            console.log("input quarter: ", inputQtr);
             inputQtrStr = " AND QUARTER(`FILING DATE`) = " + inputQtr; 
             inputQtrGr = " AND MONTH(`FILING DATE`)";
         }
