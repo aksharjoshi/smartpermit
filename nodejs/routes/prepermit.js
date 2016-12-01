@@ -83,7 +83,7 @@ exports.getDescription = function(req, res){
 		        console.log("\n\nresponse FOR description is: ", response);
 		        //console.log(response[0].Next_question);
 		        var result = {};
-		        for (var i = 0; i < accr.length; i++) {
+		        /*for (var i = 0; i < accr.length; i++) {
 		        	result[accr[i]] = "";//response[i].DESCRIPTION;
 		        }
 		        for (var k = 0; i < accr.length; i++) {
@@ -98,8 +98,8 @@ exports.getDescription = function(req, res){
 		        	}
 		        }
 
-		        console.log("final result is: ", result);
-		        res.send({"msg": "Success", "data":result});
+		        console.log("final result is: ", result);*/
+		        res.send({"msg": "Success", "data":response});
 		});
 
 	}
