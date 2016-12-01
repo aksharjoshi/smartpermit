@@ -36,7 +36,7 @@ if ('development' == app.get('env')) {
 
 app.use(express.cookieParser());
 
-app.use(express.session(
+app.use(session(
     {
       /*genid: function(req){
         return genuuid()
