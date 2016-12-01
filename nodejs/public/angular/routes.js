@@ -42,9 +42,11 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 app.controller('logoutController',function($scope,$http){
 	if (confirm("Are you sure you want to logout?")== true) {
 	     $http.get("/logout").success(function(response){
-	     	console.log(response);
+	     	if(response.msg == "Success")
+	     		window.location = '/';
+	     	else
+	     		return false;
 	     });
-	     //window.location = '/';
 	} else {
 	    return false;
 	}
