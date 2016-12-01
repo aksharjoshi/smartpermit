@@ -40,7 +40,7 @@
          <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option && answer_type == 'SINGLE'" ng-click="selectWizard()" checked style="visibility:hidden;"> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option  && answer_type == 'SINGLE'" ng-click="selectWizard()" style="visibility:hidden;"> 
-             <input type="checkbox" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option  && answer_type == 'MULTIPLE'" ng-click="multiSelectWizard()" style="visibility:visible;"> 
+             <input type="checkbox" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option  && answer_type == 'MULTIPLE'" ng-click="multiSelectWizard()" style="visibility:visible;"> 
               <input type="checkbox" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option && answer_type == 'MULTIPLE'" ng-click="multiSelectWizard()" style="visibility:visible;"> 
 
             {{option}} {{answer_type}}
