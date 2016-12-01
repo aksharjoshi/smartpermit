@@ -24,7 +24,7 @@ exports.seasonalAnalysis = function(req, res){
         if(inputQtr != "undefined" && inputQtr != null && inputQtr != ""){
             console.log("input quarter: ", inputQtr);
             inputQtrStr = " AND QUARTER(`FILING DATE`) = " + inputQtr; 
-            inputQtrGr = " AND MONTH(`FILING DATE`)";
+            //inputQtrGr = " AND MONTH(`FILING DATE`)";
         }
         /*var qs = "SELECT  Year(`FILING_DATE`) AS Year, QUARTER(`FILING_DATE`) As Quarter, `PERMIT_TYPE` As Permit_Type, P.DESCRIPTION As Permit_Desc," + 
                  "COUNT(*) As Count FROM `PERMIT_DETAILS`,`ACRONYM_MASTER` As P WHERE `PERMIT_TYPE` = P.ACRONYM " +  inputYearStr + 
@@ -69,7 +69,7 @@ exports.expirartionAnalysis = function(req, res){
 
         if(inputQtr != "undefined" && inputQtr != null && inputQtr != ""){
             inputQtrStr = " AND Quarter(`FILING DATE`) = " + inputQtr; 
-            inputQtrGr = " AND MONTH(`FILING DATE`)";
+           // inputQtrGr = " AND MONTH(`FILING DATE`)";
         }
 
         var qs = "SELECT Year(`EXPIRATION DATE`) AS Year, QUARTER(`EXPIRATION DATE`) As Quarter, Month(`FILING DATE`) As Month , `PERMIT TYPE` As Permit_Type, P.DESCRIPTION As Permit_Desc, COUNT(*) As Count FROM `permit_history`,`ACRONYM_MASTER` As P WHERE Year(`EXPIRATION DATE`)=" + inputYear + " AND `RESIDETIAL` = 'YES' AND `PERMIT TYPE` = P.ACRONYM GROUP BY Year(`EXPIRATION DATE`),QUARTER(`EXPIRATION DATE`),`PERMIT TYPE`"+inputQtrStr;
@@ -105,7 +105,7 @@ exports.heatMap = function(req, res){
 
         if(inputQtr != "undefined" && inputQtr != null && inputQtr != ""){
             inputQtrStr = " AND MONTH(`FILING DATE`) = " + inputQtr; 
-            inputQtrGr = " AND MONTH(`FILING DATE`)";
+          //  inputQtrGr = " AND MONTH(`FILING DATE`)";
         }
 
        // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
