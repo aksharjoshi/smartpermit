@@ -31,17 +31,16 @@ exports.getCurrentQuestion = function(req, res){
 
 	//console.log("req is: ", JSON.stringify(req));
 	
-	//req.session.question_set=[];
-
-	
+	//req.session.question_set=[];	
 };
 
 exports.saveNextQuestion = function(req, res){
 
 	var qid = req.body.saveQuesitions;
-
+	console.log("req in saveQuesitions is: ", req.body);
+	console.log("len is: ", req.body.saveQuesitions.length)
 	if(index.checkLogin(req,res)){
-		for(var i = 0; i < qid.length(); i++){
+		for(var i = 0; i < qid.length; i++){
 			req.session.question_set.push(qid[i]);
 		}
 		console.log("next question set: ", req.session.question_set);
