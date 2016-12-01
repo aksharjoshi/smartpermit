@@ -192,6 +192,9 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.YES = "glyphicons-207-ok.png";
 	$scope.NO = "glyphicons-208-remove.png";
 
+
+	console.log($scope.icons);
+
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
 			$("#prePermitContainer").hide();
@@ -208,49 +211,44 @@ app.controller('permitsController', function($scope,$http) {
 			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
-			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
-
-				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
-				 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
-				 	$scope.questionID = nextQuestionid;
-				 	$scope.question = response.Question;
-				 	$scope.selectedOption = $scope.responses[$scope.questionID];
-				 	//console.log(response.Next_question);
-				 	$scope.options = $.parseJSON(response.Next_question);
-				 	if((response.Options).indexOf(COMPONENT"") >= 0){
-					 	$("#containerComponent").show();
-					 	setTimeout(function(){ 
-				 			$(".placeholders").children(":first").css("margin-left","11%");
-					 		$(".placeholders").children(":last").css("margin-left","25%");
-				 		}, 100);
-					}
-					else
-					 	$("#containerComponent").hide();
-				 	if(typeof $scope.options.ANSWER == "string"){
-				 		var options = [];
-				 		response.Options = response.Options.split(",");
-				 		$(response.Options).each(function(index,option){
-				 			//console.log("index: "+index+" | option: "+option);
-				 			//options[index] = option;
-				 		});
-				 		$scope.showComponents = "yes";
-				 		$scope.permits = $scope.options.ANSWER;
-				 		$scope.options = response.Options;
-				 		//console.log($scope.options);
-				 	} 
+			
+			$http.get("/getquestion?id="+nextQuestionid).success(function(response){
+			 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
+			 	$scope.questionID = nextQuestionid;
+			 	$scope.question = response.Question;
+			 	$scope.selectedOption = $scope.responses[$scope.questionID];
+			 	//console.log(response.Next_question);
+			 	$scope.options = $.parseJSON(response.Next_question);
+			 	if((response.Options).indexOf(COMPONENT"") >= 0){
+				 	$("#containerComponent").show();
 				 	setTimeout(function(){ 
-				 		$(".imgIcon").each(function(index,imgObj){
-					 		var icon = $(imgObj).attr("data");
-					 		icon = icon.replace(/\s/g, '');
-					 		if($scope.icons[icon] != "undefined")
-					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
-					 	});
-				 	}, 100);
-				});
-			}
-			else{
-				alert("Select atleast one option.");
-			}
+			 			$(".placeholders").children(":first").css("margin-left","11%");
+				 		$(".placeholders").children(":last").css("margin-left","25%");
+			 		}, 100);
+				}
+				else
+				 	$("#containerComponent").hide();
+			 	if(typeof $scope.options.ANSWER == "string"){
+			 		var options = [];
+			 		response.Options = response.Options.split(",");
+			 		$(response.Options).each(function(index,option){
+			 			//console.log("index: "+index+" | option: "+option);
+			 			//options[index] = option;
+			 		});
+			 		$scope.showComponents = "yes";
+			 		$scope.permits = $scope.options.ANSWER;
+			 		$scope.options = response.Options;
+			 		//console.log($scope.options);
+			 	} 
+			 	setTimeout(function(){ 
+			 		$(".imgIcon").each(function(index,imgObj){
+				 		var icon = $(imgObj).attr("data");
+				 		icon = icon.replace(/\s/g, '');
+				 		if($scope.icons[icon] != "undefined")
+				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+				 	});
+			 	}, 100);
+			});
 		}
 	};
 	
