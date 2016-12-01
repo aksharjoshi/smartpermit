@@ -53,7 +53,7 @@ exports.checkNextQuestions = function(req, res){
 		            res.status(500).jsonp(err)
 		        }
 		        console.log("\n\nresponse FOR prepermit is: ", response);
-		        console.log(response[0].Next_question);
+		        //console.log(response[0].Next_question);
 		        res.send({"msg": "Success", "data":response[0], "previous_answer": id.answer});
 			});
 		}
