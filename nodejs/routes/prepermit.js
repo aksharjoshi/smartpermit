@@ -40,8 +40,12 @@ exports.checkNextQuestions = function(req, res){
 	var id ={};
 	if(index.checkLogin(req,res)){
 		if(req.session.question_set.length > 0){
-			id = req.session.question_set.pop();
+			console.log("in next question: ", req.session.question_set);
 
+			id = req.session.question_set.pop();
+			console.log("Object id is: ", id);
+			console.log("next question id is: ", id.next_question_id);
+			
 			var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id.next_question_id;
 
 			dbObject.find(qs, function(err, response){
