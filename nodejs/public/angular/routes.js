@@ -228,7 +228,11 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.answer_type = response.data.Answer_type;
 					}
 					else{
+
 						$scope.finalAnswer = true;
+						$("#prePermitContainer").hide();
+						$("#permitContainer").show();
+						$("#permits").html($scope.calculatedPermits);
 					}
 				});
 			}
