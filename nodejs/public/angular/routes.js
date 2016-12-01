@@ -224,7 +224,10 @@ app.controller('permitsController', function($scope,$http) {
 					if(response.msg == "Success"){
 						$scope.showComponents = "no";
 						$scope.question = response.data.Question;
-						$scope.options = $.parseJSON(response.data.Next_question);
+						if((response.Next_question).indexOf("ANSWER") >= 0)
+							$scope.options = $.parseJSON(response.data.Options);
+						else
+							$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type;
 						$scope.XQuestion.push(response.previous_answer);	
 						console.log($scope.XQuestion);	
