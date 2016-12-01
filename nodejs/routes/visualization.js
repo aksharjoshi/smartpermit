@@ -23,7 +23,7 @@ exports.seasonalAnalysis = function(req, res){
 
     var qs = "SELECT  Year(`FILING_DATE`) AS Year, QUARTER(`FILING_DATE`) As Quarter, `PERMIT_TYPE` As Permit_Type, P.DESCRIPTION As Permit_Desc," + 
              "COUNT(*) As Count FROM `PERMIT_DETAILS`,`ACRONYM_MASTER` As P WHERE `PERMIT_TYPE` = P.ACRONYM " +  inputYearStr + 
-             "GROUP BY Year(`FILING_DATE`),QUARTER(`FILING_DATE`),`PERMIT_TYPE`";
+             " GROUP BY Year(`FILING_DATE`),QUARTER(`FILING_DATE`),`PERMIT_TYPE`";
 
 /*    var qs = "SELECT "+
                     " Year(`FILING DATE`) AS Year,"+
