@@ -68,6 +68,7 @@ exports.getDescription = function(req, res){
 		var qs = "SELECT ACRONYM, DESCRIPTION FROM ACRONYM_MASTER WHERE ACRONYM IN (";
 
 		var accr = req.body.permits;
+		console.log("permits are : ", req.body.permits);
 		for(var i = 0; i < accr.length; i++){
 			qs += "'"+accr[i]+"'";
 		}
