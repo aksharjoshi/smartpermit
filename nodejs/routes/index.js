@@ -18,6 +18,9 @@ exports.login = function(req, res){
 		console.log(param);
 		console.log("test");
 		var errMsg = '';
+
+		console.log("req is : ",req);
+
 		if(param.email == "" || param.email == "undefined"){
 			errMsg += 'Email is required.';
 			res.render('index', { title: 'Smart Permits',errMsg: errMsg });
