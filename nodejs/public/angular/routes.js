@@ -212,8 +212,13 @@ app.controller('permitsController', function($scope,$http) {
 			}
 			else{
 				$("input[name='option']:checked").each(function(key,obj){
-					console.log(obj);
-					//$scope.calculatedPermits.push(respQuestion[$(obj).val()]);
+					console.log();
+					var tempPermits = ($(obj).val()).split(",");
+					$(tempPermits).each(function(k,p){
+						if($.inArray( p, $scope.calculatedPermits ) == -1)
+							$scope.calculatedPermits.push(p);
+					});
+					
 				});
 				console.log($scope.calculatedPermits);
 			}
