@@ -20,6 +20,8 @@ exports.seasonalAnalysis = function(req, res){
     else
         var inputYearStr = "";
 
+    console.log("session is: ", req.session.id);
+
     /*var qs = "SELECT Year(`FILING_DATE`) AS Year,"+
              " QUARTER(`FILING_DATE`) As Quarter,"+
              " `PERMIT_TYPE` As Permit_Type,"+
