@@ -250,7 +250,8 @@ app.controller('permitsController', function($scope,$http) {
 				var respQuestion = $.parseJSON($scope.RESPONSE.Next_question);
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
-						saveQuestions.push(respQuestion[$(obj).val()]);
+						var passObj = {"answer":$(obj).val(), "next_question_id": respQuestion[$(obj).val()]}
+						saveQuestions.push(passObj);
 					}
 				});
 				
