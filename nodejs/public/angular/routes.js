@@ -226,7 +226,8 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.question = response.data.Question;
 						$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type
-						$scope.XQuestion = 	response.data.previous_answer;		}
+						$scope.XQuestion.push(response.data.previous_answer);		
+					}
 					else{
 
 						$scope.finalAnswer = true;
