@@ -204,6 +204,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
 			if($scope.finalAnswer){
+				alert(1);
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
@@ -259,6 +260,7 @@ app.controller('permitsController', function($scope,$http) {
 					}
 					else{
 						$scope.finalAnswer = true;
+						$scope.showComponents = "yes";
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
 						$("#permits").html($scope.calculatedPermits);
