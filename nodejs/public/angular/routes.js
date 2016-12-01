@@ -280,6 +280,10 @@ app.controller('permitsController', function($scope,$http) {
 							$($scope.outputPermits).each(function(i,iproduct){
 								if($.inArray( iproduct.product, xproducts ) == -1){
 									xproducts.push(iproduct.product);
+									tempPermitsArray = iproduct.permits.split(",");
+									for(var j=0;j<tempPermitsArray.length;j++){
+										tempPermitsArray[j] = acronymArray[tempPermitsArray[j]];
+									}
 									temp.push({"product":iproduct.product,"permits":iproduct.permits});
 								}
 							});
