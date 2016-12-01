@@ -35,14 +35,16 @@ if ('development' == app.get('env')) {
 }
 
 app.use(express.cookieParser());
-app.use(session(
+
+app.use(express.session(
     {
       genid: function(req){
-      return genuuid()
+        return genuuid()
       },
       secret: '1234567890QWERTY'
     }
-  ));
+  )
+);
 
  
 app.get('/', routes.index);
@@ -68,14 +70,14 @@ app.get('/getPermitSubType', recommendation.getPermitSubType);
 app.get('/getquestion',prepermit.getCurrentQuestion);
 
 
-app.del('/api/session',function(req,res){
+/*app.del('/api/session',function(req,res){
 	if(req.session.data){
 		req.session.destroy();
 		res.send(JSON.stringify({"response" : "Session Destroyed"}));
 	}else{
 		res.send(JSON.stringify({"response" : "No Session Data to DELETE"}));
 	}
-});
+});*/
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
