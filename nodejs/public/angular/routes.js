@@ -221,8 +221,10 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.options = $.parseJSON(response.Next_question);
 			 	if((response.Options).indexOf("COMPONENT") >= 0){
 				 	$("#containerComponent").show();
-				 	$(".placeholders").children(":first").css("margin-left","11%");
-				 	$(".placeholders").children(":last").css("margin-left","25%");
+				 	setTimeout(function(){ 
+			 			$(".placeholders").children(":first").css("margin-left","11%");
+				 		$(".placeholders").children(":last").css("margin-left","25%");
+			 		}, 100);
 				}
 				else
 				 	$("#containerComponent").hide();
@@ -242,8 +244,6 @@ app.controller('permitsController', function($scope,$http) {
 			 		$(".imgIcon").each(function(index,imgObj){
 				 		var icon = $(imgObj).attr("data");
 				 		icon = icon.replace(/\s/g, '');
-				 		//icon = icon.replace(/\//g,"");
-				 		//console.log(icon);
 				 		if($scope.icons[icon] != "undefined")
 				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
 				 	});
@@ -264,8 +264,10 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
 		 	if((response.Options).indexOf("COMPONENT") >= 0){
 			 		$("#containerComponent").show();
-			 		$(".placeholders").children(":first").css("margin-left","11%");
-				 	$(".placeholders").children(":last").css("margin-left","25%");
+			 		setTimeout(function(){ 
+			 			$(".placeholders").children(":first").css("margin-left","11%");
+				 		$(".placeholders").children(":last").css("margin-left","25%");
+			 		}, 100);
 			}
 			else
 			 		$("#containerComponent").hide();
@@ -301,8 +303,10 @@ app.controller('permitsController', function($scope,$http) {
 
 	 	if((response.Options).indexOf("COMPONENT") >= 0){
 		 	$("#containerComponent").show();
-		 	$(".placeholders").children(":first").css("margin-left","11%");
-			$(".placeholders").children(":last").css("margin-left","25%");
+		 	setTimeout(function(){ 
+			 	$(".placeholders").children(":first").css("margin-left","11%");
+				$(".placeholders").children(":last").css("margin-left","25%");
+			}, 100);
 	 	}
 		else
 		 	$("#containerComponent").hide();
