@@ -7,7 +7,7 @@ exports.getCurrentQuestion = function(req, res){
 
 	//console.log("req is: ", JSON.stringify(req));
 	
-	//req.session.question_set=[];
+	req.session.question_set=[];
 
 	console.log("req query is: ", JSON.stringify(req.query));
 	//console.log("session var is ", req.session.question_set);
@@ -34,6 +34,12 @@ exports.getCurrentQuestion = function(req, res){
 	});
 };
 
-exports.setAnswer = function(req, res){
-	req.session.question_set.push(req.query);
+exports.saveNextQuestion = function(req, res){
+
+	var qid = req.body.saveQuesitions;
+
+	for(id in qid){
+		req.session.question_set.push(id);
+	}
+	console.log("next question set: ", req.session.question_set);
 }
