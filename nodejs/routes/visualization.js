@@ -32,7 +32,7 @@ exports.seasonalAnalysis = function(req, res){
         var qs = "SELECT "+
                         " Year(`FILING DATE`) AS Year,"+
                         " QUARTER(`FILING DATE`) As Quarter,"+
-                        " Month(`FILING DATE`) As Month " +
+                        " Month(`FILING DATE`) As Month, " +
                         " `PERMIT TYPE` As Permit_Type,"+
                         " P.DESCRIPTION As Permit_Desc,"+
                         " COUNT(*) As Count "+
@@ -150,7 +150,7 @@ exports.popularPermit = function(req, res){
         var qs = "SELECT Year(`FILING DATE`) AS Year,"+
                     " `PERMIT TYPE` As Permit_Type,"+
                     " QUARTER(`FILING DATE`) As Quarter,"+
-                    " Month(`FILING DATE`) As Month " +
+                    " Month(`FILING DATE`) As Month, " +
                     " P.DESCRIPTION As Permit_Desc,"+
                     " COUNT(*) as permit_count "+
                     " FROM `permit_history`, `ACRONYM_MASTER` As P"+
