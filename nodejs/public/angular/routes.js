@@ -268,7 +268,13 @@ app.controller('permitsController', function($scope,$http) {
 						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
-							
+							acronymArray = [];
+							$(data.data).each(function(a,acronymObj){
+								acronymArray[acronymObj.ACRONYM] = acronymObj.DESCRIPTION;
+							});
+
+							console.log(acronymArray);
+
 							var xproducts = [];
 							var temp = [];
 							$($scope.outputPermits).each(function(i,iproduct){
