@@ -46,7 +46,7 @@ exports.login = function(req, res){
 			        session.userid = response[0].EMAIL; 
 			        var date = new Date();
 
-			        var qs = "Update USER SET LAST_LOGIN = " + date + " LAST_SESSION_ID = " + req.session.id + " WHERE ID = " + response[0].ID;
+			        var qs = "Update USER SET LAST_LOGIN = '" + date + "', LAST_SESSION_ID = '" + req.session.id + "' WHERE ID = " + response[0].ID;
 					
 			        dbObject.find(qs, function(err, response){
 			        	if(err){
