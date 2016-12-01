@@ -267,7 +267,7 @@ app.controller('permitsController', function($scope,$http) {
 						$("#permitContainer").show();
 						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
-							$("#permits").html($scope.outputPermits);
+							//$("#permits").html($scope.outputPermits);
 							console.log($scope.outputPermits);
 						});
 					}
