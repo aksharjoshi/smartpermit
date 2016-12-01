@@ -42,4 +42,5 @@ exports.saveNextQuestion = function(req, res){
 		req.session.question_set.push(id);
 	}
 	console.log("next question set: ", req.session.question_set);
+	res.jsonp(qid);
 }
