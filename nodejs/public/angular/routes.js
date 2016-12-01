@@ -309,6 +309,7 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
+	 	$scope.answer_type = response.Answer_type;
 
 	 	if((response.Options).indexOf("COMPONENT") >= 0){
 		 	$("#containerComponent").show();
