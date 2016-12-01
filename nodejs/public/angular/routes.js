@@ -205,7 +205,7 @@ app.controller('permitsController', function($scope,$http) {
 			if($scope.finalAnswer){
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
-				$("#permits").html($scope.permits);
+				$("#permits").html($scope.calculatedPermits);
 				var prevQuestionID = $scope.questionID;
 				$scope.questionID = 100;
 				$scope.questionPrevArray[$scope.questionID] = prevQuestionID;
@@ -226,6 +226,9 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.question = response.data.Question;
 						$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type;
+					}
+					else{
+						$scope.finalAnswer = true;
 					}
 				});
 			}
