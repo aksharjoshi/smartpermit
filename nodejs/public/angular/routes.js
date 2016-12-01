@@ -246,9 +246,9 @@ app.controller('permitsController', function($scope,$http) {
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
 				 		var question = response.Question;
 				 		$($scope.XQuestion).each(function(idx,opt){
-				 			console.log(response.Next_question);
+				 			console.log(response.Next_question.ANSWER);
 				 			console.log(opt);
-				 			console.log(typeof response.Next_question[opt]);
+				 			console.log(typeof response.Next_question.ANSWER[opt]);
 				 		});
 				 		
 				 		
