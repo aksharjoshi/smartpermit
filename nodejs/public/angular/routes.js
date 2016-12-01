@@ -220,7 +220,8 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
-				 	//console.log(response.Next_question);
+				 	console.log(">>>>>>>>>>>>>>>next ques");
+				 	console.log(response.Next_question);
 				 	$scope.options = $.parseJSON(response.Next_question);
 				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
