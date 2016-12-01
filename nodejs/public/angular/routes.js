@@ -265,10 +265,10 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "yes";
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
-						$("#permits").html($scope.outputPermits);
 						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
-							
+							$("#permits").html($scope.outputPermits);
+							console.log($scope.outputPermits);
 						});
 					}
 				});
