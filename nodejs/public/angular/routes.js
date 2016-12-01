@@ -244,15 +244,17 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
-				 		var question = response.Question;
 				 		$($scope.XQuestion).each(function(idx,opt){
 				 			console.log(($.parseJSON(response.Next_question)).ANSWER);
 				 			console.log(opt);
-				 			console.log(typeof (($.parseJSON(response.Next_question)).ANSWER)[opt]);
+				 			if(typeof (($.parseJSON(response.Next_question)).ANSWER)[opt] == "object"){
+							 	$scope.question = response.Question;
+							 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER)[opt];
+							 	$scope.answer_type = response.Answer_type;
+				 			}
 				 		});
 				 		
-				 		
-				 		return false;
+				 		console.log($scope.options);
 				 	}
 				 	else{
 				 		$scope.options = $.parseJSON(response.Next_question);
