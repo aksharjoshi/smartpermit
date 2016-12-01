@@ -14,7 +14,7 @@ exports.getCurrentQuestion = function(req, res){
 	            res.status(500).jsonp(err)
 	        }
 	        console.log("\n\nresponse FOR prepermit is: ", response);
-	        console.log(response[0].Next_question);
+	        //console.log(response[0].Next_question);
 	        res.jsonp(response[0]);
 		});
 	}
@@ -45,7 +45,7 @@ exports.checkNextQuestions = function(req, res){
 			id = req.session.question_set.pop();
 			console.log("Object id is: ", id);
 			console.log("next question id is: ", id.next_question_id);
-			
+
 			var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id.next_question_id;
 
 			dbObject.find(qs, function(err, response){
