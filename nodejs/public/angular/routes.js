@@ -219,10 +219,13 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.selectedOption = $scope.responses[$scope.questionID];
 			 	//console.log(response.Next_question);
 			 	$scope.options = $.parseJSON(response.Next_question);
-			 	if((response.Options).indexOf("COMPONENT") >= 0)
-				 		$("#containerComponent").show();
-				 else
-				 		$("#containerComponent").hide();
+			 	if((response.Options).indexOf("COMPONENT") >= 0){
+				 	$("#containerComponent").show();
+				 	$(".placeholders").children(":first").css("margin-left","11%");
+				 	$(".placeholders").children(":last").css("margin-left","25%");
+				}
+				else
+				 	$("#containerComponent").hide();
 			 	if(typeof $scope.options.ANSWER == "string"){
 			 		var options = [];
 			 		response.Options = response.Options.split(",");
@@ -259,9 +262,12 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
-		 	if((response.Options).indexOf("COMPONENT") >= 0)
+		 	if((response.Options).indexOf("COMPONENT") >= 0){
 			 		$("#containerComponent").show();
-			 else
+			 		$(".placeholders").children(":first").css("margin-left","11%");
+				 	$(".placeholders").children(":last").css("margin-left","25%");
+			}
+			else
 			 		$("#containerComponent").hide();
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
@@ -293,8 +299,11 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
 
-	 	if((response.Options).indexOf("COMPONENT") >= 0)
+	 	if((response.Options).indexOf("COMPONENT") >= 0){
 		 	$("#containerComponent").show();
+		 	$(".placeholders").children(":first").css("margin-left","11%");
+			$(".placeholders").children(":last").css("margin-left","25%");
+	 	}
 		else
 		 	$("#containerComponent").hide();
 
