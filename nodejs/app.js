@@ -34,9 +34,12 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.use(express.cookieParser());
 
-app.use(session(
+
+app.configure(function(){
+  app.use(express.cookieParser());
+
+  app.use(session(
     {
       /*genid: function(req){
         return genuuid()
@@ -45,8 +48,8 @@ app.use(session(
     }
   )
 );
+});
 
- 
 app.get('/', routes.index);
 app.post('/', routes.login);
 app.get('/admin', routes.admin);
