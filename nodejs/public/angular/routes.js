@@ -264,6 +264,10 @@ app.controller('permitsController', function($scope,$http) {
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
 						$("#permits").html($scope.calculatedPermits);
+						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
+						.success(function(data, status, headers, config) {
+							
+						});
 					}
 				});
 			}
