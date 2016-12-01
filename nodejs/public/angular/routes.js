@@ -141,6 +141,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.XQuestion = [];
 	$scope.finalAnswer = false;
 	$scope.calculatedPermits = [];
+	$scope.outputPermits = [];
 
 	$scope.icons = {
 		"NEW" : "glyphicons-619-mixed-buildings.png",
@@ -206,6 +207,12 @@ app.controller('permitsController', function($scope,$http) {
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
+
+				$http.post('/getDescription', {"permits": $scope.calculatedPermits})
+				.success(function(data, status, headers, config) {
+					
+				});
+				
 				var prevQuestionID = $scope.questionID;
 				$scope.questionID = 100;
 				$scope.questionPrevArray[$scope.questionID] = prevQuestionID;
@@ -214,9 +221,11 @@ app.controller('permitsController', function($scope,$http) {
 				$("input[name='option']:checked").each(function(key,obj){
 					console.log();
 					var tempPermits = ($(obj).val()).split(",");
+					var product = $(obj).parent("label").text().replace(/\s/g, '');;
 					$(tempPermits).each(function(k,p){
 						if($.inArray( p, $scope.calculatedPermits ) == -1)
 							$scope.calculatedPermits.push(p);
+							$scope.outputPermits.push({"product":product,"permits":p});
 					});
 					
 				});
