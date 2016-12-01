@@ -167,7 +167,9 @@ app.controller('permitsController', function($scope,$http) {
 		"VENT" : "glyphicons-22-snowflake.png",
 		"WINDOW" : "glyphicons-95-vector-path-square.png",
 		"FAUCET" : "glyphicons-515-bath-shower.png",
-		"NONE" : "glyphicons-200-ban-circle.png"
+		"NONE" : "glyphicons-200-ban-circle.png",
+		"COMPONENT" : "glyphicons-453-shop.png",
+		"SUB COMPONENT" : "glyphicons-514-bath-bathtub.png",
 
 	};
 	$scope.NEW = "glyphicons-619-mixed-buildings.png";
