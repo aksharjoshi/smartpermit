@@ -217,6 +217,7 @@ app.controller('permitsController', function($scope,$http) {
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
 						userAnswers.push($(obj).val());
+						console.log($(obj).val());
 						console.log("Save ques: "+$scope.RESPONSE.Next_question[$(obj).val()]);
 					}
 				});
