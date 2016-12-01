@@ -73,6 +73,7 @@ exports.getJobType = function(req, res){
 
 	var qs = "SELECT DISTINCT(JOB_TYPE) FROM PERMIT_MASTER";
 
+  console.log("session is: ", req.session);
 	dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
             //console.log("err", err);
