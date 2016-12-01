@@ -288,6 +288,9 @@ app.controller('permitsController', function($scope,$http) {
 				 			}
 							var index = $scope.XQuestion.indexOf(opt);
 							$scope.XQuestion.splice(index, 1);
+							//$scope.XQuestion.pop();
+							console.log("index: "+index);
+							console.log($scope.XQuestion);
 				 		});
 				 		
 				 		console.log($scope.options);
