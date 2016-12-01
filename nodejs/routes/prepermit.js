@@ -71,11 +71,11 @@ exports.checkNextQuestions = function(req, res){
 		        console.log(response[0].Next_question);
 
 		       // JSON.parse(response[0].Next_question);
-		        res.send("msg": "Success", "data":response[0]);
+		        res.send({"msg": "Success", "data":response[0]});
 			});
 		}
 		else{
-			res.send("msg":"Empty stack", "data": None);
+			res.send({"msg":"Empty stack", "data": None});
 		}
 	}
 }
