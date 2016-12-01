@@ -226,7 +226,7 @@ app.controller('permitsController', function($scope,$http) {
 					$(tempPermits).each(function(k,p){
 						if($.inArray( p, $scope.calculatedPermits ) == -1)
 							$scope.calculatedPermits.push(p);
-							$scope.outputPermits.push({"product":product,"permits":p});
+							$scope.outputPermits.push({"product":product,"permits":$(obj).val()});
 					});
 					console.log("Product:"+product);
 					console.log($scope.outputPermits);
@@ -268,7 +268,12 @@ app.controller('permitsController', function($scope,$http) {
 						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
-							console.log($scope.outputPermits);
+							/*var xproducts = [];
+							$($scope.outputPermits).each(function(i,iproduct){
+								if($.inArray( iproduct.product, xproducts ) == -1){
+									xproducts.push(iproduct.product);
+								}
+							});*/
 						});
 					}
 				});
