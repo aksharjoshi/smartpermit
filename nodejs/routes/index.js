@@ -42,7 +42,7 @@ exports.login = function(req, res){
 			        res.redirect('/home');	        	
 		        }
 			});
-
+			console.log("session id is: ", req.session.genid);
 			/*if(param.email == "admin@sps.com" && param.password == "admin")
 				res.redirect('/home');
 			else
