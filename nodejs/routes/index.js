@@ -42,9 +42,10 @@ exports.login = function(req, res){
 		        else{
 					console.log("\n\n User info is: ", response);
 			        //res.jsonp(response);	
-			        var sess = req.session;
-			        sess.id= 1233;
-					console.log("session id is: ", sess.id);
+			        var session = req.session;
+			        //sess.id= 1233;
+			        session.userid = response[0].EMAIL; 
+					console.log("session userid is: ", session.userid);
 			        res.redirect('/home');	        	
 		        }
 			});
