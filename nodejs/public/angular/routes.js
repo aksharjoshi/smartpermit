@@ -210,17 +210,36 @@ app.controller('permitsController', function($scope,$http) {
 			$("#prePermitContainer").show();
 			$("#permitContainer").hide();
 			$("#permit").html("");
-			var nextQuestionid = $("input[name='option']:checked").attr("next-question");//$("input[name='option']:checked").val();
+			
+			if($scope.answer_type == "MULTIPLE"){
+				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
+				var userAnswers = [];
+				$("input[name='option']:checked").each(function(key,obj){
+					if(key>0)
+						userAnswers.push($(obj).val());
+						
+				});
+				var saveObj = $scope.RESPONSE;
+				saveObj.userAnswers = userAnswers;
+				$http.post('/saveQuestion', {"saveQuestions": saveObj})
+				.success(function(data, status, headers, config) {
+					//obj.sensordetail.status=sensorstatus;
+				});
+			}
+			else
+				var nextQuestionid = $("input[name='option']:checked").attr("next-question");
+
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
+
 			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
 
 				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
+					$scope.RESPONSE = response;
 				 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
-				 	//console.log(response.Next_question);
 				 	$scope.options = $.parseJSON(response.Next_question);
 				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
@@ -267,6 +286,7 @@ app.controller('permitsController', function($scope,$http) {
 
 		if(prevQuestionid != null && prevQuestionid != "undefined" && prevQuestionid != "" ){
 			$http.get("/getquestion?id="+prevQuestionid).success(function(response){
+				$scope.RESPONSE = response;
 			 	$scope.questionID = prevQuestionid;
 			 	$scope.question = response.Question;
 			 	$scope.options = $.parseJSON(response.Next_question);
@@ -310,6 +330,7 @@ app.controller('permitsController', function($scope,$http) {
 	};
 
 	$http.get("/getquestion?id=1").success(function(response){
+		$scope.RESPONSE = response;
 		console.log(response);
 	 	$scope.questionID = 1;
 	 	$scope.questionPrevArray[$scope.questionID] = 0;
