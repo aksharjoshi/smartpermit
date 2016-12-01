@@ -225,7 +225,7 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "no";
 						$scope.question = response.data.Question;
 						if((response.data.Next_question).indexOf("ANSWER") >= 0)
-							$scope.options = (response.data.Options);
+							$scope.options = (response.data.Options).split(",");
 						else
 							$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type;
