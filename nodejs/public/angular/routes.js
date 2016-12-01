@@ -219,7 +219,9 @@ app.controller('permitsController', function($scope,$http) {
 						userAnswers.push($(obj).val());
 						
 				});
-				$http.post('/saveQuestion', {"saveQuestions": JSON.stringify(userAnswers)})
+				var saveObj = $scope.RESPONSE;
+				saveObj.userAnswers = userAnswers;
+				$http.post('/saveQuestion', {"saveQuestions": saveObj})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
 				});
@@ -233,6 +235,7 @@ app.controller('permitsController', function($scope,$http) {
 			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
 
 				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
+					$scope.RESPONSE = response;
 				 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
@@ -283,6 +286,7 @@ app.controller('permitsController', function($scope,$http) {
 
 		if(prevQuestionid != null && prevQuestionid != "undefined" && prevQuestionid != "" ){
 			$http.get("/getquestion?id="+prevQuestionid).success(function(response){
+				$scope.RESPONSE = response;
 			 	$scope.questionID = prevQuestionid;
 			 	$scope.question = response.Question;
 			 	$scope.options = $.parseJSON(response.Next_question);
@@ -326,6 +330,7 @@ app.controller('permitsController', function($scope,$http) {
 	};
 
 	$http.get("/getquestion?id=1").success(function(response){
+		$scope.RESPONSE = response;
 		console.log(response);
 	 	$scope.questionID = 1;
 	 	$scope.questionPrevArray[$scope.questionID] = 0;
