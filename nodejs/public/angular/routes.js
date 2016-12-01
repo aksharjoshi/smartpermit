@@ -220,7 +220,7 @@ app.controller('permitsController', function($scope,$http) {
 			 	if((response.Options).indexOf("COMPONENT") >= 0)
 				 		$("#containerComponent").show();
 				 else
-				 		$("#containerComponent").hide()
+				 		$("#containerComponent").hide();
 			 	if(typeof $scope.options.ANSWER == "string"){
 			 		var options = [];
 			 		response.Options = response.Options.split(",");
@@ -260,7 +260,7 @@ app.controller('permitsController', function($scope,$http) {
 		 	if((response.Options).indexOf("COMPONENT") >= 0)
 			 		$("#containerComponent").show();
 			 else
-			 		$("#containerComponent").hide()
+			 		$("#containerComponent").hide();
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
 
@@ -290,6 +290,12 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.prevQuestionID = 0;
 	 	$scope.question = response.Question;
 	 	$scope.options = $.parseJSON(response.Next_question);
+
+	 	if((response.Options).indexOf("COMPONENT") >= 0)
+		 	$("#containerComponent").show();
+		else
+		 	$("#containerComponent").hide();
+
 	 	setTimeout(function(){ 
 	 		$(".imgIcon").each(function(index,imgObj){
 		 		var icon = $(imgObj).attr("data");
