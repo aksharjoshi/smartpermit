@@ -218,10 +218,11 @@ app.controller('permitsController', function($scope,$http) {
 					if(key>0)
 						userAnswers.push($(obj).val());
 						
-						$http.post('/saveQuestion', {"saveQuestions": JSON.stringify(userAnswers)})
-						.success(function(data, status, headers, config) {
-							//obj.sensordetail.status=sensorstatus;
-						});
+				});
+				$http.post('/saveQuestion', {"saveQuestions": JSON.stringify(userAnswers)})
+				.success(function(data, status, headers, config) {
+					//obj.sensordetail.status=sensorstatus;
+				});
 			}
 			else
 				var nextQuestionid = $("input[name='option']:checked").attr("next-question");
