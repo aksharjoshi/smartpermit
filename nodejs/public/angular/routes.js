@@ -215,8 +215,10 @@ app.controller('permitsController', function($scope,$http) {
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
 				var userAnswers = [];
 				$("input[name='option']:checked").each(function(key,obj){
-					if(key>0)
+					if(key>0){
 						userAnswers.push($(obj).val());
+						console.log("Save ques: "+$scope.RESPONSE.Next_question[$(obj).val()]);
+					}
 				});
 				var saveObj = $scope.RESPONSE;
 				saveObj.userAnswers = userAnswers;
