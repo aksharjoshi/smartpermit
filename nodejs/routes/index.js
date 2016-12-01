@@ -8,7 +8,8 @@ var dbObject = new dal('USER', 'smart_permit');
 
 
 exports.index = function(req, res){
-	//req.session.question_set=[];
+	req.session.question_set=[];
+	req.session.userid = "";
 	res.render('index', { title: "Smart Permits",errMsg: "" });
 };
 
@@ -29,7 +30,7 @@ exports.login = function(req, res){
 		}
 		else{
 			//Database Connection - validate customer login credentials and redirect to home page
-			var qs = "SELECT EMAIL, PASSWORD FROM USER WHERE EMAIL = '" + param.email + "' and PASSWORD = '" + param.password + "'";
+			var qs = "SELECT EMAIL, PASSWORD, ID FROM USER WHERE EMAIL = '" + param.email + "' and PASSWORD = '" + param.password + "'";
 
 			dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
 				if (err) {
@@ -43,9 +44,19 @@ exports.login = function(req, res){
 			        var session = req.session;
 			        //sess.id= 1233;
 			        session.userid = response[0].EMAIL; 
-					console.log("session userid is: ", session.userid);
-			        res.redirect('/home');	        	
-		        }
+			        var date = new Date();
+
+			        var qs = "Update USER SET LAST_LOGIN = " + date + " LAST_SESSION_ID = " + req.session.id + " WHERE ID = " + response[0].ID;
+					
+			        dbObject.create(qs, function(err, response){
+			        	if(err){
+		            		res.render('index', { title: 'Smart Permits',errMsg: "Error in updating user table while logging in" });
+			        	}
+			        	else{
+			        		console.log("User table updated. Response is: ", response);
+			        	}
+			        });	        	
+			    }
 			});
 			
 			/*if(param.email == "admin@sps.com" && param.password == "admin")
@@ -87,4 +98,24 @@ exports.adminLogin = function(req, res){
 		console.log(err);
 		res.send({"errMsg":err});
 	}
+};
+
+exports.logout = function(req, res){
+	if(req.session.userid != ""){
+		req.session.userid = "";
+		console.log("Session destroyed");
+		req.session.question_set=[];
+		res.render('index', { title: "Smart Permits",errMsg: "" });
+	}
+	else{
+		res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
+	}
+};
+
+exports.checkLogin = function(req, res){
+	if(req.session.userid != ""){
+		return true;
+	}
+	else
+		res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
 };
