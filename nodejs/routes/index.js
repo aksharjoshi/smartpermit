@@ -40,7 +40,7 @@ exports.login = function(req, res){
 					console.log("\n\n User info is: ", response);
 			        //res.jsonp(response);	
 			        req.session = {id: 1233};
-					console.log("session id is: ", req.session.genid);
+					console.log("session id is: ", req.session.id);
 			        res.redirect('/home');	        	
 		        }
 			});
