@@ -110,9 +110,16 @@
 <h3 class="page-header">As per your responses, you need following permits</h3>
 
 <div id="permits">
-  <div ng-repeat="(idx,permit) in outputPermits">
-    {{permit.product}} | {{permit.permits}}
-  </div>
+  <table class="table table-striped">
+    <thead>
+      <th>Appliance</th>
+      <th>Permit</th>
+    </thead>
+    <tbody ng-repeat="(idx,permit) in outputPermits">
+      <td>{{permit.product}} </td>
+      <td>{{permit.permits}}</td>
+    </tbody>
+  </table>
 </div>
 <div class="row">
     <button class="pull-right btn btn-large btn-primary" style="margin-right:20px" ng-click="previous()"> << Previous</button>
