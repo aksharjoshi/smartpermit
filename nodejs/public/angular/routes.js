@@ -202,7 +202,7 @@ app.controller('permitsController', function($scope,$http) {
 
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
-			if(finalAnswer){
+			if($scope.finalAnswer){
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.permits);
