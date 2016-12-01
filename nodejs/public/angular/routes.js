@@ -217,7 +217,6 @@ app.controller('permitsController', function($scope,$http) {
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0)
 						userAnswers.push($(obj).val());
-						
 				});
 				var saveObj = $scope.RESPONSE;
 				saveObj.userAnswers = userAnswers;
@@ -240,7 +239,14 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
-				 	$scope.options = $.parseJSON(response.Next_question);
+				 	if((response.Next_question).indexOf("ANSWER") >= 0){
+				 		console.log(response.Next_question);
+				 		return false;
+				 	}
+				 	else{
+				 		$scope.options = $.parseJSON(response.Next_question);
+				 	}
+				 	
 				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
 					 	$("#containerComponent").show();
