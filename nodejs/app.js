@@ -36,10 +36,12 @@ if ('development' == app.get('env')) {
 
 app.use(express.cookieParser());
 app.use(session(
-    genid: function(req){
+    {
+      genid: function(req){
       return genuuid()
-    },
-    {secret: '1234567890QWERTY'}
+      },
+      secret: '1234567890QWERTY'
+    }
   ));
 
  
