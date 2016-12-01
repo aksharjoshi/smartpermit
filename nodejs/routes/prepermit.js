@@ -86,12 +86,13 @@ exports.getDescription = function(req, res){
 		        for (var i = 0; i < accr.length; i++) {
 		        	result[accr[i]] = "";//response[i].DESCRIPTION;
 		        }
-		        for (var i = 0; i < accr.length; i++) {
+		        for (var k = 0; i < accr.length; i++) {
 		        	for(var j=0; j<accr.length; j++){
-		        		if(response[j].ACRONYM == result[accr[i]]){
+		        		console.log("here");
+		        		if(response[j].ACRONYM == result[accr[k]]){
 		        			console.log("inside if...");
-		        			result[accr[i]] = response[j].DESCRIPTION;
-		        			console.log("result[accr[",i,"]] = ", result[accr[i]]);
+		        			result[accr[k]] = response[j].DESCRIPTION;
+		        			console.log("result[accr[",i,"]] = ", result[accr[k]]);
 		        			break;
 		        		}
 		        	}
