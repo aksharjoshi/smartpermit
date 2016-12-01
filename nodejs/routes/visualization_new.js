@@ -96,6 +96,7 @@ exports.popularPermit = function(req, res){
     var qs = "SELECT Year(`FILING_DATE`) AS Year,"+
                 " `PERMIT_TYPE` As Permit_Type,"+
                 " QUARTER(`FILING_DATE`) As Quarter,"+
+                " MONTH(`FILING_DATE`) AS Month, " +
                 " P.FULLFORM As Permit_Desc,"+
                 " COUNT(*) as permit_count "+
                 " FROM `PERMIT_DETAILS`, `permit_accronym` As P"+
