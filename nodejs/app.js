@@ -39,8 +39,8 @@ if ('development' == app.get('env')) {
 app.configure(function(){
   app.use(express.cookieParser());
 
-  app.use(session({secret: '1234567890QWERTY'}));
-  
+  app.use(express.session({secret: '1234567890QWERTY'}));
+
 });
 
 app.get('/', routes.index);
