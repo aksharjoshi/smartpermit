@@ -106,7 +106,7 @@ exports.logout = function(req, res){
 		req.session.userid = "";
 		console.log("Session destroyed");
 		req.session.question_set=[];
-		res.render('index', { title: "Smart Permits",errMsg: "" });
+		res.redirect('/');
 	}
 	else{
 		res.render('index', { title: "Smart Permits",errMsg: "Already logged out" });
