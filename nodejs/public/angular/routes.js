@@ -258,38 +258,36 @@ app.controller('permitsController', function($scope,$http) {
 		if($scope.showComponents == "yes")
 			$scope.showComponents = "no";
 		var prevQuestionid = $scope.questionPrevArray[$scope.questionID];
+		$http.get("/getquestion?id="+prevQuestionid).success(function(response){
+			
+		 	$scope.questionID = prevQuestionid;
+		 	$scope.question = response.Question;
+		 	$scope.options = $.parseJSON(response.Next_question);
+		 	$scope.selectedOption = $scope.responses[$scope.questionID];
+		 	if((response.Options).indexOf("COMPONENT") >= 0){
+			 		$("#containerComponent").show();
+			 		setTimeout(function(){ 
+			 			$(".placeholders").children(":first").css("margin-left","11%");
+				 		$(".placeholders").children(":last").css("margin-left","25%");
+			 		}, 100);
+			}
+			else
+			 		$("#containerComponent").hide();
+		 	if(typeof $scope.options.ANSWER == "string"){
+		 		$scope.options = $scope.options;
 
-		if(prevQuestionid != null && prevQuestionid != "undefined" && prevQuestionid != "" ){
-			$http.get("/getquestion?id="+prevQuestionid).success(function(response){
-			 	$scope.questionID = prevQuestionid;
-			 	$scope.question = response.Question;
-			 	$scope.options = $.parseJSON(response.Next_question);
-			 	$scope.selectedOption = $scope.responses[$scope.questionID];
-			 	if((response.Options).indexOf("COMPONENT") >= 0){
-				 		$("#containerComponent").show();
-				 		setTimeout(function(){ 
-				 			$(".placeholders").children(":first").css("margin-left","11%");
-					 		$(".placeholders").children(":last").css("margin-left","25%");
-				 		}, 100);
-				}
-				else
-				 		$("#containerComponent").hide();
-			 	if(typeof $scope.options.ANSWER == "string"){
-			 		$scope.options = $scope.options;
-
-			 	}
-			 	setTimeout(function(){ 
-			 		$(".imgIcon").each(function(index,imgObj){
-				 		var icon = $(imgObj).attr("data");
-				 		icon = icon.replace(/\s/g, '');
-				 		console.log(icon)
-				 		console.log($scope.icons[icon]);
-				 		if($scope.icons[icon] != "undefined")
-				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
-				 	});
-			 	}, 100);
-			});
-		}
+		 	}
+		 	setTimeout(function(){ 
+		 		$(".imgIcon").each(function(index,imgObj){
+			 		var icon = $(imgObj).attr("data");
+			 		icon = icon.replace(/\s/g, '');
+			 		console.log(icon)
+			 		console.log($scope.icons[icon]);
+			 		if($scope.icons[icon] != "undefined")
+			 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+			 	});
+		 	}, 100);
+		});
 	};
 	
 	$scope.selectWizard = function(){
