@@ -69,6 +69,7 @@ app.get('/getPermitSubType', recommendation.getPermitSubType);
 app.get('/getquestion',prepermit.getCurrentQuestion);
 app.post('/saveQuestion', prepermit.saveNextQuestion)
 app.get('/checkNextQuestions', prepermit.checkNextQuestions);
+app.post('/getDescription', prepermit.getDescription);
 
 /*app.del('/api/session',function(req,res){
 	if(req.session.data){

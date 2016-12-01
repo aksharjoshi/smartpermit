@@ -62,3 +62,25 @@ exports.checkNextQuestions = function(req, res){
 		}
 	}
 }
+
+exports.getDescription = function(req, res){
+	if(index.checkLogin(req,res)){
+		var qs = "SELECT ACRONYM, DESCRIPTION FROM ACRONYM_MASTER WHERE ACRONYM IN (";
+
+		var accr = req.body.permits;
+		for(var i = 0; i < accr.length; i++){
+			qs += "'"+accr[i]+"'";
+		}
+		qs += ")";
+		
+		dbObject.find(qs, function(err, response){
+				if (err) {
+		            res.status(500).jsonp(err)
+		        }
+		        console.log("\n\nresponse FOR description is: ", response);
+		        //console.log(response[0].Next_question);
+		        res.send({"msg": "Success", "data":response});
+		});
+
+	}
+}
