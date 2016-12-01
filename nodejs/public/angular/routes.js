@@ -220,6 +220,7 @@ app.controller('permitsController', function($scope,$http) {
 				});
 				var saveObj = $scope.RESPONSE;
 				saveObj.userAnswers = userAnswers;
+				console.log($scope.RESPONSE.Next_question);
 				$http.post('/saveQuestion', {"saveQuestions": saveObj})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
