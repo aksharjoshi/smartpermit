@@ -226,10 +226,11 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.question = response.data.Question;
 						$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type
-						$scope.XQuestion.push(response.data.previous_answer);		
+						$scope.XQuestion.push(response.data.previous_answer);	
+						console.log($scope.XQuestion);	
+						console.log(response.data);
 					}
 					else{
-
 						$scope.finalAnswer = true;
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
@@ -285,6 +286,8 @@ app.controller('permitsController', function($scope,$http) {
 							 	$scope.answer_type = response.Answer_type;
 							 	$scope.showComponents = "yes";
 				 			}
+							var index = $scope.XQuestion.indexOf(opt);
+							$scope.XQuestion.splice(index, 1);
 				 		});
 				 		
 				 		console.log($scope.options);
