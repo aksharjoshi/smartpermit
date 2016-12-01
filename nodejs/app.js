@@ -38,9 +38,9 @@ app.use(express.cookieParser());
 
 app.use(express.session(
     {
-      genid: function(req){
+      /*genid: function(req){
         return genuuid()
-      },
+      },*/
       secret: '1234567890QWERTY'
     }
   )
