@@ -284,7 +284,8 @@ app.controller('permitsController', function($scope,$http) {
 									for(var j=0;j<tempPermitsArray.length;j++){
 										tempPermitsArray[j] = acronymArray[tempPermitsArray[j]];
 									}
-									temp.push({"product":iproduct.product,"permits":iproduct.permits});
+									
+									temp.push({"product":iproduct.product,"permits":tempPermitsArray.join(",")});
 								}
 							});
 							$scope.outputPermits = temp;
