@@ -51,5 +51,31 @@ exports.saveNextQuestion = function(req, res){
 
 
 exports.checkNextQuestions = function(req, res){
+	var id ="";
+	if(index.checkLogin(req,res)){
+		if(req.session.question_set.length > 0){
+			id = req.session.question_set.pop();
 
+			var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
+
+			dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+				if (err) {
+		        	//console.log("err", err);
+		            res.status(500).jsonp(err)
+		        }
+		        console.log("\n\nresponse FOR prepermit is: ", response);
+
+		        //req.session.question_set.push(response[0]);
+
+		        //response[0].Next_question = JSON.parse
+		        console.log(response[0].Next_question);
+
+		       // JSON.parse(response[0].Next_question);
+		        res.send("msg": "Success", "data":response[0]);
+			});
+		}
+		else{
+			res.send("msg":"Empty stack", "data": None);
+		}
+	}
 }
