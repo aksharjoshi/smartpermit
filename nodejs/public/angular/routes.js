@@ -215,9 +215,9 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.questionID = nextQuestionid;
 			 	$scope.question = response.Question;
 			 	$scope.selectedOption = $scope.responses[$scope.questionID];
-			 	console.log(response.Next_question);
+			 	//console.log(response.Next_question);
 			 	$scope.options = $.parseJSON(response.Next_question);
-			 	//console.log($scope.options);
+			 	console.log(response.Options);
 			 	if(typeof $scope.options.ANSWER == "string"){
 			 		var options = [];
 			 		response.Options = response.Options.split(",");
@@ -254,7 +254,7 @@ app.controller('permitsController', function($scope,$http) {
 		 	$scope.question = response.Question;
 		 	$scope.options = $.parseJSON(response.Next_question);
 		 	$scope.selectedOption = $scope.responses[$scope.questionID];
-		 	console.log(response.options);
+		 	console.log(response.Options);
 		 	if(typeof $scope.options.ANSWER == "string"){
 		 		$scope.options = $scope.options;
 
