@@ -84,8 +84,17 @@ exports.getDescription = function(req, res){
 		        //console.log(response[0].Next_question);
 		        var result = {};
 		        for (var i = 0; i < accr.length; i++) {
-		        	result[accr[i]] = response[i].DESCRIPTION;
+		        	result[accr[i]] = "";//response[i].DESCRIPTION;
 		        }
+		        for (var i = 0; i < accr.length; i++) {
+		        	for(var j=0; j<accr.length; j++){
+		        		if(response[j].ACRONYM == result[accr[i]]){
+		        			result[accr[i]] = response[j].DESCRIPTION;
+		        			break;
+		        		}
+		        	}
+		        }
+
 		        console.log("final result is: ", result);
 		        res.send({"msg": "Success", "data":result});
 		});
