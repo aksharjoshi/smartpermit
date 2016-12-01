@@ -13,7 +13,7 @@ exports.seasonalAnalysis = function(req, res){
 
         var inputYear = req.query.year;
         if(inputYear != "undefined" && inputYear != null && inputYear != "")
-            var inputYearStr = " AND Year(`FILING_DATE`)=" + inputYear;
+            var inputYearStr = " AND Year(`FILING DATE`)=" + inputYear;
         else
             var inputYearStr = "";
 
@@ -50,7 +50,7 @@ exports.expirartionAnalysis = function(req, res){
         var inputYear = req.query.year;
 
         if(inputYear != "undefined" && inputYear != null && inputYear != "")
-            var inputYearStr = " AND Year(`FILING_DATE`)=" + inputYear;
+            var inputYearStr = " AND Year(`FILING DATE`)=" + inputYear;
         else
             var inputYearStr = "";
 
@@ -77,7 +77,7 @@ exports.heatMap = function(req, res){
         var inputYear = req.query.year;
 
         if(inputYear != "undefined" && inputYear != null && inputYear != "")
-            var inputYearStr = " AND Year(`FILING_DATE`)=" + inputYear;
+            var inputYearStr = " AND Year(`FILING DATE`)=" + inputYear;
         else
             var inputYearStr = "";
 
@@ -107,7 +107,7 @@ exports.popularPermit = function(req, res){
         var inputYear = req.query.year;
 
         if(inputYear != "undefined" && inputYear != null && inputYear != "")
-            var inputYearStr = " AND Year(`FILING_DATE`)=" + inputYear;
+            var inputYearStr = " AND Year(`FILING DATE`)=" + inputYear;
         else
             var inputYearStr = "";
 
