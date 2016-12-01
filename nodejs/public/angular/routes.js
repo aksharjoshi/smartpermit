@@ -287,9 +287,9 @@ app.controller('permitsController', function($scope,$http) {
 							 	$scope.showComponents = "yes";
 				 			}
 							var index = $scope.XQuestion.indexOf(opt);
-							$scope.XQuestion.splice(index, 1);
+							$scope.XQuestion.splice(idx, 1);
 							//$scope.XQuestion.pop();
-							console.log("index: "+index);
+							console.log("index: "+idx);
 							console.log($scope.XQuestion);
 				 		});
 				 		
