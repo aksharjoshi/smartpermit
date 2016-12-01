@@ -225,7 +225,8 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "no";
 						$scope.question = response.data.Question;
 						$scope.options = $.parseJSON(response.data.Next_question);
-						$scope.answer_type = response.data.Answer_type
+						$scope.answer_type = response.data.Answer_type;
+						alert("123");
 						$scope.XQuestion.push(response.data.previous_answer);	
 						console.log($scope.XQuestion);	
 						console.log(response.data);
@@ -286,11 +287,10 @@ app.controller('permitsController', function($scope,$http) {
 							 	$scope.answer_type = response.Answer_type;
 							 	$scope.showComponents = "yes";
 				 			}
-							var index = $scope.XQuestion.indexOf(opt);
-							$scope.XQuestion.splice(idx, 1);
-							//$scope.XQuestion.pop();
-							console.log("index: "+idx);
-							console.log($scope.XQuestion);
+							//var index = $scope.XQuestion.indexOf(opt);
+							//$scope.XQuestion.splice(idx, 1);
+							$scope.XQuestion.pop();
+							console.log($scope.XQuestion)
 				 		});
 				 		
 				 		console.log($scope.options);
