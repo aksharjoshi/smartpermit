@@ -54,7 +54,7 @@ exports.login = function(req, res){
 			        	}
 			        	else{
 			        		console.log("User table updated. Response is: ", response);
-   				            res.render('index', { title: 'Smart Permits',errMsg: "Invalid username or password!" });
+							res.redirect('/dashboard');
 			        	}
 			        });	        	
 			    }
