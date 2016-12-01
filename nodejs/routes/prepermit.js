@@ -36,14 +36,20 @@ exports.getCurrentQuestion = function(req, res){
 
 exports.saveNextQuestion = function(req, res){
 
-	var qid = req.body.saveQuestions;
-	console.log("req in saveQuestions is: ", req.body);
-	console.log("len is: ", req.body.saveQuestions.length)
 	if(index.checkLogin(req,res)){
+		var qid = req.body.saveQuestions;
+		console.log("req in saveQuestions is: ", req.body);
+		console.log("len is: ", req.body.saveQuestions.length);
 		for(var i = 0; i < qid.length; i++){
-			req.session.question_set.push(qid[i]);
+			if(qid[i] != '')
+				req.session.question_set.push(qid[i]);
 		}
 		console.log("next question set: ", req.session.question_set);
 		res.jsonp(req.session.question_set);
 	}
+}
+
+
+exports.checkNextQuestions = function(req, res){
+
 }
