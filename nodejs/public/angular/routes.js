@@ -212,7 +212,8 @@ app.controller('permitsController', function($scope,$http) {
 			}
 			else{
 				$("input[name='option']:checked").each(function(key,obj){
-					$scope.calculatedPermits.push(respQuestion[$(obj).val()]);
+					console.log(obj);
+					//$scope.calculatedPermits.push(respQuestion[$(obj).val()]);
 				});
 				console.log($scope.calculatedPermits);
 			}
