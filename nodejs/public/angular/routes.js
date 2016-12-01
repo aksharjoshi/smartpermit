@@ -222,7 +222,7 @@ app.controller('permitsController', function($scope,$http) {
 				});
 				$http.get("/checkNextQuestions").success(function(response){
 					if(response.msg == "Success"){
-						$scope.showComponents == "no";
+						$scope.showComponents = "no";
 						$scope.question = response.data.Question;
 						$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type;
