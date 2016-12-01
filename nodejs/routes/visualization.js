@@ -94,7 +94,7 @@ exports.heatMap = function(req, res){
     */
 
     var qs = "SELECT HOUSE_BOROUGH,HOUSE_ZIP As ZIPCODE,PERMIT_TYPE As Permit_Type,Year(`FILING_DATE`) AS Year,P.DESCRIPTION As Permit_Desc, COUNT(*) as permit_count FROM PERMIT_DETAILS, ACRONYM_MASTER As P  WHERE " +
-     "PERMIT_TYPE = P.ACRONYM " + inputYearStr + "GROUP BY HOUSE_BOROUGH,HOUSE_ZIP,PERMIT_TYPE,Year(`FILING_DATE`)";
+     "PERMIT_TYPE = P.ACRONYM " + inputYearStr + " GROUP BY HOUSE_BOROUGH,HOUSE_ZIP,PERMIT_TYPE,Year(`FILING_DATE`)";
 
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
@@ -134,7 +134,7 @@ exports.popularPermit = function(req, res){
     
     var qs = "SELECT Year(`FILING_DATE`) AS Year, `PERMIT_TYPE` As Permit_Type, QUARTER(`FILING_DATE`) As Quarter, P.DESCRIPTION As Permit_Desc, " +
              "COUNT(*) as permit_count FROM PERMIT_DETAILS, ACRONYM_MASTER As P WHERE `PERMIT_TYPE` = P.ACRONYM " + inputYearStr +
-             "GROUP BY `PERMIT_TYPE`, QUARTER(`FILING_DATE`)";
+             " GROUP BY `PERMIT_TYPE`, QUARTER(`FILING_DATE`)";
 
     dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
         if (err) {
