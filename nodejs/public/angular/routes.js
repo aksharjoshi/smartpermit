@@ -1057,7 +1057,7 @@ console.log(permitTypeCountArray);
 	var heatmap;
 	$scope.initHeatMap = function(){
 		map2 = new google.maps.Map(document.getElementById('heatmap'), {
-          zoom: 13,
+          zoom: 11,
           center: {lat: 40.714080, lng: -74.006113},
           //center: new google.maps.LatLng(8.881928, 76.592758),
           //mapTypeId: 'terrain'
