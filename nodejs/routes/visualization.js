@@ -206,7 +206,7 @@ exports.bubbleMapsData = function(req, res){
         var qs = "SELECT `PERMIT TYPE` As Permit_Type, `ZIP CODE`, COUNT(*) as permit_count, zip_codes_states.latitude, zip_codes_states.longitude FROM `permit_history` "
         +" LEFT JOIN zip_codes_states ON zip_codes_states.zip_code = `permit_history`.`ZIP CODE`"
         +" WHERE `RESIDETIAL` = 'YES' "
-        +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 GROUP BY `PERMIT TYPE`,`ZIP CODE` LIMIT 5";
+        +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 GROUP BY `PERMIT TYPE`,`ZIP CODE` ";
 
         /*var qs = "SELECT HOUSE_BOROUGH,HOUSE_ZIP As zipcode, COUNT(*) as permit_count, zip_codes_states.latitude, zip_codes_states.longitude FROM PERMIT_DETAILS" +
                  " LEFT JOIN zip_codes_states ON zip_codes_states.zip_code = PERMIT_DETAILS.HOUSE_ZIP GROUP BY HOUSE_BOROUGH,HOUSE_ZIP";
