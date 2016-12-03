@@ -493,9 +493,8 @@ app.controller('permitsController', function($scope,$http) {
 app.controller('analyticsController', function($scope,$http) {
 
 	$('#myTabs a').click(function (e) {
-	  e.preventDefault();
-	  var href = ($(e.target).attr("href"));
-	  $("#"+href).tab('show')
+	  e.preventDefault()
+	  $(this).tab('show')
 	});
 
 	$scope.quarter = "Q1";
