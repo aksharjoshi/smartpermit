@@ -1230,7 +1230,7 @@ console.log(permitTypeCountArray);
         },
         chicago2: {
           center: {lat: 21.678, lng: -87.629},
-          population: 200,
+          population: 2000000000000000000,
           fillColor: '#000000',
         },
         newyork: {
