@@ -1194,6 +1194,15 @@ console.log(permitTypeCountArray);
      		"NB" : "violet",
      		"PL" : "brown",
      	};
+
+     	var description = {
+     		"AL" : "Alteration",
+     		"EQ" : "Equipment Work",
+     		"EW" : "Earth Work",
+     		"FO" : "Foundation Work",
+     		"NB" : "New Building",
+     		"PL" : "Plumbing",
+     	};
      	// Create the map.
         var map = new google.maps.Map(document.getElementById('bubblemap'), {
           zoom:11,
@@ -1210,7 +1219,7 @@ console.log(permitTypeCountArray);
 		        	
 		          	var div = document.createElement('div');
 		          	$(div).addClass("row");
-		          	div.innerHTML = "<div class='colorLegend' style='background-color:"+colorCodes[key]+"'></div>"+key;
+		          	div.innerHTML = "<div class='colorLegend' style='background-color:"+colorCodes[key]+"'></div>"+description[key];
 		          	legend.appendChild(div);
 		        }
 
