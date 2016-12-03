@@ -60,6 +60,7 @@ app.get('/expirartionAnalysis', visualization.expirartionAnalysis);
 app.get('/heatMap', visualization.heatMap);
 app.get('/popularPermit', visualization.popularPermit);
 app.get('/mapsData', visualization.mapsData);
+app.get('/bubbleMapsData', visualization.bubbleMapsData);
 
 app.get('/getRecommendation', recommendation.getRecommendation);
 app.get('/getJobType', recommendation.getJobType);
