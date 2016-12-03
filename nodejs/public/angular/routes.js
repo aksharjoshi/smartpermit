@@ -1197,7 +1197,7 @@ console.log(permitTypeCountArray);
      	// Create the map.
         var map = new google.maps.Map(document.getElementById('bubblemap'), {
           zoom:13,
-          center: {lat: 40.714080, lng: -74.006113},
+          center: {lat: 40.704080, lng: -73.906113},
           mapTypeId: 'terrain'
         });
      	
