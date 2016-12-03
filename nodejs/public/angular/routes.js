@@ -1217,7 +1217,7 @@ console.log(permitTypeCountArray);
 		            fillOpacity: 0.35,
 		            map: map,
 		            center: {lat: parseInt(permitData.latitude), lng: parseInt(permitData.longitude)},
-		            radius: parseInt(permitData.permit_count) * 100
+		            radius: parseInt(permitData.permit_count) 
 		          });
      		});
 			
