@@ -1228,6 +1228,11 @@ console.log(permitTypeCountArray);
           population: 2714856,
           fillColor: '#FF0000',
         },
+        chicago: {
+          center: {lat: 21.678, lng: -87.629},
+          population: 200,
+          fillColor: '#000000',
+        },
         newyork: {
           center: {lat: 40.714080, lng: -74.006113},
           population: 8405837
