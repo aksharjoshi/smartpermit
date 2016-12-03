@@ -1186,6 +1186,12 @@ console.log(permitTypeCountArray);
 
      $scope.initBubbleMap = function(){
 
+     	var colorCodes = {
+     		"AL" : "#FF0000",
+     		"EQ" : "#0000FF",
+     	};
+     	var test = "AL";
+console.log(colorCodes[test]);
      	$http.get("/bubbleMapsData").success(function(response){
 			
 		});
