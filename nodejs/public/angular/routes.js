@@ -1194,6 +1194,12 @@ console.log(permitTypeCountArray);
      		"NB" : "#FF00FF",
      		"PL" : "#FFFF00",
      	};
+     	// Create the map.
+        var map = new google.maps.Map(document.getElementById('bubblemap'), {
+          zoom: 3,
+          center: {lat: 37.090, lng: -95.712},
+          mapTypeId: 'terrain'
+        });
      	
      	$http.get("/bubbleMapsData").success(function(response){
      		$(response).each(function(i,permitData){
@@ -1262,12 +1268,7 @@ console.log(permitTypeCountArray);
         }
       };
 
-     	// Create the map.
-        var map = new google.maps.Map(document.getElementById('bubblemap'), {
-          zoom: 3,
-          center: {lat: 37.090, lng: -95.712},
-          mapTypeId: 'terrain'
-        });
+     	
 
         // Construct the circle for each value in citymap.
         // Note: We scale the area of the circle based on the population.
