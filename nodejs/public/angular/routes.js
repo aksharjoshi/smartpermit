@@ -1228,7 +1228,7 @@ console.log(permitTypeCountArray);
           population: 2714856,
           fillColor: '#FF0000',
         },
-        chicago: {
+        chicago2: {
           center: {lat: 21.678, lng: -87.629},
           population: 200,
           fillColor: '#000000',
