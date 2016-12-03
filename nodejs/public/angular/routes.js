@@ -1225,7 +1225,8 @@ console.log(permitTypeCountArray);
       var citymap2 = {
         chicago: {
           center: {lat: 21.678, lng: -87.629},
-          population: 2714856
+          population: 2714856,
+          fillColor: '#FF0000',
         },
         newyork: {
           center: {lat: 40.714080, lng: -74.006113},
@@ -1233,11 +1234,13 @@ console.log(permitTypeCountArray);
         },
         losangeles: {
           center: {lat: 24.352, lng: -118.243},
-          population: 3857799
+          population: 3857799,
+          fillColor: '#00FF00',
         },
         vancouver: {
           center: {lat: 29.85, lng: -123.1},
-          population: 603502
+          population: 603502,
+          fillColor: '#0000FF',
         }
       };
 
@@ -1250,14 +1253,14 @@ console.log(permitTypeCountArray);
 
         // Construct the circle for each value in citymap.
         // Note: We scale the area of the circle based on the population.
-        for (var city in citymap) {
+        for (var city in citymap2) {
           // Add the circle for this city to the map.
           var cityCircle = new google.maps.Circle({
-            strokeColor: '#0000FF',
+            strokeColor: citymap[city].fillColor,
             strokeOpacity: 0.8,
             strokeWeight: 2,
             text: "test",
-            fillColor: '#0000FF',
+            fillColor: citymap[city].fillColor,
             fillOpacity: 0.35,
             map: map,
             center: citymap[city].center,
