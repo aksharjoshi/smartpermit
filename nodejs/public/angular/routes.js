@@ -1209,7 +1209,8 @@ console.log(permitTypeCountArray);
 		        for (var key in colorCodes) {
 		        	
 		          	var div = document.createElement('div');
-		          	div.innerHTML = "<div class='colorLegend'><div style='background-color:"+colorCodes[key]+"'></div></div>"+key;
+		          	$(div).addClass("row");
+		          	div.innerHTML = "<div class='colorLegend col-md-4'><div class='col-md-8' style='background-color:"+colorCodes[key]+"'></div></div>"+key;
 		          	legend.appendChild(div);
 		        }
 
