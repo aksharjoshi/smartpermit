@@ -1189,10 +1189,30 @@ console.log(permitTypeCountArray);
      	var colorCodes = {
      		"AL" : "#FF0000",
      		"EQ" : "#0000FF",
+     		"EW" : "#00FF00",
+     		"FO" : "#00FFFF",
+     		"NB" : "#FF00FF",
+     		"PL" : "#FFFF00",
      	};
-     	var test = "AL";
-console.log(colorCodes[test]);
+     	
      	$http.get("/bubbleMapsData").success(function(response){
+     		$(response).each(function(i,permitData){
+     			console.log("permit-type: "+permitData.Permit_Type);
+     			console.log("color: "+colorCodes[permitData.Permit_Type]);
+     			console.log("count: "+permitData.permit_count);
+     			console.log("lat: "+permitData.latitude + "long: "+permitData.longitude);
+     			/* var cityCircle = new google.maps.Circle({
+		            strokeColor: '#0000FF',
+		            strokeOpacity: 0.8,
+		            strokeWeight: 2,
+		            text: "test",
+		            fillColor: citymap2[city].fillColor,
+		            fillOpacity: 0.35,
+		            map: map,
+		            center: citymap2[city].center,
+		            radius: Math.sqrt(citymap2[city].population) * 100
+		          });*/
+     		});
 			
 		});
      	var citymap = {
