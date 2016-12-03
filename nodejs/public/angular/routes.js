@@ -1212,7 +1212,7 @@ console.log(permitTypeCountArray);
 		            strokeColor: colorCodes[permitData.Permit_Type],
 		            strokeOpacity: 0.8,
 		            strokeWeight: 2,
-		            text: permitData.Permit_Type,
+		            label: permitData.Permit_Type,
 		            fillColor: colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
