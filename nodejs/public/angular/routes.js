@@ -1201,21 +1201,22 @@ console.log(permitTypeCountArray);
      			console.log("color: "+colorCodes[permitData.Permit_Type]);
      			console.log("count: "+permitData.permit_count);
      			console.log("lat: "+permitData.latitude + "long: "+permitData.longitude);
-     			/* var cityCircle = new google.maps.Circle({
-		            strokeColor: '#0000FF',
+     			//var center = {lat: permitData.latitude, lng: permitData.longitude};
+     			var cityCircle = new google.maps.Circle({
+		            strokeColor: colorCodes[permitData.Permit_Type],
 		            strokeOpacity: 0.8,
 		            strokeWeight: 2,
-		            text: "test",
-		            fillColor: citymap2[city].fillColor,
+		            text: permitData.Permit_Type,
+		            fillColor: colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
-		            center: citymap2[city].center,
-		            radius: Math.sqrt(citymap2[city].population) * 100
-		          });*/
+		            center: {lat: permitData.latitude, lng: permitData.longitude},
+		            radius: Math.sqrt(permitData.permit_count) * 100
+		          });
      		});
 			
 		});
-     	var citymap = {
+     	/*var citymap = {
         chicago: {
           center: {lat: 41.878, lng: -87.629},
           population: 2714856
@@ -1284,7 +1285,7 @@ console.log(permitTypeCountArray);
             center: citymap2[city].center,
             radius: Math.sqrt(citymap2[city].population) * 100
           });
-        }
+        }*/
         
      };
 	
