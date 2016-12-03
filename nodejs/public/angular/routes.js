@@ -1209,7 +1209,7 @@ console.log(permitTypeCountArray);
      			console.log("lat: "+permitData.latitude + "long: "+permitData.longitude);
      			//var center = {lat: permitData.latitude, lng: permitData.longitude};
      			var cityCircle = new google.maps.Circle({
-		            strokeColor: colorCodes[permitData.Permit_Type],
+		            strokeColor: "red",//colorCodes[permitData.Permit_Type],
 		            strokeOpacity: 0.8,
 		            strokeWeight: 2,
 		            text: permitData.Permit_Type,
