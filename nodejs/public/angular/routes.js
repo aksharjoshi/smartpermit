@@ -1255,6 +1255,7 @@ console.log(permitTypeCountArray);
         // Note: We scale the area of the circle based on the population.
         for (var city in citymap2) {
           // Add the circle for this city to the map.
+          console.log(citymap[city].fillColor);
           var cityCircle = new google.maps.Circle({
             strokeColor: '#0000FF',
             strokeOpacity: 0.8,
