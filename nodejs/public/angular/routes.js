@@ -1125,7 +1125,7 @@ console.log(permitTypeCountArray);
 
 			heatmap.set('gradient', gradient);
 			heatmap.set('radius', 10);
-			heatmap.set('opacity', 105);
+			heatmap.set('opacity', 0.3);
 
 			heatmap.setMap(map2);
 
