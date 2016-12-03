@@ -1210,7 +1210,7 @@ console.log(permitTypeCountArray);
 		            fillColor: colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
-		            center: {lat: permitData.latitude, lng: permitData.longitude},
+		            center: {lat: parseInt(permitData.latitude), lng: parseInt(permitData.longitude)},
 		            radius: Math.sqrt(permitData.permit_count) * 100
 		          });
      		});
