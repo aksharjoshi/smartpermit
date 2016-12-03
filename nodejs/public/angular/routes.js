@@ -1209,7 +1209,7 @@ console.log(permitTypeCountArray);
 		        for (var key in colorCodes) {
 		        	
 		          	var div = document.createElement('div');
-		          	div.innerHTML = key;
+		          	div.innerHTML = "<div class='colorLegend'><div style='background-color:"+colorCodes[key]+"'></div></div>"+key;
 		          	legend.appendChild(div);
 		        }
 
