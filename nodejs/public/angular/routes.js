@@ -1256,7 +1256,7 @@ console.log(permitTypeCountArray);
         for (var city in citymap2) {
           // Add the circle for this city to the map.
           var cityCircle = new google.maps.Circle({
-            strokeColor: citymap[city].fillColor,
+            strokeColor: '#0000FF',
             strokeOpacity: 0.8,
             strokeWeight: 2,
             text: "test",
