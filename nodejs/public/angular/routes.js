@@ -494,7 +494,7 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault();
-	  console.log(e);
+	  console.log($(e.target).attr("href"));
 	  $(this).tab('show')
 	});
 
