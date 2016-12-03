@@ -1213,7 +1213,7 @@ console.log(permitTypeCountArray);
 		            strokeOpacity: 0.8,
 		            strokeWeight: 2,
 		            text: permitData.Permit_Type,
-		            fillColor: red,//colorCodes[permitData.Permit_Type],
+		            fillColor: "red",//colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
 		            center: {lat: parseInt(permitData.latitude), lng: parseInt(permitData.longitude)},
