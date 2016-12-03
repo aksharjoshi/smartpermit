@@ -1200,6 +1200,20 @@ console.log(permitTypeCountArray);
           center: {lat: 40.714080, lng: -74.006113},
           mapTypeId: 'terrain'
         });
+
+        map.data.addListener("click", function(event){
+					console.log('Mag Type: ' + event.feature.getProperty('magType'));
+				});
+
+				var legend = document.getElementById('legend');
+		        for (var key in colorCodes) {
+		        	
+		          	var div = document.createElement('div');
+		          	div.innerHTML = key;
+		          	legend.appendChild(div);
+		        }
+
+		        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
      	
      	$http.get("/bubbleMapsData").success(function(response){
      		$(response).each(function(i,permitData){
@@ -1220,21 +1234,6 @@ console.log(permitTypeCountArray);
 		            radius: parseInt(permitData.permit_count)*0.5
 		          });
      		});
-     		
-				map.data.addListener("click", function(event){
-					console.log('Mag Type: ' + event.feature.getProperty('magType'));
-				});
-
-				var legend = document.getElementById('legend');
-		        for (var key in colorCodes) {
-		        	
-		          	var div = document.createElement('div');
-		          	div.innerHTML = key;
-		          	legend.appendChild(div);
-		        }
-
-		        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
-			
 		});
      };
 	
