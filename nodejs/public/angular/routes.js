@@ -1204,8 +1204,8 @@ console.log(permitTypeCountArray);
 
      $scope.initBubbleMap = function(){
      	var citymap = {
-        chicago: {
-          center: {lat: 41.878, lng: -87.629},
+        newyork: {
+          center: {lat: 40.714080, lng: -74.006113},
           population: 2714856
         },
         newyork: {
