@@ -1248,20 +1248,23 @@ console.log(permitTypeCountArray);
           mapTypeId: 'terrain'
         });
 
-        
-        for (var city in citymap2) {
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var city in citymap) {
           // Add the circle for this city to the map.
           var cityCircle = new google.maps.Circle({
-            strokeColor: '#000000',
+            strokeColor: '#FF0000',
             strokeOpacity: 0.8,
             strokeWeight: 2,
-            fillColor: '#000000',
+            text: "test"
+            fillColor: '#FF0000',
             fillOpacity: 0.35,
             map: map,
             center: citymap[city].center,
             radius: Math.sqrt(citymap[city].population) * 100
           });
         }
+        
      };
 	
 	$scope.getSeasonalData($scope.years[0]);
