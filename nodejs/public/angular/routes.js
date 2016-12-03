@@ -494,8 +494,8 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault();
-	  console.log($(e.target).attr("href"));
-	  $(this).tab('show')
+	  var href = ($(e.target).attr("href"));
+	  $(href).tab('show')
 	});
 
 	$scope.quarter = "Q1";
