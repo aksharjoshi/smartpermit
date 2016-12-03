@@ -1210,7 +1210,7 @@ console.log(permitTypeCountArray);
 		        	
 		          	var div = document.createElement('div');
 		          	$(div).addClass("row");
-		          	div.innerHTML = "<div class='colorLegend'><div style='background-color:"+colorCodes[key]+"'></div></div>"+key;
+		          	div.innerHTML = "<div class='colorLegend' style='background-color:"+colorCodes[key]+"'></div>"+key;
 		          	legend.appendChild(div);
 		        }
 
