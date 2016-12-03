@@ -1219,7 +1219,8 @@ console.log(permitTypeCountArray);
 		            center: {lat: parseFloat(permitData.latitude), lng: parseFloat(permitData.longitude)},
 		            radius: parseInt(permitData.permit_count)*0.5
 		          });
-
+     		});
+     		
 				map.data.addListener("click", function(event){
 					console.log('Mag Type: ' + event.feature.getProperty('magType'));
 				});
@@ -1233,7 +1234,6 @@ console.log(permitTypeCountArray);
 		        }
 
 		        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
-     		});
 			
 		});
      };
