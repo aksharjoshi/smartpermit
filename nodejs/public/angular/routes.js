@@ -1206,7 +1206,7 @@ console.log(permitTypeCountArray);
      			console.log("permit-type: "+permitData.Permit_Type);
      			console.log("color: "+colorCodes[permitData.Permit_Type]);
      			console.log("count: "+permitData.permit_count);
-     			console.log("lat: "+parseInt(permitData.latitude) + "long: "+parseInt(permitData.longitude);
+     			console.log("lat: "+parseInt(permitData.latitude) + "long: "+parseInt(permitData.longitude));
      			//var center = {lat: permitData.latitude, lng: permitData.longitude};
      			var cityCircle = new google.maps.Circle({
 		            strokeColor: colorCodes[permitData.Permit_Type],
