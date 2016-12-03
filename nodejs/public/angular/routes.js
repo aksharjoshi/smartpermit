@@ -1083,19 +1083,19 @@ console.log(permitTypeCountArray);
 	'rgba(255,63,255,1)','rgba(255,0,223,1)','rgba(255,0,191,1)','rgba(255,0,159,1)',
 	'rgba(255,0,127,1)','rgba(255,0,91,1)','rgba(255,0,31,1)','rgba(255,0,0,1)',
 	];
-	var gradient2 = [
-          'rgba(128, 255, 255, 0)',
-          'rgba(128, 255, 255, 1)',
-          'rgba(128, 191, 255, 1)',
-          'rgba(128, 127, 255, 1)',
-          'rgba(128, 63, 255, 1)',
-          'rgba(128, 0, 255, 1)',
-          'rgba(128, 0, 223, 1)',
-          'rgba(128, 0, 191, 1)',
-          'rgba(128, 0, 159, 1)',
-          'rgba(128, 0, 127, 1)',
-          'rgba(128, 0, 91, 1)',
-          'rgba(128, 0, 63, 1)',
+	var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
           'rgba(191, 0, 31, 1)',
           'rgba(255, 0, 0, 1)'
         ]
@@ -1124,6 +1124,8 @@ console.log(permitTypeCountArray);
   ]*/
 
 			heatmap.set('gradient', gradient);
+			heatmap.set('radius', 20);
+			heatmap.set('opacity', 2);
 
 			heatmap.setMap(map2);
 
