@@ -1187,17 +1187,17 @@ console.log(permitTypeCountArray);
      $scope.initBubbleMap = function(){
 
      	var colorCodes = {
-     		"AL" : "#FF0000",
-     		"EQ" : "#0000FF",
-     		"EW" : "#00FF00",
-     		"FO" : "#00FFFF",
-     		"NB" : "#FF00FF",
-     		"PL" : "#FFFF00",
+     		"AL" : "red",
+     		"EQ" : "blue",
+     		"EW" : "orange",
+     		"FO" : "green",
+     		"NB" : "violet",
+     		"PL" : "brown",
      	};
      	// Create the map.
         var map = new google.maps.Map(document.getElementById('bubblemap'), {
-          zoom:13,
-          center: {lat: 40.704080, lng: -73.906113},
+          zoom:9,
+          center: {lat: 40.714080, lng: -74.006113},
           mapTypeId: 'terrain'
         });
      	
@@ -1209,15 +1209,15 @@ console.log(permitTypeCountArray);
      			console.log("lat: "+permitData.latitude + "long: "+permitData.longitude);
      			//var center = {lat: permitData.latitude, lng: permitData.longitude};
      			var cityCircle = new google.maps.Circle({
-		            strokeColor: "red",//colorCodes[permitData.Permit_Type],
+		            strokeColor: colorCodes[permitData.Permit_Type],
 		            strokeOpacity: 0.8,
 		            strokeWeight: 2,
 		            text: permitData.Permit_Type,
-		            fillColor: "red",//colorCodes[permitData.Permit_Type],
+		            fillColor: colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
 		            center: {lat: parseInt(permitData.latitude), lng: parseInt(permitData.longitude)},
-		            radius: parseInt(permitData.permit_count) * 2
+		            radius: parseInt(permitData.permit_count) * 0.5
 		          });
      		});
 			
