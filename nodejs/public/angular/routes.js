@@ -1196,7 +1196,7 @@ console.log(permitTypeCountArray);
      	};
      	// Create the map.
         var map = new google.maps.Map(document.getElementById('bubblemap'), {
-          zoom:11,
+          zoom:13,
           center: {lat: 40.714080, lng: -74.006113},
           mapTypeId: 'terrain'
         });
