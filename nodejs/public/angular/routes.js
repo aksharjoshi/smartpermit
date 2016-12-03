@@ -1182,27 +1182,13 @@ console.log(permitTypeCountArray);
 		});
 		
 		return points;
-		/*
-        return [
-          new google.maps.LatLng(37.782551, -122.445368),R
-          new google.maps.LatLng(37.764962, -122.432298),
-          new google.maps.LatLng(37.761344, -122.406215),
-          new google.maps.LatLng(37.760556, -122.406495),
-          new google.maps.LatLng(37.759732, -122.406484),
-          new google.maps.LatLng(37.758910, -122.406228),
-          new google.maps.LatLng(37.758182, -122.405695),
-          new google.maps.LatLng(37.757676, -122.405118),
-          new google.maps.LatLng(37.757039, -122.404346),
-          new google.maps.LatLng(37.756335, -122.403719),
-          new google.maps.LatLng(37.755503, -122.403406),
-          new google.maps.LatLng(37.754665, -122.403242),
-          new google.maps.LatLng(37.753837, -122.403172),
-          new google.maps.LatLng(37.752986, -122.403112),
-          new google.maps.LatLng(37.751266, -122.403355)
-        ];*/
       };
 
      $scope.initBubbleMap = function(){
+
+     	$http.get("/bubbleMapsData").success(function(response){
+			
+		});
      	var citymap = {
         chicago: {
           center: {lat: 41.878, lng: -87.629},

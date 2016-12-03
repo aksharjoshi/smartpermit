@@ -198,3 +198,26 @@ exports.mapsData = function(req, res){
         });
     }
 };
+exports.bubbleMapsData = function(req, res){
+    
+    if(req.session.userid != ""){
+
+       // var qs = "SELECT Year(`FILING DATE`) As Year, QUARTER(`FILING DATE`) As Quarter,`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`,COUNT(*) FROM `permit_history` WHERE Year(`FILING DATE`)="+ inputYear + " AND `RESIDETIAL` = 'YES' GROUP BY Year(`FILING DATE`),QUARTER(`FILING DATE`),`BOROUGH`,`ZIP CODE`,`PERMIT TYPE`";
+        var qs = "SELECT `PERMIT TYPE` As Permit_Type, `ZIP CODE`, COUNT(*) as permit_count, zip_codes_states.latitude, zip_codes_states.longitude FROM `permit_history` "
+        +" LEFT JOIN zip_codes_states ON zip_codes_states.zip_code = `permit_history`.`ZIP CODE`"
+        +" WHERE `RESIDETIAL` = 'YES' "
+        +" AND `ZIP CODE` != '' AND `ZIP CODE` != 0 GROUP BY `PERMIT TYPE`,`ZIP CODE`";
+
+        /*var qs = "SELECT HOUSE_BOROUGH,HOUSE_ZIP As zipcode, COUNT(*) as permit_count, zip_codes_states.latitude, zip_codes_states.longitude FROM PERMIT_DETAILS" +
+                 " LEFT JOIN zip_codes_states ON zip_codes_states.zip_code = PERMIT_DETAILS.HOUSE_ZIP GROUP BY HOUSE_BOROUGH,HOUSE_ZIP";
+*/
+        dbObject.find(qs/*condition, '*' , {}, 0, 0, {}*/, function(err, response){
+            if (err) {
+                //console.log("err", err);
+                res.status(500).jsonp(err)
+            }
+            console.log("\n\nresponse FOR mapsData is: ", response);
+            res.jsonp(response);
+        });
+    }
+};
