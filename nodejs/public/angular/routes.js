@@ -1222,6 +1222,25 @@ console.log(permitTypeCountArray);
         }
       };
 
+      var citymap2 = {
+        chicago: {
+          center: {lat: 41.678, lng: -87.629},
+          population: 2714856
+        },
+        newyork: {
+          center: {lat: 40.614, lng: -74.005},
+          population: 8405837
+        },
+        losangeles: {
+          center: {lat: 34.352, lng: -118.243},
+          population: 3857799
+        },
+        vancouver: {
+          center: {lat: 49.85, lng: -123.1},
+          population: 603502
+        }
+      };
+
      	// Create the map.
         var map = new google.maps.Map(document.getElementById('bubblemap'), {
           zoom: 11,
@@ -1235,6 +1254,19 @@ console.log(permitTypeCountArray);
           // Add the circle for this city to the map.
           var cityCircle = new google.maps.Circle({
             strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 100
+          });
+        }
+        for (var city in citymap2) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF00FF',
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: '#FF0000',
