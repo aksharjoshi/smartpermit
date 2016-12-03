@@ -1060,7 +1060,8 @@ console.log(permitTypeCountArray);
           zoom: 13,
           center: {lat: 40.714080, lng: -74.006113},
           //center: new google.maps.LatLng(8.881928, 76.592758),
-          mapTypeId: 'terrain'
+          //mapTypeId: 'terrain'
+          mapTypeId: 'satellite'
         });
 
 		$http.get("/mapsData").success(function(response){
