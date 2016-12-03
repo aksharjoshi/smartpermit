@@ -493,7 +493,8 @@ app.controller('permitsController', function($scope,$http) {
 app.controller('analyticsController', function($scope,$http) {
 
 	$('#myTabs a').click(function (e) {
-	  e.preventDefault()
+	  e.preventDefault();
+	  console.log(e);
 	  $(this).tab('show')
 	});
 
