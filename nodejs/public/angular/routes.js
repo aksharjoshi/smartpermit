@@ -72,8 +72,6 @@ app.controller('recommendationController', function($scope,$http) {
 				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 100);
 			}
 		});
-		
-		
 	});
 	
 	$scope.getPermitType = function(job_type){
@@ -493,6 +491,12 @@ app.controller('permitsController', function($scope,$http) {
 });
 
 app.controller('analyticsController', function($scope,$http) {
+
+	$('#myTabs a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	});
+
 	$scope.quarter = "Q1";
 
 	$scope.years = [2012, 2013, 2014, 2015, 2016, 2017, 2018];
