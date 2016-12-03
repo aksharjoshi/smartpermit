@@ -1216,7 +1216,7 @@ console.log(permitTypeCountArray);
 		            fillColor: colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
-		            center: {lat: parsFloat(permitData.latitude), lng: parseFloat(permitData.longitude)},
+		            center: {lat: parseFloat(permitData.latitude), lng: parseFloat(permitData.longitude)},
 		            radius: parseInt(permitData.permit_count) * 5
 		          });
      		});
