@@ -1222,7 +1222,17 @@ console.log(permitTypeCountArray);
 
 				map.data.addListener("click", function(event){
 					console.log('Mag Type: ' + event.feature.getProperty('magType'));
-				})
+				});
+
+				var legend = document.getElementById('legend');
+		        for (var key in colorCodes) {
+		        	
+		          	var div = document.createElement('div');
+		          	div.innerHTML = key;
+		          	legend.appendChild(div);
+		        }
+
+		        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
      		});
 			
 		});
