@@ -1224,19 +1224,19 @@ console.log(permitTypeCountArray);
 
       var citymap2 = {
         chicago: {
-          center: {lat: 41.678, lng: -87.629},
+          center: {lat: 21.678, lng: -87.629},
           population: 2714856
         },
         newyork: {
-          center: {lat: 40.614, lng: -74.005},
+          center: {lat: 20.614, lng: -74.005},
           population: 8405837
         },
         losangeles: {
-          center: {lat: 34.352, lng: -118.243},
+          center: {lat: 24.352, lng: -118.243},
           population: 3857799
         },
         vancouver: {
-          center: {lat: 49.85, lng: -123.1},
+          center: {lat: 29.85, lng: -123.1},
           population: 603502
         }
       };
