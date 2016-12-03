@@ -1219,75 +1219,13 @@ console.log(permitTypeCountArray);
 		            center: {lat: parseFloat(permitData.latitude), lng: parseFloat(permitData.longitude)},
 		            radius: parseInt(permitData.permit_count)*0.5
 		          });
+
+				map.data.addListener("click", function(event){
+					console.log('Mag Type: ' + event.feature.getProperty('magType'));
+				})
      		});
 			
 		});
-     	/*var citymap = {
-        chicago: {
-          center: {lat: 41.878, lng: -87.629},
-          population: 2714856
-        },
-        newyork: {
-          center: {lat: 40.714, lng: -74.005},
-          population: 8405837
-        },
-        losangeles: {
-          center: {lat: 34.052, lng: -118.243},
-          population: 3857799
-        },
-        vancouver: {
-          center: {lat: 49.25, lng: -123.1},
-          population: 603502
-        }
-      };
-
-      var citymap2 = {
-        chicago: {
-          center: {lat: 21.678, lng: -87.629},
-          population: 2714856,
-          fillColor: '#FF0000',
-        },
-        chicago2: {
-          center: {lat: 21.678, lng: -87.629},
-          population: 2000000000000000000,
-          fillColor: '#000000',
-        },
-        newyork: {
-          center: {lat: 40.714080, lng: -74.006113},
-          population: 8405837
-        },
-        losangeles: {
-          center: {lat: 24.352, lng: -118.243},
-          population: 3857799,
-          fillColor: '#00FF00',
-        },
-        vancouver: {
-          center: {lat: 29.85, lng: -123.1},
-          population: 603502,
-          fillColor: '#0000FF',
-        }
-      };
-
-     	
-
-        // Construct the circle for each value in citymap.
-        // Note: We scale the area of the circle based on the population.
-        for (var city in citymap2) {
-          // Add the circle for this city to the map.
-          console.log(citymap2[city].fillColor);
-          var cityCircle = new google.maps.Circle({
-            strokeColor: '#0000FF',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            text: "test",
-            fillColor: citymap2[city].fillColor,
-            fillOpacity: 0.35,
-            map: map,
-            center: citymap2[city].center,
-            radius: Math.sqrt(citymap2[city].population) * 100
-          });
-        }*/
-        
      };
 	
 	$scope.getSeasonalData($scope.years[0]);
