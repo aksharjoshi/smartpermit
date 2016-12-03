@@ -1206,7 +1206,7 @@ console.log(permitTypeCountArray);
      			console.log("permit-type: "+permitData.Permit_Type);
      			console.log("color: "+colorCodes[permitData.Permit_Type]);
      			console.log("count: "+permitData.permit_count);
-     			console.log("lat: "+parseInt(permitData.latitude) + "long: "+parseInt(permitData.longitude));
+     			console.log("lat: "+parseFloat(permitData.latitude) + "long: "+parseFloat(permitData.longitude));
      			//var center = {lat: permitData.latitude, lng: permitData.longitude};
      			var cityCircle = new google.maps.Circle({
 		            strokeColor: colorCodes[permitData.Permit_Type],
@@ -1216,7 +1216,7 @@ console.log(permitTypeCountArray);
 		            fillColor: colorCodes[permitData.Permit_Type],
 		            fillOpacity: 0.35,
 		            map: map,
-		            center: {lat: parseInt(permitData.latitude), lng: parseInt(permitData.longitude)},
+		            center: {lat: parsFloat(permitData.latitude), lng: parseFloat(permitData.longitude)},
 		            radius: parseInt(permitData.permit_count) * 5
 		          });
      		});
