@@ -1078,12 +1078,12 @@ console.log(permitTypeCountArray);
           		//fillOpacity: .2,
 			});
 
-        	var gradient2 = [					// rgba colors for the gradient
+        	var gradient = [					// rgba colors for the gradient
 	'rgba(255,255,0,0)','rgba(255,255,0,1)','rgba(255,191,255,1)','rgba(255,127,255,1)',
 	'rgba(255,63,255,1)','rgba(255,0,223,1)','rgba(255,0,191,1)','rgba(255,0,159,1)',
 	'rgba(255,0,127,1)','rgba(255,0,91,1)','rgba(255,0,31,1)','rgba(255,0,0,1)',
 	];
-	var gradient = [
+	var gradient2 = [
           'rgba(128, 255, 255, 0)',
           'rgba(128, 255, 255, 1)',
           'rgba(128, 191, 255, 1)',
