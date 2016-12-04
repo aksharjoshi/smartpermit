@@ -30,6 +30,7 @@
 <h3 class="page-header">{{question}}</h3>
 <div class="row placeholders" style="margin-top:100px;">
     <div class="col-md-3" style="cursor:pointer;" ng-repeat="(option, value) in options">
+      <div style="border:10px solid #ccc; border-radius: 50%; padding: 10px 20px; color: blue">?</div>
       <div ng:class="{true:'wizard-box select', false:'wizard-box'}[selectedOption==option]">      
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
