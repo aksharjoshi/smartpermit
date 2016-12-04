@@ -495,7 +495,7 @@ app.controller('permitsController', function($scope,$http) {
 	
 
 	$scope.popover = function(e) {
-		console.log(e.target);
+		console.log(e);
 		var element = $(e.target).parent().next(".wizard-box").text().replace(/\s/g, '');
 		console.log(element);
 		$(".popover").hide();
