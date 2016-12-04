@@ -494,8 +494,8 @@ app.controller('permitsController', function($scope,$http) {
 
 	
 
-	$scope.popover = function(target) {
-		target = target.replace(/\s/g, '');
+	$scope.popover = function(e) {
+		target = (e.option).replace(/\s/g, '');
 		$(".popover").hide();
 		$("#pop"+target).show();
 	}
