@@ -498,7 +498,10 @@ app.controller('permitsController', function($scope,$http) {
 		target = (e.option).replace(/\s/g, '');
 		$(".popover").hide();
 		$("#pop"+target).show();
-	}
+	};
+	$scope.dismissPop = function() {
+		$(".popover").hide();
+	};
 	
 	
 });
