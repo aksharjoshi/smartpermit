@@ -355,14 +355,15 @@ app.controller('permitsController', function($scope,$http) {
 				 	
 				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
-					 	$("#containerComponent").show();
+					 	//$("#containerComponent").show();
+					 	$(".popup").show();
 					 	setTimeout(function(){ 
 				 			$(".placeholders").children(":first").css("margin-left","11%");
 					 		$(".placeholders").children(":last").css("margin-left","25%");
 				 		}, 100);
 					}
 					else
-					 	$("#containerComponent").hide();
+					 	$(".popup").hide();//$("#containerComponent").hide();
 				 	if(typeof $scope.options.ANSWER == "string"){
 				 		var options = [];
 				 		response.Options = response.Options.split(",");
@@ -406,14 +407,15 @@ app.controller('permitsController', function($scope,$http) {
 			 	$scope.answer_type = response.Answer_type;
 
 			 	if((response.Options).indexOf("COMPONENT") >= 0){
-				 		$("#containerComponent").show();
+				 		//$("#containerComponent").show();
+				 		$(".popup").show();
 				 		setTimeout(function(){ 
 				 			$(".placeholders").children(":first").css("margin-left","11%");
 					 		$(".placeholders").children(":last").css("margin-left","25%");
 				 		}, 100);
 				}
 				else
-				 		$("#containerComponent").hide();
+				 		$(".popup").hide();//$("#containerComponent").hide();
 			 	if(typeof $scope.options.ANSWER == "string"){
 			 		$scope.options = $scope.options;
 
@@ -452,14 +454,15 @@ app.controller('permitsController', function($scope,$http) {
 	 	$scope.answer_type = response.Answer_type;
 
 	 	if((response.Options).indexOf("COMPONENT") >= 0){
-		 	$("#containerComponent").show();
+		 	//$("#containerComponent").show();
+		 	$(".popup").show();
 		 	setTimeout(function(){ 
 			 	$(".placeholders").children(":first").css("margin-left","11%");
 				$(".placeholders").children(":last").css("margin-left","25%");
 			}, 100);
 	 	}
 		else
-		 	$("#containerComponent").hide();
+		 	$(".popup").hide();//$("#containerComponent").hide();
 
 	 	setTimeout(function(){ 
 	 		$(".imgIcon").each(function(index,imgObj){

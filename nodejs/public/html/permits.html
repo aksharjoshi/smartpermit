@@ -30,7 +30,7 @@
 <h3 class="page-header">{{question}}</h3>
 <div class="row placeholders" style="margin-top:100px;">
     <div class="col-md-3" style="cursor:pointer;" ng-repeat="(option, value) in options">
-      <div style="border:1px solid #ccc; border-radius: 50%; padding: 5px 10px; font-size: 10px; color: blue; margin-left: 68%; width: 25px;">
+      <div class="popup" style="border:1px solid #ccc; border-radius: 50%; padding: 5px 10px; font-size: 10px; color: blue; margin-left: 68%; width: 25px;">
         <a tabindex="0" role="button" data-toggle="popover" title="Dismissible popover" data-content='<div id="test">test</div>'>?</a>
       </div>
       <div ng:class="{true:'wizard-box select', false:'wizard-box'}[selectedOption==option]">      
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <div class="popover fade right in" role="tooltip" id="popSUBCOMPONENT" style="top: 10px;left: 230px;display: block;width: 500px;height: 450px;max-width:500px;">
+  <div class="popover fade right in" role="tooltip" id="popSUBCOMPONENT" style="top: 10px;left: 495px;display: none;width: 500px;height: 450px;max-width:500px;">
     <div class="arrow" style="top: 33.945%;"></div>
     <h3 class="popover-title">Sub-component</h3>
     <div class="popover-content">
