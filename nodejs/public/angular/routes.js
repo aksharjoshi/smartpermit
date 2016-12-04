@@ -356,6 +356,7 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.answer_type = response.Answer_type;
 				 	if((response.Options).indexOf("COMPONENT") >= 0){
 					 	//$("#containerComponent").show();
+					 	alert(1);
 					 	$(".popup").show();
 					 	setTimeout(function(){ 
 				 			$(".placeholders").children(":first").css("margin-left","11%");
