@@ -140,6 +140,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.finalAnswer = false;
 	$scope.calculatedPermits = [];
 	$scope.outputPermits = [];
+	$("[data-toggle=popover]").popover();
 
 	$scope.icons = {
 		"NEW" : "glyphicons-619-mixed-buildings.png",
