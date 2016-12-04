@@ -491,6 +491,16 @@ app.controller('permitsController', function($scope,$http) {
 	    title: "HTML code", 
 	    content: "<strong>HTML code</strong>"
 	}); */
+
+	
+
+	$scope.popover = function(e) {
+		console.log(e.target);
+		var element = $(e.target).parent().next(".wizard-box").text().replace(/\s/g, '');
+		console.log(element);
+		$(".popover").hide();
+		$("#pop"+element).show();
+	}
 	
 	
 });
