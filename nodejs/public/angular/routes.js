@@ -358,8 +358,8 @@ app.controller('permitsController', function($scope,$http) {
 					 	//$("#containerComponent").show();
 					 	
 					 	setTimeout(function(){ 
-				 			$(".placeholders").children(":first").css("margin-left","11%");
-					 		$(".placeholders").children(":last").css("margin-left","25%");
+				 			//$(".placeholders").children(":first").css("margin-left","11%");
+					 		//$(".placeholders").children(":last").css("margin-left","25%");
 					 		$(".popup").show();
 				 		}, 100);
 					}
@@ -410,8 +410,8 @@ app.controller('permitsController', function($scope,$http) {
 			 	if((response.Options).indexOf("COMPONENT") >= 0){
 				 		//$("#containerComponent").show();
 				 		setTimeout(function(){ 
-				 			$(".placeholders").children(":first").css("margin-left","11%");
-					 		$(".placeholders").children(":last").css("margin-left","25%");
+				 			//$(".placeholders").children(":first").css("margin-left","11%");
+					 		//$(".placeholders").children(":last").css("margin-left","25%");
 					 		$(".popup").show();
 				 		}, 100);
 				}
@@ -457,8 +457,8 @@ app.controller('permitsController', function($scope,$http) {
 	 	if((response.Options).indexOf("COMPONENT") >= 0){
 		 	//$("#containerComponent").show();
 		 	setTimeout(function(){ 
-			 	$(".placeholders").children(":first").css("margin-left","11%");
-				$(".placeholders").children(":last").css("margin-left","25%");
+			 	//$(".placeholders").children(":first").css("margin-left","11%");
+				//$(".placeholders").children(":last").css("margin-left","25%");
 				$(".popup").show();
 			}, 100);
 	 	}
