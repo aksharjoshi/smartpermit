@@ -327,9 +327,9 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
+				 		console.log("*************** xQuestion ***************");
+				 		console.log($scope.XQuestion);
 				 		$($scope.XQuestion).each(function(idx,opt){
-				 			console.log(($.parseJSON(response.Next_question)).ANSWER);
-				 			console.log(opt);
 				 			if(typeof (($.parseJSON(response.Next_question)).ANSWER)[opt] == "object"){
 							 	$scope.question = response.Question;
 							 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER)[opt];
@@ -339,11 +339,7 @@ app.controller('permitsController', function($scope,$http) {
 							//var index = $scope.XQuestion.indexOf(opt);
 							//$scope.XQuestion.splice(idx, 1);
 							$scope.XQuestion[idx] = "";
-							//$scope.XQuestion.pop();
-							console.log($scope.XQuestion)
 				 		});
-				 		
-				 		console.log($scope.options);
 				 	}
 				 	else{
 				 		$scope.options = $.parseJSON(response.Next_question);
