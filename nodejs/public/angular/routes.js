@@ -219,7 +219,7 @@ app.controller('permitsController', function($scope,$http) {
 			}
 			else{
 				$("input[name='option']:checked").each(function(key,obj){
-					var tempPermits = ($(obj).val());
+					var tempPermits = JSON.parse($(obj).val());
 					$scope.outputPermits = tempPermits;
 					/*console.log(tempPermits);
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
