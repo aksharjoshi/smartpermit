@@ -266,7 +266,7 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "yes";
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
-						$http.post('/getDescription', {"permits": $scope.calculatedPermits})
+						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
 							acronymArray = [];
@@ -291,7 +291,7 @@ app.controller('permitsController', function($scope,$http) {
 							});
 							console.log(jQuery.unique($scope.outputPermits));
 							$scope.outputPermits = temp;
-						});
+						});*/
 					}
 				});
 			}
