@@ -224,10 +224,13 @@ app.controller('permitsController', function($scope,$http) {
 					console.log(tempPermits);
 					$(tempPermits).each(function(k,p){
 						console.log(p);
-						if($.inArray( p.product, $scope.calculatedPermits ) == -1)
+						if($.inArray( p.product, $scope.calculatedPermits ) == -1){
+							console.log($scope.calculatedPermits);
 							$scope.calculatedPermits.push(p.product);
+						}
 						tempPerm.push(p);
 						$scope.outputPermits.push({"product":p.product,"permits":tempPerm});
+						console.log($scope.outputPermits);
 					});
 					//console.log("Product:"+product);
 					//console.log(jQuery.unique($scope.outputPermits));
