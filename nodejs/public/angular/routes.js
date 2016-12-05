@@ -139,7 +139,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.XQuestion = [];
 	$scope.finalAnswer = false;
 	$scope.calculatedPermits = [];
-	$scope.outputPermits = [];
+	$scope.outputPermits = {};
 	$("[data-toggle=popover]").popover();
 
 	$scope.icons = {
