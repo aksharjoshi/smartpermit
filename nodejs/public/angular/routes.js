@@ -220,7 +220,8 @@ app.controller('permitsController', function($scope,$http) {
 			else{
 				$("input[name='option']:checked").each(function(key,obj){
 					var tempPermits = ($(obj).val()).split(",");
-					console.log(tempPermits);
+					$scope.outputPermits = tempPermits;
+					/*console.log(tempPermits);
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					$(tempPermits).each(function(k,p){
 						if($.inArray( p, $scope.calculatedPermits ) == -1)
@@ -229,7 +230,7 @@ app.controller('permitsController', function($scope,$http) {
 					});
 					//console.log("Product:"+product);
 					//console.log(jQuery.unique($scope.outputPermits));
-					console.log($scope.outputPermits);
+					console.log($scope.outputPermits);*/
 					
 				});
 				$http.get("/checkNextQuestions").success(function(response){
