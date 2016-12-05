@@ -219,7 +219,7 @@ app.controller('permitsController', function($scope,$http) {
 			}
 			else{
 				$("input[name='option']:checked").each(function(key,obj){
-					$scope.outputPermits = [];
+					console.log();
 					var tempPermits = ($(obj).val()).split(",");
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					$(tempPermits).each(function(k,p){
@@ -287,6 +287,7 @@ app.controller('permitsController', function($scope,$http) {
 									temp.push({"product":iproduct.product,"permits":tempPermitsArray.join(",")});
 								}
 							});
+							console.log(jQuery.unique($scope.outputPermits));
 							$scope.outputPermits = temp;
 						});
 					}
