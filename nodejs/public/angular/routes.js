@@ -199,7 +199,7 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.OTHER = "glyphicons-195-question-sign.png";
 	$scope.YES = "glyphicons-207-ok.png";
 	$scope.NO = "glyphicons-208-remove.png";
-
+    var tempPerm = [];
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
 			if($scope.finalAnswer){
@@ -222,12 +222,12 @@ app.controller('permitsController', function($scope,$http) {
 					var tempPermits = JSON.parse($(obj).val());
 					//$scope.outputPermits = tempPermits;
 					console.log(tempPermits);
-					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					$(tempPermits).each(function(k,p){
 						console.log(p);
-						//if($.inArray( p, $scope.calculatedPermits ) == -1)
-							//$scope.calculatedPermits.push(p);
-						$scope.outputPermits.push({"product":product,"permits":p});
+						if($.inArray( p, $scope.calculatedPermits ) == -1)
+							$scope.calculatedPermits.push(p.product);
+						tempPerm.push(p);
+						$scope.outputPermits.push({"product":p.product,"permits":tempPerm});
 					});
 					//console.log("Product:"+product);
 					//console.log(jQuery.unique($scope.outputPermits));
