@@ -166,9 +166,9 @@
       <th>Appliance</th>
       <th>Permit</th>
     </thead>
-    <tbody ng-repeat="(idx,permit) in outputPermits">
-      <td>{{permit.product}} </td>
-      <td>{{permit.permits}}</td>
+    <tbody ng-repeat="permit in outputPermits track by $index">
+      <td>{{permit}} </td>
+      <td>{{permit}}</td>
     </tbody>
   </table>
 </div>
