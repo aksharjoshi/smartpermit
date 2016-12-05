@@ -221,16 +221,17 @@ app.controller('permitsController', function($scope,$http) {
 				$("input[name='option']:checked").each(function(key,obj){
 					var tempPermits = JSON.parse($(obj).val());
 					$scope.outputPermits = tempPermits;
-					/*console.log(tempPermits);
+					console.log(tempPermits);
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					$(tempPermits).each(function(k,p){
+						console.log(p);
 						if($.inArray( p, $scope.calculatedPermits ) == -1)
 							$scope.calculatedPermits.push(p);
 							$scope.outputPermits.push({"product":product,"permits":$(obj).val()});
 					});
 					//console.log("Product:"+product);
 					//console.log(jQuery.unique($scope.outputPermits));
-					console.log($scope.outputPermits);*/
+					console.log($scope.outputPermits);
 					
 				});
 				$http.get("/checkNextQuestions").success(function(response){
