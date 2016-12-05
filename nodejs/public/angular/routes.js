@@ -223,7 +223,7 @@ app.controller('permitsController', function($scope,$http) {
 					//$scope.outputPermits = tempPermits;
 					console.log(tempPermits);
 					$(tempPermits).each(function(k,p){
-						console.log(p);
+						console.log(k);
 						if($.inArray( p.product, $scope.calculatedPermits ) == -1){
 							console.log(p.product);
 							$scope.calculatedPermits.push(p.product);
