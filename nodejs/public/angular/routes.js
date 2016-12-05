@@ -208,10 +208,10 @@ app.controller('permitsController', function($scope,$http) {
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
 
-				$http.post('/getDescription', {"permits": $scope.calculatedPermits})
+				/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 				.success(function(data, status, headers, config) {
 					
-				});
+				});*/
 				
 				var prevQuestionID = $scope.questionID;
 				$scope.questionID = 100;
