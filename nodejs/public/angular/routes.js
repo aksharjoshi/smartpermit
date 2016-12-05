@@ -228,6 +228,7 @@ app.controller('permitsController', function($scope,$http) {
 							$scope.outputPermits.push({"product":product,"permits":$(obj).val()});
 					});
 					console.log("Product:"+product);
+					console.log(jQuery.unique($scope.outputPermits));
 					console.log($scope.outputPermits);
 					
 				});
