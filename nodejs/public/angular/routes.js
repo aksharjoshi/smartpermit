@@ -314,6 +314,7 @@ app.controller('permitsController', function($scope,$http) {
 				console.log($scope.XQuestion);
 				var saveQuestions = [];
 				var respQuestion = $.parseJSON($scope.RESPONSE.Next_question);
+				console.log($("input[name='option']:checked"));
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
 						var passObj = {"answer":$(obj).val(), "next_question_id": respQuestion[$(obj).val()]}
@@ -324,7 +325,7 @@ app.controller('permitsController', function($scope,$http) {
 				$http.post('/saveQuestion', {"saveQuestions": saveQuestions})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
-					saveQuestions = [];
+					saveQuestions = []; // Added on monday dec 5, 2016
 				});
 			}
 			else
