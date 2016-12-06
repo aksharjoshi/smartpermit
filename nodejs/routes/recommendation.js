@@ -89,7 +89,7 @@ exports.getRecommendationMultiple = function(req, res){
     {
       for(var key_child in key_main)
       {
-           value_list.push(key_child);
+           value_list.push(key_main[key_child]);
       }
     }
 
