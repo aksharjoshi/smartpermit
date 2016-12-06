@@ -233,7 +233,7 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "no";
 						$scope.question = response.data.Question;
 						if((response.data.Next_question).indexOf("ANSWER") >= 0){
-							$scope.question = response.Question;
+							$scope.question = response.data.Question;
 							$scope.options = (($.parseJSON(response.data.Next_question)).ANSWER);
 							$scope.answer_type = response.data.Answer_type;
 							$scope.showComponents = "yes";
