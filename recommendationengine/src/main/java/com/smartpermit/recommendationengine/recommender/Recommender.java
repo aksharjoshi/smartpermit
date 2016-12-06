@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface Recommender {
 
-    public List<Permit> getRecommendations(String permitId, int numberOfRecommendations);
+    List<Permit> getRecommendations(String permitId, int numberOfRecommendations);
 
-    public HashMap evaluate();
+    List<String> getApplicablePermits(String permits[]);
+
+    HashMap evaluate();
 }
