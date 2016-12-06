@@ -73,6 +73,8 @@ exports.getRecommendation = function(req, res){
 
 exports.getRecommendationMultiple = function(req, res){
 
+  var querystring = require('querystring');
+
   console.log("in post reco");
 
   if(req.session.userid != "")
@@ -81,12 +83,21 @@ exports.getRecommendationMultiple = function(req, res){
     console.log("req body is: ", JSON.stringify(req.body));
 
 
+    var data = querystring.stringify({
+      body: req.body
+//      password: yourPasswordValue
+    });
+
     var options = {
             host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
             port: 8181,
             path: '/recommend',
-            body: req.body,
-            method: 'POST'
+            //body: req.body,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': Buffer.byteLength(data)
+            }
           };
 
           var responseJava = "";
