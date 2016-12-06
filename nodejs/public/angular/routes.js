@@ -227,7 +227,7 @@ app.controller('permitsController', function($scope,$http) {
 					$scope.outputPermits[product] =  tempPermits;
 					console.log($scope.outputPermits);
 
-					http.post('/getRecommendation', {"permits": $scope.outputPermits})
+					$http.post('/getRecommendation', {"permits": $scope.outputPermits})
 					.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
 							
