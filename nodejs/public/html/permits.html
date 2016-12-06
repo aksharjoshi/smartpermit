@@ -168,7 +168,7 @@
     </thead>
     <tbody ng-repeat="(product,permitsObj) in outputPermits">
       <td>{{product}} </td>
-      <td><p ng-repeat="(i,permit) in permitsObj"> Job: {{permit}} | Permit: {{permit.PERMIT_TYPE}} | Permit Sub Type: {{permit.PERMIT_SUB_TYPE}} </p></td>
+      <td><p ng-repeat="(i,permit) in permitsObj"> Job: {{permit.permitJobType}} | Permit: {{permit.permitType}} | Permit Sub Type: {{permit.permitSubtype}} </p></td>
     </tbody>
   </table>
 </div>
