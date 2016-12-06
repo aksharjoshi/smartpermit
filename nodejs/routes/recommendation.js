@@ -73,8 +73,11 @@ exports.getRecommendation = function(req, res){
 
 exports.getRecommendationMultiple = function(req, res){
 
-  if(req.session.userid != ""){
+  console.log("in post reco");
 
+  if(req.session.userid != "")
+  {
+    console.log("in if of post reco")
     console.log("req body is: ", JSON.stringify(req.body));
 
 
