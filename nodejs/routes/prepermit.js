@@ -6,6 +6,8 @@ var index = require('./index.js');
 exports.getCurrentQuestion = function(req, res){
 	var id = req.query.id;
 
+	console.log("getCurrentQuestion");
+
 	if(index.checkLogin(req,res)){
 		console.log("req query is: ", JSON.stringify(req.query));
 		var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
