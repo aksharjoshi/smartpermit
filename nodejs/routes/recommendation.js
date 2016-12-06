@@ -77,6 +77,28 @@ exports.getRecommendationMultiple = function(req, res){
 
     console.log("req body is: ", JSON.stringify(req.body));
 
+
+    var options = {
+            host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
+            port: 8181,
+            path: '/recommend',
+            body: req.body,
+            method: 'POST'
+          };
+
+          var responseJava = "";
+
+          http.request(options, function(response) {
+            console.log('STATUS: ' + response.statusCode);
+            console.log('HEADERS: ' + JSON.stringify(response.headers));
+            response.setEncoding('utf8');
+            response.on('data', function (chunk) {
+              console.log('BODY: ' + chunk);
+              responseJava = chunk;
+              res.send(responseJava);
+            });
+          }).end();
+
     /*var job_type = req.query.job_type;
     var permit_type = req.query.permit_type;
     var permit_subtype = req.query.permit_subtype;
