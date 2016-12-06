@@ -82,6 +82,19 @@ exports.getRecommendationMultiple = function(req, res){
     console.log("in if of post reco")
     console.log("req body is: ", JSON.stringify(req.body));
 
+    var temp = req.body.permits;
+    var value_list = []
+
+    for(var key_main in temp)
+    {
+      for(var key_child in key_main)
+      {
+           value_list.push(key_child);
+      }
+    }
+
+    console.log("value_list : " + JSON.stringify(value_list));
+
 
     var data = querystring.stringify({
       body: req.body
