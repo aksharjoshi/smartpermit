@@ -226,6 +226,12 @@ app.controller('permitsController', function($scope,$http) {
 					
 					$scope.outputPermits[product] =  tempPermits;
 					console.log($scope.outputPermits);
+
+					http.post('/getRecommendation', {"permits": $scope.outputPermits})
+					.success(function(data, status, headers, config) {
+							//$("#permits").html($scope.outputPermits);
+							
+					});
 					
 				});
 				$http.get("/checkNextQuestions").success(function(response){
@@ -265,6 +271,8 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "yes";
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
+
+
 						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
