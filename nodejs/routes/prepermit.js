@@ -6,6 +6,8 @@ var index = require('./index.js');
 exports.getCurrentQuestion = function(req, res){
 	var id = req.query.id;
 
+	console.log("================== getCurrentQuestion ====================");
+
 	if(index.checkLogin(req,res)){
 		console.log("req query is: ", JSON.stringify(req.query));
 		var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
@@ -22,6 +24,8 @@ exports.getCurrentQuestion = function(req, res){
 
 exports.saveNextQuestion = function(req, res){
 
+	console.log("================== saveNextQuestion ====================");
+
 	if(index.checkLogin(req,res)){
 		var qid = req.body.saveQuestions;
 		console.log("req in saveQuestions is: ", req.body);
@@ -30,7 +34,10 @@ exports.saveNextQuestion = function(req, res){
 			if(qid[i] != '')
 				req.session.question_set.push(qid[i]);
 		}
-		console.log("next question set: ", req.session.question_set);
+		//console.log("next question set: ", req.session.question_set);
+		console.log(" After push in session in  saveNextQuestion : ", req.session.question_set);
+		console.log("================== saveNextQuestion ====================");
+
 		res.jsonp(req.session.question_set);
 	}
 }
@@ -42,7 +49,22 @@ exports.checkNextQuestions = function(req, res){
 		if(req.session.question_set.length > 0){
 			console.log("in next question: ", req.session.question_set);
 
-			id = req.session.question_set.pop();
+			console.log("================== checkNextQuestions before pop ====================");
+			console.log(req.session.question_set);
+			console.log("================== checkNextQuestions before pop ====================");
+
+			var t = req.session.question_set;
+			id = t[0]
+			delete t[0]
+			delete req.session.question_set;
+			req.session.question_set = t;
+
+			//id = req.session.question_set.pop();
+
+			console.log("================== checkNextQuestions after pop ====================");
+			console.log(req.session.question_set);
+			console.log("================== checkNextQuestions after pop ====================");
+
 			console.log("Object id is: ", id);
 			console.log("next question id is: ", id.next_question_id);
 
