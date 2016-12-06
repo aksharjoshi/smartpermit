@@ -202,6 +202,7 @@ app.controller('permitsController', function($scope,$http) {
     var tempPerm = [];
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
+			console.log(">>>>>>>>>>>>>>>>>>>>> YES <<<<<<<<<<<<<<<<<<<<<<<");
 			if($scope.finalAnswer){
 				alert(1);
 				$("#prePermitContainer").hide();
@@ -327,6 +328,8 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
 				 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER);
+				 	$scope.answer_type = response.Answer_type;
+				 	$scope.showComponents = "yes";
 
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
 				 		/*
