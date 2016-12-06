@@ -87,9 +87,13 @@ exports.getRecommendationMultiple = function(req, res){
 
     for(var key_main in temp)
     {
-      console.log("============================");
-      console.log(temp[key_main]);
-      console.log("============================");
+      for(var key_child in temp[key_main])
+      {
+        //console.log("============================");
+        //console.log(temp[key_main][key_child]);
+        value_list.push(temp[key_main][key_child]);
+        //console.log("============================");
+      }
     }
 
     console.log("value_list : " + JSON.stringify(value_list));
