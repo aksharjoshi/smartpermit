@@ -272,7 +272,7 @@ app.controller('permitsController', function($scope,$http) {
 							$(data.data).each(function(a,acronymObj){
 								acronymArray[acronymObj.ACRONYM] = acronymObj.DESCRIPTION;
 							});
-							alert("***");
+
 							console.log(acronymArray);
 
 							var xproducts = [];
