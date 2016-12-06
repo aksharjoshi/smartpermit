@@ -324,6 +324,7 @@ app.controller('permitsController', function($scope,$http) {
 				$http.post('/saveQuestion', {"saveQuestions": saveQuestions})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
+					saveQuestions = [];
 				});
 			}
 			else
