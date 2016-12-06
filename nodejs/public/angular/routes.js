@@ -233,7 +233,11 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.showComponents = "no";
 						$scope.question = response.data.Question;
 						if((response.data.Next_question).indexOf("ANSWER") >= 0){
-							$($scope.XQuestion).each(function(idx,opt){
+							$scope.question = response.Question;
+							$scope.options = (($.parseJSON(response.data.Next_question)).ANSWER)[opt];
+							$scope.answer_type = response.data.Answer_type;
+							$scope.showComponents = "yes";
+							/*$($scope.XQuestion).each(function(idx,opt){
 					 			console.log(($.parseJSON(response.data.Next_question)).ANSWER);
 					 			console.log(opt);
 					 			if(typeof (($.parseJSON(response.data.Next_question)).ANSWER)[opt] == "object"){
@@ -247,7 +251,7 @@ app.controller('permitsController', function($scope,$http) {
 								$scope.XQuestion[idx] = "";
 								//$scope.XQuestion.pop();
 								console.log($scope.XQuestion)
-					 		});
+					 		});*/
 						}
 						else
 							$scope.options = $.parseJSON(response.data.Next_question);
