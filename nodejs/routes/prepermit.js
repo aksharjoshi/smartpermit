@@ -46,6 +46,8 @@ exports.checkNextQuestions = function(req, res){
 			console.log("Object id is: ", id);
 			console.log("next question id is: ", id.next_question_id);
 
+			console.log("after pop question set: ", req.session.question_set);
+
 			var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id.next_question_id;
 
 			dbObject.find(qs, function(err, response){
