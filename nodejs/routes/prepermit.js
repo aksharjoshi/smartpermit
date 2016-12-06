@@ -6,11 +6,9 @@ var index = require('./index.js');
 exports.getCurrentQuestion = function(req, res){
 	var id = req.query.id;
 
-<<<<<<< HEAD
 	console.log("getCurrentQuestion");
-=======
+
 	console.log("================== getCurrentQuestion ====================");
->>>>>>> ee2dfd0f981d7db7a3ebfbb95ed49ad7f69ddee6
 
 	if(index.checkLogin(req,res)){
 		console.log("req query is: ", JSON.stringify(req.query));
