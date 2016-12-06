@@ -95,7 +95,7 @@ exports.getRecommendationMultiple = function(req, res){
             //body: req.body,
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/JSON',
                 'Content-Length': Buffer.byteLength(data)
             }
           };
