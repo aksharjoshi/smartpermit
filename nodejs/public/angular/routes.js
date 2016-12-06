@@ -265,6 +265,15 @@ app.controller('permitsController', function($scope,$http) {
 						$scope.XQuestion.push(response.previous_answer);	
 						console.log($scope.XQuestion);	
 						console.log(response.data);
+
+						setTimeout(function(){ 
+					 		$(".imgIcon").each(function(index,imgObj){
+						 		var icon = $(imgObj).attr("data");
+						 		icon = icon.replace(/\s/g, '');
+						 		if($scope.icons[icon] != "undefined")
+						 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+						 	});
+					 	}, 100);
 					}
 					else{
 						$scope.finalAnswer = true;
