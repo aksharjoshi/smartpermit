@@ -92,12 +92,12 @@ exports.getRecommendationMultiple = function(req, res){
             host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
             port: 8181,
             path: '/recommend',
-            //body: req.body,
             method: 'POST',
+            json: true,
             headers: {
-                'Content-Type': 'application/JSON',
-                'Content-Length': Buffer.byteLength(data)
-            }
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(req.body)
           };
 
           var responseJava = "";
