@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -128,6 +129,36 @@ public class RecommenderImpl implements Recommender {
         return permitList;
     }
 
+    @Override
+    public List<String> getApplicablePermits(String permits[]) {
+      /*  List<Permit> permitList = permitRepository.findAllPermits();*/
+      /*  HashSet<String> jobTypeSet = new HashSet<String>();*/
+      /*  HashSet<String> permitTypeSet = new HashSet<String>();*/
+      /*  HashSet<String> permitSubTypeSet = new HashSet<String>();*/
+      /*  */
+      /*  */
+      /*  for(Permit permit : permitList){*/
+      /*      String jobType = permit.getPermitJobType();*/
+      /*      if(!jobTypeSet.contains(jobType)){*/
+      /*          jobTypeSet.add(jobType);*/
+      /*      }*/
+      /*      String permitType = permit.getPermitType();*/
+      /*      if(!permitType.contains(permitType)){*/
+      /*          permitTypeSet.add(permitType);*/
+      /*      }*/
+      /*      String permitSubType = permit.getPermitSubtype();*/
+      /*      if(!permitSubTypeSet.contains(permitSubType)){*/
+      /*          permitSubTypeSet.add(permitSubType);*/
+      /*      }*/
+      /*  }*/
+      /*  */
+      /*  for(int i=0;i<permits.length;i++){*/
+      /*      if()*/
+      /*  }*/
+        return null;
+
+    }
+
     private HashMap getAcronymMap() {
         HashMap<String,String> hashmap = new HashMap<>();
         List<Acronym> acronymList = acronymRepository.findAllAcronymDescriptions();
@@ -136,10 +167,7 @@ public class RecommenderImpl implements Recommender {
         }
         return hashmap;
     }
-
-    private List<RecommendedItem> getRecommendedItemList(String permitId, int numberOfRecommendations) {
-        /*FastByIDMap<PreferenceArray> preferenceArrayFastByIDMap = new FastByIDMap<>();
-
+    /*FastByIDMap<PreferenceArray> preferenceArrayFastByIDMap = new FastByIDMap<>();
         HashMap<String, List<String>> similarOwnersByPermitId = permitDetailsRepository.findAllOwnersAndPermits();
         GenericUserPreferenceArray booleanUserPreferenceArray;
         for(String owner : similarOwnersByPermitId.keySet()){
@@ -154,9 +182,7 @@ public class RecommenderImpl implements Recommender {
             preferenceArrayFastByIDMap.put(longOwner,booleanUserPreferenceArray);
         }
         DataModel datamodel = new GenericDataModel(preferenceArrayFastByIDMap);*/
-        MySQLJDBCDataModel dataModel = new MySQLJDBCDataModel(jdbcTemplate.getDataSource(), "OWNER_PREFERENCES", "OWNER_ID", "PERMIT_ID", "PREFERENCE", null);
-
-       /* DataModel datamodel = null;
+        /* DataModel datamodel = null;
         File file = new File(this.getClass().getClassLoader().getResource("PERMIT_DETAILS.csv").getFile());
 
         try {
@@ -164,18 +190,10 @@ public class RecommenderImpl implements Recommender {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        ItemSimilarity itemSimilarity = new TanimotoCoefficientSimilarity(dataModel);
-        GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dataModel, itemSimilarity);
-        try {
-                /*LongPrimitiveIterator iterator = dataModel.getItemIDs();
+        /*LongPrimitiveIterator iterator = dataModel.getItemIDs();
                 ArrayList<Long> itemIds = new ArrayList<>();
                 while(iterator.hasNext()){
                     long itemid = iterator.nextLong();*/
-            List<RecommendedItem> recommendationList = recommender.mostSimilarItems(Long.valueOf(permitId), numberOfRecommendations);
-            for (RecommendedItem recommendedItem : recommendationList) {
-                System.out.println(permitId + "," + recommendedItem.getItemID() + "," + recommendedItem.getValue());
-            }
-            return recommendationList;
 
                 /*}*/
 
@@ -184,10 +202,19 @@ public class RecommenderImpl implements Recommender {
                 return recommendationList;
             }*/
 
+    private List<RecommendedItem> getRecommendedItemList(String permitId, int numberOfRecommendations) {
+        MySQLJDBCDataModel dataModel = new MySQLJDBCDataModel(jdbcTemplate.getDataSource(), "OWNER_PREFERENCES", "OWNER_ID", "PERMIT_ID", "PREFERENCE", null);
+        ItemSimilarity itemSimilarity = new TanimotoCoefficientSimilarity(dataModel);
+        GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dataModel, itemSimilarity);
+        try {
+            List<RecommendedItem> recommendationList = recommender.mostSimilarItems(Long.valueOf(permitId), numberOfRecommendations);
+            for (RecommendedItem recommendedItem : recommendationList) {
+                System.out.println(permitId + "," + recommendedItem.getItemID() + "," + recommendedItem.getValue());
+            }
+            return recommendationList;
         } catch (TasteException e) {
             e.printStackTrace();
         }
-
         return new ArrayList<>();
     }
 
