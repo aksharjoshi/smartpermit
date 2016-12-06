@@ -326,20 +326,22 @@ app.controller('permitsController', function($scope,$http) {
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
+				 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER);
+
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
-				 		console.log("*************** xQuestion ***************");
-				 		console.log($scope.XQuestion);
+				 		/*
 				 		$($scope.XQuestion).each(function(idx,opt){
 				 			if(typeof (($.parseJSON(response.Next_question)).ANSWER)[opt] == "object"){
 							 	$scope.question = response.Question;
 							 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER)[opt];
+							 	console.log(options);
 							 	$scope.answer_type = response.Answer_type;
 							 	$scope.showComponents = "yes";
 				 			}
 							//var index = $scope.XQuestion.indexOf(opt);
 							//$scope.XQuestion.splice(idx, 1);
 							$scope.XQuestion[idx] = "";
-				 		});
+				 		});*/
 				 	}
 				 	else{
 				 		$scope.options = $.parseJSON(response.Next_question);
