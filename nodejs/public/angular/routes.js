@@ -179,6 +179,8 @@ app.controller('permitsController', function($scope,$http) {
 		"COMPONENT" : "glyphicons-453-shop.png",
 		"SUBCOMPONENT" : "glyphicons-514-bath-bathtub.png",
 		"SPRINKLER" : "glyphicons-232-sun.png",
+		"SINK" : "glyphicons-718-waste-pipe.png",
+		"LIGHTING/SWITCHES" : "glyphicons-65-lightbulb.png",
 
 	};
 	$scope.NEW = "glyphicons-619-mixed-buildings.png";
@@ -203,9 +205,7 @@ app.controller('permitsController', function($scope,$http) {
     var tempPerm = [];
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
-			console.log(">>>>>>>>>>>>>>>>>>>>> YES <<<<<<<<<<<<<<<<<<<<<<<");
 			if($scope.finalAnswer){
-				alert(1);
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
