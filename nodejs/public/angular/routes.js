@@ -337,7 +337,7 @@ app.controller('permitsController', function($scope,$http) {
 
 				 		console.log(response.Next_question);
 							console.log("********** options:");
-							console.log(scope.options);
+							console.log($scope.options);
 
 				 		/*
 				 		$($scope.XQuestion).each(function(idx,opt){
