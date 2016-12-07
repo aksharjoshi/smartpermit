@@ -297,7 +297,8 @@ app.controller('permitsController', function($scope,$http) {
 					}
 				});
 
-				setTimeout(function(){ 
+			}
+			setTimeout(function(){ 
 				 		$(".imgIcon").each(function(index,imgObj){
 					 		var icon = $(imgObj).attr("data");
 					 		icon = icon.replace(/\s/g, '');
@@ -307,7 +308,6 @@ app.controller('permitsController', function($scope,$http) {
 					 		}
 					 	});
 				 	}, 100);
-			}
 		}
 		else{
 			$("#prePermitContainer").show();
