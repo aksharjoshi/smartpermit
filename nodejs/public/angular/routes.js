@@ -234,13 +234,13 @@ app.controller('permitsController', function($scope,$http) {
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					
 					$scope.outputPermits[product] =  tempPermits;
-					console.log($scope.outputPermits);
 
 				});
 				
 				$http.get("/checkNextQuestions").success(function(response){
 					if(response.msg == "Success"){
 						$scope.showComponents = "no";
+						$scope.RESPONSE = response.data;
 						$scope.question = response.data.Question;
 						if((response.data.Next_question).indexOf("ANSWER") >= 0){
 							$scope.question = response.data.Question;
@@ -248,21 +248,6 @@ app.controller('permitsController', function($scope,$http) {
 							
 							$scope.answer_type = response.data.Answer_type;
 							$scope.showComponents = "yes";
-							/*$($scope.XQuestion).each(function(idx,opt){
-					 			console.log(($.parseJSON(response.data.Next_question)).ANSWER);
-					 			console.log(opt);
-					 			if(typeof (($.parseJSON(response.data.Next_question)).ANSWER)[opt] == "object"){
-								 	$scope.question = response.Question;
-								 	$scope.options = (($.parseJSON(response.data.Next_question)).ANSWER)[opt];
-								 	$scope.answer_type = response.data.Answer_type;
-								 	$scope.showComponents = "yes";
-					 			}
-								//var index = $scope.XQuestion.indexOf(opt);
-								//$scope.XQuestion.splice(idx, 1);
-								$scope.XQuestion[idx] = "";
-								//$scope.XQuestion.pop();
-								console.log($scope.XQuestion)
-					 		});*/
 						}
 						else
 							$scope.options = $.parseJSON(response.data.Next_question);
@@ -336,7 +321,6 @@ app.controller('permitsController', function($scope,$http) {
 					}
 				});
 				
-				console.log("before save https post savequestion: ", saveQuestions);
 				$http.post('/saveQuestion', {"saveQuestions": saveQuestions})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
