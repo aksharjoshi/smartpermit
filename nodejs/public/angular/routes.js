@@ -327,6 +327,8 @@ app.controller('permitsController', function($scope,$http) {
 					if(key>0){
 						var passObj = {"answer":$(obj).val(), "next_question_id": respQuestion[$(obj).val()]}
 						saveQuestions.push(passObj);
+						console.log("******************************************** passObj *************");
+						console.log(passObj);
 						console.log("before save question: ", saveQuestions);
 					}
 				});
