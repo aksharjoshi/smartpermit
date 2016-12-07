@@ -77,10 +77,14 @@ exports.getRecommendationMultiple = function(req, res){
 
   console.log("in post reco");
 
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+  console.log("Session is: ", req.session);
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+
   if(req.session.userid != "")
   {
-    console.log("in if of post reco")
-    console.log("req body is: ", JSON.stringify(req.body));
+    //console.log("in if of post reco")
+    //console.log("req body is: ", JSON.stringify(req.body));
 
     var temp = req.body.permits;
     var value_list = []
@@ -96,7 +100,7 @@ exports.getRecommendationMultiple = function(req, res){
       }
     }
 
-    console.log("value_list : " + JSON.stringify(value_list));
+    //console.log("value_list : " + JSON.stringify(value_list));
 
 
     var data = querystring.stringify({
