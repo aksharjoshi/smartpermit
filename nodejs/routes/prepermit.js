@@ -9,7 +9,7 @@ exports.getCurrentQuestion = function(req, res){
 	console.log("getCurrentQuestion");
 
 	console.log("================== getCurrentQuestion ====================");
-
+	console.log("Session in getCurrentQuestion is: ", req.session);
 	if(index.checkLogin(req,res)){
 		console.log("req query is: ", JSON.stringify(req.query));
 		var qs = "Select Question, Options, Next_question, Answer_type from PRE_PERMIT where ID="+id;
@@ -27,7 +27,7 @@ exports.getCurrentQuestion = function(req, res){
 exports.saveNextQuestion = function(req, res){
 
 	console.log("================== saveNextQuestion ====================");
-
+	console.log("Session in saveNextQuestion is: ", req.session);
 	if(index.checkLogin(req,res)){
 		var qid = req.body.saveQuestions;
 		console.log("req in saveQuestions is: ", req.body);
@@ -52,6 +52,8 @@ exports.checkNextQuestions = function(req, res){
 			console.log("in next question: ", req.session.question_set);
 
 			console.log("================== checkNextQuestions before pop ====================");
+			console.log("Session in saveNextQuestion is: ", req.session);
+
 			console.log(req.session.question_set);
 			console.log("================== checkNextQuestions before pop ====================");
 
