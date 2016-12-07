@@ -188,6 +188,32 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
 			console.log("SHOW COMP YES");
+			if($("input[name='option']:checked").val() == "5" || $("input[name='option']:checked").val() == 5){
+				$scope.showComponents = "no";
+				
+				$http.get("/getquestion?id=3").success(function(response){
+					$scope.RESPONSE = response;
+				 	$scope.questionID = 1;
+				 	$scope.questionPrevArray[$scope.questionID] = 0;
+				 	$scope.prevQuestionID = 0;
+				 	$scope.question = response.Question;
+				 	$scope.options = $.parseJSON(response.Next_question);
+				 	$scope.answer_type = response.Answer_type;
+
+				 	setTimeout(function(){ 
+				 		$(".imgIcon").each(function(index,imgObj){
+					 		var icon = $(imgObj).attr("data");
+					 		icon = icon.replace(/\s/g, '');
+					 		console.log(icon);
+					 		console.log($scope.icons[icon]);
+					 		if($scope.icons[icon] != "undefined")
+					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+					 	});
+				 	}, 100);
+				});
+				return false;
+			}
+
 			if($scope.finalAnswer){
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
