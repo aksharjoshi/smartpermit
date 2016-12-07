@@ -241,6 +241,9 @@ app.controller('permitsController', function($scope,$http) {
 						if((response.data.Next_question).indexOf("ANSWER") >= 0){
 							$scope.question = response.data.Question;
 							$scope.options = (($.parseJSON(response.data.Next_question)).ANSWER);
+							console.log(response.data.Next_question);
+							console.log("********** options:");
+							console.log(scope.options);
 							$scope.answer_type = response.data.Answer_type;
 							$scope.showComponents = "yes";
 							/*$($scope.XQuestion).each(function(idx,opt){
