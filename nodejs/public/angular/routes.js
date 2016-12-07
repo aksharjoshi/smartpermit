@@ -234,6 +234,7 @@ app.controller('permitsController', function($scope,$http) {
 					});
 					
 				});
+				console.log("before check question: ", saveQuestions);
 				$http.get("/checkNextQuestions").success(function(response){
 					if(response.msg == "Success"){
 						$scope.showComponents = "no";
@@ -322,9 +323,11 @@ app.controller('permitsController', function($scope,$http) {
 					if(key>0){
 						var passObj = {"answer":$(obj).val(), "next_question_id": respQuestion[$(obj).val()]}
 						saveQuestions.push(passObj);
+						console.log("before save question: ", saveQuestions);
 					}
 				});
 				
+				console.log("before save https post savequestion: ", saveQuestions);
 				$http.post('/saveQuestion', {"saveQuestions": saveQuestions})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
@@ -338,7 +341,7 @@ app.controller('permitsController', function($scope,$http) {
 			$scope.responses[$scope.questionID] = response;
 
 			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
-
+				console.log("before get question id: ", saveQuestions);
 				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
 					$scope.RESPONSE = response;
 				 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
