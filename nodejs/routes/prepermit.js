@@ -70,8 +70,8 @@ exports.checkNextQuestions = function(req, res){
 			console.log(req.session.question_set);
 			console.log("================== checkNextQuestions after pop ====================");
 
-			console.log("Object id is: ", id);
-			console.log("next question id is: ", id.next_question_id);
+			//console.log("Object id is: ", id);
+			//console.log("next question id is: ", id.next_question_id);
 
 			console.log("after pop question set: ", req.session.question_set);
 
