@@ -187,7 +187,6 @@ app.controller('permitsController', function($scope,$http) {
     var tempPerm = [];
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
-			console.log("SHOW COMP YES");
 			if($("input[name='option']:checked").val() == "5" || $("input[name='option']:checked").val() == 5){
 				$scope.showComponents = "no";
 				
@@ -238,6 +237,7 @@ app.controller('permitsController', function($scope,$http) {
 				});
 				
 				$http.get("/checkNextQuestions").success(function(response){
+					console.log(">>>>>>>>>>>>>>> CHECK NEXT QUESTION >>>>>>>>>>>>>");
 					if(response.msg == "Success"){
 						$scope.showComponents = "no";
 						$scope.RESPONSE = response.data;
@@ -265,7 +265,7 @@ app.controller('permitsController', function($scope,$http) {
 							//$("#permits").html($scope.outputPermits);
 							
 						});
-					
+					{
 						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
@@ -292,6 +292,8 @@ app.controller('permitsController', function($scope,$http) {
 							console.log(jQuery.unique($scope.outputPermits));
 							$scope.outputPermits = temp;
 						});*/
+
+					}
 					}
 				});
 			}
@@ -310,14 +312,8 @@ app.controller('permitsController', function($scope,$http) {
 				console.log($("input[name='option']:checked"));
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
-						console.log("******************************************** respQuestion *************");
-						console.log(respQuestion);
-						console.log($(obj).val());
 						var passObj = {"answer":$(obj).val(), "next_question_id": respQuestion[$(obj).val()]}
 						saveQuestions.push(passObj);
-						console.log("******************************************** passObj *************");
-						console.log(passObj);
-						console.log("before save question: ", saveQuestions);
 					}
 				});
 				
