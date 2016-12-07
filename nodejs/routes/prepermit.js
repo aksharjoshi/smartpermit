@@ -62,6 +62,7 @@ exports.checkNextQuestions = function(req, res){
 			delete t[0]
 			delete req.session.question_set;
 			req.session.question_set = t;
+			console.log("Value of t is: ", t);
 
 			//id = req.session.question_set.pop();
 
