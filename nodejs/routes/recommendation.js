@@ -129,6 +129,9 @@ exports.getRecommendationMultiple = function(req, res){
             response.on('data', function (chunk) {
               console.log('BODY: ' + chunk);
               responseJava = chunk;
+              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+              console.log("session in recommendation: ", req.session);
+              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               res.send(responseJava);
             });
           }).end();
