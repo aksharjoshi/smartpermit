@@ -191,7 +191,7 @@ app.controller('permitsController', function($scope,$http) {
 			if($("input[name='option']:checked").val() == "5" || $("input[name='option']:checked").val() == 5){
 				$scope.showComponents = "no";
 				
-				$http.get("/getquestion?id=3").success(function(response){
+				$http.get("/getquestion?id=5").success(function(response){
 					$scope.RESPONSE = response;
 				 	$scope.questionID = 1;
 				 	$scope.questionPrevArray[$scope.questionID] = 0;
