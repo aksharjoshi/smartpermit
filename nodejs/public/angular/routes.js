@@ -350,7 +350,6 @@ app.controller('permitsController', function($scope,$http) {
 			$scope.responses[$scope.questionID] = response;
 
 			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
-				console.log("before get question id: ", saveQuestions);
 				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
 					$scope.RESPONSE = response;
 				 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
@@ -364,11 +363,6 @@ app.controller('permitsController', function($scope,$http) {
 				 		$scope.showComponents = "yes";
 				 		$scope.options = (($.parseJSON(response.Next_question)).ANSWER);
 				 		$scope.answer_type = response.Answer_type;
-
-				 		console.log(response.Next_question);
-							console.log("********** options:");
-							console.log($scope.options);
-
 				 		/*
 				 		$($scope.XQuestion).each(function(idx,opt){
 				 			if(typeof (($.parseJSON(response.Next_question)).ANSWER)[opt] == "object"){
