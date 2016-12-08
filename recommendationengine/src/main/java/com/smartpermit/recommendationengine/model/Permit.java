@@ -1,5 +1,8 @@
 package com.smartpermit.recommendationengine.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Created by adwaitkaley on 11/14/16.
  */
@@ -77,5 +80,29 @@ public class Permit {
 
     public void setPermitSubtypeDescription(String permitSubtypeDescription) {
         this.permitSubtypeDescription = permitSubtypeDescription;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Permit permit = (Permit) o;
+
+        return new EqualsBuilder()
+                .append(permitJobType, permit.permitJobType)
+                .append(permitType, permit.permitType)
+                .append(permitSubtype, permit.permitSubtype)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(permitJobType)
+                .append(permitType)
+                .append(permitSubtype)
+                .toHashCode();
     }
 }

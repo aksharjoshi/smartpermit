@@ -90,7 +90,7 @@ public class PermitMainController {
         return new ResponseEntity(new HashMap<String,String>(){{put("Message","Data Model Generated");}}, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/recommend", method = RequestMethod.POST)
+    @RequestMapping(value = "/recommend", method = RequestMethod.POST,consumes="application/json")
     public ResponseEntity recommendDataForMultiplePermits(@RequestBody List<Permit> permitList) {
 
         HashMap<String,Permit> permitHashMap = new HashMap<>();
@@ -113,6 +113,12 @@ public class PermitMainController {
                     permitHashMap.put(recommendedPermit.getPermitId(),recommendedPermit);
                     filteredPermitList.add(recommendedPermit);
                 }
+            }
+        }
+
+        for(Permit permit : permitList){
+            if(filteredPermitList.contains(permit)){
+                filteredPermitList.remove(permit);
             }
         }
 
