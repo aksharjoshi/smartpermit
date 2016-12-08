@@ -178,32 +178,42 @@ app.controller('permitsController', function($scope,$http) {
 		"NONE" : "glyphicons-200-ban-circle.png",
 		"COMPONENT" : "glyphicons-453-shop.png",
 		"SUBCOMPONENT" : "glyphicons-514-bath-bathtub.png",
+		"SPRINKLER" : "glyphicons-232-sun.png",
+		"SINK" : "glyphicons-718-waste-pipe.png",
+		"LIGHTING/SWITCHES" : "glyphicons-65-lightbulb.png",
 
 	};
-	$scope.NEW = "glyphicons-619-mixed-buildings.png";
-	$scope.REMODELING = "glyphicons-281-settings.png";
-	$scope.EXISTING = "glyphicons-281-settings.png";
-	$scope.COMMERCIAL = "glyphicons-620-industrial-zone.png";
-	$scope.RESIDENTIAL = "glyphicons-21-home.png";
-	$scope.OTHERS = "glyphicons-630-engineering-networks.png";
-	$scope.LIVINGROOM = "glyphicons-87-display.png";
-	$scope.HALL = "glyphicons-87-display.png";
-	$scope.BEDROOM = "glyphicons-628-bedroom-lamp.png";
-	$scope.BATHROOM = "glyphicons-514-bath-bathtub.png";
-	$scope.KITCHEN = "glyphicons-277-cutlery.png";
-	$scope.BASEMENT = "glyphicons-681-door.png";
-	$scope.STAIRS = "glyphicons-431-construction-cone.png";
-	$scope.BACKYARD = "glyphicons-614-park.png";
-	$scope.PATIO = "glyphicons-686-sunbath.png";
-	$scope.CURBFENCE = "glyphicons-27-road.png";
-	$scope.OTHER = "glyphicons-195-question-sign.png";
-	$scope.YES = "glyphicons-207-ok.png";
-	$scope.NO = "glyphicons-208-remove.png";
+	
     var tempPerm = [];
 	$scope.next = function() {
 		if($scope.showComponents == "yes"){
+			if($("input[name='option']:checked").val() == "5" || $("input[name='option']:checked").val() == 5){
+				$scope.showComponents = "no";
+				
+				$http.get("/getquestion?id=5").success(function(response){
+					$scope.RESPONSE = response;
+				 	$scope.questionID = 1;
+				 	$scope.questionPrevArray[$scope.questionID] = 0;
+				 	$scope.prevQuestionID = 0;
+				 	$scope.question = response.Question;
+				 	$scope.options = $.parseJSON(response.Next_question);
+				 	$scope.answer_type = response.Answer_type;
+
+				 	setTimeout(function(){ 
+				 		$(".imgIcon").each(function(index,imgObj){
+					 		var icon = $(imgObj).attr("data");
+					 		icon = icon.replace(/\s/g, '');
+					 		console.log(icon);
+					 		console.log($scope.icons[icon]);
+					 		if($scope.icons[icon] != "undefined")
+					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+					 	});
+				 	}, 100);
+				});
+				return false;
+			}
+
 			if($scope.finalAnswer){
-				alert(1);
 				$("#prePermitContainer").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
@@ -223,42 +233,39 @@ app.controller('permitsController', function($scope,$http) {
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					
 					$scope.outputPermits[product] =  tempPermits;
-					console.log($scope.outputPermits);
-					
+
 				});
+				
 				$http.get("/checkNextQuestions").success(function(response){
+					console.log(">>>>>>>>>>>>>>> CHECK NEXT QUESTION >>>>>>>>>>>>>");
 					if(response.msg == "Success"){
 						$scope.showComponents = "no";
+						$scope.RESPONSE = response.data;
 						$scope.question = response.data.Question;
 						if((response.data.Next_question).indexOf("ANSWER") >= 0){
-							$($scope.XQuestion).each(function(idx,opt){
-					 			console.log(($.parseJSON(response.data.Next_question)).ANSWER);
-					 			console.log(opt);
-					 			if(typeof (($.parseJSON(response.data.Next_question)).ANSWER)[opt] == "object"){
-								 	$scope.question = response.Question;
-								 	$scope.options = (($.parseJSON(response.data.Next_question)).ANSWER)[opt];
-								 	$scope.answer_type = response.data.Answer_type;
-								 	$scope.showComponents = "yes";
-					 			}
-								//var index = $scope.XQuestion.indexOf(opt);
-								//$scope.XQuestion.splice(idx, 1);
-								$scope.XQuestion[idx] = "";
-								//$scope.XQuestion.pop();
-								console.log($scope.XQuestion)
-					 		});
+							$scope.question = response.data.Question;
+							$scope.options = (($.parseJSON(response.data.Next_question)).ANSWER);
+							
+							$scope.answer_type = response.data.Answer_type;
+							$scope.showComponents = "yes";
 						}
 						else
 							$scope.options = $.parseJSON(response.data.Next_question);
 						$scope.answer_type = response.data.Answer_type;
 						$scope.XQuestion.push(response.previous_answer);	
-						console.log($scope.XQuestion);	
-						console.log(response.data);
 					}
 					else{
 						$scope.finalAnswer = true;
 						$scope.showComponents = "yes";
 						$("#prePermitContainer").hide();
 						$("#permitContainer").show();
+
+						$http.post('/postRecommendation', {"permits": $scope.outputPermits})
+						.success(function(data, status, headers, config) {
+							//$("#permits").html($scope.outputPermits);
+							
+						});
+					{
 						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
 						.success(function(data, status, headers, config) {
 							//$("#permits").html($scope.outputPermits);
@@ -266,7 +273,7 @@ app.controller('permitsController', function($scope,$http) {
 							$(data.data).each(function(a,acronymObj){
 								acronymArray[acronymObj.ACRONYM] = acronymObj.DESCRIPTION;
 							});
-							alert("***");
+
 							console.log(acronymArray);
 
 							var xproducts = [];
@@ -285,9 +292,22 @@ app.controller('permitsController', function($scope,$http) {
 							console.log(jQuery.unique($scope.outputPermits));
 							$scope.outputPermits = temp;
 						});*/
+
+					}
 					}
 				});
+
 			}
+			setTimeout(function(){ 
+				 		$(".imgIcon").each(function(index,imgObj){
+					 		var icon = $(imgObj).attr("data");
+					 		icon = icon.replace(/\s/g, '');
+					 		if($scope.icons[icon] != "undefined"){
+					 			console.log("/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon]);
+					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+					 		}
+					 	});
+				 	}, 100);
 		}
 		else{
 			$("#prePermitContainer").show();
@@ -300,6 +320,7 @@ app.controller('permitsController', function($scope,$http) {
 				console.log($scope.XQuestion);
 				var saveQuestions = [];
 				var respQuestion = $.parseJSON($scope.RESPONSE.Next_question);
+				console.log($("input[name='option']:checked"));
 				$("input[name='option']:checked").each(function(key,obj){
 					if(key>0){
 						var passObj = {"answer":$(obj).val(), "next_question_id": respQuestion[$(obj).val()]}
@@ -310,6 +331,7 @@ app.controller('permitsController', function($scope,$http) {
 				$http.post('/saveQuestion', {"saveQuestions": saveQuestions})
 				.success(function(data, status, headers, config) {
 					//obj.sensordetail.status=sensorstatus;
+					saveQuestions = []; // Added on monday dec 5, 2016
 				});
 			}
 			else
@@ -319,27 +341,32 @@ app.controller('permitsController', function($scope,$http) {
 			$scope.responses[$scope.questionID] = response;
 
 			if(nextQuestionid != null && nextQuestionid != "undefined" && nextQuestionid != "" ){
-
 				$http.get("/getquestion?id="+nextQuestionid).success(function(response){
 					$scope.RESPONSE = response;
 				 	$scope.questionPrevArray[nextQuestionid] = $scope.questionID;
 				 	$scope.questionID = nextQuestionid;
 				 	$scope.question = response.Question;
 				 	$scope.selectedOption = $scope.responses[$scope.questionID];
+				 	
+				 	
+
 				 	if((response.Next_question).indexOf("ANSWER") >= 0){
-				 		console.log("*************** xQuestion ***************");
-				 		console.log($scope.XQuestion);
+				 		$scope.showComponents = "yes";
+				 		$scope.options = (($.parseJSON(response.Next_question)).ANSWER);
+				 		$scope.answer_type = response.Answer_type;
+				 		/*
 				 		$($scope.XQuestion).each(function(idx,opt){
 				 			if(typeof (($.parseJSON(response.Next_question)).ANSWER)[opt] == "object"){
 							 	$scope.question = response.Question;
 							 	$scope.options = (($.parseJSON(response.Next_question)).ANSWER)[opt];
+							 	console.log(options);
 							 	$scope.answer_type = response.Answer_type;
 							 	$scope.showComponents = "yes";
 				 			}
 							//var index = $scope.XQuestion.indexOf(opt);
 							//$scope.XQuestion.splice(idx, 1);
 							$scope.XQuestion[idx] = "";
-				 		});
+				 		});*/
 				 	}
 				 	else{
 				 		$scope.options = $.parseJSON(response.Next_question);
@@ -373,8 +400,10 @@ app.controller('permitsController', function($scope,$http) {
 				 		$(".imgIcon").each(function(index,imgObj){
 					 		var icon = $(imgObj).attr("data");
 					 		icon = icon.replace(/\s/g, '');
-					 		if($scope.icons[icon] != "undefined")
+					 		if($scope.icons[icon] != "undefined"){
+					 			console.log("/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon]);
 					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+					 		}
 					 	});
 				 	}, 100);
 				});
@@ -507,7 +536,7 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$scope.quarter = "Q1";
 
-	$scope.years = [2012, 2013, 2014, 2015, 2016, 2017, 2018];
+	$scope.years = [2010, 2011, 2012];
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";

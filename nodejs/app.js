@@ -63,6 +63,8 @@ app.get('/mapsData', visualization.mapsData);
 app.get('/bubbleMapsData', visualization.bubbleMapsData);
 
 app.get('/getRecommendation', recommendation.getRecommendation);
+app.post('/postRecommendation', recommendation.getRecommendationMultiple);
+
 app.get('/getJobType', recommendation.getJobType);
 app.get('/getPermitType', recommendation.getPermitType);
 app.get('/getPermitSubType', recommendation.getPermitSubType);

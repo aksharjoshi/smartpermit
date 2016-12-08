@@ -42,7 +42,7 @@
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
          <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
-            <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option && answer_type == 'SINGLE'" ng-click="selectWizard()" checked style="visibility:hidden;"> 
+            <input type="radio" name="option" value="{{option}}" class="imgIcon" next-question="{{value}}" ng-if="selectedOption == option && answer_type == 'SINGLE'" ng-click="selectWizard()" checked style="visibility:hidden;"> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option  && answer_type == 'SINGLE'" ng-click="selectWizard()" style="visibility:hidden;"> 
              <input type="checkbox" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option  && answer_type == 'MULTIPLE'" ng-click="multiSelectWizard()" style="visibility:hidden;"> 
               <input type="checkbox" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option && answer_type == 'MULTIPLE'" ng-click="multiSelectelectWizard()" style="visibility:hidden;"> 
@@ -168,12 +168,9 @@
     </thead>
     <tbody ng-repeat="(product,permitsObj) in outputPermits">
       <td>{{product}} </td>
-      <td><p ng-repeat="(i,permit) in permitsObj"> Job: {{permit.JOB_TYPE}} | Permit: {{permit.PERMIT_TYPE}} | Permit Sub Type: {{permit.PERMIT_SUB_TYPE}} </p></td>
+      <td><p ng-repeat="(i,permit) in permitsObj"> Job: {{permit.permitJobType}} | Permit: {{permit.permitType}} | Permit Sub Type: {{permit.permitSubtype}} </p></td>
     </tbody>
   </table>
-</div>
-<div class="row">
-    <button class="pull-right btn btn-large btn-primary" style="margin-right:20px" ng-click="previous()"> << Previous</button>
 </div>
 </div>
 
