@@ -536,7 +536,7 @@ app.controller('analyticsController', function($scope,$http) {
 
 	$scope.quarter = "Q1";
 
-	$scope.years = [2012, 2013, 2014, 2015, 2016, 2017, 2018];
+	$scope.years = [2010, 2011, 2012];
 
 	var permit_desc = [];
 	permit_desc["AL"] = "Alteration";
