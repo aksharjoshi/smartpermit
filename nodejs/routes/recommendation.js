@@ -10,7 +10,7 @@ exports.getRecommendation = function(req, res){
 
   if(req.session.userid != ""){
 
-  	console.log("req body is: ", JSON.stringify(req.body));
+  	//console.log("req body is: ", JSON.stringify(req.body));
 
   	var job_type = req.query.job_type;
   	var permit_type = req.query.permit_type;
@@ -77,10 +77,10 @@ exports.getRecommendationMultiple = function(req, res){
 
   console.log("in post reco");
 
-  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+  /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
   console.log("Session is: ", req.session);
   console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
-
+*/
   if(req.session.userid != "")
   {
     //console.log("in if of post reco")
@@ -129,9 +129,9 @@ exports.getRecommendationMultiple = function(req, res){
             response.on('data', function (chunk) {
               console.log('BODY: ' + chunk);
               responseJava = chunk;
-              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+              /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               console.log("session in recommendation: ", req.session);
-              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
               res.send(responseJava);
             });
           }).end();
