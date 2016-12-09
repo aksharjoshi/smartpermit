@@ -109,7 +109,7 @@ exports.getRecommendationMultiple = function(req, res){
     });
 
     console.log("value_list is: ", value_list);
-   /* var options = {
+    var options = {
             host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
             port: 8181,
             path: '/recommend',
@@ -118,7 +118,7 @@ exports.getRecommendationMultiple = function(req, res){
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: req.body
+            body: JSON.stringify(value_list)
           };
 
           var responseJava = "";
@@ -132,12 +132,12 @@ exports.getRecommendationMultiple = function(req, res){
               responseJava = chunk;
               /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               console.log("session in recommendation: ", req.session);
-              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
               res.send(responseJava);
             });
-          }).end();*/
+          }).end();
 
-          var request = require('request');
+          /*var request = require('request');
           request.post({
             headers: {'content-type' : 'application/json'},
             url:     'ec2-52-53-148-138.us-west-1.compute.amazonaws.com:8181/recommend',
@@ -150,7 +150,7 @@ exports.getRecommendationMultiple = function(req, res){
               console.log("session in recommendation: ", req.session);
               console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
               res.send(responseJava);
-          });
+          });*/
   }
 };
 
