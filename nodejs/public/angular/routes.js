@@ -90,8 +90,6 @@ app.controller('recommendationController', function($scope,$http) {
 		});
 	};
 	$scope.getPermitSubType = function(permit_type){
-		console.log(permit_type);
-		return false;
 		$scope.permit_subtypes = [];
 		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
 			$("#containerPermitSubType").show();
