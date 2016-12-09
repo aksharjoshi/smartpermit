@@ -172,7 +172,10 @@
     </thead>
     <tbody>
     <tr ng-repeat="(product,permitsObj) in outputPermits">
-      <td>{{product}} </td>
+      <td>
+        <span ng-if="product !='YES'">{{product}} </span>
+        <span ng-if="product =='YES'">-</span>
+      </td>
       <td>
         <span ng-repeat="(i,permit) in permitsObj"> 
           <p>Job Type: {{permit.permitJobType}} ({{permit.permitJobTypeDescription}}) </p>
