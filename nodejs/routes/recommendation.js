@@ -119,7 +119,7 @@ exports.getRecommendationMultiple = function(req, res){
 
     console.log("value_list is: ", value_list);
     var options = {
-            host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
+            host: 'localhost',
             port: 8181,
             path: '/recommend',
             method: 'POST',
@@ -144,7 +144,7 @@ exports.getRecommendationMultiple = function(req, res){
           console.log("response java is : ", responseJava);
           reqJava.write(JSON.stringify(value_list));
           reqJava.end();
-          res.send(responseJava);
+          res.send({"msg":"Success"});
   }
 };
 
