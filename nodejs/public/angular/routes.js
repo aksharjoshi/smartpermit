@@ -84,7 +84,9 @@ app.controller('recommendationController', function($scope,$http) {
 			$(response).each(function(key,obj){
 				$scope.permit_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 				if(key == len-1){
+					console.log($("#select_permit_type option:first"));
 					$("#select_permit_type option:first").remove();
+					console.log($("#select_permit_type option:first"));
 					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 100);
 				}
 			});
@@ -93,12 +95,16 @@ app.controller('recommendationController', function($scope,$http) {
 	$scope.getPermitSubType = function(permit_type){
 		$scope.permit_subtypes = [];
 		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
+			var len = response.length;
 			$("#containerPermitSubType").show();
 			$(response).each(function(key,obj){
 				$scope.permit_subtypes.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
+				if(key == len-1){
+					$("#select_permit_subtype option:first").remove();
+					setTimeout(function(){ $("#select_permit_subtype").trigger("change"); }, 100);
+				}
 			});
-			$("#select_permit_subtype option:first").remove();
-			setTimeout(function(){ $("#select_permit_subtype").trigger("change"); }, 100);
+			
 		});
 	};
 /*
@@ -267,8 +273,14 @@ app.controller('permitsController', function($scope,$http) {
 
 						$http.post('/postRecommendation', {"permits": $scope.outputPermits})
 						.success(function(response, status, headers, config) {
-							
-							
+							cons
+							$('.slider1').show();
+							$('.slider1').bxSlider({
+							    slideWidth: 200,
+							    minSlides: 2,
+							    maxSlides: 3,
+							    slideMargin: 10
+							});
 						});
 					{
 						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
