@@ -477,7 +477,8 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.restart = function(){
 		$http.get("/startOver").success(function(response){
 			if(response.msg == "Success"){
-				$(".select").removeClass("select");
+				location.reload();
+				/*$(".select").removeClass("select");
 				$("input[type=checkbox]:checked").attr("checked", false);
 				$("input[type=radio]:checked").attr("checked", false);
 
@@ -505,7 +506,7 @@ app.controller('permitsController', function($scope,$http) {
 					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
 					 	});
 				 	}, 100);
-				});
+				});*/
 			}
 		});	
 
