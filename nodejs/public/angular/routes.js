@@ -275,7 +275,7 @@ app.controller('permitsController', function($scope,$http) {
 						.success(function(response, status, headers, config) {
 							$scope.postPermitRecommendations = JSON.parse(response.data);
 							$('.slider1').show();
-							$('.slider1').($("#postPermitRecommendation").html());
+							$("#postPermitRecommendation").html();
 							$('.slider1').bxSlider({
 							    slideWidth: 200,
 							    minSlides: 2,
