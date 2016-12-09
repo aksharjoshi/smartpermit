@@ -92,9 +92,9 @@ app.controller('recommendationController', function($scope,$http) {
 	$scope.getPermitSubType = function(permit_type){
 		$scope.permit_subtypes = [];
 		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
-			$("#containerPermitSubType").push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
+			$("#containerPermitSubType").show();
 			$(response).each(function(key,obj){
-				$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+				$scope.permit_subtypes.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 			});
 			$("#select_permit_subtype option:first").remove();
 		});
