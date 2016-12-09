@@ -77,7 +77,7 @@ app.controller('homeController', function($scope,$http) {
 	        'width': 170,
 	            'elementHandlers': specialElementHandlers
 	    });
-	    doc.save('sample-file.pdf');
+	    doc.save('/forms/common_pw1_form.pdf');
 	});
 		
 });
