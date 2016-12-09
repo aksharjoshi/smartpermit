@@ -652,6 +652,7 @@ app.controller('analyticsController', function($scope,$http) {
 	
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("activeTab");
+		$("#formSeasonal").find(".activeTab").removeClass("activeTab");
 		$("#seasonal_"+year).parent(".tab1").addClass("activeTab");
 
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
@@ -795,7 +796,7 @@ console.log(permitTypeCountArray);
     };
 
 	$scope.getPopularPermitsData = function(year) {
-		$("#divPopularContent").find(".tab1").removeClass("activeTab");
+		$("#formPopular").find(".activeTab").removeClass("activeTab");
 		$("#popular_"+year).parent(".tab1").addClass("activeTab");
 		$http.get("/popularPermit?year="+year).success(function(response){
 			var permitsArray = [];
@@ -923,7 +924,8 @@ console.log(permitTypeCountArray);
     };
 	
 	$scope.getExpirartionAnalysisData = function(year) {
-		$("#divExpiryContent").find(".tab1").removeClass("activeTab");
+		$("#formExpiration").find(".activeTab").removeClass("activeTab");
+		$("#formExpiration").find(".activeTab").addClass("activeTab");
 		$("#expiration_"+year).parent(".tab1").addClass("activeTab");
 		$http.get("/expirartionAnalysis?year="+year).success(function(response){
 			var expirationTrendArray = [];
@@ -1044,7 +1046,7 @@ console.log(permitTypeCountArray);
     };
 
 	$scope.getHeatMapData = function(year) {
-		$("#divLocationContent").find(".tab1").removeClass("activeTab");
+		$("#formArea").find(".activeTab").removeClass("activeTab");
 		$("#heatmap_"+year).parent(".tab1").addClass("activeTab");
 		$http.get("/heatMap?year="+year).success(function(response){
 		
