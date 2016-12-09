@@ -31,6 +31,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller: 'recommendationController',
 			templateUrl : "html/recommendation.html"
 		}).
+		when('/carousel-example-generic', {
+			controller: 'permitsController'
+		}).
         otherwise({
           redirectTo: '/home',
         });
