@@ -75,6 +75,7 @@ app.controller('homeController', function($scope,$http) {
 	    doc.save('forms/common_pw1_form.pdf');
 	});
 	$scope.downloadForm = function(){
+		alert(1);
 		window.location = '/';
 	};
 		
