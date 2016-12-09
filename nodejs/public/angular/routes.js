@@ -58,12 +58,28 @@ app.controller('logoutController',function($scope,$http){
 });
 app.controller('downloadController',function($scope,$http){
 	console.log("download");
+
 	
 });
 
 
 app.controller('homeController', function($scope,$http) {
-	
+
+	var doc = new jsPDF();
+	var specialElementHandlers = {
+	    '#editor': function (element, renderer) {
+	        return true;
+	    }
+	};
+
+	$('#cmd').click(function () {
+	    doc.fromHTML($('#content').html(), 15, 15, {
+	        'width': 170,
+	            'elementHandlers': specialElementHandlers
+	    });
+	    doc.save('sample-file.pdf');
+	});
+		
 });
 
 app.controller('recommendationController', function($scope,$http) {
