@@ -31,6 +31,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller: 'recommendationController',
 			templateUrl : "html/recommendation.html"
 		}).
+		when('/forms/common_pw1_form.pdf',{
+			controller: 'downloadController',
+		}).
         otherwise({
           redirectTo: '/home',
         });
@@ -53,6 +56,11 @@ app.controller('logoutController',function($scope,$http){
 	}
 	
 });
+app.controller('downloadController',function($scope,$http){
+	console.log("download");
+	
+});
+
 
 app.controller('homeController', function($scope,$http) {
 	
