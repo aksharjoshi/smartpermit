@@ -477,6 +477,10 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.restart = function(){
 		$http.get("/startOver").success(function(response){
 			if(response.msg == "Success"){
+				$(".select").removeClass("select");
+				$("input[type=checkbox]:checked").attr("checked", false);
+				$("input[type=radio]:checked").attr("checked", false);
+
 				$("#nopermits").hide();
 				$("#permitContainer").hide();
 				$("#permit").html("");
