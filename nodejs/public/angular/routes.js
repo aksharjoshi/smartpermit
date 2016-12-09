@@ -66,11 +66,6 @@ app.controller('downloadController',function($scope,$http){
 app.controller('homeController', function($scope,$http) {
 
 	var doc = new jsPDF();
-	var specialElementHandlers = {
-	    '#editor': function (element, renderer) {
-	        return true;
-	    }
-	};
 
 	$('#cmd').click(function () {
 	    /*doc.fromHTML($('#content').html(), 15, 15, {
