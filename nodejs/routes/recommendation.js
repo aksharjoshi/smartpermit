@@ -180,7 +180,7 @@ exports.getPermitType = function(req, res){
     }
 
 
-  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE " + jobstring + " ORDER BY DESCRIPTION";
+  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE " + jobstring + " ) ORDER BY DESCRIPTION";
 
   	dbObject.find(qs, function(err, response){
           if (err) {
