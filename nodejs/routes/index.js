@@ -111,6 +111,14 @@ exports.checkLogin = function(req, res){
 	}
 };
 
+exports.checkLoginClient = function(req, res){
+	if(req.session.userid != ""){
+		rres.send({"msg": "Success"});
+	}
+	else{
+		res.send({"msg": "Fail"});
+	}
+};
 
 exports.startOver = function(req, res){
 	if(req.session.userid != ""){
