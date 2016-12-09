@@ -144,7 +144,7 @@ exports.getRecommendationMultiple = function(req, res){
           console.log("response java is : ", responseJava);
           reqJava.write(JSON.stringify(value_list));
           reqJava.end();
-          res.send({"msg":"Success"});
+          res.send("data" : JSON.sreingify(responseJava);
   }
 };
 
