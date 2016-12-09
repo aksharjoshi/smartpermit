@@ -41,7 +41,7 @@ exports.saveNextQuestion = function(req, res){
 		/*console.log(" After push in session in  saveNextQuestion : ", req.session.question_set);
 		console.log("================== saveNextQuestion ====================");*/
 
-		res.jsonp(req.session.question_set);
+		res.send(req.session.question_set);
 	}
 }
 
