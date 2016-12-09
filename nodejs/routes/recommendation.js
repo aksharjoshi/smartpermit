@@ -49,7 +49,7 @@ exports.getRecommendation = function(req, res){
           console.log("\n\nresponse FOR recommendation is: ", response);
 
           var options = {
-            host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
+            host: 'localhost',
             port: 8181,
             path: '/recommend?permitId='+response[0].ID+'&count=5',
             method: 'GET'
