@@ -102,7 +102,7 @@ exports.logout = function(req, res){
 	}
 };
 
-exports.checkLogin = function(req, res){
+function checkLogin (req, res){
 	if(req.session.userid != ""){
 		return true;
 	}
@@ -113,11 +113,13 @@ exports.checkLogin = function(req, res){
 
 
 exports.startOver = function(req, res){
-	if(checkLogin()){
+	if(this.checkLogin()){
 		req.session.question_set = [];
 		res.send({"msg":"Success"});
 	}
 	else{
 		res.send({"msg":"Already logged out"});
 	}
-}
+};
+
+//module.exports = checkLogin
