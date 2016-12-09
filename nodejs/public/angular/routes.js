@@ -713,9 +713,10 @@ app.controller('analyticsController', function($scope,$http) {
 		});		
     };
 
-    $scope.getDrillDownSeasonalPermits = function(quarter){    	
+    $scope.getDrillDownSeasonalPermits = function(quarter){  
+    	var year = $("#formSeasonal").find(".activeTab").text();  	
     	
-    	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
+    	$http.get("/seasonalAnalysis?year="+year+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownSeasonalAnalytics').modal();
     		$("#quarter").html($scope.quarter);
 			var seosonalTrendArray = [];
@@ -851,9 +852,10 @@ console.log(permitTypeCountArray);
 		});
 	};
 
-	$scope.getDrillDownPopularPermits = function(quarter){    	
+	$scope.getDrillDownPopularPermits = function(quarter){ 
+		var year = $("#formPopular").find(".activeTab").text();  	
     	
-    	$http.get("/popularPermit?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
+    	$http.get("/popularPermit?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownPopularPermits').modal();
     		$("#popular_quarter").html(quarter);
     		var permitsArray = [];
@@ -972,9 +974,10 @@ console.log(permitTypeCountArray);
 		});
 	};
 
-	$scope.getDrillDownExpirationAnalysis = function(quarter){    	
+	$scope.getDrillDownExpirationAnalysis = function(quarter){  
+		var year = $("#formExpiration").find(".activeTab").text();   	
     	$('#modalDrillDownExpiration').modal();
-		$http.get("/expirartionAnalysis?year="+2012+"&quarter="+quarter.slice(-1)).success(function(response){
+		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
     		
     		$("#popular_quarter").html(quarter);
 
