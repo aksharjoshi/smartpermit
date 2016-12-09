@@ -282,6 +282,7 @@ app.controller('permitsController', function($scope,$http) {
 								    slideWidth: 300,
 								    minSlides: 2,
 								    maxSlides: 3,
+								    slideMargin: 10,
 								    slideMargin: 10
 								});
 						 	}, 100);
