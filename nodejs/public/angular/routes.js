@@ -721,7 +721,7 @@ app.controller('analyticsController', function($scope,$http) {
     };
 
     $scope.getDrillDownSeasonalPermits = function(quarter){  
-    	var year = $("#formSeasonal").find(".activeTab").text();  	
+    	var year = $("#formSeasonal").find(".activeTab").text().replace(/\s/g, '');  	
     	
     	$http.get("/seasonalAnalysis?year="+year+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownSeasonalAnalytics').modal();
@@ -860,7 +860,7 @@ console.log(permitTypeCountArray);
 	};
 
 	$scope.getDrillDownPopularPermits = function(quarter){ 
-		var year = $("#formPopular").find(".activeTab").text();  	
+		var year = $("#formPopular").find(".activeTab").text().replace(/\s/g, ''); 	
     	
     	$http.get("/popularPermit?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownPopularPermits').modal();
@@ -982,7 +982,7 @@ console.log(permitTypeCountArray);
 	};
 
 	$scope.getDrillDownExpirationAnalysis = function(quarter){  
-		var year = $("#formExpiration").find(".activeTab").text();   	
+		var year = $("#formExpiration").find(".activeTab").text().replace(/\s/g, '');   	
     	$('#modalDrillDownExpiration').modal();
 		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
     		
