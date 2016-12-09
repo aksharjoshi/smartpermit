@@ -237,6 +237,7 @@ app.controller('permitsController', function($scope,$http) {
 					var product = $(obj).parent("label").text().replace(/\s/g, '');
 					
 					$scope.outputPermits[product] =  tempPermits;
+					console.log($scope.outputPermits);
 
 				});
 				
