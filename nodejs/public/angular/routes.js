@@ -273,7 +273,7 @@ app.controller('permitsController', function($scope,$http) {
 				
 				$http.get("/checkNextQuestions").success(function(response){
 					console.log(">>>>>>>>>>>>>>> CHECK NEXT QUESTION >>>>>>>>>>>>>");
-					if(response.msg == "Success" && data.hasOwnProperty('Question') && && data.hasOwnProperty('Next_question')){
+					if(response.msg == "Success" && data.hasOwnProperty('Question') &&  data.hasOwnProperty('Next_question')){
 						$scope.showComponents = "no";
 						$scope.RESPONSE = response.data;
 						$scope.question = response.data.Question;
