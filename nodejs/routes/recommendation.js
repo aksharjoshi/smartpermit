@@ -173,7 +173,7 @@ exports.getPermitType = function(req, res){
   if(req.session.userid != ""){
     var job_type = req.query.job_type;
 
-  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE JOB_TYPE='"+job_type+"')";
+  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE JOB_TYPE='"+job_type+"') ORDER BY DESCRIPTION";
 
   	dbObject.find(qs, function(err, response){
           if (err) {
