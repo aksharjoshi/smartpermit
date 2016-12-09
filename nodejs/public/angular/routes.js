@@ -475,31 +475,34 @@ app.controller('permitsController', function($scope,$http) {
 		$("input[type=checkbox]:checked").parent("label").parent(".wizard-box").addClass("select");
 	};
 	$scope.restart = function(){
-		$("#nopermits").hide();
-		$("#permitContainer").hide();
-		$("#permit").html("");
-		$("#prePermitContainer").show();
+		$http.get("/startOver").success(function(response){
+			console.log(response.msg);
+			$("#nopermits").hide();
+			$("#permitContainer").hide();
+			$("#permit").html("");
+			$("#prePermitContainer").show();
 
-		$http.get("/getquestion?id=1").success(function(response){
-		$scope.RESPONSE = response;
-	 	$scope.questionID = 1;
-	 	$scope.questionPrevArray[$scope.questionID] = 0;
-	 	$scope.prevQuestionID = 0;
-	 	$scope.question = response.Question;
-	 	$scope.options = $.parseJSON(response.Next_question);
-	 	$scope.answer_type = response.Answer_type;
+			$http.get("/getquestion?id=1").success(function(response){
+				$scope.RESPONSE = response;
+			 	$scope.questionID = 1;
+			 	$scope.questionPrevArray[$scope.questionID] = 0;
+			 	$scope.prevQuestionID = 0;
+			 	$scope.question = response.Question;
+			 	$scope.options = $.parseJSON(response.Next_question);
+			 	$scope.answer_type = response.Answer_type;
 
-	 	setTimeout(function(){ 
-	 		$(".imgIcon").each(function(index,imgObj){
-		 		var icon = $(imgObj).attr("data");
-		 		icon = icon.replace(/\s/g, '');
-		 		console.log(icon);
-		 		console.log($scope.icons[icon]);
-		 		if($scope.icons[icon] != "undefined")
-		 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
-		 	});
-	 	}, 100);
-	});
+			 	setTimeout(function(){ 
+			 		$(".imgIcon").each(function(index,imgObj){
+				 		var icon = $(imgObj).attr("data");
+				 		icon = icon.replace(/\s/g, '');
+				 		console.log(icon);
+				 		console.log($scope.icons[icon]);
+				 		if($scope.icons[icon] != "undefined")
+				 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+				 	});
+			 	}, 100);
+			});
+		});	
 
 	};
 
