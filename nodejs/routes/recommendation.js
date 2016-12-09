@@ -57,7 +57,8 @@ exports.getRecommendation = function(req, res){
 
           var responseJava = "";
 
-          http.request(options, function(response) {
+          try{
+            http.request(options, function(response) {
             console.log('STATUS: ' + response.statusCode);
             console.log('HEADERS: ' + JSON.stringify(response.headers));
             response.setEncoding('utf8');
@@ -66,7 +67,11 @@ exports.getRecommendation = function(req, res){
               responseJava = chunk;
               res.send(responseJava);
             });
-          }).end();
+            }).end();
+          }
+          catch(Exception e){
+            throw e;
+          }
       });
   }
 };
