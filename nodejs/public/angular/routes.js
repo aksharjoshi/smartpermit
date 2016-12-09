@@ -297,6 +297,8 @@ app.controller('permitsController', function($scope,$http) {
 
 						$http.post('/postRecommendation', {"permits": $scope.outputPermits})
 						.success(function(response, status, headers, config) {
+							var data = JSON.parse(response.data);
+							console.log("typeof: ",typeof data);
 							$scope.postPermitRecommendations = JSON.parse(response.data);
 							$('.slider1').show();
 							//var html = $("#postPermitRecommendation").html();
