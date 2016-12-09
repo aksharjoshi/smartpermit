@@ -116,9 +116,9 @@ exports.getRecommendationMultiple = function(req, res){
             method: 'POST',
             json: true,
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(value_list)
+                'Content-Type': 'application/json; charset=utf-8',
+            }
+            //body: JSON.stringify(value_list)
           };
 
           var responseJava = "";
