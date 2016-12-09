@@ -66,6 +66,7 @@ app.controller('recommendationController', function($scope,$http) {
 		console.log(len);
 		$(response).each(function(key,obj){
 			console.log("key: "+key);
+			console.log(obj);
 			$scope.job_types.push(obj.JOB_TYPE);
 			if(key == len-1){
 				$("#select_job_type option:first").remove();
