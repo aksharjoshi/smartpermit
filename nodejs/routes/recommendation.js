@@ -62,10 +62,13 @@ exports.getRecommendation = function(req, res){
             console.log('STATUS: ' + response.statusCode);
             console.log('HEADERS: ' + JSON.stringify(response.headers));
             response.setEncoding('utf8');
+            response.on('error', function(err){
+              console.log("Error on calling engine. ", err);
+            });
             response.on('data', function (chunk) {
               console.log('BODY: ' + chunk);
               responseJava = chunk;
-              res.send(responseJava);
+              res.send({"msg":"hello"});
             });
             }).end();
           }
