@@ -74,8 +74,8 @@ app.controller('homeController', function($scope,$http) {
 	    });*/
 	    doc.save('forms/common_pw1_form.pdf');
 	});
-	$scope.downloadForm = function(e){
-		e.preventDefault()
+	$scope.downloadForm = function(){
+		window.location = '/';
 	};
 		
 });
