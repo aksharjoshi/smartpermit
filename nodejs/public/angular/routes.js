@@ -98,6 +98,7 @@ app.controller('recommendationController', function($scope,$http) {
 				$scope.permit_subtypes.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 			});
 			$("#select_permit_subtype option:first").remove();
+			setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 100);
 		});
 	};
 /*

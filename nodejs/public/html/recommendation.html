@@ -1,4 +1,4 @@
-<h3>Recommendations</h3>
+<h3>Please select the permits that you want to apply.</h3>
 
  <div class="row" style="margin-top:50px;">
  	<div class="col-md-4">
@@ -15,14 +15,14 @@
  	</div>
  	<div id="containerPermitSubType" class="col-md-4" style="display:none;">
  		<label>Permit Sub-type</label>
- 		<select ng-model="permit_subtype" id="select_permit_subtype" class="form-control">
+ 		<select ng-model="permit_subtype" id="select_permit_subtype" class="form-control" ng-change="getRecommendations()">
   			<option ng-repeat="permit_subtype in permit_subtypes" value="{{permit_subtype.acronym}}">{{permit_subtype.acronym}}: {{permit_subtype.description}}</option>
  		</select>
  	</div>
  </div>
- <div class="row" style="margin-top:50px;text-align:center;">
+ <!-- <div class="row" style="margin-top:50px;text-align:center;">
  	<button class="btn btn-large btn-primary" ng-click="getRecommendations()">Get Recommendations</button>
- </div>
+ </div> -->
 
   <div class="row" style="margin-top:50px;">
   	<div class="pull-left" style="border:1px solid #ccc; height:200px; width:200px; background-color: #ddd; margin-right: 10px;" ng-repeat="(key,recommendation) in recommendations">
