@@ -31,9 +31,6 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller: 'recommendationController',
 			templateUrl : "html/recommendation.html"
 		}).
-		when('/forms/common_pw1_form.pdf',{
-			controller: 'downloadController',
-		}).
         otherwise({
           redirectTo: '/home',
         });
@@ -56,28 +53,9 @@ app.controller('logoutController',function($scope,$http){
 	}
 	
 });
-app.controller('downloadController',function($scope,$http){
-	console.log("download");
-
-	
-});
 
 
 app.controller('homeController', function($scope,$http) {
-
-	var doc = new jsPDF();
-
-	$('#cmd').click(function () {
-	    /*doc.fromHTML($('#content').html(), 15, 15, {
-	        'width': 170,
-	            'elementHandlers': specialElementHandlers
-	    });*/
-	    doc.save('forms/common_pw1_form.pdf');
-	});
-	$scope.downloadForm = function(){
-		window.location = '/forms/common_pw1_form.pdf';
-	};
-		
 });
 
 app.controller('recommendationController', function($scope,$http) {
@@ -287,8 +265,8 @@ app.controller('permitsController', function($scope,$http) {
 						$("#permitContainer").show();
 
 						$http.post('/postRecommendation', {"permits": $scope.outputPermits})
-						.success(function(data, status, headers, config) {
-							//$("#permits").html($scope.outputPermits);
+						.success(function(response, status, headers, config) {
+							
 							
 						});
 					{
