@@ -71,6 +71,10 @@ public class PermitMainController {
 
     @RequestMapping(value = "/build", method = RequestMethod.GET)
     public ResponseEntity buildDataModel() {
+
+        /*Truncate the existing table*/
+        ownerPreferencesRepository.truncate();
+
         HashMap<String, List<String>> ownerPermitMap = permitDetailsRepository.findAllOwnersAndPermits();
         if(ownerPermitMap.isEmpty()){
             return new ResponseEntity(new HashMap<String,String>(){{put("Message","Data Unavailable");}}, HttpStatus.NOT_FOUND);

@@ -29,6 +29,12 @@ public class OwnerPreferencesRepository {
         return jdbcTemplate.query(selectAllOwnerPreferenceSql, new OwnerPreferenceRowMapper());
     }
 
+    public boolean truncate() {
+        String truncateOwnerPreferencesTable = "TRUNCATE TABLE `OWNER_PREFERENCES`";
+        jdbcTemplate.execute(truncateOwnerPreferencesTable);
+        return true;
+    }
+
     public OwnerPreferences findOwnerPreferenceById(long ownerId, long permitId) {
         String selectOwnerPreferenceSql = "SELECT " +
                 " `OWNER_ID`, `PERMIT_ID`, `PREFERENCE`" +
