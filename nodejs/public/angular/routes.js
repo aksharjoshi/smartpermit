@@ -99,11 +99,12 @@ app.controller('recommendationController', function($scope,$http) {
 			$("#containerPermitSubType").show();
 			$(response).each(function(key,obj){
 				$scope.permit_subtypes.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
+				if(key == len-1){
+					$("#select_permit_subtype option:first").remove();
+					setTimeout(function(){ $("#select_permit_subtype").trigger("change"); }, 100);
+				}
 			});
-			if(key == len-1){
-				$("#select_permit_subtype option:first").remove();
-				setTimeout(function(){ $("#select_permit_subtype").trigger("change"); }, 100);
-			}
+			
 		});
 	};
 /*
