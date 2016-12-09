@@ -130,12 +130,18 @@ exports.getRecommendationMultiple = function(req, res){
             response.on('data', function (chunk) {
               console.log('BODY: ' + chunk);
               responseJava += chunk;
+            });
+
+            response.on('end', function(){
+              console.log(JSON.parse(responseJava));
+            });
+
               /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               console.log("session in recommendation: ", req.session);
               console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
               //res.send(responseJava);
-            });
-          })
+           
+          });
 
           reqJava.write(JSON.stringify(value_list));
           reqJava.end();
