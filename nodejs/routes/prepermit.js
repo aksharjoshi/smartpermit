@@ -48,8 +48,9 @@ exports.saveNextQuestion = function(req, res){
 
 exports.checkNextQuestions = function(req, res){
 	var id ={};
+	console.log("type of req.session", req.session.question_set);
 	if(index.checkLogin(req,res)){
-		if(req.session.question_set.length > 0){
+		if(typeof req.session.question_set == "object" && req.session.question_set.length > 0){
 			/*console.log("in next question: ", req.session.question_set);
 
 			console.log("================== checkNextQuestions before pop ====================");
