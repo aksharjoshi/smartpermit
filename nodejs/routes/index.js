@@ -110,3 +110,14 @@ exports.checkLogin = function(req, res){
 		res.send({"msg": "Fail"});
 	}
 };
+
+
+exports.startOver = function(req, res){
+	if(checkLogin()){
+		req.session.question_set = [];
+		res.send("msg":"Success");
+	}
+	else{
+		res.send("msg":"Already logged out")
+	}
+}

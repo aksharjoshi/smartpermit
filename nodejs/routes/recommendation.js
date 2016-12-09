@@ -131,35 +131,11 @@ exports.getRecommendationMultiple = function(req, res){
               console.log('BODY: ' + chunk);
               responseJava += chunk;
             });
-
-            response.on('end', function(){
-              console.log(JSON.parse(responseJava));
-            });
-
-              /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
-              console.log("session in recommendation: ", req.session);
-              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
-              //res.send(responseJava);
-           
           });
-
+          console.log("response java is : ", responseJava);
           reqJava.write(JSON.stringify(value_list));
           reqJava.end();
-
-          /*var request = require('request');
-          request.post({
-            headers: {'content-type' : 'application/json'},
-            url:     'ec2-52-53-148-138.us-west-1.compute.amazonaws.com:8181/recommend',
-            body:    value_list
-          }, function(error, response, body){
-            console.log(body);
-            console.log('BODY: ' + body);
-              responseJava = response;
-              /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
-              console.log("session in recommendation: ", req.session);
-              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
-              /*res.send(responseJava);
-          });*/
+          res.send(responseJava);
   }
 };
 
