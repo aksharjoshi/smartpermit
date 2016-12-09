@@ -81,7 +81,7 @@ app.controller('recommendationController', function($scope,$http) {
 			var len = response.length;
 			$("#containerPermitType").show();
 			$(response).each(function(key,obj){
-				$scope.permit_types.push(obj.PERMIT_TYPE);
+				$scope.permit_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 				if(key == len-1){
 					$("#select_permit_type option:first").remove();
 					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 100);
