@@ -668,7 +668,7 @@ app.controller('analyticsController', function($scope,$http) {
 		});		
     };
 
-    $scope.getDrillDownSeasonalPermits = function(quarter){    	
+    $scope.getDrillDownSeasonalPermits = function(quarter, year){    	
     	
     	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownSeasonalAnalytics').modal();

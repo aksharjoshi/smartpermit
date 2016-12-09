@@ -173,7 +173,14 @@ exports.getPermitType = function(req, res){
   if(req.session.userid != ""){
     var job_type = req.query.job_type;
 
-  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE JOB_TYPE='"+job_type+"') ORDER BY DESCRIPTION";
+    var jobstring = "";
+
+    if(job_type != "" && job_type != 'null' && job_type != "undefined"){
+      jobstring += "JOB_TYPE='" + job_type +"'";
+    }
+
+
+  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_TYPE) FROM PERMIT_MASTER WHERE " + jobstring + " ORDER BY DESCRIPTION";
 
   	dbObject.find(qs, function(err, response){
           if (err) {
@@ -191,9 +198,19 @@ exports.getPermitSubType = function(req, res){
   if(req.session.userid != ""){
 
     var job_type = req.query.job_type;
+    var jobstring = "";
     var permit_type = req.query.permit_type;
+    var permitStr = "";
 
-  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER WHERE JOB_TYPE = '"+job_type+"' AND PERMIT_TYPE = '" + permit_type + "') ORDER BY DESCRIPTION";
+    if(job_type != "" && job_type != 'null' && job_type != "undefined"){
+      jobstring += "JOB_TYPE='" + job_type +"'";
+    }
+
+    if(permit_type != "" && permit_type != 'null' && permit_type != "undefined" && jobstring != ""){
+      permitStr += " AND PERMIT_TYPE='" + permit_type +"'";
+    }
+
+  	var qs = "SELECT DESCRIPTION, ACRONYM FROM ACRONYM_MASTER WHERE ACRONYM IN (SELECT DISTINCT(PERMIT_SUBTYPE) FROM PERMIT_MASTER WHERE " + jobstring +  permitStr + ") ORDER BY DESCRIPTION";
 
   	dbObject.find(qs, function(err, response){
           if (err) {
