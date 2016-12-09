@@ -629,7 +629,7 @@ app.controller('analyticsController', function($scope,$http) {
 			return false;
 		}
 	});
-	
+
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault()
 	  $(this).tab('show')
@@ -1395,15 +1395,17 @@ console.log(permitTypeCountArray);
      };
 	
 	$scope.getSeasonalData($scope.years[0]);
-	$("#divSeasonalContent").find(".tab1:first").addClass("activeTab");
 	$scope.getExpirartionAnalysisData($scope.years[0]);
-	$("#divExpiryContent").find(".tab1:first").addClass("activeTab");
 	$scope.getPopularPermitsData($scope.years[0]);
-	$("#divPopularContent").find(".tab1:first").addClass("activeTab");
 	$scope.getHeatMapData($scope.years[0]);
-	$("#divLocationContent").find(".tab1:first").addClass("activeTab");
 	$scope.initMap();
 	$scope.initHeatMap();
 	$scope.initBubbleMap();
+	setTimeout(function(){
+		$("#divSeasonalContent").find(".tab1:first").addClass("activeTab");
+		$("#divExpiryContent").find(".tab1:first").addClass("activeTab");
+		$("#divPopularContent").find(".tab1:first").addClass("activeTab");
+		$("#divLocationContent").find(".tab1:first").addClass("activeTab");
+	}, 100);
 
 });
