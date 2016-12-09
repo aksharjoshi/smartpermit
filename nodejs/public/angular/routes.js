@@ -644,8 +644,8 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["EW"] = "Equipment Work";
 	
 	$scope.getSeasonalData = function(year) {
-		$("#divSeasonalContent").find(".tab1").removeClass("active");
-		$("#seasonal_"+year).parent(".tab1").addClass("active");
+		$("#divSeasonalContent").find(".tab1").removeClass("activeTab");
+		$("#seasonal_"+year).parent(".tab1").addClass("activeTab");
 
         $http.get("/seasonalAnalysis?year="+year).success(function(response){
 			var seasonalTrendArray = [];
@@ -786,8 +786,8 @@ console.log(permitTypeCountArray);
     };
 
 	$scope.getPopularPermitsData = function(year) {
-		$("#divPopularContent").find(".tab1").removeClass("active");
-		$("#popular_"+year).parent(".tab1").addClass("active");
+		$("#divPopularContent").find(".tab1").removeClass("activeTab");
+		$("#popular_"+year).parent(".tab1").addClass("activeTab");
 		$http.get("/popularPermit?year="+year).success(function(response){
 			var permitsArray = [];
 			var permitTypes = [];
@@ -912,8 +912,8 @@ console.log(permitTypeCountArray);
     };
 	
 	$scope.getExpirartionAnalysisData = function(year) {
-		$("#divExpiryContent").find(".tab1").removeClass("active");
-		$("#expiration_"+year).parent(".tab1").addClass("active");
+		$("#divExpiryContent").find(".tab1").removeClass("activeTab");
+		$("#expiration_"+year).parent(".tab1").addClass("activeTab");
 		$http.get("/expirartionAnalysis?year="+year).success(function(response){
 			var expirationTrendArray = [];
 			var permitTypeCountArray = [];
@@ -1031,8 +1031,8 @@ console.log(permitTypeCountArray);
     };
 
 	$scope.getHeatMapData = function(year) {
-		$("#divLocationContent").find(".tab1").removeClass("active");
-		$("#heatmap_"+year).parent(".tab1").addClass("active");
+		$("#divLocationContent").find(".tab1").removeClass("activeTab");
+		$("#heatmap_"+year).parent(".tab1").addClass("activeTab");
 		$http.get("/heatMap?year="+year).success(function(response){
 		
 			var zipObj = {};
@@ -1385,13 +1385,13 @@ console.log(permitTypeCountArray);
      };
 	
 	$scope.getSeasonalData($scope.years[0]);
-	$("#divSeasonalContent").find(".tab1:first").addClass("active");
+	$("#divSeasonalContent").find(".tab1:first").addClass("activeTab");
 	$scope.getExpirartionAnalysisData($scope.years[0]);
-	$("#divExpiryContent").find(".tab1:first").addClass("active");
+	$("#divExpiryContent").find(".tab1:first").addClass("activeTab");
 	$scope.getPopularPermitsData($scope.years[0]);
-	$("#divPopularContent").find(".tab1:first").addClass("active");
+	$("#divPopularContent").find(".tab1:first").addClass("activeTab");
 	$scope.getHeatMapData($scope.years[0]);
-	$("#divLocationContent").find(".tab1:first").addClass("active");
+	$("#divLocationContent").find(".tab1:first").addClass("activeTab");
 	$scope.initMap();
 	$scope.initHeatMap();
 	$scope.initBubbleMap();
