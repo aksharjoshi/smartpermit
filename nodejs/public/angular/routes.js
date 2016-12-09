@@ -67,15 +67,17 @@ app.controller('recommendationController', function($scope,$http) {
 		$(response).each(function(key,obj){
 			console.log("key: "+key);
 			console.log(obj);
-			$scope.job_types.push(obj.JOB_TYPE);
-			if(key == len-1){
+			$scope.job_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
+			/*if(key == len-1){
 				$("#select_job_type option:first").remove();
 				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 100);
-			}
+			}*/
 		});
 	});
 	
 	$scope.getPermitType = function(job_type){
+		console.log(job_type);
+		return false;
 		$scope.permit_types = [];
 		$http.get("/getPermitType?job_type="+job_type).success(function(response){
 			var len = response.length;
