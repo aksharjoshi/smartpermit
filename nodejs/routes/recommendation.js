@@ -69,7 +69,7 @@ exports.getRecommendation = function(req, res){
             });
             }).end();
           }
-          catch(Exception e){
+          catch(e){
             throw New Error("Something wrong with recommendation engine");
           }
       });
