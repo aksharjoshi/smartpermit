@@ -67,7 +67,8 @@ app.controller('recommendationController', function($scope,$http) {
 		console.log(len);
 		$(response).each(function(key,obj){
 			console.log("key: "+key);
-			$scope.job_types.push(obj.JOB_TYPE);
+			console.log(obj);
+			$scope.job_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 			if(key == len-1){
 				$("#select_job_type option:first").remove();
 				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 100);
@@ -81,7 +82,7 @@ app.controller('recommendationController', function($scope,$http) {
 			var len = response.length;
 			$("#containerPermitType").show();
 			$(response).each(function(key,obj){
-				$scope.permit_types.push(obj.PERMIT_TYPE);
+				$scope.permit_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 				if(key == len-1){
 					$("#select_permit_type option:first").remove();
 					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 100);
@@ -94,7 +95,7 @@ app.controller('recommendationController', function($scope,$http) {
 		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
 			$("#containerPermitSubType").show();
 			$(response).each(function(key,obj){
-				$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+				$scope.permit_subtypes.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 			});
 			$("#select_permit_subtype option:first").remove();
 		});
@@ -478,7 +479,8 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.restart = function(){
 		$http.get("/startOver").success(function(response){
 			if(response.msg == "Success"){
-				$(".select").removeClass("select");
+				location.reload();
+				/*$(".select").removeClass("select");
 				$("input[type=checkbox]:checked").attr("checked", false);
 				$("input[type=radio]:checked").attr("checked", false);
 
@@ -506,7 +508,7 @@ app.controller('permitsController', function($scope,$http) {
 					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
 					 	});
 				 	}, 100);
-				});
+				});*/
 			}
 		});	
 
