@@ -1,4 +1,4 @@
-var app = angular.module('myapp', ['ngRoute']);
+var app = angular.module('myapp', ['ngRoute','ui.bootstrap', 'ngAnimate']);
 var map;
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
@@ -30,9 +30,6 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		when('/recommendation', {
 			controller: 'recommendationController',
 			templateUrl : "html/recommendation.html"
-		}).
-		when('/carousel-example-generic', {
-			controller: 'permitsController'
 		}).
         otherwise({
           redirectTo: '/home',
