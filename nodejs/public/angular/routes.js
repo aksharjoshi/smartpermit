@@ -279,7 +279,7 @@ app.controller('permitsController', function($scope,$http) {
 							//$('.slider1').html(html);
 							setTimeout(function(){ 
 						 		$('.slider1').bxSlider({
-								    slideWidth: 1000,
+								    slideWidth: 500,
 								    minSlides: 2,
 								    maxSlides: 3,
 								    slideMargin: 10
