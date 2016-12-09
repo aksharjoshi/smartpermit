@@ -149,7 +149,7 @@ exports.getRecommendationMultiple = function(req, res){
               /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               console.log("session in recommendation: ", req.session);
               console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
-              res.send(responseJava);
+              /*res.send(responseJava);
           });*/
   }
 };
