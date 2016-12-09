@@ -139,12 +139,13 @@ exports.getRecommendationMultiple = function(req, res){
             response.on('data', function (chunk) {
               console.log('BODY: ' + chunk);
               responseJava += chunk;
+              res.send({"data":chunk});
             });
           });
           console.log("response java is : ", responseJava);
           reqJava.write(JSON.stringify(value_list));
           reqJava.end();
-          res.send({"data":chunk});
+          
   }
 };
 
