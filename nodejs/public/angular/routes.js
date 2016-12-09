@@ -56,9 +56,24 @@ app.controller('logoutController',function($scope,$http){
 
 
 app.controller('homeController', function($scope,$http) {
+	$http.get("/checkLogin").success(function(response){
+		if(response.msg == "Fail"){
+			alert("Session Expired");
+			window.location = '/';
+			return false;
+		}
+	});
 });
 
 app.controller('recommendationController', function($scope,$http) {
+
+	$http.get("/checkLogin").success(function(response){
+		if(response.msg == "Fail"){
+			alert("Session Expired");
+			window.location = '/';
+			return false;
+		}
+	});
 	
 	
 	$http.get("/getJobType").success(function(response){
@@ -140,6 +155,15 @@ app.controller('recommendationController', function($scope,$http) {
 });
 
 app.controller('permitsController', function($scope,$http) {
+
+	$http.get("/checkLogin").success(function(response){
+		if(response.msg == "Fail"){
+			alert("Session Expired");
+			window.location = '/';
+			return false;
+		}
+	});
+		}
 //	var wizard = $("#questionnaire").steps();
 	$scope.questionPrevArray = [];
 	$scope.responses = [];
