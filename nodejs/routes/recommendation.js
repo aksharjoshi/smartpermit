@@ -100,11 +100,11 @@ exports.getRecommendationMultiple = function(req, res){
       }
     }
 
-    //console.log("value_list : " + JSON.stringify(value_list));
+    console.log("value_list : " + JSON.stringify(value_list));
 
 
     var data = querystring.stringify({
-      body: req.body
+      body: value_list
 //      password: yourPasswordValue
     });
 
