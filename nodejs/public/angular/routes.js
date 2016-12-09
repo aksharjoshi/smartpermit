@@ -163,7 +163,7 @@ app.controller('permitsController', function($scope,$http) {
 			return false;
 		}
 	});
-		}
+		
 //	var wizard = $("#questionnaire").steps();
 	$scope.questionPrevArray = [];
 	$scope.responses = [];
