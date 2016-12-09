@@ -1,7 +1,7 @@
 var app = angular.module('myapp', ['ngRoute']);
 var map;
 
-app.config(['$routeProvider', function($routeProvider,$locationProvider) {
+app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.
 		when('/home', {
 			controller: 'homeController',
