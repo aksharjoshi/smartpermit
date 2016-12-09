@@ -16,7 +16,7 @@
  	<div id="containerPermitSubType" class="col-md-4" style="display:none;">
  		<label>Permit Sub-type</label>
  		<select ng-model="permit_subtype" id="select_permit_subtype" class="form-control">
-  			<option ng-repeat="permit_subtype in permit_subtypes">{{permit_subtype}}</option>
+  			<option ng-repeat="permit_subtype in permit_subtypes" value="{{permit_subtype.acronym}}">{{permit_subtype.acronym}}: {{permit_subtype.description}}</option>
  		</select>
  	</div>
  </div>
