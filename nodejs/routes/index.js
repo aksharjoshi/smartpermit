@@ -103,7 +103,7 @@ exports.logout = function(req, res){
 };
 
 exports.checkLogin = function(req, res){
-	if(req.session.userid != ""){
+	if(req.session.userid != "" && req.session.userid != "undefined" && req.session.userid != null){
 		return true;
 	}
 	else{
@@ -112,7 +112,7 @@ exports.checkLogin = function(req, res){
 };
 
 exports.checkLoginClient = function(req, res){
-	if(req.session.userid != ""){
+	if(req.session.userid != "" && req.session.userid != "undefined" && req.session.userid != null){
 		res.send({"msg": "Success"});
 	}
 	else{
