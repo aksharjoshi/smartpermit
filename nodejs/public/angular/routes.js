@@ -1402,10 +1402,10 @@ console.log(permitTypeCountArray);
 	$scope.initHeatMap();
 	$scope.initBubbleMap();
 	setTimeout(function(){
-		$("#divSeasonalContent").find(".tab1:first").addClass("activeTab");
-		$("#divExpiryContent").find(".tab1:first").addClass("activeTab");
-		$("#divPopularContent").find(".tab1:first").addClass("activeTab");
-		$("#divLocationContent").find(".tab1:first").addClass("activeTab");
+		$("#formSeasonal").find(".tab1:first").addClass("activeTab");
+		$("#formPopular").find(".tab1:first").addClass("activeTab");
+		$("#formExpiration").find(".tab1:first").addClass("activeTab");
+		$("#formArea").find(".tab1:first").addClass("activeTab");
 	}, 100);
 
 });
