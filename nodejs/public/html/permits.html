@@ -196,15 +196,23 @@
 </div>
 
 <div class="slider1" style="display:none;">
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar1"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar2"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar3"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar4"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar5"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar6"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar7"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar8"></div>
-  <div class="slide"><img src="http://placehold.it/350x150&text=FooBar9"></div>
+  <div class="pull-left col-md-4" ng-repeat="(key,recommendation) in postPermitRecommendations">
+      <div class="row">
+        <div class="col-sm-6 col-md-12">
+          <div class="thumbnail">
+            <img ng-if="recommendation.permitSubtypeDescription != 'Not Applicable'" src="/images/{{recommendation.permitSubtype}}.jpg" alt="..." style="height:200px;width:100%">
+            <img ng-if="recommendation.permitSubtypeDescription == 'Not Applicable'" src="/images/N:A.jpg" alt="..." style="height:200px;width:100%">
+            <div class="caption">
+              <h3>Permits</h3>
+              <p>Job Type: {{recommendation.permitJobTypeDescription}}</p>
+              <p>Permit Type: {{recommendation.permitTypeDescription}}</p>
+              <p>Permit Sub-type: {{recommendation.permitSubtypeDescription}}</p>
+              <p style="text-align:center;"><input type="button" class="btn btn-primary" value="Apply for Permits" onclick="window.open('/forms/common_pw1_form.pdf')" /></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 
 
