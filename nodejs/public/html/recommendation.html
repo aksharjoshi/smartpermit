@@ -29,7 +29,8 @@
   		<div class="row">
         <div class="col-sm-6 col-md-12">
           <div class="thumbnail">
-            <img src="/images/{{recommendation.permitSubtype}}.jpg" alt="..." style="height:200px;width:100%">
+            <img ng-if="permitSubtype != N/A" src="/images/{{recommendation.permitSubtype}}.jpg" alt="..." style="height:200px;width:100%">
+            <img ng-if="permitSubtype == N/A" src="/images/N:A.jpg" alt="..." style="height:200px;width:100%">
             <div class="caption">
               <h3>Permits</h3>
               <p>Job Type: {{recommendation.permitJobTypeDescription}}</p>
