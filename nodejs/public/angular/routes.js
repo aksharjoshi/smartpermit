@@ -610,6 +610,7 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
 	permit_desc["OT"] = "Others";
+	permit_desc["EW"] = "Equipment Work";
 	
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
