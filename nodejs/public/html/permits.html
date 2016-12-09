@@ -12,9 +12,6 @@
   height: 40px;
   margin-top: -10px;
   margin-bottom: 10px;
-  vertical-align: middle;
-    margin-top: 33%;
-    margin-left: 37%;
 }
 .wizard-box{
   border-radius:50%;
@@ -40,13 +37,13 @@
         <a tabindex="0" role="button" data-toggle="popover" title="Dismissible popover" data-content='<div id="test">test</div>'>?</a>
       </div>
       <div ng:class="{true:'wizard-box select', false:'wizard-box'}[selectedOption==option]">      
-        <label style="margin-left: -10%;" ng-if="showComponents == 'yes'">
+        <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
             <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
             <input type="radio" name="option" value="{{value}}" style="visibility:hidden;" ng-click="selectWizard()" ng-if="answer_type == 'SINGLE'" >
             <input type="checkbox" name="option" value="{{value}}" style="visibility:hidden;" ng-click="multiSelectelectWizard()" ng-if="answer_type == 'MULTIPLE'" >
             {{option}}
         </label>
-         <label style="margin-left: -10%;" ng-if="showComponents == 'no'">
+         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
          <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
             <input type="radio" name="option" value="{{option}}" class="imgIcon" next-question="{{value}}" ng-if="selectedOption == option && answer_type == 'SINGLE'" ng-click="selectWizard()" checked style="visibility:hidden;"> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option  && answer_type == 'SINGLE'" ng-click="selectWizard()" style="visibility:hidden;"> 
