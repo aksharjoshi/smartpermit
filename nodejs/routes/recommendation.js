@@ -123,19 +123,22 @@ exports.getRecommendationMultiple = function(req, res){
 
           var responseJava = "";
 
-          http.request(options, function(response) {
+          var reqJava = http.request(options, function(response) {
             console.log('STATUS: ' + response.statusCode);
             console.log('HEADERS: ' + JSON.stringify(response.headers));
             response.setEncoding('utf8');
             response.on('data', function (chunk) {
               console.log('BODY: ' + chunk);
-              responseJava = chunk;
+              responseJava += chunk;
               /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               console.log("session in recommendation: ", req.session);
               console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
-              res.send(responseJava);
+              //res.send(responseJava);
             });
-          }).end();
+          })
+
+          reqJava.write(value_list);
+          reqJava.end();
 
           /*var request = require('request');
           request.post({
