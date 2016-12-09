@@ -609,6 +609,7 @@ app.controller('analyticsController', function($scope,$http) {
 	permit_desc["PL"] = "Plumbing";
 	permit_desc["DM"] = "Demolition";
 	permit_desc["SG"] = "Sign";
+	permit_desc["OT"] = "Others";
 	
 	$scope.getSeasonalData = function(year) {
 		$("#divSeasonalContent").find(".tab1").removeClass("active");
@@ -680,7 +681,7 @@ app.controller('analyticsController', function($scope,$http) {
 		});		
     };
 
-    $scope.getDrillDownSeasonalPermits = function(quarter, year){    	
+    $scope.getDrillDownSeasonalPermits = function(quarter){    	
     	
     	$http.get("/seasonalAnalysis?year="+2012+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownSeasonalAnalytics').modal();
