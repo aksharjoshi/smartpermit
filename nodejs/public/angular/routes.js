@@ -298,21 +298,26 @@ app.controller('permitsController', function($scope,$http) {
 						$http.post('/postRecommendation', {"permits": $scope.outputPermits})
 						.success(function(response, status, headers, config) {
 							var data = JSON.parse(response.data);
-							console.log(data);
-							$scope.postPermitRecommendations = JSON.parse(response.data);
-							$('.slider1').show();
-							//var html = $("#postPermitRecommendation").html();
-							//$('.slider1').html(html);
-							setTimeout(function(){ 
-						 		$('.slider1').bxSlider({
-								    slideWidth: 300,
-								    minSlides: 2,
-								    maxSlides: 2,
-								    slideMargin: 10,
-								    slideMargin: 10
-								});
-								$(".bx-wrapper").removeAttr("style");
-						 	}, 100);
+							if(data.hasOwnProperty('Message')){
+								return false;
+							}
+							else{
+								$scope.postPermitRecommendations = JSON.parse(response.data);
+								$('.slider1').show();
+								//var html = $("#postPermitRecommendation").html();
+								//$('.slider1').html(html);
+								setTimeout(function(){ 
+							 		$('.slider1').bxSlider({
+									    slideWidth: 300,
+									    minSlides: 2,
+									    maxSlides: 2,
+									    slideMargin: 10,
+									    slideMargin: 10
+									});
+									$(".bx-wrapper").removeAttr("style");
+							 	}, 100);
+							}
+							
 
 						});
 					{
