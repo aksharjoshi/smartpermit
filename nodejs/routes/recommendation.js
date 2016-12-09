@@ -108,7 +108,8 @@ exports.getRecommendationMultiple = function(req, res){
 //      password: yourPasswordValue
     });
 
-    var options = {
+    console.log("value_list is: ", value_list);
+   /* var options = {
             host: 'ec2-52-53-148-138.us-west-1.compute.amazonaws.com',
             port: 8181,
             path: '/recommend',
@@ -131,10 +132,25 @@ exports.getRecommendationMultiple = function(req, res){
               responseJava = chunk;
               /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               console.log("session in recommendation: ", req.session);
-              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
+              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
               res.send(responseJava);
             });
-          }).end();
+          }).end();*/
+
+          var request = require('request');
+          request.post({
+            headers: {'content-type' : 'application/json'},
+            url:     'ec2-52-53-148-138.us-west-1.compute.amazonaws.com:8181/recommend',
+            body:    value_list
+          }, function(error, response, body){
+            console.log(body);
+            console.log('BODY: ' + body);
+              responseJava = response;
+              /*console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");
+              console.log("session in recommendation: ", req.session);
+              console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& RECO &&&&&&&&&&&&&&&&&&&&&&&&&");*/
+              res.send(responseJava);
+          });
   }
 };
 
