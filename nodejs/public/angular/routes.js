@@ -1,7 +1,7 @@
 var app = angular.module('myapp', ['ngRoute','ui.bootstrap']);
 var map;
 
-app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
+app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.
 		when('/home', {
 			controller: 'homeController',
@@ -34,7 +34,7 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
         otherwise({
           redirectTo: '/home',
         });
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
     }
 ]);
 
