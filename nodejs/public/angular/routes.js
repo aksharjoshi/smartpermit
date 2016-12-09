@@ -622,7 +622,14 @@ app.controller('permitsController', function($scope,$http) {
 });
 
 app.controller('analyticsController', function($scope,$http) {
-
+	$http.get("/checkLogin").success(function(response){
+		if(response.msg == "Fail"){
+			alert("Session Expired");
+			window.location = '/';
+			return false;
+		}
+	});
+	
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault()
 	  $(this).tab('show')
