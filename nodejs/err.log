@@ -1,15 +1,7 @@
 
-events.js:72
-        throw er; // Unhandled 'error' event
-              ^
-Error: listen EADDRINUSE
-    at errnoException (net.js:901:11)
-    at Server._listen2 (net.js:1039:14)
-    at listen (net.js:1061:10)
-    at Server.listen (net.js:1135:5)
-    at Object.<anonymous> (/home/ubuntu/smartpermit/nodejs/app.js:84:24)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
+Error: Connection lost: The server closed the connection.
+    at Protocol.end (/home/ubuntu/smartpermit/nodejs/node_modules/mysql/lib/protocol/Protocol.js:109:13)
+    at Socket.<anonymous> (/home/ubuntu/smartpermit/nodejs/node_modules/mysql/lib/Connection.js:102:28)
+    at Socket.EventEmitter.emit (events.js:117:20)
+    at _stream_readable.js:920:16
+    at process._tickCallback (node.js:415:13)

@@ -1,7 +1,7 @@
 var app = angular.module('myapp', ['ngRoute']);
 var map;
 
-app.config(['$routeProvider', function($routeProvider,$locationProvider) {
+app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.
 		when('/home', {
 			controller: 'homeController',
@@ -31,9 +31,13 @@ app.config(['$routeProvider', function($routeProvider,$locationProvider) {
 			controller: 'recommendationController',
 			templateUrl : "html/recommendation.html"
 		}).
+		when('/forms/common_pw1_form.pdf',{
+			controller: 'downloadController',
+		}).
         otherwise({
           redirectTo: '/home',
         });
+        $locationProvider.html5Mode(true);
     }
 ]);
 
@@ -52,9 +56,28 @@ app.controller('logoutController',function($scope,$http){
 	}
 	
 });
+app.controller('downloadController',function($scope,$http){
+	console.log("download");
+
+	
+});
+
 
 app.controller('homeController', function($scope,$http) {
-	
+
+	var doc = new jsPDF();
+
+	$('#cmd').click(function () {
+	    /*doc.fromHTML($('#content').html(), 15, 15, {
+	        'width': 170,
+	            'elementHandlers': specialElementHandlers
+	    });*/
+	    doc.save('forms/common_pw1_form.pdf');
+	});
+	$scope.downloadForm = function(){
+		window.location = '/forms/common_pw1_form.pdf';
+	};
+		
 });
 
 app.controller('recommendationController', function($scope,$http) {
@@ -66,7 +89,8 @@ app.controller('recommendationController', function($scope,$http) {
 		console.log(len);
 		$(response).each(function(key,obj){
 			console.log("key: "+key);
-			$scope.job_types.push(obj.JOB_TYPE);
+			console.log(obj);
+			$scope.job_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 			if(key == len-1){
 				$("#select_job_type option:first").remove();
 				setTimeout(function(){ $("#select_job_type").trigger("change"); }, 100);
@@ -80,7 +104,7 @@ app.controller('recommendationController', function($scope,$http) {
 			var len = response.length;
 			$("#containerPermitType").show();
 			$(response).each(function(key,obj){
-				$scope.permit_types.push(obj.PERMIT_TYPE);
+				$scope.permit_types.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 				if(key == len-1){
 					$("#select_permit_type option:first").remove();
 					setTimeout(function(){ $("#select_permit_type").trigger("change"); }, 100);
@@ -93,9 +117,10 @@ app.controller('recommendationController', function($scope,$http) {
 		$http.get("/getPermitSubType?job_type="+$("#select_job_type").val()+"&permit_type="+permit_type).success(function(response){
 			$("#containerPermitSubType").show();
 			$(response).each(function(key,obj){
-				$scope.permit_subtypes.push(obj.PERMIT_SUBTYPE);
+				$scope.permit_subtypes.push({"acronym":obj.ACRONYM, "description": obj.DESCRIPTION});
 			});
 			$("#select_permit_subtype option:first").remove();
+			setTimeout(function(){ $("#select_permit_subtype").trigger("change"); }, 100);
 		});
 	};
 /*
@@ -215,6 +240,7 @@ app.controller('permitsController', function($scope,$http) {
 
 			if($scope.finalAnswer){
 				$("#prePermitContainer").hide();
+				$("#nopermits").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
 
@@ -313,6 +339,7 @@ app.controller('permitsController', function($scope,$http) {
 			$("#prePermitContainer").show();
 			$("#permitContainer").hide();
 			$("#permit").html("");
+			$("#nopermits").hide();
 			
 			if($scope.answer_type == "MULTIPLE"){
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
@@ -336,6 +363,14 @@ app.controller('permitsController', function($scope,$http) {
 			}
 			else
 				var nextQuestionid = $("input[name='option']:checked").attr("next-question");
+
+			if(nextQuestionid == "-1" || nextQuestionid == -1){
+				$("#nopermits").show();
+				$("#prePermitContainer").hide();
+				$("#permitContainer").hide();
+				$("#permit").html("");
+				return false;
+			}
 
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
@@ -463,6 +498,43 @@ app.controller('permitsController', function($scope,$http) {
 	$scope.multiSelectelectWizard = function(){
 		$( "input[type=checkbox]:not(:checked)").parent("label").parent(".wizard-box").removeClass("select");
 		$("input[type=checkbox]:checked").parent("label").parent(".wizard-box").addClass("select");
+	};
+	$scope.restart = function(){
+		$http.get("/startOver").success(function(response){
+			if(response.msg == "Success"){
+				location.reload();
+				/*$(".select").removeClass("select");
+				$("input[type=checkbox]:checked").attr("checked", false);
+				$("input[type=radio]:checked").attr("checked", false);
+
+				$("#nopermits").hide();
+				$("#permitContainer").hide();
+				$("#permit").html("");
+				$("#prePermitContainer").show();
+
+				$http.get("/getquestion?id=1").success(function(response){
+					$scope.RESPONSE = response;
+				 	$scope.questionID = 1;
+				 	$scope.questionPrevArray[$scope.questionID] = 0;
+				 	$scope.prevQuestionID = 0;
+				 	$scope.question = response.Question;
+				 	$scope.options = $.parseJSON(response.Next_question);
+				 	$scope.answer_type = response.Answer_type;
+
+				 	setTimeout(function(){ 
+				 		$(".imgIcon").each(function(index,imgObj){
+					 		var icon = $(imgObj).attr("data");
+					 		icon = icon.replace(/\s/g, '');
+					 		console.log(icon);
+					 		console.log($scope.icons[icon]);
+					 		if($scope.icons[icon] != "undefined")
+					 			imgObj.src = "/images/glyphicons_free/glyphicons/png/"+$scope.icons[icon];
+					 	});
+				 	}, 100);
+				});*/
+			}
+		});	
+
 	};
 
 	$http.get("/getquestion?id=1").success(function(response){

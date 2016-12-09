@@ -155,6 +155,7 @@
 <div class="row">
     <button class="pull-right btn btn-large btn-primary" style="margin-right:20px" ng-click="next()">Next >> </button>
     <button class="pull-right btn btn-large btn-primary" style="margin-right:20px" ng-click="previous()"> << Previous</button>
+    <button class="btn btn-large btn-warning" style="margin-right:20px" ng-click="restart()"> <i class="glyphicon glyphicon-refresh"></i> Start Over</button>
 </div>
 </div>
 <div id="permitContainer" style="display:none;">
@@ -166,11 +167,21 @@
       <th>Appliance</th>
       <th>Permit</th>
     </thead>
-    <tbody ng-repeat="(product,permitsObj) in outputPermits">
+    <tbody>
+    <tr ng-repeat="(product,permitsObj) in outputPermits">
       <td>{{product}} </td>
       <td><p ng-repeat="(i,permit) in permitsObj"> Job: {{permit.permitJobType}} | Permit: {{permit.permitType}} | Permit Sub Type: {{permit.permitSubtype}} </p></td>
+    </tr>
+    <tr><td colspan="2"><input type="button" value="Apply for Permits" onclick="window.open('/forms/common_pw1_form.pdf')" /></td></tr>
     </tbody>
   </table>
+</div>
+</div>
+
+<div id="nopermits" style="display:none;">
+  <div class="alert alert-warning" role="alert">
+    Sorry, currently we do not have suggesstions and recommendations for this area.
+  </div>
 </div>
 </div>
 

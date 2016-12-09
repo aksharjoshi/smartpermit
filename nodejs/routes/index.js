@@ -110,3 +110,16 @@ exports.checkLogin = function(req, res){
 		res.send({"msg": "Fail"});
 	}
 };
+
+
+exports.startOver = function(req, res){
+	if(req.session.userid != ""){
+		req.session.question_set = [];
+		res.send({"msg":"Success"});
+	}
+	else{
+		res.send({"msg": "Fail"});
+	}
+};
+
+//module.exports = checkLogin

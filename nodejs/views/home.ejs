@@ -26,13 +26,16 @@
   <script src="https://code.highcharts.com/modules/heatmap.js"></script>
   <script src="https://code.highcharts.com/modules/treemap.js"></script>
   
+  <meta charset="utf-8">
+
+  <base href="/">
 	
  	<script src='./angular/routes.js' ></script> 
 
  <!-- Start Open Web Analytics Tracker -->
 <script type="text/javascript">
 //<![CDATA[
-/*console.log("Clickstream");
+console.log("Clickstream");
 var owa_baseUrl = 'http://localhost/Open-Web-Analytics-1.6/';
 var owa_cmds = owa_cmds || [];
 owa_cmds.push(['setSiteId', '9f267a69108f8a9832a01c1db4fd2917']);
@@ -47,7 +50,7 @@ owa_cmds.push(['trackDomStream']);
   _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
   var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
 }());
-//]]>*/
+//]]>
 </script>
 <!-- End Open Web Analytics Code -->
   
@@ -71,7 +74,7 @@ owa_cmds.push(['trackDomStream']);
 	           <li><a href="#">Settings</a></li>
 	            <li><a href="#">Profile</a></li>
 	            <li><a href="#">Help</a></li> -->
-	            <li><a href="#logout">Logout</a></li>
+	            <li><a href="logout">Logout</a></li>
 	          </ul>
 	          <!-- <form class="navbar-form navbar-right">
 	            <input type="text" class="form-control" placeholder="Search...">
@@ -84,10 +87,10 @@ owa_cmds.push(['trackDomStream']);
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#permits">Permits</a></li>
-            <li><a href="#analytics">Analytics</a></li>
-            <li><a href="#recommendation">Recommendations</a></li>
+            <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="permits">Pre-Permit</a></li>
+            <li><a href="analytics">Analytics</a></li>
+            <li><a href="recommendation">Recommendations</a></li>
           </ul>
          
         </div>

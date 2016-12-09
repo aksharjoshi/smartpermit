@@ -47,6 +47,7 @@ app.use(app.router);
 app.get('/', routes.index);
 app.post('/', routes.login);
 app.get('/logout', routes.logout);
+app.get('/startOver', routes.startOver);
 
 app.get('/admin', routes.admin);
 app.post('/admin', routes.adminLogin);
