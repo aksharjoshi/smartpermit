@@ -26,23 +26,21 @@
 
   <div class="row" style="margin-top:50px;">
   	<div class="pull-left" style="border:1px solid #ccc; height:200px; width:200px; background-color: #ddd; margin-right: 10px;" ng-repeat="(key,recommendation) in recommendations">
-  		<div style="text-align:center;margin-top:20px;margin-bottom:20px;">Job Type: {{recommendation.permitJobTypeDescription}}</div>
-  		<div style="text-align:center;margin-top:20px;margin-bottom:20px;">Permit Type: {{recommendation.permitTypeDescription}}</div>
-  		<div style="text-align:center;margin-top:20px;margin-bottom:20px;">Permit Sub-type: {{recommendation.permitSubtypeDescription}}</div>
+  		<div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="..." alt="...">
+            <div class="caption">
+              <h3>Permits</h3>
+              <p>Job Type: {{recommendation.permitJobTypeDescription}}</p>
+              <p>Permit Type: {{recommendation.permitTypeDescription}}</p>
+              <p>Permit Sub-type: {{recommendation.permitSubtypeDescription}}</p>
+              <p style="text-align:center;"><input type="button" class="btn btn-primary" value="Apply for Permits" onclick="window.open('/forms/common_pw1_form.pdf')" /></p>
+            </div>
+          </div>
+        </div>
+      </div>
   	</div>
   </div>
 
-  <div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Permits</h3>
-        <p>Job Type: {{recommendation.permitJobTypeDescription}}</p>
-        <p>Permit Type: {{recommendation.permitTypeDescription}}</p>
-        <p>Permit Sub-type: {{recommendation.permitSubtypeDescription}}</p>
-        <p style="text-align:center;"><input type="button" class="btn btn-primary" value="Apply for Permits" onclick="window.open('/forms/common_pw1_form.pdf')" /></p>
-      </div>
-    </div>
-  </div>
-</div>
+  
