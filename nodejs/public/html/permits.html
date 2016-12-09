@@ -177,9 +177,8 @@
         <span ng-if="product =='YES'">-</span>
       </td>
       <td>
-
-      permit obj: {{permitsObj}}
-        <span ng-repeat="(i,permit) in permitsObj"> 
+        <span ng-if="permitsObj == -1 || permitsObj == '-1' ">No permits needed for this selection</span>
+        <span ng-if="permitsObj != -1 && permitsObj != '-1' " ng-repeat="(i,permit) in permitsObj"> 
           <p>Job Type: {{permit.permitJobType}} ({{permit.permitJobTypeDescription}}) </p>
           <p>Permit Type: {{permit.permitType}} ({{permit.permitTypeDescription}})</p>
           <p>Permit Subtype: {{permit.permitSubtype}} ({{permit.permitSubtypeDescription}}) </p>
