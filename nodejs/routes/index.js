@@ -102,7 +102,7 @@ exports.logout = function(req, res){
 	}
 };
 
-function checkLogin (req, res){
+exports.checkLogin = function(req, res){
 	if(req.session.userid != ""){
 		return true;
 	}
