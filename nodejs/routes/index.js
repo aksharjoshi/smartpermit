@@ -113,12 +113,12 @@ exports.checkLogin = function(req, res){
 
 
 exports.startOver = function(req, res){
-	if(this.checkLogin()){
+	if(req.session.userid != ""){
 		req.session.question_set = [];
 		res.send({"msg":"Success"});
 	}
 	else{
-		res.send({"msg":"Already logged out"});
+		res.send({"msg": "Fail"});
 	}
 };
 
