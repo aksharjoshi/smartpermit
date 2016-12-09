@@ -277,12 +277,14 @@ app.controller('permitsController', function($scope,$http) {
 							$('.slider1').show();
 							//var html = $("#postPermitRecommendation").html();
 							//$('.slider1').html(html);
-							$('.slider1').bxSlider({
-							    slideWidth: 200,
-							    minSlides: 2,
-							    maxSlides: 3,
-							    slideMargin: 10
-							});
+							setTimeout(function(){ 
+						 		$('.slider1').bxSlider({
+								    slideWidth: 200,
+								    minSlides: 2,
+								    maxSlides: 3,
+								    slideMargin: 10
+								});
+						 	}, 100);
 						});
 					{
 						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
