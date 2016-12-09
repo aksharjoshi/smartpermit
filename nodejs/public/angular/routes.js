@@ -73,11 +73,11 @@ app.controller('homeController', function($scope,$http) {
 	};
 
 	$('#cmd').click(function () {
-	    doc.fromHTML($('#content').html(), 15, 15, {
+	    /*doc.fromHTML($('#content').html(), 15, 15, {
 	        'width': 170,
 	            'elementHandlers': specialElementHandlers
-	    });
-	    doc.save('/forms/common_pw1_form.pdf');
+	    });*/
+	    doc.save('forms/common_pw1_form.pdf');
 	});
 		
 });
