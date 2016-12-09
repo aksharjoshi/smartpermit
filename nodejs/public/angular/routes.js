@@ -215,6 +215,7 @@ app.controller('permitsController', function($scope,$http) {
 
 			if($scope.finalAnswer){
 				$("#prePermitContainer").hide();
+				$("#nopermits").hide();
 				$("#permitContainer").show();
 				$("#permits").html($scope.calculatedPermits);
 
@@ -313,6 +314,7 @@ app.controller('permitsController', function($scope,$http) {
 			$("#prePermitContainer").show();
 			$("#permitContainer").hide();
 			$("#permit").html("");
+			$("#nopermits").hide();
 			
 			if($scope.answer_type == "MULTIPLE"){
 				var nextQuestionid = $("input[name='option']:checked:first").attr("next-question");//$("input[name='option']:checked").val();
@@ -336,6 +338,13 @@ app.controller('permitsController', function($scope,$http) {
 			}
 			else
 				var nextQuestionid = $("input[name='option']:checked").attr("next-question");
+
+			if(nextQuestionid == "-1" || nextQuestionid == -1){
+				$("#nopermits").show();
+				$("#prePermitContainer").hide();
+				$("#permitContainer").hide();
+				$("#permit").html("");
+			}
 
 			var response = $("input[name='option']:checked").val();
 			$scope.responses[$scope.questionID] = response;
