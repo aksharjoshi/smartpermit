@@ -137,7 +137,7 @@ exports.getRecommendationMultiple = function(req, res){
             });
           })
 
-          reqJava.write(value_list);
+          reqJava.write(JSON.stringify(value_list));
           reqJava.end();
 
           /*var request = require('request');
