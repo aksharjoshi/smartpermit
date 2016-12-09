@@ -8,7 +8,7 @@
 .imgIcon{
   display: block;
   text-align: center;
-  margin-left: 20px;
+  /*margin-left: 20px;*/
   height: 40px;
   margin-top: -10px;
   margin-bottom: 10px;
@@ -38,13 +38,13 @@
       </div>
       <div ng:class="{true:'wizard-box select', false:'wizard-box'}[selectedOption==option]">      
         <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'yes'">
-            <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
+            <center><img id="img_{{option}}" data="{{option}}" class="imgIcon" /></center>
             <input type="radio" name="option" value="{{value}}" style="visibility:hidden;" ng-click="selectWizard()" ng-if="answer_type == 'SINGLE'" >
             <input type="checkbox" name="option" value="{{value}}" style="visibility:hidden;" ng-click="multiSelectelectWizard()" ng-if="answer_type == 'MULTIPLE'" >
             {{option}}
         </label>
          <label style="margin-top: 45%;margin-left: -10%;" ng-if="showComponents == 'no'">
-         <img id="img_{{option}}" data="{{option}}" class="imgIcon" />
+         <center><img id="img_{{option}}" data="{{option}}" class="imgIcon" /></center>
             <input type="radio" name="option" value="{{option}}" class="imgIcon" next-question="{{value}}" ng-if="selectedOption == option && answer_type == 'SINGLE'" ng-click="selectWizard()" checked style="visibility:hidden;"> 
             <input type="radio" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption != option  && answer_type == 'SINGLE'" ng-click="selectWizard()" style="visibility:hidden;"> 
              <input type="checkbox" name="option" value="{{option}}" next-question="{{value}}" ng-if="selectedOption == option  && answer_type == 'MULTIPLE'" ng-click="multiSelectWizard()" style="visibility:hidden;"> 
