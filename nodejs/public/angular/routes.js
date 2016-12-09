@@ -344,6 +344,7 @@ app.controller('permitsController', function($scope,$http) {
 				$("#prePermitContainer").hide();
 				$("#permitContainer").hide();
 				$("#permit").html("");
+				return false;
 			}
 
 			var response = $("input[name='option']:checked").val();
