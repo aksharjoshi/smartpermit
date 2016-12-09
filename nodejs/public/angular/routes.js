@@ -273,7 +273,7 @@ app.controller('permitsController', function($scope,$http) {
 
 						$http.post('/postRecommendation', {"permits": $scope.outputPermits})
 						.success(function(response, status, headers, config) {
-							cons
+							$scope.postPermitRecommendations = response.data;
 							$('.slider1').show();
 							$('.slider1').bxSlider({
 							    slideWidth: 200,
