@@ -166,7 +166,7 @@
 
 <div id="permits">
   <table class="table table-striped">
-    <thead>
+    <thead style="color:##286090">
       <th>Appliance</th>
       <th>Permit</th>
     </thead>
@@ -185,7 +185,7 @@
     <tr><td colspan="2" style="text-align:center;"><input type="button" class="btn btn-primary" value="Apply for Permits" onclick="window.open('/forms/common_pw1_form.pdf')" /></td></tr>
     </tbody>
   </table>
-  <div class="row">
+  <div class="row" style="margin-bottom:50px">
     <button class="btn btn-large btn-warning" style="margin-right:20px" ng-click="restart()"> <i class="glyphicon glyphicon-refresh"></i> Start Over</button>
 </div>
 </div>
@@ -201,7 +201,7 @@
 </div>
 </div>
 
-<div class="slider1" style="display:none;margin-top:50px;">
+<div class="slider1" style="display:none;">
   <div class="pull-left col-md-4" ng-repeat="(key,recommendation) in postPermitRecommendations track by $index">
       <div class="row">
         <div class="col-sm-6 col-md-12">
