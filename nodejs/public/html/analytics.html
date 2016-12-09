@@ -37,7 +37,7 @@
         <h3 class="panel-title">Seasonal Permit Trend</h3>
       </div>
       <div class="panel-body">
-        <form class="controls label-container">
+        <form class="controls label-container" id="formSeasonal">
         <label class="tab1" ng-repeat="(key, year) in years" ng-click="getSeasonalData(year)">
           <input id="seasonal_{{year}}" type="radio" class="radio_label" name="seasonal_year" value="{{year}}">{{year}}
         </label>
@@ -71,7 +71,7 @@
         <h3 class="panel-title">Most Popular Permits</h3>
       </div>
       <div class="panel-body">
-        <form class="controls label-container">
+        <form class="controls label-container" id="formPopular">
         <label class="tab1" ng-repeat="(key, year) in years" ng-click="getPopularPermitsData(year)">
           <input id="popular_{{year}}" type="radio" class="radio_label" name="popular_year" value="{{year}}">{{year}}
         </label>
@@ -96,12 +96,12 @@
         </div>
       </div>
     </div>
-    <div class="panel panel-default" style="margin-top: 50px;" id="panelExpiration">
+    <div class="panel panel-default" style="margin-top: 50px;" >
       <div class="panel-heading">
         <h3 class="panel-title">Permit Expiration Analysis</h3>
       </div>
       <div class="panel-body">
-        <form class="controls label-container">
+        <form class="controls label-container" id="formExpiration" >
         <label class="tab1" ng-repeat="(key, year) in years" ng-click="getExpirartionAnalysisData(year)">
           <input id="expiration_{{year}}" type="radio" class="radio_label" name="expiration_year" value="{{year}}">{{year}}
         </label>
@@ -132,7 +132,7 @@
         <h3 class="panel-title">Area wise permits</h3>
       </div>
       <div class="panel-body">
-        <form class="controls label-container">
+        <form class="controls label-container" id="formArea">
         <label class="tab1" ng-repeat="(key, year) in years" ng-click="getHeatMapData(year)">
           <input id="heatmap_{{year}}" type="radio" class="radio_label" name="heatmap_year" value="{{year}}">{{year}}
         </label>
