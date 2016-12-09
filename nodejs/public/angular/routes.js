@@ -726,6 +726,7 @@ app.controller('analyticsController', function($scope,$http) {
     	$http.get("/seasonalAnalysis?year="+year+"&quarter="+$scope.quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownSeasonalAnalytics').modal();
     		$("#quarter").html($scope.quarter);
+    		$("#seasonal_year").html(year);
 			var seosonalTrendArray = [];
 			var permitTypeCountArray = [];
 			var permitTypes = [];
@@ -865,6 +866,7 @@ console.log(permitTypeCountArray);
     	$http.get("/popularPermit?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
     		$('#modalDrillDownPopularPermits').modal();
     		$("#popular_quarter").html(quarter);
+    		$("#popular_year").html(year);
     		var permitsArray = [];
 			var permitTypes = [];
 			var counts = [];
@@ -986,7 +988,8 @@ console.log(permitTypeCountArray);
     	$('#modalDrillDownExpiration').modal();
 		$http.get("/expirartionAnalysis?year="+year+"&quarter="+quarter.slice(-1)).success(function(response){
     		
-    		$("#popular_quarter").html(quarter);
+    		$("#expired_quarter").html(quarter);
+    		$("#expired_year").html(year);
 
 			var expirationTrendArray = [];
 			var permitTypeCountArray = [];
