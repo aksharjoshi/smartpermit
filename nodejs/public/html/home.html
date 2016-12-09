@@ -2,6 +2,7 @@
 	.yesnoblk{
 		height: 150px;
 		width: 150px;
+		display: inline-block;
 	}
 </style>
 <div class="page-header">
@@ -13,10 +14,20 @@
 
 <div style="margin-top:40px">
 	<div class="alert alert-success yesnoblk" role="alert">
-		<a href="#recommendation">Yes</a>
+		<div style="margin-top:25px; text-align: center">
+			<img id="img_YES" data="YES" class="imgIcon" src="/images/glyphicons_free/glyphicons/png/glyphicons-207-ok.png">
+		</div>
+		<div style="margin-top:15px; text-align: center">
+			<a href="#recommendation">Yes</a>
+		</div>
 	</div>
 	<div class="alert alert-success yesnoblk" role="alert">
-		<a href="#permits">No</a>
+		<div style="margin-top:25px; text-align: center">
+			<img id="img_NO" data="NO" class="imgIcon" src="/images/glyphicons_free/glyphicons/png/glyphicons-208-remove.png">
+		</div>
+		<div style="margin-top:15px; text-align: center">
+			<a href="#permits">No</a>
+		</div>
 	</div>
 </div>
 
