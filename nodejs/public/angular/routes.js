@@ -285,8 +285,9 @@ app.controller('permitsController', function($scope,$http) {
 								    slideMargin: 10,
 								    slideMargin: 10
 								});
+								$(".bx-wrapper").removeAttr("style");
 						 	}, 100);
-						 	$(".bx-wrapper").removeAttr("style");
+
 						});
 					{
 						/*$http.post('/getDescription', {"permits": $scope.calculatedPermits})
