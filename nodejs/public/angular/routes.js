@@ -303,7 +303,7 @@ app.controller('permitsController', function($scope,$http) {
 							}
 							else{
 								$scope.postPermitRecommendations = JSON.parse(response.data);
-								$('.slider1').show();
+								$('.slider1,#headerRecommendation').show();
 								//var html = $("#postPermitRecommendation").html();
 								//$('.slider1').html(html);
 								setTimeout(function(){ 
